@@ -24,11 +24,6 @@
   </url>
   
   <url>
-    <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-02-04T23:03:48+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://aben20807.github.io/posts/</loc>
     <lastmod>2019-02-04T23:03:48+08:00</lastmod>
     <priority>0</priority>
@@ -45,6 +40,11 @@
   
   <url>
     <loc>https://aben20807.github.io/google2169afa21a7cdf4c.html</loc>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/</loc>
+    <lastmod>2019-02-04T23:03:48+08:00</lastmod>
   </url>
   
 </urlset>
