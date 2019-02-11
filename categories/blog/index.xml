@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 記錄用</title>
-    <link>https://aben20807.github.io/posts/</link>
-    <description>Recent content in Posts on 記錄用</description>
+    <title>Blog on 記錄用</title>
+    <link>https://aben20807.github.io/categories/blog/</link>
+    <description>Recent content in Blog on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Wed, 06 Feb 2019 09:37:31 +0800</lastBuildDate>
     
-	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://aben20807.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://aben20807.github.io/posts/features/</guid>
       <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Happy New Year</title>
-      <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
-      <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
-      
-      <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
-      <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;</description>
     </item>
     
   </channel>

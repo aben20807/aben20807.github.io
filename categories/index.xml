@@ -6,9 +6,19 @@
     <description>Recent content in Categories on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <lastBuildDate>Wed, 06 Feb 2019 09:37:31 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog</title>
+      <link>https://aben20807.github.io/categories/blog/</link>
+      <pubDate>Wed, 06 Feb 2019 09:37:31 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>日常</title>
