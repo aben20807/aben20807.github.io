@@ -232,29 +232,27 @@
                   </a>
                 </li>
             </ul><li class="nav-item pa3-ns">
-        <a id='gotop'>&lt;Back to top&gt;</a>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js'></script>
+        <div>
+  <a class='goto' id='gotop'>Back to top</a>
+</div>
+<div>
+  <a class='goto' id='gobottom'>Go to bottom</a>
+</div>
 <script type='text/javascript'>
- 
-  $(".smoothScroll").click(function(event){
-    event.preventDefault();
-    
-    var dest=0;
-    if($(decodeURI(this.hash)).offset().top > $(document).height()-$(window).height()){
-      dest=$(document).height()-$(window).height();
-    }else{
-      dest=$(decodeURI(this.hash)).offset().top;
-    }
-    
-    $('html,body').animate({scrollTop:dest}, 500,'swing');
-
-    
-    window.location = $(this).attr("href");
-  });
-
+  
+var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
+$.getScript( url, function() {
   $("#gotop").click(function(event){
-    $('html,body').animate({scrollTop:0}, 500,'swing');
+    $('html,body').animate({scrollTop:0}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
   });
+  $("#gobottom").click(function(event){
+    $('html,body').animate({scrollTop:$(document).height()}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
+  });
+});
 </script>
 
       </li>
