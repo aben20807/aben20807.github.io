@@ -7,7 +7,149 @@
 		<language>en-us</language>
 		<author>Huang Po-Hsuan</author>
 		<rights>Copyright (c) 2019</rights>
-		<updated>2019-02-12 22:51:30 &#43;0800 CST</updated>
+		<updated>2019-02-16 10:00:48 &#43;0800 CST</updated>
+		
+		<item>
+			<title>Makefile for Testing</title>
+			<link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
+			<pubDate>Sat, 16 Feb 2019 10:00:48 CST</pubDate>
+			<author>Huang Po-Hsuan</author>
+			<guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
+			<description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input.txt &amp;gt; output.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;
+
+&lt;h1 id=&#34;舊方法&#34;&gt;舊方法&lt;/h1&gt;
+
+&lt;p&gt;不過若是有很多種輸入測資的話會有點麻煩，當然還是可以寫成這樣&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;或是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
+    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
+    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣寫的缺點就是每次測資增加的時候舊需要修改 Makefile&lt;/p&gt;
+
+&lt;h1 id=&#34;makefile-內建函式&#34;&gt;Makefile 內建函式&lt;/h1&gt;
+
+&lt;p&gt;不過其實有更好的寫法，利用 makefile 內建的函式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
+INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
+OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wildcard&lt;/code&gt;: 獲取輸入檔案列表&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;notdir&lt;/code&gt;: 獲得檔案名稱 (去掉前面路徑)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;addprefix&lt;/code&gt;: 加上前綴 (修改輸出路徑)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile&lt;/p&gt;
+
+&lt;h1 id=&#34;完整範例&#34;&gt;完整範例&lt;/h1&gt;
+
+&lt;h2 id=&#34;檔案們&#34;&gt;檔案們&lt;/h2&gt;
+
+&lt;h3 id=&#34;t-c&#34;&gt;&lt;code&gt;t.c&lt;/code&gt;:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, b;
+    scanf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d%d&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;a, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;b);
+    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;makefile&#34;&gt;&lt;code&gt;Makefile&lt;/code&gt;:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;CC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gcc
+EXEC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.out
+
+INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
+INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
+OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; all, test, mk_parent_dir
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;all&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;mk_parent_dir&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    @mkdir -p &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; mk_parent_dir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;$(OUTPUT_DIR)%.txt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;%.txt &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+    ./a.out &amp;lt; $&amp;lt; &amp;gt; $@
+    @cat $&amp;lt; $@ &lt;span style=&#34;color:#75715e&#34;&gt;# cat the content of file&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;$(EXEC)&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; t.c
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; t.c
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    rm -rf &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; a.out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;檔案架構&#34;&gt;檔案架構&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree .
+.
+├── input
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+├── Makefile
+├── output
+└── t.c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;指令同為-make-test&#34;&gt;指令同為 &lt;code&gt;$ make test&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ make test
+gcc t.c
+./a.out &amp;lt; input/linux/test2.txt &amp;gt; output/linux/test2.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+./a.out &amp;lt; input/linux/test3.txt &amp;gt; output/linux/test3.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;78&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;177&lt;/span&gt;
+./a.out &amp;lt; input/linux/test1.txt &amp;gt; output/linux/test1.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;結果檔案架構&#34;&gt;結果檔案架構&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree .
+.
+├── a.out
+├── input
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+├── Makefile
+├── output
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+└── t.c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
+
+&lt;p&gt;上面的簡單例子中可能看不出 &lt;code&gt;$(INPUTS)&lt;/code&gt; 跟 &lt;code&gt;$(OUTPUTS)&lt;/code&gt; 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 &lt;code&gt;%&lt;/code&gt; 出馬，就像 &lt;code&gt;$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt&lt;/code&gt; 來表示輸入輸出的檔名要一致。&lt;/p&gt;</description>
+		</item>
 		
 		<item>
 			<title>咖啡木蠹蛾</title>

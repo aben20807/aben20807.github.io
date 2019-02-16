@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile on 記錄用</title>
+    <link>https://aben20807.github.io/tags/makefile/</link>
+    <description>Recent content in Makefile on 記錄用</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 16 Feb 2019 10:00:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://aben20807.github.io/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Makefile for Testing</title>
+      <link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
+      <pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
+      <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input.txt &amp;gt; output.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
