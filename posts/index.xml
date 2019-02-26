@@ -6,10 +6,25 @@
     <description>Recent content in Posts on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 16 Feb 2019 10:00:48 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Feb 2019 21:40:00 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Talk About Shame</title>
+      <link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
+      <pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
+      <description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;四者之中，恥尤為要&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Makefile for Testing</title>

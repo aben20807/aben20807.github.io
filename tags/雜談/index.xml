@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>日常 on 記錄用</title>
-    <link>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</link>
-    <description>Recent content in 日常 on 記錄用</description>
+    <title>雜談 on 記錄用</title>
+    <link>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</link>
+    <description>Recent content in 雜談 on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Mon, 25 Feb 2019 21:40:00 +0800</lastBuildDate>
     
-	<atom:link href="https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -24,15 +24,6 @@
 &lt;/blockquote&gt;
 
 &lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Happy New Year</title>
-      <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
-      <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
-      
-      <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
-      <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;</description>
     </item>
     
   </channel>
