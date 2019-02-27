@@ -45,6 +45,11 @@
   </url>
   
   <url>
+    <loc>https://aben20807.github.io/search/content/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/tags/makefile/</loc>
     <lastmod>2019-02-16T10:00:48+08:00</lastmod>
     <priority>0</priority>
@@ -58,6 +63,10 @@
   
   <url>
     <loc>https://aben20807.github.io/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/subscription/</loc>
   </url>
   
   <url>
