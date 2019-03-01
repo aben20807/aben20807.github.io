@@ -1,259 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>記錄用 </title>
-		<link>https://aben20807.github.io/</link>
-		<generator>Hugo -- gohugo.io</generator>
-		<language>en-us</language>
-		<author>Huang Po-Hsuan</author>
-		<rights>Copyright (c) 2019</rights>
-		<updated>2019-02-27 17:39:51 &#43;0800 CST</updated>
-		
-		<item>
-			<title>訂閱囉</title>
-			<link>https://aben20807.github.io/posts/20190227-subscription/</link>
-			<pubDate>Wed, 27 Feb 2019 17:39:51 CST</pubDate>
-			<author>Huang Po-Hsuan</author>
-			<guid>https://aben20807.github.io/posts/20190227-subscription/</guid>
-			<description>&lt;p&gt;訂閱起來～訂閱起來～&lt;/p&gt;
-
-&lt;p&gt;本篇主要是測試訂閱有沒有問題 (希望沒有&lt;/p&gt;
-
-&lt;p&gt;要訂閱的話可以透過右上角的信箱圖案填寫 email&lt;/p&gt;
-
-&lt;p&gt;或是真的懶的話：&lt;a href=&#34;https://aben20807.github.io/subscription/&#34;&gt;https://aben20807.github.io/subscription/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;如果是 Gmail 的話可能會被分到「促銷內容」可以透過篩選器喔。或是用右鍵來修改已經寄到信箱的信的標籤喔。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=19Ftzj_DlKmuTLeyybZw0V50ucBLHuiJ7&#34; alt=&#34;google- &#34; /&gt;&lt;/p&gt;</description>
-		</item>
-		
-		<item>
-			<title>Talk About Shame</title>
-			<link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
-			<pubDate>Mon, 25 Feb 2019 21:40:00 CST</pubDate>
-			<author>Huang Po-Hsuan</author>
-			<guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
-			<description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
+  <channel>
+    <title>記錄用</title>
+    <link>https://aben20807.github.io/</link>
+    <description>Recent content on 記錄用</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 27 Feb 2019 17:39:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>訂閱囉</title>
+      <link>https://aben20807.github.io/posts/20190227-subscription/</link>
+      <pubDate>Wed, 27 Feb 2019 17:39:51 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190227-subscription/</guid>
+      <description>&lt;p&gt;訂閱起來～訂閱起來～&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Talk About Shame</title>
+      <link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
+      <pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
+      <description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;四者之中，恥尤為要&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;
-
-&lt;h1 id=&#34;關於標題&#34;&gt;關於標題&lt;/h1&gt;
-
-&lt;p&gt;(有時候英文標題就懶的改了，不然就是改了有點怪，想這次的，所以我就不改囉＠＠&lt;/p&gt;
-
-&lt;p&gt;說到英文，「恥」在英文翻譯是 shame，不過在四維的英文中其對應的是 honor。根據不專業的討論，shame 是貶義，而英文卻傾向用褒義表達，更進一步的去解釋可以想成「恥」是讓我們了解什麼是不榮耀的事，大概是這樣。&lt;/p&gt;
-
-&lt;p&gt;(圖片有點震撼我知道 OuO&lt;/p&gt;
-
-&lt;h1 id=&#34;正題&#34;&gt;正題&lt;/h1&gt;
-
-&lt;p&gt;為何會突然講這個主題呢？其實很多事情都是先學會，然後在之後才會去遇到，甚至體會到一開始接觸到時沒有獲得的感觸。這次談的這個主題其實已經在腦海中想過頗多次，但就如同上述，是我在高中學到這段課文後過了很久才漸漸有看法。或許到大學這段期間還不算久，我想會有更多的東西可能是我到老還無法了解的吧。&lt;/p&gt;
-
-&lt;p&gt;總結那篇課文，其認為人會違反一些道德倫理，是因為無恥所導致。&lt;/p&gt;
-
-&lt;p&gt;結合到日常生活中，最微小的可以從那些不遵守交通規則的人身上看出，他們將這些視為理所當然，例如在台南闖紅燈是再稀鬆平常不過的事了，在那些人眼中我看不到一絲的羞恥感。這或許也是現行法律所無法顧慮的吧，之前上課總說法律是道德的最低標準，這也是為何重刑不管用，酒駕的還是會酒駕，因為罰錢根本是小事，內心的道德感一點也沒有覺得自己做錯。我覺得可能要更善加利用輿論壓力才能有效降低，例如酒駕就會有標籤，可能求職時就需要出示之類的，但這都只是外部的約束，主要還是要自己感覺到「恥」。&lt;/p&gt;
-
-&lt;p&gt;除了這些，更有人會合理化自己的行為，認為自己沒有影響別人什麼的，其實就需要去思考那為何需要訂定交通規則。&lt;/p&gt;
-
-&lt;p&gt;另外，亂丟垃圾也是，真心不懂為何有人就是會把垃圾留在離垃圾桶不到五步距離的飲水機上。總之族繁不及備載，這些事一直都會發生。&lt;/p&gt;
-
-&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
-
-&lt;p&gt;好啦，其實也沒有要戰什麼，其實是想表達自己看到的現象彷彿跟以前學到的有些許映射。總之呢，希望世界和平，做人有多一點點羞恥心去用不同的角度去看待事情，這樣才能打造更和諧的社會。&lt;/p&gt;
-
-&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
-
-&lt;p&gt;其實我是覺得我可能過於看重這件事了，所以會變得比較怕去麻煩別人，當然這有好有壞，我是不太建議像我這樣的個性，因為時常要跟自己打架 XDD。人活著也不是要一直去注意他人的眼光，去找一個適合自己的光譜位置，然後貫徹自己的想法吧。&lt;/p&gt;</description>
-		</item>
-		
-		<item>
-			<title>Makefile for Testing</title>
-			<link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
-			<pubDate>Sat, 16 Feb 2019 10:00:48 CST</pubDate>
-			<author>Huang Po-Hsuan</author>
-			<guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
-			<description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
+&lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Makefile for Testing</title>
+      <link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
+      <pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
+      <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
 
 &lt;p&gt;例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
     ./a.out &amp;lt; input.txt &amp;gt; output.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;
-
-&lt;h1 id=&#34;舊方法&#34;&gt;舊方法&lt;/h1&gt;
-
-&lt;p&gt;不過若是有很多種輸入測資的話會有點麻煩，當然還是可以寫成這樣&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;test2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;test3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;或是&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
-    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
-    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;這樣寫的缺點就是每次測資增加的時候舊需要修改 Makefile&lt;/p&gt;
-
-&lt;h1 id=&#34;makefile-內建函式&#34;&gt;Makefile 內建函式&lt;/h1&gt;
-
-&lt;p&gt;不過其實有更好的寫法，利用 makefile 內建的函式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
-INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
-OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;wildcard&lt;/code&gt;: 獲取輸入檔案列表&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;notdir&lt;/code&gt;: 獲得檔案名稱 (去掉前面路徑)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;addprefix&lt;/code&gt;: 加上前綴 (修改輸出路徑)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile&lt;/p&gt;
-
-&lt;h1 id=&#34;完整範例&#34;&gt;完整範例&lt;/h1&gt;
-
-&lt;h2 id=&#34;檔案們&#34;&gt;檔案們&lt;/h2&gt;
-
-&lt;h3 id=&#34;t-c&#34;&gt;&lt;code&gt;t.c&lt;/code&gt;:&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, b;
-    scanf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d%d&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;a, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;b);
-    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b);
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;makefile&#34;&gt;&lt;code&gt;Makefile&lt;/code&gt;:&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;CC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gcc
-EXEC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.out
-
-INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
-INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
-OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; all, test, mk_parent_dir
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;all&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;mk_parent_dir&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    @mkdir -p &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; mk_parent_dir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;$(OUTPUT_DIR)%.txt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;%.txt &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-    ./a.out &amp;lt; $&amp;lt; &amp;gt; $@
-    @cat $&amp;lt; $@ &lt;span style=&#34;color:#75715e&#34;&gt;# cat the content of file&lt;/span&gt;
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;$(EXEC)&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; t.c
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; t.c
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    rm -rf &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; a.out
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;檔案架構&#34;&gt;檔案架構&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ tree .
-.
-├── input
-│   └── linux
-│       ├── test1.txt
-│       ├── test2.txt
-│       └── test3.txt
-├── Makefile
-├── output
-└── t.c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
-
-&lt;h3 id=&#34;指令同為-make-test&#34;&gt;指令同為 &lt;code&gt;$ make test&lt;/code&gt;&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ make test
-gcc t.c
-./a.out &amp;lt; input/linux/test2.txt &amp;gt; output/linux/test2.txt
-&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
-./a.out &amp;lt; input/linux/test3.txt &amp;gt; output/linux/test3.txt
-&lt;span style=&#34;color:#ae81ff&#34;&gt;78&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;177&lt;/span&gt;
-./a.out &amp;lt; input/linux/test1.txt &amp;gt; output/linux/test1.txt
-&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&#34;結果檔案架構&#34;&gt;結果檔案架構&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ tree .
-.
-├── a.out
-├── input
-│   └── linux
-│       ├── test1.txt
-│       ├── test2.txt
-│       └── test3.txt
-├── Makefile
-├── output
-│   └── linux
-│       ├── test1.txt
-│       ├── test2.txt
-│       └── test3.txt
-└── t.c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
-
-&lt;p&gt;上面的簡單例子中可能看不出 &lt;code&gt;$(INPUTS)&lt;/code&gt; 跟 &lt;code&gt;$(OUTPUTS)&lt;/code&gt; 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 &lt;code&gt;%&lt;/code&gt; 出馬，就像 &lt;code&gt;$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt&lt;/code&gt; 來表示輸入輸出的檔名要一致。&lt;/p&gt;</description>
-		</item>
-		
-		<item>
-			<title>咖啡木蠹蛾</title>
-			<link>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</link>
-			<pubDate>Tue, 12 Feb 2019 22:51:30 CST</pubDate>
-			<author>Huang Po-Hsuan</author>
-			<guid>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</guid>
-			<description>&lt;p&gt;(以下圖片皆攝於 2019.02.03)&lt;/p&gt;
+&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>咖啡木蠹蛾</title>
+      <link>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</link>
+      <pubDate>Tue, 12 Feb 2019 22:51:30 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</guid>
+      <description>&lt;p&gt;(以下圖片皆攝於 2019.02.03)&lt;/p&gt;
 
 &lt;p&gt;咖啡木蠹蛾，學名 Zeuzera Coffeae Nietner
-詳細可以去行政院農業委員會 農業試驗所提供的&lt;a href=&#34;http://web.tari.gov.tw/techcd/%E6%9E%9C%E6%A8%B9/%E5%B8%B8%E7%B6%A0%E6%9E%9C%E6%A8%B9/%E6%A5%8A%E6%A1%83/%E8%9F%B2%E5%AE%B3/%E6%A5%8A%E6%A1%83-%E5%92%96%E5%95%A1%E6%9C%A8%E8%A0%B9%E8%9B%BE.htm&#34;&gt;圖鑑&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=14FU_jdoqFlTPkXxMENhMgayz86EkCfeGvg&#34; alt=&#34;google-點圖可放大喔 OuO&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;總之呢就是害蟲，幼蟲會把樹木的枝條蛀空。&lt;/p&gt;
-
-&lt;p&gt;我們家就是幾乎不噴農藥雜草也不會一定要用除草劑處理的光禿禿的，所以難免有害蟲。
-&lt;img src=&#34;https://drive.google.com/open?id=1W2XiqPRhfVaMGkPwO_wRMIiIO_o1tdZH3g&#34; alt=&#34;google-灑水中的葡萄園&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;這隻剛從蛹中出來就被我拍到，然後通報給老媽，她趁牠還沒出去產卵就把牠處理掉了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1hssv_igXB1P3KEfEcCT5o2lbT64TF8JcbA&#34; alt=&#34;google-蛹，仔細看第1張圖會看到喔&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1GzQL4C-PyzQEkUnv7T2InNbzfUyjR2qZRg&#34; alt=&#34;google-葡萄營養珠(老媽說是氮珠)&#34; /&gt;&lt;/p&gt;</description>
-		</item>
-		
-		<item>
-			<title>Happy New Year</title>
-			<link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
-			<pubDate>Mon, 04 Feb 2019 23:03:48 CST</pubDate>
-			<author>Huang Po-Hsuan</author>
-			<guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
-			<description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;
-
-&lt;p&gt;第一天用比較偏累，基本上把會用的東西都裝一裝了，例如：google analysitcs, disqus。likecoin 的部份我覺得可能還要找方法，不然拖慢許多載入速度。&lt;/p&gt;
-
-&lt;p&gt;總之，主因大致上可以推給 G+ 關閉吧，加上在 Blogger 那邊改主題頗累 (外加煩躁) 選擇 Hugo 主要是速度吧，號稱目前最快，原本考慮的 Jekyll 跟 Hexo 似乎在文章多的時候都會慢，所以就直上了(?)。&lt;/p&gt;
-
-&lt;p&gt;這裡會發的文會更偏向記錄，要說是日記也是可，不過我相信我自己絕對不可能日更，尤其是已經在研究所幹活了，可能這篇第一篇也是最後一篇也說不定。&lt;/p&gt;
-
-&lt;p&gt;恩&amp;hellip;也不知道怎麼結尾，那就這樣吧 OuO&lt;/p&gt;</description>
-		</item>
-		
-	</channel>
+詳細可以去行政院農業委員會 農業試驗所提供的&lt;a href=&#34;http://web.tari.gov.tw/techcd/%E6%9E%9C%E6%A8%B9/%E5%B8%B8%E7%B6%A0%E6%9E%9C%E6%A8%B9/%E6%A5%8A%E6%A1%83/%E8%9F%B2%E5%AE%B3/%E6%A5%8A%E6%A1%83-%E5%92%96%E5%95%A1%E6%9C%A8%E8%A0%B9%E8%9B%BE.htm&#34;&gt;圖鑑&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Features</title>
+      <link>https://aben20807.github.io/posts/features/</link>
+      <pubDate>Wed, 06 Feb 2019 09:37:31 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/features/</guid>
+      <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Happy New Year</title>
+      <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
+      <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
+      <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
 </rss>
