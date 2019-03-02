@@ -6,6 +6,8 @@
     <description>Recent content in Makefile on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
+    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
     <lastBuildDate>Sat, 16 Feb 2019 10:00:48 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>Makefile for Testing</title>
       <link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
       <pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
       <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
 

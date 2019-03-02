@@ -6,6 +6,8 @@
     <description>Recent content in Posts on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
+    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
     <lastBuildDate>Sat, 02 Mar 2019 10:40:02 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +17,7 @@
       <title>把 app 加到 ubuntu 的 dash 目錄</title>
       <link>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</link>
       <pubDate>Sat, 02 Mar 2019 10:40:02 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</guid>
       <description>&lt;p&gt;所謂的 dash 就有點像是在 windows 10 點擊「開始」出現的很多 app 的畫面。而在 ubuntu 中有些程式的安裝方式是從網路上下載壓縮檔後解壓縮，一般要啟動的話就需要先去打開那個資料夾再點擊，有點麻煩，所以就找了一個最簡單的方式將要用的程式加到 dash 中。&lt;/p&gt;</description>
     </item>
@@ -24,7 +26,7 @@
       <title>訂閱囉</title>
       <link>https://aben20807.github.io/posts/20190227-subscription/</link>
       <pubDate>Wed, 27 Feb 2019 17:39:51 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190227-subscription/</guid>
       <description>&lt;p&gt;訂閱起來～訂閱起來～&lt;/p&gt;</description>
     </item>
@@ -33,7 +35,7 @@
       <title>Talk About Shame</title>
       <link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
       <pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
       <description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
 
@@ -48,7 +50,7 @@
       <title>Makefile for Testing</title>
       <link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
       <pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
       <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
 
@@ -63,7 +65,7 @@
       <title>咖啡木蠹蛾</title>
       <link>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</link>
       <pubDate>Tue, 12 Feb 2019 22:51:30 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</guid>
       <description>&lt;p&gt;(以下圖片皆攝於 2019.02.03)&lt;/p&gt;
 
@@ -75,7 +77,7 @@
       <title>Features</title>
       <link>https://aben20807.github.io/posts/features/</link>
       <pubDate>Wed, 06 Feb 2019 09:37:31 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/features/</guid>
       <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;</description>
     </item>
@@ -84,7 +86,7 @@
       <title>Happy New Year</title>
       <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
       <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
-      
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
       <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;</description>
     </item>
