@@ -10,6 +10,9 @@ code {
     max-width: 100%;
     height: auto;
 }
+#hdr {
+    text-shadow: black 0.1em 0.1em 0.2em
+}
 p {
     line-height: 1.55rem;
 }

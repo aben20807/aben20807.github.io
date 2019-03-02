@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>小技巧 on 記錄用</title>
-    <link>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
-    <description>Recent content in 小技巧 on 記錄用</description>
+    <title>作業系統 on 記錄用</title>
+    <link>https://aben20807.github.io/categories/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1/</link>
+    <description>Recent content in 作業系統 on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Sat, 02 Mar 2019 10:40:02 +0800</lastBuildDate>
     
-	<atom:link href="https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://aben20807.github.io/categories/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,24 +18,6 @@
       
       <guid>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</guid>
       <description>&lt;p&gt;所謂的 dash 就有點像是在 windows 10 點擊「開始」出現的很多 app 的畫面。而在 ubuntu 中有些程式的安裝方式是從網路上下載壓縮檔後解壓縮，一般要啟動的話就需要先去打開那個資料夾再點擊，有點麻煩，所以就找了一個最簡單的方式將要用的程式加到 dash 中。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>訂閱囉</title>
-      <link>https://aben20807.github.io/posts/20190227-subscription/</link>
-      <pubDate>Wed, 27 Feb 2019 17:39:51 +0800</pubDate>
-      
-      <guid>https://aben20807.github.io/posts/20190227-subscription/</guid>
-      <description>&lt;p&gt;訂閱起來～訂閱起來～&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Features</title>
-      <link>https://aben20807.github.io/posts/features/</link>
-      <pubDate>Wed, 06 Feb 2019 09:37:31 +0800</pubDate>
-      
-      <guid>https://aben20807.github.io/posts/features/</guid>
-      <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;</description>
     </item>
     
   </channel>

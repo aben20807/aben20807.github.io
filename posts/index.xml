@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 記錄用</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 27 Feb 2019 17:39:51 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Mar 2019 10:40:02 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>把 app 加到 ubuntu 的 dash 目錄</title>
+      <link>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</link>
+      <pubDate>Sat, 02 Mar 2019 10:40:02 +0800</pubDate>
+      
+      <guid>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</guid>
+      <description>&lt;p&gt;所謂的 dash 就有點像是在 windows 10 點擊「開始」出現的很多 app 的畫面。而在 ubuntu 中有些程式的安裝方式是從網路上下載壓縮檔後解壓縮，一般要啟動的話就需要先去打開那個資料夾再點擊，有點麻煩，所以就找了一個最簡單的方式將要用的程式加到 dash 中。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>訂閱囉</title>

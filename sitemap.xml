@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</loc>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/posts/20190227-subscription/</loc>
     <lastmod>2019-02-27T17:39:51+08:00</lastmod>
   </url>
@@ -62,7 +67,7 @@
   
   <url>
     <loc>https://aben20807.github.io/posts/</loc>
-    <lastmod>2019-02-27T17:39:51+08:00</lastmod>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -81,8 +86,20 @@
   </url>
   
   <url>
+    <loc>https://aben20807.github.io/tags/ubuntu/</loc>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/categories/%E4%BD%9C%E6%A5%AD%E7%B3%BB%E7%B5%B1/</loc>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2019-02-27T17:39:51+08:00</lastmod>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -124,7 +141,7 @@
   
   <url>
     <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-02-27T17:39:51+08:00</lastmod>
+    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
   </url>
   
   <url>
