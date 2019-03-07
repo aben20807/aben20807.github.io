@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>編輯器 on 記錄用</title>
+    <link>https://aben20807.github.io/categories/%E7%B7%A8%E8%BC%AF%E5%99%A8/</link>
+    <description>Recent content in 編輯器 on 記錄用</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
+    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
+    <lastBuildDate>Thu, 07 Mar 2019 20:23:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://aben20807.github.io/categories/%E7%B7%A8%E8%BC%AF%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Emacs 安裝 rainbow-delimiters 插件</title>
+      <link>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</link>
+      <pubDate>Thu, 07 Mar 2019 20:23:24 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;恩&amp;hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。&lt;br /&gt;
+本篇記錄一下安裝插件的過程&lt;br /&gt;
+(雖然我這篇還是用 vim 打的&amp;hellip;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

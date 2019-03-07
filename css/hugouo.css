@@ -6,6 +6,8 @@ body, p {
 }
 code {
     font-family: 'Roboto Mono', 'Fira Mono', 'Consolas', 'monaco', 'monospace';
+}
+pre {
     font-size: .9rem !important;
     max-width: 100%;
     height: auto;

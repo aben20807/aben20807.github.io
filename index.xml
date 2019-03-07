@@ -8,10 +8,137 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 02 Mar 2019 10:40:02 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2019 20:23:24 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Emacs 安裝 rainbow-delimiters 插件</title>
+      <link>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</link>
+      <pubDate>Thu, 07 Mar 2019 20:23:24 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;恩&amp;hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。&lt;br /&gt;
+本篇記錄一下安裝插件的過程&lt;br /&gt;
+(雖然我這篇還是用 vim 打的&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;這個插件的名稱是 &lt;code&gt;rainbow-delimiters&lt;/code&gt;，顧名思義就是讓對應的括號有相同的顏色，這在一堆括號的語言 lisp 中可以對初學者較為友善。&lt;/p&gt;
+
+&lt;h1 id=&#34;emacs-安裝&#34;&gt;emacs 安裝&lt;/h1&gt;
+
+&lt;p&gt;emacs 的安裝方式就還是提一下，不然我應該記不起來@@&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo add-apt-repository ppa:ubuntu-elisp/ppa
+$ sudo apt-get update
+$ sudo apt-get install emacs-snapshot emacs-snapshot-el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;超基本按鍵&#34;&gt;超基本按鍵&lt;/h1&gt;
+
+&lt;p&gt;我是超新手，所以只暫時記錄最重要的@@&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-x ctrl-s&lt;/code&gt;：儲存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-x ctrl-c&lt;/code&gt;：離開&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;新增設定檔&#34;&gt;新增設定檔&lt;/h1&gt;
+
+&lt;p&gt;首先需要新增一個設定檔，就像 vim 中的 &lt;code&gt;.vimrc&lt;/code&gt; 一樣，而為了方便管理我使用 &lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;，我們就直接用 emacs 編輯吧～&lt;/p&gt;
+
+&lt;p&gt;Note. &lt;code&gt;-nw&lt;/code&gt; 可以用非 GUI 的方式開啟 emacs&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ mkdir ~/.emacs.d/
+$ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;支援-melpa-https-melpa-org-插件庫&#34;&gt;支援 &lt;a href=&#34;https://melpa.org/#/&#34;&gt;MELPA&lt;/a&gt; 插件庫&lt;/h1&gt;
+
+&lt;p&gt;打開之後貼上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(require &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package&lt;/span&gt;)
+(let* ((no-ssl (and (memq system-type &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;)))
+  &lt;span style=&#34;color:#75715e&#34;&gt;;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired                                         &lt;/span&gt;
+  (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt; (cons&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;melpa&amp;#34;&lt;/span&gt;(concat proto&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://melpa.org/packages/&amp;#34;&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt;)
+  &lt;span style=&#34;color:#75715e&#34;&gt;;;(add-to-list &amp;#39;package-archives (cons&amp;#34;melpa-stable&amp;#34;(concat proto&amp;#34;://stable.melpa.org/packages/&amp;#34;)) t)                            &lt;/span&gt;
+  (when (&amp;lt; emacs-major-version &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;)
+    &lt;span style=&#34;color:#75715e&#34;&gt;;; For important compatibility libraries like cl-lib                                                                           &lt;/span&gt;
+    (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gnu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; (concat proto &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://elpa.gnu.org/packages/&amp;#34;&lt;/span&gt;)))))
+(package-initialize)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;新增-rainbow-delimiters-插件&#34;&gt;新增 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 插件&lt;/h1&gt;
+
+&lt;p&gt;退出 (上面有記錄怎麼儲存跟離開) 後重新開啟 emacs&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ emacs -nw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;按下 &lt;code&gt;alt-x&lt;/code&gt; 後輸入 &lt;code&gt;package-list-packages&lt;/code&gt; 接著按下 &lt;code&gt;Enter&lt;/code&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;會發現出現一個各種插件的頁面。&lt;/p&gt;
+
+&lt;p&gt;搜尋方式請按 &lt;code&gt;ctrl-s&lt;/code&gt; 後輸入 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 接著 &lt;code&gt;Enter&lt;/code&gt;  即可找到
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;在那一行按下 &lt;code&gt;i&lt;/code&gt; 會發現最前方多了一個 &lt;code&gt;I&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note. 要取消請按 &lt;code&gt;u&lt;/code&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;選完後按下 &lt;code&gt;x&lt;/code&gt; 就可以安裝了&lt;/p&gt;
+
+&lt;p&gt;結果最後還需要加東西到 &lt;code&gt;~/emacs.d/init.el&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(require &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters&lt;/span&gt;)
+(add-hook &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;prog-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters-mode&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;改完之後會發現有很淺的變色了&lt;/p&gt;
+
+&lt;h1 id=&#34;自訂顏色&#34;&gt;自訂顏色&lt;/h1&gt;
+
+&lt;p&gt;結果就如封面所示。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(custom-set-variables
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(package-selected-packages &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters)))
+(custom-set-faces
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-1-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dark orange&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-2-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deep pink&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-3-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chartreuse&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-4-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deep sky blue&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-5-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yellow&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-6-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orchid&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-7-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring green&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-8-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sienna1&amp;#34;&lt;/span&gt;))))
+)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://5xruby.tw/posts/emacs-part1/&#34;&gt;Emacs 入坑引導 - 打造自己的 Ruby IDE - Part 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.emacswiki.org/emacs/RainbowDelimiters&#34;&gt;RainbowDelimiters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ericscrivner.me/2015/06/better-emacs-rainbow-delimiters-color-scheme/&#34;&gt;Better Emacs Rainbow Delimiters Color Scheme&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>把 app 加到 ubuntu 的 dash 目錄</title>
