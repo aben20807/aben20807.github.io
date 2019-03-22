@@ -44,37 +44,38 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo snap install hugo
 $ hugo version
 Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: &lt;span style=&#34;color:#ae81ff&#34;&gt;2019&lt;/span&gt;-02-01T13:33:06Z&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;結果注意事項就把 Hugo 全部安裝完成了＠＠，部屬在 GitHub 就跟大部分用法相同。&lt;/p&gt;
+
 &lt;h1 id=&#34;部落格架構配置&#34;&gt;部落格架構配置&lt;/h1&gt;
 
-&lt;p&gt;因為 Hugo 會針對主題和文章經過 &lt;code&gt;hugo&lt;/code&gt; 指令去產生一個完整的網站並預設放在 &lt;code&gt;public/&lt;/code&gt; 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 &lt;code&gt;public/&lt;/code&gt; push 到 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，寫文章的就創見另一個 &lt;code&gt;blog-post&lt;/code&gt; 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。&lt;/p&gt;
+&lt;p&gt;因為 Hugo 會針對主題和文章經過 &lt;code&gt;hugo&lt;/code&gt; 指令去產生一個完整的網站並預設放在 &lt;code&gt;public/&lt;/code&gt; 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 &lt;code&gt;public/&lt;/code&gt; push 到 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，寫文章的就創建另一個 &lt;code&gt;blog-post&lt;/code&gt; 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。&lt;/p&gt;
 
 &lt;p&gt;但是，一般上面這種是會把主題的檔案都複製到你寫文章的 repo 裡這樣就可以自訂一些前端設計。&lt;/p&gt;
 
 &lt;p&gt;我覺得這樣還不夠乾淨！因此我的方式是使用三個 repo：&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;blog-post&lt;/li&gt;
-&lt;li&gt;hugOuO&lt;/li&gt;
-&lt;li&gt;aben20807.github.io&lt;/li&gt;
+&lt;li&gt;blog-post：存文章&lt;/li&gt;
+&lt;li&gt;hugOuO：主題&lt;/li&gt;
+&lt;li&gt;aben20807.github.io：發布網站&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;沒錯，多一個 repo 追蹤主題，由於 Hugo 會自動的搜尋一些資料夾找尋網站設定，在一開始的資料夾找不到時，會根據 &lt;code&gt;config.toml&lt;/code&gt; 中設定的主題去 &lt;code&gt;themes/&lt;/code&gt; 找對應的主題，所以一開始的資料夾就不要有任何前端的檔案，除非像是 google analytics 需要放置規定的檔案，不然所有的前端設計 (架構, css, javascript) 都放在主題的 repo 中。當然這是給那些會修改別人主題的人的建議，如果是直接用現成的那就不需要多一個 repo 了。&lt;/p&gt;
 
 &lt;p&gt;以下是一個簡單的檔案結構：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;blog-post/ &amp;lt;----------------------- repo 1: 存文章
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;blog-post/ &amp;lt;----------------------- repo &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;: 存文章
 ├── config.toml
 ├── content
 │   ├── about
 │   ├── _index.md
 │   └── posts/ &amp;lt;------------------- 文章會在這裡
 ├── themes/
-│   └── hugOuO/ &amp;lt;------------------ repo 2: 主題
+│   └── hugOuO/ &amp;lt;------------------ repo &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;: 主題
 │       ├── archetypes/
 │       │   ├── default.md
 │       │   └── posts.md
 │       ├── layouts/
-│       │   ├── 404.html
+│       │   ├── &lt;span style=&#34;color:#ae81ff&#34;&gt;404&lt;/span&gt;.html
 │       │   ├── _default/
 │       │   ├── index.html
 │       │   ├── index.json
@@ -86,10 +87,8 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: &lt;span style=&#34;co
 │       │   ├── img/
 │       │   └── js/
 │       └── theme.toml
-└── public/ &amp;lt;---------------------- repo 3: 發布網站
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;缺點&#34;&gt;缺點&lt;/h2&gt;
+└── public/ &amp;lt;---------------------- repo &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;: 發布網站&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;這樣安排的缺點&#34;&gt;這樣安排的缺點&lt;/h2&gt;
 
 &lt;p&gt;這麼多 repo 就是一個蠻大的缺點，不過若是非常在意的話可以利用 branch 來讓三個 repo 合併。&lt;br /&gt;
 但是這個缺點有一個優點 (?)，就是可以刷 GitHub 的 contributions 啊！每次寫文章改一堆東西就會綠一片OuO&lt;/p&gt;
@@ -212,7 +211,11 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: &lt;span style=&#34;co
 
 &lt;h2 id=&#34;9-hued&#34;&gt;9. hued&lt;/h2&gt;
 
-&lt;p&gt;因為每次編輯時都要用很長的路徑 &lt;code&gt;content/posts/xxxx.md&lt;/code&gt;，頗煩躁，所以就寫了一個把指令包起來的 script，安裝方式可以看 &lt;a href=&#34;https://github.com/aben20807/blog-post#hued&#34;&gt;README&lt;/a&gt;，還有補全喔，雖然應該是只有 oh-my-bash 可用。&lt;/p&gt;</description>
+&lt;p&gt;因為每次編輯時都要用很長的路徑 &lt;code&gt;content/posts/xxxx.md&lt;/code&gt;，頗煩躁，所以就寫了一個把指令包起來的 script，安裝方式可以看 &lt;a href=&#34;https://github.com/aben20807/blog-post#hued&#34;&gt;README&lt;/a&gt;，還有補全喔，雖然應該是只有 oh-my-bash 可用。&lt;/p&gt;
+
+&lt;h2 id=&#34;10-disqus-評論系統&#34;&gt;10. Disqus 評論系統&lt;/h2&gt;
+
+&lt;p&gt;設定方式跟 google analytics 一樣簡單，簡單到我都忘了要設定&amp;hellip;.設定 short name 即可。&lt;/p&gt;</description>
     </item>
     
     <item>
