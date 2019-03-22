@@ -8,10 +8,22 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 02 Mar 2019 10:40:02 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 22:20:12 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>First Met Hugo</title>
+      <link>https://aben20807.github.io/posts/20190321-first-met-hugo/</link>
+      <pubDate>Thu, 21 Mar 2019 22:20:12 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br /&gt;
+就請多見諒＠＠&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>把 app 加到 ubuntu 的 dash 目錄</title>

@@ -8,10 +8,212 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Thu, 07 Mar 2019 20:23:24 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 22:20:12 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>First Met Hugo</title>
+      <link>https://aben20807.github.io/posts/20190321-first-met-hugo/</link>
+      <pubDate>Thu, 21 Mar 2019 22:20:12 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br /&gt;
+就請多見諒＠＠&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;從 Blogger 轉出來的原因可以去關於的頁面看看，我就不再贅述，此篇主要也不會手把手的教學如何用 Hugo 從頭到尾架設一個網頁，因為網路上有相當多這類的教學，我主要是記錄一些比較特別地方。接著跟我唸三遍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;前端坑好深，前端坑好深，前端坑好深&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;安裝&#34;&gt;安裝&lt;/h1&gt;
+
+&lt;p&gt;說不教好像也有點無情，不過在 GitHub 架 Hugo 真的太過簡單了，步驟真的算少，所以我就推給其他文章吧(可以先看完整篇再開始)：&lt;a href=&#34;https://medium.com/@chs_wei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&#34;&gt;在 GitHub 部署 Hugo 靜態網站&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;安裝-注意事項&#34;&gt;安裝 - 注意事項&lt;/h1&gt;
+
+&lt;p&gt;Ubuntu 請用 &lt;code&gt;snap&lt;/code&gt; 來安裝比較新的版本，用 &lt;code&gt;apt&lt;/code&gt; 會發現一堆主題不能用因為版本過舊。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo snap install hugo
+$ hugo version
+Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: &lt;span style=&#34;color:#ae81ff&#34;&gt;2019&lt;/span&gt;-02-01T13:33:06Z&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;部落格架構配置&#34;&gt;部落格架構配置&lt;/h1&gt;
+
+&lt;p&gt;因為 Hugo 會針對主題和文章經過 &lt;code&gt;hugo&lt;/code&gt; 指令去產生一個完整的網站並預設放在 &lt;code&gt;public/&lt;/code&gt; 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 &lt;code&gt;public/&lt;/code&gt; push 到 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，寫文章的就創見另一個 &lt;code&gt;blog-post&lt;/code&gt; 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。&lt;/p&gt;
+
+&lt;p&gt;但是，一般上面這種是會把主題的檔案都複製到你寫文章的 repo 裡這樣就可以自訂一些前端設計。&lt;/p&gt;
+
+&lt;p&gt;我覺得這樣還不夠乾淨！因此我的方式是使用三個 repo：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;blog-post&lt;/li&gt;
+&lt;li&gt;hugOuO&lt;/li&gt;
+&lt;li&gt;aben20807.github.io&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;沒錯，多一個 repo 追蹤主題，由於 Hugo 會自動的搜尋一些資料夾找尋網站設定，在一開始的資料夾找不到時，會根據 &lt;code&gt;config.toml&lt;/code&gt; 中設定的主題去 &lt;code&gt;themes/&lt;/code&gt; 找對應的主題，所以一開始的資料夾就不要有任何前端的檔案，除非像是 google analytics 需要放置規定的檔案，不然所有的前端設計 (架構, css, javascript) 都放在主題的 repo 中。當然這是給那些會修改別人主題的人的建議，如果是直接用現成的那就不需要多一個 repo 了。&lt;/p&gt;
+
+&lt;p&gt;以下是一個簡單的檔案結構：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;blog-post/ &amp;lt;----------------------- repo 1: 存文章
+├── config.toml
+├── content
+│   ├── about
+│   ├── _index.md
+│   └── posts/ &amp;lt;------------------- 文章會在這裡
+├── themes/
+│   └── hugOuO/ &amp;lt;------------------ repo 2: 主題
+│       ├── archetypes/
+│       │   ├── default.md
+│       │   └── posts.md
+│       ├── layouts/
+│       │   ├── 404.html
+│       │   ├── _default/
+│       │   ├── index.html
+│       │   ├── index.json
+│       │   ├── index.rss.xml
+│       │   ├── partials/
+│       │   └── shortcodes/
+│       ├── static/
+│       │   ├── css/
+│       │   ├── img/
+│       │   └── js/
+│       └── theme.toml
+└── public/ &amp;lt;---------------------- repo 3: 發布網站
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;缺點&#34;&gt;缺點&lt;/h2&gt;
+
+&lt;p&gt;這麼多 repo 就是一個蠻大的缺點，不過若是非常在意的話可以利用 branch 來讓三個 repo 合併。&lt;br /&gt;
+但是這個缺點有一個優點 (?)，就是可以刷 GitHub 的 contributions 啊！每次寫文章改一堆東西就會綠一片OuO&lt;/p&gt;
+
+&lt;h2 id=&#34;其他&#34;&gt;其他&lt;/h2&gt;
+
+&lt;p&gt;當然也可以利用 GitHub 和其他工具達到持續集成、部署，參考：&lt;a href=&#34;https://axdlog.com/zh/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/&#34;&gt;利用Travis CI和Hugo將Blog自動部署到Github Pages&lt;/a&gt;。不過我是有點點懶惰，所以我就用 &lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/deploy.sh&#34;&gt;script&lt;/a&gt; 來部屬。&lt;/p&gt;
+
+&lt;p&gt;還有 &lt;code&gt;blog-post&lt;/code&gt; repo 可以用 &lt;code&gt;.gitattributes&lt;/code&gt; 來讓 GitHub 把 markdown 當作一個語言來計算，&lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/.gitattributes&#34;&gt;傳送門&lt;/a&gt;。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ&#34; alt=&#34;結果展示&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;結果展示&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;圖片&#34;&gt;圖片&lt;/h1&gt;
+
+&lt;p&gt;通常架設在 GitHub 的靜態網站都會直接把圖片也傳到 repo 中，雖然說這樣會比較快而且方便，但是我不建議用 git 去追蹤圖片，到最後會非常肥大。所以我一開始就有想說用 google 雲端當作一個圖床 (Flickr 1TB 回來啊QuQ)，反正有學校帳號算是有無限空間吧 (還是當學生的小福利＠＠)，再加上 google 圖片可以無限上傳，我手機拍照的圖片都會自動上傳了，然後也可以跟雲端連結，也就是說在 google 雲端透過檔案存取到 google 圖片的檔案。不過因為它的 api 還不是說很好用，就是雲端右鍵拿到的連結是不能直接嵌入網頁的，所以要手動複製 id，我覺得頗麻煩就乾脆寫一個可以偵測是否在 markdown 使用 google 雲端的圖片，然後把它轉成對應的 url 同時提供點擊就可以直接連過去，這樣就可以放大檢視了。&lt;/p&gt;
+
+&lt;p&gt;作法就是我的文章若要用到 google 雲端的圖片就要用以下語法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;google-標題&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;從雲端裡面右鍵拿到的分享連結&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;沒意外這篇文章內文都是用這個方式加圖片的，唯一缺點就是明顯慢很多＠＠，雖然慢會影響 SEO，不過算了，就會看的人就會來看吧。說到這個，流量很明顯跟 Blogger 時期差很多＠＠，實做&lt;a href=&#34;https://github.com/aben20807/hugOuO/blob/master/layouts/partials/custom-content.html#L5-L23&#34;&gt;傳送門&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h1 id=&#34;文章&#34;&gt;文章&lt;/h1&gt;
+
+&lt;p&gt;對於文章，我建議可以用日期當作檔名的前綴，以便排序。我的主題就會自動切割日期。Hugo 也有 permalinks 功能，就是把日期當作網站的路徑，不過我懶得用了＠＠&lt;/p&gt;
+
+&lt;h1 id=&#34;優點啦&#34;&gt;優點啦&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;單一執行檔，只需要安裝 hugo，其他什麼 ruby, python, node 都不用。&lt;/li&gt;
+&lt;li&gt;建制快速，號稱目前地表最快，尤其當網站一多，目前有找到跟 Jekyll 的比較&lt;a href=&#34;https://forestry.io/blog/hugo-vs-jekyll-benchmark/&#34;&gt;傳送門&lt;/a&gt;，跟 Hexo 的可能還要找一下。&lt;/li&gt;
+&lt;li&gt;網站內容乾淨，也就是上面的缺點啦，我是覺得這是優點 OuO，分多個 repo 不是很好嗎。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;有趣的功能&#34;&gt;有趣的功能&lt;/h1&gt;
+
+&lt;p&gt;下面這些功能其實不限於 Hugo，只要有想要其實都可以把它加到自己的網站，甚至是從頭自己刻的也可。不要忘了開頭念三次的東西 OuO&lt;/p&gt;
+
+&lt;h2 id=&#34;1-搜尋&#34;&gt;1. 搜尋&lt;/h2&gt;
+
+&lt;p&gt;由於之前 Blogger 算是內建搜尋的，所以這裡算是研究頗久，原本要使用一些已經做成套件的切字工具，但是中文字真的太難搞定了，所以我乾脆直接用 google 提供的搜尋：Google Custom Search。一樣，這裡就不一一教學，請移駕：&lt;a href=&#34;https://blog.yowko.com/google-search-in-hugo/&#34;&gt;將 Google自訂搜尋引擎 (Google Custom Search) 搭配 OpenSearch 加至 Hugo 網站中&lt;/a&gt;。真的要參考實做的話可以來這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/6f6b62898791322876091d4db98d580b8a7accdc#diff-44f0b83d58ef03d7cee156de462be50c&#34;&gt;commit&lt;/a&gt; 看看。對了，設定完後要等個幾天才會可以搜尋，我那時候以為我哪裡設定錯誤，結果等個幾天就可以用了。結果可以到這個&lt;a href=&#34;https://aben20807.github.io/search/&#34;&gt;頁面&lt;/a&gt;查看。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh&#34; alt=&#34;搜尋範例&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;搜尋範例&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;2-toc-table-of-content&#34;&gt;2. TOC (Table Of Content)&lt;/h2&gt;
+
+&lt;p&gt;Hugo 算有提供 toc 工具，但是用起來沒這麼好看，例如它無法設定深度，不管幾層就都會做成 toc 也就是 h1~6 都有，造成空間浪費。這裡我也是弄超級久，最後我是參考 &lt;a href=&#34;https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/#/hugo%E7%9A%84table-of-content&#34;&gt;AllinOne&lt;/a&gt; 這個主題的實做方式：&lt;a href=&#34;https://github.com/orianna-zzo/AllinOne/blob/master/layouts/partials/toc.html&#34;&gt;toc.html&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;3-headline-hash&#34;&gt;3. Headline Hash&lt;/h2&gt;
+
+&lt;p&gt;也就是滑鼠移到標題會出現一個 anchor 可以產生直接跳到這個標題的連結，直接參考：&lt;a href=&#34;https://discourse.gohugo.io/t/adding-anchor-next-to-headers/1726&#34;&gt;Adding anchor next to headers&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;4-smooth-scroll&#34;&gt;4. Smooth Scroll&lt;/h2&gt;
+
+&lt;p&gt;這個可以讓移動有滾動的動畫而不是直接跳到那邊，我是使用 &lt;code&gt;jquery.smooth-scroll.min.js&lt;/code&gt; 來達成，請參考這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/68fa52f8d25c90d003fec296081427d12c6724cf#diff-0aa74fe7c8cd2a2b79dab67ece16cb02&#34;&gt;commit&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-scrollspy&#34;&gt;5. Scrollspy&lt;/h2&gt;
+
+&lt;p&gt;讓右邊的 toc 自動標記現在所在的標題位置，我是從 &lt;a href=&#34;https://stackoverflow.com/questions/30348314/how-to-use-scrollspy-without-using-bootstrap/49257431#49257431&#34;&gt;how to use scrollspy without using bootstrap 的其中一個回答&lt;/a&gt; 改成這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/94b0b7344de07858b4ed346bc76b30caafa71220#comments&#34;&gt;commit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.3.4.5. 合起來差不多就是這樣：
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;6-自動換標題-ouo&#34;&gt;6. 自動換標題 OuO&lt;/h2&gt;
+
+&lt;p&gt;這算是一個有趣但是沒啥實用性的功能，我是在 &lt;a href=&#34;https://diygod.me/&#34;&gt;https://diygod.me/&lt;/a&gt; 看到的，當你暫時離開去其他分頁時，它的標題就會變換。建議不要在手機上用這個功能。參考：&lt;a href=&#34;https://blog.youdivi.com/tutorials/change-browser-tab-title-tab-not-active/&#34;&gt;CHANGE BROWSER TAB TITLE WHEN TAB NOT ACTIVE&lt;/a&gt;，&lt;a href=&#34;https://github.com/aben20807/blog-post/commit/4a468cb27289453f1a53ccb05db50343877438d8#diff-0aa74fe7c8cd2a2b79dab67ece16cb02&#34;&gt;commit&lt;/a&gt;，如何排擠手機：&lt;a href=&#34;https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery/3540295#3540295&#34;&gt;What is the best way to detect a mobile device in jQuery?&lt;/a&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;7-e-mail-subscribe-mailchimp-https-mailchimp-com&#34;&gt;7. E-mail subscribe (&lt;a href=&#34;https://mailchimp.com/&#34;&gt;mailchimp&lt;/a&gt;)&lt;/h2&gt;
+
+&lt;p&gt;原本 Blogger 有 G+ 當作一個社群平台來分享發布的文章，不過這裡就沒有了，我想說需要有一個方法來提供讀者訂閱，不能叫他自己去申請 GitHub 然後訂閱我網站的 repo 吧。所以我就找到這個服務，它免費版提供 2000 個訂閱者，一個月可以寄 12000 封 e-mail，對我來說算是非常夠用了(吧＠＠)，剛剛看原本還以為只有兩個人 (我跟我的分身帳號)，結果竟然多一個人了！還不來&lt;a href=&#34;https://aben20807.github.io/subscription/&#34;&gt;訂閱&lt;/a&gt;？&lt;/p&gt;
+
+&lt;p&gt;mailchimp 的用法其實官網就有提供，我英文不太行的看久一點就可以架設好服務了，我相信你們可以的 (?)&lt;/p&gt;
+
+&lt;h2 id=&#34;8-google-analytics&#34;&gt;8. google analytics&lt;/h2&gt;
+
+&lt;p&gt;Google 的流量監測，Hugo 已經有寫好可以直接用，在 &lt;code&gt;config.toml&lt;/code&gt; 直接加上自己的 token 就好，然後還要上傳一個證明是自己網站的 html 檔案，放在 &lt;code&gt;static/&lt;/code&gt; 裡面就可以。上面有提到流量差異大致上就如下，我 Blogger 那邊已經很久沒更新了，一天還是快 100 個人造訪呢 OuO。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF&#34; alt=&#34;左：Blogger，右：這個網站QuQ&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;左：Blogger，右：這個網站QuQ&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;9-hued&#34;&gt;9. hued&lt;/h2&gt;
+
+&lt;p&gt;因為每次編輯時都要用很長的路徑 &lt;code&gt;content/posts/xxxx.md&lt;/code&gt;，頗煩躁，所以就寫了一個把指令包起來的 script，安裝方式可以看 &lt;a href=&#34;https://github.com/aben20807/blog-post#hued&#34;&gt;README&lt;/a&gt;，還有補全喔，雖然應該是只有 oh-my-bash 可用。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Emacs 安裝 rainbow-delimiters 插件</title>

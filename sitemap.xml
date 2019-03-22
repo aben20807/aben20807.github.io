@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://aben20807.github.io/posts/20190321-first-met-hugo/</loc>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</loc>
     <lastmod>2019-03-07T20:23:24+08:00</lastmod>
   </url>
@@ -49,13 +54,13 @@
   
   <url>
     <loc>https://aben20807.github.io/categories/blog/</loc>
-    <lastmod>2019-02-27T17:39:51+08:00</lastmod>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://aben20807.github.io/categories/</loc>
-    <lastmod>2019-02-27T17:39:51+08:00</lastmod>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -71,6 +76,12 @@
   </url>
   
   <url>
+    <loc>https://aben20807.github.io/tags/hugo/</loc>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/tags/makefile/</loc>
     <lastmod>2019-02-16T10:00:48+08:00</lastmod>
     <priority>0</priority>
@@ -78,7 +89,7 @@
   
   <url>
     <loc>https://aben20807.github.io/posts/</loc>
-    <lastmod>2019-03-07T20:23:24+08:00</lastmod>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -110,7 +121,7 @@
   
   <url>
     <loc>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2019-03-02T10:40:02+08:00</lastmod>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -158,7 +169,7 @@
   
   <url>
     <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-03-07T20:23:24+08:00</lastmod>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
   </url>
   
   <url>
