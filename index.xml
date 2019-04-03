@@ -8,10 +8,110 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Thu, 21 Mar 2019 22:20:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Apr 2019 09:06:15 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Makefile Help Message</title>
+      <link>https://aben20807.github.io/posts/20190402-makefile-help-message/</link>
+      <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190402-makefile-help-message/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。&lt;/p&gt;
+
+&lt;p&gt;原本可能在寫完所有 rule 後要再加一個 &lt;code&gt;help&lt;/code&gt; 來寫準備印出來給使用者的內容。如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &amp;lt;target&amp;gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  action1\tDo action 1.\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  action2\tDo action 2.\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  help\t\tShow help message.\n&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m&#34; alt=&#34;結果&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;結果&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;這種方式在數量一多下會很麻煩，尤其是要不斷確認上面是否有被更動。所以找到許多人針對每個 target 的註解去產生 help 資訊。這裡使用 perl 跟 awk 幫忙。&lt;/p&gt;
+
+&lt;p&gt;下方印出的結果同上就不貼圖片了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &amp;lt;target&amp;gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@perl -nle&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;print $&amp;amp; if m{^[a-zA-Z0-9_-]+:.*?## .*$$}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;MAKEFILE_LIST&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		sort | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN {FS = &amp;#34;:.*?## &amp;#34;}; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;		{printf &amp;#34;  %-18s %s\n&amp;#34;, $$1, $$2}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;稍微解釋一下 perl 那一行&lt;/p&gt;
+
+&lt;p&gt;首先就是先使用 regexp 去 match 符合的表達式，&lt;code&gt;^[a-zA-Z0-9_-]+:.*?## .*$$&lt;/code&gt; 表示由一個單字(可能含數字)開頭 &lt;code&gt;:&lt;/code&gt; 後方是相依的部份，最後是用 &lt;code&gt;##&lt;/code&gt; 註解的描述。&lt;/p&gt;
+
+&lt;p&gt;接著利用 pipe (&lt;code&gt;|&lt;/code&gt;) 給 awk，它可以針對欄 (column) 去操作文字，&lt;code&gt;BEGIN&lt;/code&gt; 區塊表示初始化宣告，也就是輸入的字串是用 &lt;code&gt;##&lt;/code&gt; 當作分割符號，最後利用 &lt;code&gt;printf()&lt;/code&gt; 去把第一欄及第二欄印出來。&lt;/p&gt;
+
+&lt;p&gt;最後最後，加上點顏色頗不錯 OuO&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# color
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;BLUE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;34m
+NC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0m
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;BLUE&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;lt;target&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;NC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@perl -nle&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;print $&amp;amp; if m{^[a-zA-Z0-9_-]+:.*?## .*$$}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;MAKEFILE_LIST&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		sort | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN {FS = &amp;#34;:.*?## &amp;#34;}; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;		{printf &amp;#34;$(BLUE)  %-18s$(NC) %s\n&amp;#34;, $$1, $$2}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G&#34; alt=&#34;有顏色版本&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;有顏色版本&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h3 id=&#34;參考資料&#34;&gt;參考資料&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nedbatchelder.com/blog/201804/makefile_help_target.html&#34;&gt;Makefile help target&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>First Met Hugo</title>
