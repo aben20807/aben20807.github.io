@@ -8,10 +8,21 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Wed, 03 Apr 2019 16:50:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 21:04:32 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Github Flow</title>
+      <link>https://aben20807.github.io/posts/20190420-github-flow/</link>
+      <pubDate>Sat, 20 Apr 2019 21:04:32 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190420-github-flow/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>不同路徑之 Git Patch</title>

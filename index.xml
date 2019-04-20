@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>記錄用</title>
@@ -8,10 +7,122 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Wed, 03 Apr 2019 16:50:28 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 21:04:32 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Github Flow</title>
+      <link>https://aben20807.github.io/posts/20190420-github-flow/</link>
+      <pubDate>Sat, 20 Apr 2019 21:04:32 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190420-github-flow/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;其實是看了 &lt;a href=&#34;https://guides.github.com/introduction/flow/&#34;&gt;Understanding the GitHub flow&lt;/a&gt; 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。&lt;/p&gt;
+
+&lt;p&gt;p.s. 這裡有翻譯版：&lt;a href=&#34;https://medium.com/@trylovetom/讓我們來了解-github-flow-吧-4144caf1f1bf&#34;&gt;讓我們來了解 GitHub Flow 吧！&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;注意&amp;gt; 因為目前專案還不算大型，所以目前遇到的狀況算是比較簡易的。
+&amp;lt;注意&amp;gt; 由於我也是初心者，如果我有誤解的話請跟我說，感激不盡。&lt;/p&gt;
+
+&lt;h1 id=&#34;github-flow&#34;&gt;GitHub flow&lt;/h1&gt;
+
+&lt;p&gt;這個流程，主要是去掉 Git flow 有兩條主線的麻煩。不過誰比較好，還是得看用途，更有 GitLab flow 是合併兩個來用的＠＠&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;GitHub flow 只專注在 master 身上，從 master 上開啟 feature branch，在該 branch 上開發(會有一些 commit)，最後在透過 PR(pull request) 合併到 master。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上面這句看似簡單，其實相當複雜，我盡量詳盡解釋。&lt;/p&gt;
+
+&lt;p&gt;更清楚的解釋應該為：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;從主要專案(upstream) fork 一份到自己的帳號(origin)，修改 origin，從 origin/master 新增分支，開發完後將分支 push 到 origin/新分支 上後直接用新分支對 upstream/master 開啟 PR。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;fork-and-pr&#34;&gt;Fork and PR&lt;/h1&gt;
+
+&lt;p&gt;首先，PR 可以達到討論及 code review 的效果，為了達到 PR 我們必須把主專案 fork 一份到自己的帳號。而 PR 的方式主要就是透過 GitHub 網頁提供的界面進行操作。&lt;/p&gt;
+
+&lt;p&gt;不過，我試了一下，發現同一個 repo 還是可以透過 branch 發 PR 的，這我就有點不確定為何一定要 fork，或許 fork 是不一定，不過更改自己的 repo 會比較心安一點，尤其若是常使用&amp;hellip;.
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;branch&#34;&gt;Branch&lt;/h1&gt;
+
+&lt;p&gt;Branch 在 git 中花費相當少，因為它就只是一個標籤，所以應該盡量使用它。GitHub flow 中保證 master 上的每一個版本都是可佈署的，因此在此流程中不建議直接在 master 上加 commit 而是在 master 上開一個 branch 出來。&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;注意&amp;gt; 一定要從 master 開 branch
+但是又有一個特例：就是當別人還沒 merge 我的 PR 可是我接下來的開發又需要有這個 PR 的內容的時候。網路上我找到有人問這個問題 &lt;a href=&#34;https://softwareengineering.stackexchange.com/questions/310427/in-github-flow-is-it-ok-to-base-feature-branch-on-another-feature-branch&#34;&gt;傳送門&lt;/a&gt;，好像就只能在 branch 分出另一個 branch 來先暫時用。&lt;/p&gt;
+
+&lt;h1 id=&#34;流程&#34;&gt;流程&lt;/h1&gt;
+
+&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Fork 主要專案到自己的 GitHub 帳號&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Clone 自己 GitHub 中的專案 (fork 過來的)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 upstream 來源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;開發中&#34;&gt;開發中&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;前往 master 分支 (一開始就在 master 可以不用)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;新增並前往 feature 分支&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開始開發功能&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git add XXX
+$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master
+$ git fetch upstream
+$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout new_feature
+$ git rebase master
+$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;發 PR
+開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@yengttt/開發用到的git流程-c9082b914974&#34;&gt;這次專案用到的Git流程&lt;/a&gt;：本篇主要流程來自這裡，更詳盡請點擊參考。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://poychang.github.io/guide-to-use-github-flow/&#34;&gt;如何使用 GitHub Flow 來參與開源專案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>不同路徑之 Git Patch</title>
@@ -896,10 +1007,10 @@ gcc t.c
 
 &lt;h1 id=&#34;標題-heading&#34;&gt;標題 (heading)&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;# h1
-&lt;span style=&#34;color:#75715e&#34;&gt;##&lt;/span&gt; h2
-&lt;span style=&#34;color:#75715e&#34;&gt;###&lt;/span&gt; h3
-&lt;span style=&#34;color:#75715e&#34;&gt;####&lt;/span&gt; h4 支援 emoji 😄
-##### h5 支援中文~&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;## h2
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### h3
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### h4 支援 emoji 😄
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;##### h5 支援中文~&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id=&#34;h1&#34;&gt;h1&lt;/h1&gt;
 
 &lt;h2 id=&#34;h2&#34;&gt;h2&lt;/h2&gt;
