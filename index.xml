@@ -7,10 +7,113 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 20 Apr 2019 21:04:32 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 19:13:02 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Github Flow (2)</title>
+      <link>https://aben20807.github.io/posts/20190421-github-flow-2/</link>
+      <pubDate>Sun, 21 Apr 2019 19:13:02 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190421-github-flow-2/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;針對昨天的再多釐清一些。順便補充一些東西。&lt;/p&gt;
+
+&lt;h1 id=&#34;關於流程&#34;&gt;關於流程&lt;/h1&gt;
+
+&lt;p&gt;昨天的流程主要是有需要 fork 的，通常是針對那些你無法對原始專案直接操作的狀況。&lt;/p&gt;
+
+&lt;p&gt;如果對同一個專案使用 GitHub flow 也是可以的，也就是說在同一個專案中開啟 branch 在對自己開啟 PR，或許這就是我一開始有點困惑的原因，結果是都適用。&lt;/p&gt;
+
+&lt;h1 id=&#34;pr-被-merge-後呢&#34;&gt;PR 被 merge 後呢&lt;/h1&gt;
+
+&lt;h2 id=&#34;更新-merge-commit&#34;&gt;更新 merge commit&lt;/h2&gt;
+
+&lt;p&gt;接下來要做的就是更新一下自己的 master (origin 跟 local)。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+$ git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;刪除-branch&#34;&gt;刪除 branch&lt;/h2&gt;
+
+&lt;p&gt;GitHub 上在被 merge 的 PR 的界面會出現可以刪除 branch 的按鈕。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除完成後會出現提示，貌似還可以復原呢。這個步驟後你帳號遠端上的那個 branch 就不見了。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;再來是更新到本地端。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出本地端的分支 (加上遠端記錄)&lt;/span&gt;
+$ git branch -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1QifWjcp6goVP329L8aBoeV98yVze_XAc&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1QifWjcp6goVP329L8aBoeV98yVze_XAc&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除遠端記錄&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 模擬遠端可刪除分支&lt;/span&gt;
+$ git remote prune origin --dry-run
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 執行刪除&lt;/span&gt;
+$ git remote prune origin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除本地分支後就大功告成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git branch -d new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.fizerkhan.com/blog/posts/Clean-up-your-local-branches-after-merge-and-delete-in-GitHub.html&#34;&gt;Clean up your local branches after merge and delete in GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Github Flow</title>

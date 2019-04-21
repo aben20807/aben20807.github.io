@@ -4,42 +4,47 @@
   
   <url>
     <loc>https://aben20807.github.io/categories/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/20190421-github-flow-2/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/git/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://aben20807.github.io/posts/20190420-github-flow/</loc>
     <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/posts/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/tags/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/tags/git/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2019-04-20T21:04:32+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -71,14 +76,14 @@
   </url>
   
   <url>
-    <loc>https://aben20807.github.io/posts/20190321-first-met-hugo/</loc>
-    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://aben20807.github.io/categories/blog/</loc>
     <lastmod>2019-03-21T22:20:12+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/20190321-first-met-hugo/</loc>
+    <lastmod>2019-03-21T22:20:12+08:00</lastmod>
   </url>
   
   <url>
