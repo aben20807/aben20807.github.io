@@ -757,6 +757,8 @@ $ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;測試系統：Ubuntu 18.04&lt;/p&gt;
 
+&lt;h1 id=&#34;使用-gnome-desktop-item-edit&#34;&gt;使用 gnome-desktop-item-edit&lt;/h1&gt;
+
 &lt;p&gt;首先安裝 &lt;code&gt;gnome-desktop-item-edit&lt;/code&gt; 這個工具&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo apt install --no-install-recommends gnome-panel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;接著新增一個應用程式&lt;/p&gt;
@@ -779,17 +781,17 @@ $ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;
       &lt;figure class=&#34;gphoto-media&#34;&gt;
         &lt;a href=&#34;https://drive.google.com/open?id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; target=&#34;_blank&#34;&gt;
-          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; alt=&#34;最下排左邊數來第二個&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
         &lt;/a&gt;
         &lt;figcaption&gt;
-          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;最下排左邊數來第二個&lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
       &lt;/p&gt;
 
-&lt;p&gt;圖標示預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名&lt;/p&gt;
+&lt;p&gt;圖標是預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo vim /usr/share/applications/VisualVM.desktop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;加上 icon 路徑&lt;/p&gt;
+&lt;h1 id=&#34;加上-icon-路徑&#34;&gt;加上 icon 路徑&lt;/h1&gt;
 
 &lt;p&gt;
       &lt;figure class=&#34;gphoto-media&#34;&gt;
@@ -813,7 +815,13 @@ $ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
           &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
-      &lt;/p&gt;</description>
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxconfig.org/how-to-create-desktop-shortcut-launcher-on-ubuntu-18-04-bionic-beaver-linux#h6-3-desktop-shortcut-creation-with-gnome-desktop-item-edit&#34;&gt;Desktop Shortcut creation with gnome-desktop-item-edit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>

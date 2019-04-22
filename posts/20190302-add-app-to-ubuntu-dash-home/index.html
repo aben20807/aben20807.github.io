@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.55.2" />
+		<meta name="generator" content="Hugo 0.55.3" />
 
 		
 		<meta name="og:title" content="把 app 加到 ubuntu 的 dash 目錄" />
@@ -104,6 +104,8 @@
 
 <p>測試系統：Ubuntu 18.04</p>
 
+<h1 id="使用-gnome-desktop-item-edit">使用 gnome-desktop-item-edit&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#使用-gnome-desktop-item-edit"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
 <p>首先安裝 <code>gnome-desktop-item-edit</code> 這個工具</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install --no-install-recommends gnome-panel</code></pre></div>
 <p>接著新增一個應用程式</p>
@@ -126,17 +128,17 @@
 <p>
   <figure class="gphoto-media">
     <a href="https://drive.google.com/open?id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r" class=center alt=" " title="Open in the new tab"></img>
+      <img src="https://drive.google.com/uc?export=view&id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r" class=center alt="最下排左邊數來第二個" title="Open in the new tab"></img>
     </a>
     <figcaption>
-      <center class="caption-text"> </center>
+      <center class="caption-text">最下排左邊數來第二個</center>
     </figcaption>
   </figure>
 </p>
 
-<p>圖標示預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名</p>
+<p>圖標是預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo vim /usr/share/applications/VisualVM.desktop</code></pre></div>
-<p>加上 icon 路徑</p>
+<h1 id="加上-icon-路徑">加上 icon 路徑&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#加上-icon-路徑"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>
   <figure class="gphoto-media">
@@ -161,6 +163,12 @@
     </figcaption>
   </figure>
 </p>
+
+<h1 id="參考">參考&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<ul>
+<li><a href="https://linuxconfig.org/how-to-create-desktop-shortcut-launcher-on-ubuntu-18-04-bionic-beaver-linux#h6-3-desktop-shortcut-creation-with-gnome-desktop-item-edit">Desktop Shortcut creation with gnome-desktop-item-edit</a></li>
+</ul>
       <div class="row">
         <div class="col-md-8">
         
