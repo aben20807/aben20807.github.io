@@ -3,9 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aben20807.github.io/categories/</loc>
-    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/dnn/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/keras/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/python/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/tvm/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
   </url>
   
   <url>
@@ -14,26 +66,9 @@
   </url>
   
   <url>
-    <loc>https://aben20807.github.io/posts/</loc>
-    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/tags/</loc>
-    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://aben20807.github.io/tags/git/</loc>
     <lastmod>2019-04-21T19:13:02+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-04-21T19:13:02+08:00</lastmod>
   </url>
   
   <url>

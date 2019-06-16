@@ -7,10 +7,390 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sun, 21 Apr 2019 19:13:02 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2019 17:40:59 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Build MINST with TVM</title>
+      <link>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;真的是隔很久&amp;hellip;.藉口就不多說了 OuO&lt;/p&gt;
+
+&lt;p&gt;這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@&lt;br /&gt;
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MINST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MINST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
+
+&lt;p&gt;話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 看看吧。&lt;/p&gt;
+
+&lt;p&gt;所以上面那個做 MINST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。&lt;/p&gt;
+
+&lt;p&gt;P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;一堆程式碼上菜囉&#34;&gt;一堆程式碼上菜囉&lt;/h1&gt;
+
+&lt;h2 id=&#34;原始-cnnpredict-py&#34;&gt;原始 &lt;code&gt;cnnPredict.py&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;注意要下載或複製那個程式碼，&lt;code&gt;cnn.h5&lt;/code&gt; 跟 &lt;code&gt;test3.png&lt;/code&gt; 一樣要放對位置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; load_model(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cnn.h5&amp;#39;&lt;/span&gt;)
+out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(x)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(out))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很好，可以執行～&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;加入-tvm-囉&#34;&gt;加入 TVM 囉&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load model from pre-trained file&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; load_model(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cnn.h5&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compile with tvm&lt;/span&gt;
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict_tvm.py
+In &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;main&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;: 
+v0.0.1
+fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_2: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_3: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_4: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_5: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9216&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_6: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_7: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_8: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  %0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%0, %v_param_2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%2, %v_param_3, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%3, %v_param_4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.max_pool2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%5, pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, strides&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;an internal invariant was violated &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; typechecking your program &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;:05:21&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nullptr: 
+; 
+  %7 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; transpose&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%6, axes&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %8 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.batch_flatten&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%7&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %9 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%8, %v_param_5, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %10 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%9, %v_param_6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %11 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %12 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%11, %v_param_7, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %13 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%12, %v_param_8&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&amp;hellip;.&lt;/p&gt;
+
+&lt;h2 id=&#34;只存-minst-的權重&#34;&gt;只存 MINST 的權重&lt;/h2&gt;
+
+&lt;p&gt;只好使用上面提到 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 的方式只存權重出來，這裡我們只需要改最後一行，&lt;code&gt;save&lt;/code&gt; 改成 &lt;code&gt;save_weights&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; backend &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; K
+
+batch_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+epochs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# input image dimensions&lt;/span&gt;
+img_rows, img_cols &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# the data, shuffled and split between train and test sets&lt;/span&gt;
+(x_train, y_train), (x_test, y_test) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mnist&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_data()
+
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+input_shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;x_train shape:&amp;#39;&lt;/span&gt;, x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;train samples&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test samples&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# convert class vectors to binary class matrices&lt;/span&gt;
+y_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to_categorical(y_train, num_classes)
+y_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to_categorical(y_test, num_classes)
+
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;),
+                 activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;,
+                 input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, (&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compile(loss&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;losses&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;categorical_crossentropy,
+              optimizer&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;optimizers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Adadelta(),
+              metrics&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;accuracy&amp;#39;&lt;/span&gt;])
+
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit(x_train, y_train,
+          batch_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;batch_size,
+          epochs&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;epochs,
+          verbose&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,
+          validation_data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(x_test, y_test))
+score &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(x_test, y_test, verbose&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test loss:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test accuracy:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;save_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; alt=&#34;train a MINST model with Keras&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;train a MINST model with Keras&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;自己用-keras-建構一個-minst-再餵給-tvm&#34;&gt;自己用 Keras 建構一個 MINST 再餵給 TVM&lt;/h2&gt;
+
+&lt;p&gt;把上面產生的權重餵給自己建構的模型&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict_tvm.py
+In &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;main&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;: 
+v0.0.1
+fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_2: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_3: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_4: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_5: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9216&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_6: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_7: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_8: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  %0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%0, %v_param_2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%2, %v_param_3, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%3, %v_param_4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.max_pool2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%5, pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, strides&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;an internal invariant was violated &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; typechecking your program &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;:21:27&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nullptr: 
+; 
+  %7 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; transpose&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%6, axes&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %8 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.batch_flatten&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%7&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %9 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%8, %v_param_5, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %10 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%9, %v_param_6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %11 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %12 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%11, %v_param_7, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %13 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%12, %v_param_8&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，結果竟然一模一樣。&lt;/p&gt;
+
+&lt;h2 id=&#34;檢驗剛剛建立的模型是否正確&#34;&gt;檢驗剛剛建立的模型是否正確&lt;/h2&gt;
+
+&lt;p&gt;總之先試試看是不是跟直接讀 &lt;code&gt;cnn.h5&lt;/code&gt; 一樣。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(x)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(out))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很好，是一樣&amp;hellip;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;突破-加個輸入層&#34;&gt;突破，加個輸入層？&lt;/h2&gt;
+
+&lt;p&gt;在找解決方式的過程中突然看到&lt;a href=&#34;https://stackoverflow.com/a/49600827/6734174&#34;&gt;這裡&lt;/a&gt;提到有 &lt;code&gt;InputLayer&lt;/code&gt;，不如加看看。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+input_shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# model = load_model(&amp;#39;cnn.h5&amp;#39;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(InputLayer(input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Pperform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 test_minst.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，竟然過了 QuQ&lt;/p&gt;
+
+&lt;h1 id=&#34;其他&#34;&gt;其他&lt;/h1&gt;
+
+&lt;h2 id=&#34;lutzroeder-netron-https-github-com-lutzroeder-netron&#34;&gt;&lt;a href=&#34;https://github.com/lutzroeder/netron&#34;&gt;&lt;code&gt;lutzroeder/netron&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;發現了一個視覺化工具可以看模型。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP&#34; alt=&#34;NETRON&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;NETRON&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;想看中間的-shape-的話&#34;&gt;想看中間的 shape 的話&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; layer &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_shape)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;output_shape)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;output)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Github Flow (2)</title>
@@ -183,37 +563,49 @@ $ git remote prune origin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;Fork 主要專案到自己的 GitHub 帳號&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Clone 自己 GitHub 中的專案 (fork 過來的)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;設定 upstream 來源&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;設定 upstream 來源
+&lt;code&gt;bash
+$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;開發中&#34;&gt;開發中&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;前往 master 分支 (一開始就在 master 可以不用)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;新增並前往 feature 分支&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;新增並前往 feature 分支
+&lt;code&gt;bash
+$ git checkout -b new_feature
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;開始開發功能&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git add XXX
-$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)
+&lt;code&gt;bash
+$ git push origin new_feature
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master
 $ git fetch upstream
-$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout new_feature
+$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch
+&lt;code&gt;bash
+$ git checkout new_feature
 $ git rebase master
-$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+$ git push origin new_feature
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;發 PR
 開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。&lt;/p&gt;&lt;/li&gt;

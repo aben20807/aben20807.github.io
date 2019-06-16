@@ -8,10 +8,46 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sun, 21 Apr 2019 19:13:02 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2019 17:40:59 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dnn</title>
+      <link>https://aben20807.github.io/tags/dnn/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/dnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>keras</title>
+      <link>https://aben20807.github.io/tags/keras/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/keras/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://aben20807.github.io/tags/python/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tvm</title>
+      <link>https://aben20807.github.io/tags/tvm/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/tvm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>

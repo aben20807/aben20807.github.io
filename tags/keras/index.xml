@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>keras on 記錄用</title>
+    <link>https://aben20807.github.io/tags/keras/</link>
+    <description>Recent content in keras on 記錄用</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
+    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
+    <lastBuildDate>Sun, 16 Jun 2019 17:40:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://aben20807.github.io/tags/keras/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build MINST with TVM</title>
+      <link>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;真的是隔很久&amp;hellip;.藉口就不多說了 OuO&lt;/p&gt;
+
+&lt;p&gt;這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

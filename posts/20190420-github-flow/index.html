@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.55.3" />
+		<meta name="generator" content="Hugo 0.55.6" />
 
 		
 		<meta name="og:title" content="Github Flow" />
@@ -160,37 +160,49 @@
 <li>Fork 主要專案到自己的 GitHub 帳號</li>
 
 <li><p>Clone 自己 GitHub 中的專案 (fork 過來的)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone &lt;自己專案的 url&gt;</code></pre></div></li>
-
-<li><p>設定 upstream 來源</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add upstream &lt;主要專案的 url&gt;</code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone &lt;自己專案的 url&gt;</code></pre></div>
+<ol>
+<li>設定 upstream 來源
+<code>bash
+$ git remote add upstream &lt;主要專案的 url&gt;
+</code></li>
+</ol></li>
 </ol>
 
 <h2 id="開發中">開發中&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#開發中"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <ol>
 <li><p>前往 master 分支 (一開始就在 master 可以不用)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master</code></pre></div></li>
-
-<li><p>新增並前往 feature 分支</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout -b new_feature</code></pre></div></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master</code></pre></div>
+<ol>
+<li>新增並前往 feature 分支
+<code>bash
+$ git checkout -b new_feature
+</code></li>
+</ol></li>
 
 <li><p>開始開發功能</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git add XXX
-$ git commit</code></pre></div></li>
-
-<li><p>push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git push origin new_feature</code></pre></div></li>
+$ git commit</code></pre></div>
+<ol>
+<li>push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)
+<code>bash
+$ git push origin new_feature
+</code></li>
+</ol></li>
 
 <li><p>準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master
 $ git fetch upstream
-$ git merge upstream/master</code></pre></div></li>
-
-<li><p>回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout new_feature
+$ git merge upstream/master</code></pre></div>
+<ol>
+<li>回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch
+<code>bash
+$ git checkout new_feature
 $ git rebase master
-$ git push origin new_feature</code></pre></div></li>
+$ git push origin new_feature
+</code></li>
+</ol></li>
 
 <li><p>發 PR
 開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。</p></li>
