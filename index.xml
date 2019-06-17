@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>Build MINST with TVM</title>
-      <link>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</link>
+      <title>Build MNIST with TVM</title>
+      <link>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</link>
       <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</guid>
+      <guid>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</guid>
       
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
@@ -29,13 +29,25 @@
 &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 
 &lt;p&gt;最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@&lt;br /&gt;
-然後因為現在頗多都在做 ImageNet 或更之後的應用，MINST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MINST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
+
+&lt;p&gt;~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-&lt;br /&gt;
+2019.06.17 更新：扯，原來官網就有&amp;hellip;.&lt;a href=&#34;https://keras.io/examples/mnist_cnn/&#34;&gt;https://keras.io/examples/mnist_cnn/&lt;/a&gt;&lt;br /&gt;
+然後我發現我整篇都把 MNIST 打成 MINST&amp;hellip;.&lt;br /&gt;
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-&lt;/p&gt;
 
 &lt;p&gt;話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 看看吧。&lt;/p&gt;
 
-&lt;p&gt;所以上面那個做 MINST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。&lt;/p&gt;
+&lt;p&gt;所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。&lt;/p&gt;
 
 &lt;p&gt;P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&#34;一堆程式碼上菜囉&#34;&gt;一堆程式碼上菜囉&lt;/h1&gt;
 
@@ -118,7 +130,7 @@ fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_p
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&amp;hellip;.&lt;/p&gt;
 
-&lt;h2 id=&#34;只存-minst-的權重&#34;&gt;只存 MINST 的權重&lt;/h2&gt;
+&lt;h2 id=&#34;只存-mnist-的權重&#34;&gt;只存 MNIST 的權重&lt;/h2&gt;
 
 &lt;p&gt;只好使用上面提到 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 的方式只存權重出來，這裡我們只需要改最後一行，&lt;code&gt;save&lt;/code&gt; 改成 &lt;code&gt;save_weights&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
@@ -178,20 +190,20 @@ model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit(x_train, y_trai
 score &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(x_test, y_test, verbose&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test loss:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test accuracy:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
-model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;save_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;save_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
       &lt;figure class=&#34;gphoto-media&#34;&gt;
         &lt;a href=&#34;https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; target=&#34;_blank&#34;&gt;
-          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; alt=&#34;train a MINST model with Keras&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; alt=&#34;train a MNIST model with Keras&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
         &lt;/a&gt;
         &lt;figcaption&gt;
-          &lt;center class=&#34;caption-text&#34;&gt;train a MINST model with Keras&lt;/center&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;train a MNIST model with Keras&lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
       &lt;/p&gt;
 
-&lt;h2 id=&#34;自己用-keras-建構一個-minst-再餵給-tvm&#34;&gt;自己用 Keras 建構一個 MINST 再餵給 TVM&lt;/h2&gt;
+&lt;h2 id=&#34;自己用-keras-建構一個-mnist-再餵給-tvm&#34;&gt;自己用 Keras 建構一個 MNIST 再餵給 TVM&lt;/h2&gt;
 
 &lt;p&gt;把上面產生的權重餵給自己建構的模型&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
@@ -217,7 +229,7 @@ x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;
 x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
 x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
 
-&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
 model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
@@ -229,7 +241,7 @@ model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;spa
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
-model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
 
 shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
 func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
@@ -290,7 +302,7 @@ x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;
 x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
 x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
 
-&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
 model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
@@ -302,7 +314,7 @@ model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;spa
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
-model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
 out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(x)
@@ -338,7 +350,7 @@ x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;
 x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# model = load_model(&amp;#39;cnn.h5&amp;#39;)&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MINST model&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
 model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(InputLayer(input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
@@ -351,7 +363,7 @@ model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;spa
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
-model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;minst_weights.h5&amp;#39;&lt;/span&gt;)
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
 
 shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
 func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
@@ -363,7 +375,7 @@ ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&
 &lt;span style=&#34;color:#75715e&#34;&gt;# Pperform the prediction&lt;/span&gt;
 dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
 tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
-&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 test_minst.py
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 test_mnist.py
 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;扯，竟然過了 QuQ&lt;/p&gt;
 

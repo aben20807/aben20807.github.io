@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Build MINST with TVM</title>
+		<title>Build MNIST with TVM</title>
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://aben20807.github.io/index.xml">
-		<link rel="canonical" href="https://aben20807.github.io/posts/20190616-build-minst-with-tvm/">
+		<link rel="canonical" href="https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/">
 		
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
@@ -13,12 +13,12 @@
 		<meta name="generator" content="Hugo 0.55.6" />
 
 		
-		<meta name="og:title" content="Build MINST with TVM" />
+		<meta name="og:title" content="Build MNIST with TVM" />
 		<meta name="og:type" content="article" />
 		<meta name="og:image" content="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" />
 		<meta name="og:description" content="" />
-		<meta name="og:url" content="https://aben20807.github.io/posts/20190616-build-minst-with-tvm/" />
-		<meta name="og:site_name" content="Build MINST with TVM" />
+		<meta name="og:url" content="https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/" />
+		<meta name="og:site_name" content="Build MNIST with TVM" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@" />
 
@@ -63,7 +63,7 @@
 				</nav>
 
 				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
-					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Build MINST with TVM</h1>
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Build MNIST with TVM</h1>
 					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
 						
 						
@@ -72,7 +72,7 @@
 								<time datetime="2019-06-16T17:40:59&#43;08:00">Jun 16, 2019</time>
 								<span class="display-print">by Huang Po-Hsuan</span>
 								 in <a href="https://aben20807.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92" class="no-underline category title-link near-white dim">深度學習</a>
-								<span class="display-print">at https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</span>
+								<span class="display-print">at https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</span>
 							
 						
 					</h2>
@@ -109,13 +109,25 @@
 <h1 id="前言">前言&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br />
-然後因為現在頗多都在做 ImageNet 或更之後的應用，MINST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MINST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
+
+<p>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-<br />
+2019.06.17 更新：扯，原來官網就有&hellip;.<a href="https://keras.io/examples/mnist_cnn/">https://keras.io/examples/mnist_cnn/</a><br />
+然後我發現我整篇都把 MNIST 打成 MINST&hellip;.<br />
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
 
 <p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model">How can I save a Keras model?</a> 看看吧。</p>
 
-<p>所以上面那個做 MINST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
+<p>所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
 
 <p>P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO</p>
+
+<h1 id="環境">環境&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<ul>
+<li>ubuntu 18.04</li>
+<li>TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)</li>
+</ul>
 
 <h1 id="一堆程式碼上菜囉">一堆程式碼上菜囉&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#一堆程式碼上菜囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
@@ -198,7 +210,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 <span style="color:#f92672">}</span></code></pre></div>
 <p>扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&hellip;.</p>
 
-<h2 id="只存-minst-的權重">只存 MINST 的權重&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#只存-minst-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="只存-mnist-的權重">只存 MNIST 的權重&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> keras
@@ -258,20 +270,20 @@ model<span style="color:#f92672">.</span>fit(x_train, y_train,
 score <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>evaluate(x_test, y_test, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Test loss:&#39;</span>, score[<span style="color:#ae81ff">0</span>])
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Test accuracy:&#39;</span>, score[<span style="color:#ae81ff">1</span>])
-model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74">&#39;minst_weights.h5&#39;</span>)</code></pre></div>
+model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)</code></pre></div>
 <p>跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
   <figure class="gphoto-media">
     <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class=center alt="train a MINST model with Keras" title="Open in the new tab"></img>
+      <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class=center alt="train a MNIST model with Keras" title="Open in the new tab"></img>
     </a>
     <figcaption>
-      <center class="caption-text">train a MINST model with Keras</center>
+      <center class="caption-text">train a MNIST model with Keras</center>
     </figcaption>
   </figure>
 </p>
 
-<h2 id="自己用-keras-建構一個-minst-再餵給-tvm">自己用 Keras 建構一個 MINST 再餵給 TVM&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#自己用-keras-建構一個-minst-再餵給-tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="自己用-keras-建構一個-mnist-再餵給-tvm">自己用 Keras 建構一個 MNIST 再餵給 TVM&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#自己用-keras-建構一個-mnist-再餵給-tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>把上面產生的權重餵給自己建構的模型</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
@@ -297,7 +309,7 @@ x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>resh
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
 x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
-<span style="color:#75715e"># Construct a MINST model</span>
+<span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
@@ -309,7 +321,7 @@ model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff"
 model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;minst_weights.h5&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
 shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;input_1&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
 func, params <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>frontend<span style="color:#f92672">.</span>from_keras(model, shape_dict)
@@ -370,7 +382,7 @@ x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>resh
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
 x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
-<span style="color:#75715e"># Construct a MINST model</span>
+<span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
@@ -382,7 +394,7 @@ model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff"
 model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;minst_weights.h5&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
 <span style="color:#75715e"># Perform the prediction</span>
 out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x)
@@ -418,7 +430,7 @@ x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>asty
 x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># model = load_model(&#39;cnn.h5&#39;)</span>
-<span style="color:#75715e"># Construct a MINST model</span>
+<span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
 model<span style="color:#f92672">.</span>add(InputLayer(input_shape<span style="color:#f92672">=</span>input_shape))
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>input_shape))
@@ -431,7 +443,7 @@ model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff"
 model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;minst_weights.h5&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
 shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;input_1&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
 func, params <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>frontend<span style="color:#f92672">.</span>from_keras(model, shape_dict)
@@ -443,7 +455,7 @@ ctx <span style="color:#f92672">=</span> tvm<span style="color:#f92672">.</span>
 <span style="color:#75715e"># Pperform the prediction</span>
 dtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;float32&#39;</span>
 tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">**</span>params)
-<span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(tvm_out<span style="color:#f92672">.</span>asnumpy()[<span style="color:#ae81ff">0</span>]))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 test_minst.py
+<span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(tvm_out<span style="color:#f92672">.</span>asnumpy()[<span style="color:#ae81ff">0</span>]))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 test_mnist.py
 <span style="color:#ae81ff">3</span></code></pre></div>
 <p>扯，竟然過了 QuQ</p>
 
@@ -491,6 +503,9 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
       <li><a href="https://aben20807.github.io/tags/keras" role="button">keras </a></li>
       
     
+      <li><a href="https://aben20807.github.io/tags/mnist" role="button">mnist </a></li>
+      
+    
   </div>
 </div>
           </div>
@@ -531,6 +546,11 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e7%92%b0%e5%a2%83">
+                     環境
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
                   <a class="toc-link smoothScroll" href="#%e4%b8%80%e5%a0%86%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%b8%8a%e8%8f%9c%e5%9b%89">
                      一堆程式碼上菜囉
                   </a>
@@ -546,13 +566,13 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%aa%e5%ad%98-minst-%e7%9a%84%e6%ac%8a%e9%87%8d">
-                     只存 MINST 的權重
+                  <a class="toc-link smoothScroll" href="#%e5%8f%aa%e5%ad%98-mnist-%e7%9a%84%e6%ac%8a%e9%87%8d">
+                     只存 MNIST 的權重
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e8%87%aa%e5%b7%b1%e7%94%a8-keras-%e5%bb%ba%e6%a7%8b%e4%b8%80%e5%80%8b-minst-%e5%86%8d%e9%a4%b5%e7%b5%a6-tvm">
-                     自己用 Keras 建構一個 MINST 再餵給 TVM
+                  <a class="toc-link smoothScroll" href="#%e8%87%aa%e5%b7%b1%e7%94%a8-keras-%e5%bb%ba%e6%a7%8b%e4%b8%80%e5%80%8b-mnist-%e5%86%8d%e9%a4%b5%e7%b5%a6-tvm">
+                     自己用 Keras 建構一個 MNIST 再餵給 TVM
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">

@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://aben20807.github.io/posts/20190616-build-minst-with-tvm/</loc>
+    <loc>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</loc>
     <lastmod>2019-06-16T17:40:59+08:00</lastmod>
   </url>
   
@@ -33,6 +33,12 @@
   
   <url>
     <loc>https://aben20807.github.io/tags/keras/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/mnist/</loc>
     <lastmod>2019-06-16T17:40:59+08:00</lastmod>
     <priority>0</priority>
   </url>
