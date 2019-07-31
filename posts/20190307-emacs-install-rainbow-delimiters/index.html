@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.55.6" />
+		<meta name="generator" content="Hugo 0.56.2" />
 
 		
 		<meta name="og:title" content="Emacs 安裝 rainbow-delimiters 插件" />
@@ -153,14 +153,14 @@ $ emacs -nw ~/.emacs.d/init.el</code></pre></div>
 <h1 id="支援-melpa-https-melpa-org-插件庫">支援 <a href="https://melpa.org/#/">MELPA</a> 插件庫&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#支援-melpa-https-melpa-org-插件庫"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>打開之後貼上</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(require <span style="color:#e6db74">&#39;package</span>)
-(let* ((no-ssl (and (memq system-type <span style="color:#f92672">&#39;</span>(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl <span style="color:#e6db74">&#34;http&#34;</span> <span style="color:#e6db74">&#34;https&#34;</span>)))
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;package</span>)
+(<span style="color:#66d9ef">let*</span> ((no-ssl (and (memq system-type <span style="color:#f92672">&#39;</span>(windows-nt ms-dos))
+                    (<span style="color:#a6e22e">not</span> (gnutls-available-p))))
+       (proto (<span style="color:#66d9ef">if</span> no-ssl <span style="color:#e6db74">&#34;http&#34;</span> <span style="color:#e6db74">&#34;https&#34;</span>)))
   <span style="color:#75715e">;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired                                         </span>
-  (add-to-list <span style="color:#e6db74">&#39;package-archives</span> (cons<span style="color:#e6db74">&#34;melpa&#34;</span>(concat proto<span style="color:#e6db74">&#34;://melpa.org/packages/&#34;</span>)) <span style="color:#66d9ef">t</span>)
+  (add-to-list <span style="color:#e6db74">&#39;package-archives</span> (<span style="color:#a6e22e">cons</span><span style="color:#e6db74">&#34;melpa&#34;</span>(concat proto<span style="color:#e6db74">&#34;://melpa.org/packages/&#34;</span>)) <span style="color:#66d9ef">t</span>)
   <span style="color:#75715e">;;(add-to-list &#39;package-archives (cons&#34;melpa-stable&#34;(concat proto&#34;://stable.melpa.org/packages/&#34;)) t)                            </span>
-  (when (&lt; emacs-major-version <span style="color:#ae81ff">24</span>)
+  (when (<span style="color:#a6e22e">&lt;</span> emacs-major-version <span style="color:#ae81ff">24</span>)
     <span style="color:#75715e">;; For important compatibility libraries like cl-lib                                                                           </span>
     (add-to-list <span style="color:#e6db74">&#39;package-archives</span><span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;gnu&#34;</span> <span style="color:#f92672">.</span> (concat proto <span style="color:#e6db74">&#34;://elpa.gnu.org/packages/&#34;</span>)))))
 (package-initialize)</code></pre></div>
@@ -211,7 +211,7 @@ $ emacs -nw ~/.emacs.d/init.el</code></pre></div>
 <p>選完後按下 <code>x</code> 就可以安裝了</p>
 
 <p>結果最後還需要加東西到 <code>~/emacs.d/init.el</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(require <span style="color:#e6db74">&#39;rainbow-delimiters</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;rainbow-delimiters</span>)
 (add-hook <span style="color:#e6db74">&#39;prog-mode-hook</span> <span style="color:#e6db74">&#39;rainbow-delimiters-mode</span>)</code></pre></div>
 <p>改完之後會發現有很淺的變色了</p>
 

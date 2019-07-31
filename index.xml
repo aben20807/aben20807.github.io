@@ -575,49 +575,37 @@ $ git remote prune origin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;Fork 主要專案到自己的 GitHub 帳號&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Clone 自己 GitHub 中的專案 (fork 過來的)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;設定 upstream 來源
-&lt;code&gt;bash
-$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 upstream 來源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;開發中&#34;&gt;開發中&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;前往 master 分支 (一開始就在 master 可以不用)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;新增並前往 feature 分支
-&lt;code&gt;bash
-$ git checkout -b new_feature
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;新增並前往 feature 分支&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;開始開發功能&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git add XXX
-$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)
-&lt;code&gt;bash
-$ git push origin new_feature
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master
 $ git fetch upstream
-$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch
-&lt;code&gt;bash
-$ git checkout new_feature
+$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout new_feature
 $ git rebase master
-$ git push origin new_feature
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;發 PR
 開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。&lt;/p&gt;&lt;/li&gt;
@@ -1063,14 +1051,14 @@ $ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id=&#34;支援-melpa-https-melpa-org-插件庫&#34;&gt;支援 &lt;a href=&#34;https://melpa.org/#/&#34;&gt;MELPA&lt;/a&gt; 插件庫&lt;/h1&gt;
 
 &lt;p&gt;打開之後貼上&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(require &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package&lt;/span&gt;)
-(let* ((no-ssl (and (memq system-type &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (if no-ssl &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;)))
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package&lt;/span&gt;)
+(&lt;span style=&#34;color:#66d9ef&#34;&gt;let*&lt;/span&gt; ((no-ssl (and (memq system-type &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(windows-nt ms-dos))
+                    (&lt;span style=&#34;color:#a6e22e&#34;&gt;not&lt;/span&gt; (gnutls-available-p))))
+       (proto (&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; no-ssl &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;)))
   &lt;span style=&#34;color:#75715e&#34;&gt;;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired                                         &lt;/span&gt;
-  (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt; (cons&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;melpa&amp;#34;&lt;/span&gt;(concat proto&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://melpa.org/packages/&amp;#34;&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt;)
+  (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;cons&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;melpa&amp;#34;&lt;/span&gt;(concat proto&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://melpa.org/packages/&amp;#34;&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt;)
   &lt;span style=&#34;color:#75715e&#34;&gt;;;(add-to-list &amp;#39;package-archives (cons&amp;#34;melpa-stable&amp;#34;(concat proto&amp;#34;://stable.melpa.org/packages/&amp;#34;)) t)                            &lt;/span&gt;
-  (when (&amp;lt; emacs-major-version &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;)
+  (when (&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;lt;&lt;/span&gt; emacs-major-version &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;)
     &lt;span style=&#34;color:#75715e&#34;&gt;;; For important compatibility libraries like cl-lib                                                                           &lt;/span&gt;
     (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gnu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; (concat proto &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://elpa.gnu.org/packages/&amp;#34;&lt;/span&gt;)))))
 (package-initialize)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1121,7 +1109,7 @@ $ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;選完後按下 &lt;code&gt;x&lt;/code&gt; 就可以安裝了&lt;/p&gt;
 
 &lt;p&gt;結果最後還需要加東西到 &lt;code&gt;~/emacs.d/init.el&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(require &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters&lt;/span&gt;)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters&lt;/span&gt;)
 (add-hook &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;prog-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters-mode&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;改完之後會發現有很淺的變色了&lt;/p&gt;
 
