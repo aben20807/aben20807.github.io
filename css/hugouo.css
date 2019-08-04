@@ -30,6 +30,14 @@ h6 > code {
     border-radius: 5px;
     padding: 0.15em 0.25em;
 }
+h1:hover .hover-show,
+h2:hover .hover-show,
+h3:hover .hover-show,
+h4:hover .hover-show,
+h5:hover .hover-show,
+h6:hover .hover-show {
+    opacity: 1.0;
+}
 pre {
     font-size: .9rem !important;
     max-width: 100%;

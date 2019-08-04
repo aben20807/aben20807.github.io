@@ -3,26 +3,54 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</loc>
-    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://aben20807.github.io/categories/</loc>
-    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://aben20807.github.io/posts/</loc>
-    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://aben20807.github.io/tags/</loc>
-    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/20190804-tiny-action/</loc>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/</loc>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</loc>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/tags/%E9%9B%A8%E5%82%98/</loc>
+    <lastmod>2019-08-04T11:08:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</loc>
+    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
   </url>
   
   <url>
@@ -59,11 +87,6 @@
     <loc>https://aben20807.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92/</loc>
     <lastmod>2019-06-16T17:40:59+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/</loc>
-    <lastmod>2019-06-16T17:40:59+08:00</lastmod>
   </url>
   
   <url>
@@ -175,18 +198,6 @@
   <url>
     <loc>https://aben20807.github.io/posts/20190225-talk-about-shame/</loc>
     <lastmod>2019-02-25T21:40:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2019-02-25T21:40:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</loc>
-    <lastmod>2019-02-25T21:40:00+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
