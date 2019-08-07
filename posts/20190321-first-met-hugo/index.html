@@ -35,6 +35,16 @@
 		
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+		<script>
+				
+				document.addEventListener('DOMContentLoaded', function () {
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%'
+						}).listen('.img-zoomable')
+				})
+		</script>
+
 		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
 		
 		<script src="https://aben20807.github.io/js/story.js"></script>
@@ -206,11 +216,15 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: <span style="color:#ae
 <p>還有 <code>blog-post</code> repo 可以用 <code>.gitattributes</code> 來讓 GitHub 把 markdown 當作一個語言來計算，<a href="https://github.com/aben20807/blog-post/blob/master/.gitattributes">傳送門</a>。
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ" class=center alt="結果展示" title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ" class='center img-zoomable' alt="結果展示" data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text">結果展示</center>
+      <center class="caption-text">
+        <p style="margin: 0;">結果展示</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>
@@ -244,11 +258,15 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: <span style="color:#ae
 <p>由於之前 Blogger 算是內建搜尋的，所以這裡算是研究頗久，原本要使用一些已經做成套件的切字工具，但是中文字真的太難搞定了，所以我乾脆直接用 google 提供的搜尋：Google Custom Search。一樣，這裡就不一一教學，請移駕：<a href="https://blog.yowko.com/google-search-in-hugo/">將 Google自訂搜尋引擎 (Google Custom Search) 搭配 OpenSearch 加至 Hugo 網站中</a>。真的要參考實做的話可以來這個 <a href="https://github.com/aben20807/blog-post/commit/6f6b62898791322876091d4db98d580b8a7accdc#diff-44f0b83d58ef03d7cee156de462be50c">commit</a> 看看。對了，設定完後要等個幾天才會可以搜尋，我那時候以為我哪裡設定錯誤，結果等個幾天就可以用了。結果可以到這個<a href="https://aben20807.github.io/search/">頁面</a>查看。
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh" class=center alt="搜尋範例" title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh" class='center img-zoomable' alt="搜尋範例" data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text">搜尋範例</center>
+      <center class="caption-text">
+        <p style="margin: 0;">搜尋範例</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>
@@ -272,11 +290,15 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: <span style="color:#ae
 <p>2.3.4.5. 合起來差不多就是這樣：
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63" class=center alt=" " title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63" class='center img-zoomable' alt=" " data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text"> </center>
+      <center class="caption-text">
+        <p style="margin: 0;"> </p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>
@@ -286,11 +308,15 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: <span style="color:#ae
 <p>這算是一個有趣但是沒啥實用性的功能，我是在 <a href="https://diygod.me/">https://diygod.me/</a> 看到的，當你暫時離開去其他分頁時，它的標題就會變換。建議不要在手機上用這個功能。參考：<a href="https://blog.youdivi.com/tutorials/change-browser-tab-title-tab-not-active/">CHANGE BROWSER TAB TITLE WHEN TAB NOT ACTIVE</a>，<a href="https://github.com/aben20807/blog-post/commit/4a468cb27289453f1a53ccb05db50343877438d8#diff-0aa74fe7c8cd2a2b79dab67ece16cb02">commit</a>，如何排擠手機：<a href="https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery/3540295#3540295">What is the best way to detect a mobile device in jQuery?</a>
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH" class=center alt=" " title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH" class='center img-zoomable' alt=" " data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text"> </center>
+      <center class="caption-text">
+        <p style="margin: 0;"> </p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>
@@ -306,11 +332,15 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: <span style="color:#ae
 <p>Google 的流量監測，Hugo 已經有寫好可以直接用，在 <code>config.toml</code> 直接加上自己的 token 就好，然後還要上傳一個證明是自己網站的 html 檔案，放在 <code>static/</code> 裡面就可以。上面有提到流量差異大致上就如下，我 Blogger 那邊已經很久沒更新了，一天還是快 100 個人造訪呢 OuO。
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF" class=center alt="左：Blogger，右：這個網站QuQ" title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF" class='center img-zoomable' alt="左：Blogger，右：這個網站QuQ" data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text">左：Blogger，右：這個網站QuQ</center>
+      <center class="caption-text">
+        <p style="margin: 0;">左：Blogger，右：這個網站QuQ</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>

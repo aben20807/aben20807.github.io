@@ -35,6 +35,16 @@
 		
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+		<script>
+				
+				document.addEventListener('DOMContentLoaded', function () {
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%'
+						}).listen('.img-zoomable')
+				})
+		</script>
+
 		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
 		
 		<script src="https://aben20807.github.io/js/story.js"></script>
@@ -306,11 +316,15 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
 <p>跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class=center alt="train a MNIST model with Keras" title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text">train a MNIST model with Keras</center>
+      <center class="caption-text">
+        <p style="margin: 0;">train a MNIST model with Keras</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>
@@ -498,11 +512,15 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 <p>發現了一個視覺化工具可以看模型。
 
   <figure class="gphoto-media">
-    <a href="https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" target="_blank">
-      <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class=center alt="NETRON" title="Open in the new tab"></img>
-    </a>
+    <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable' alt="NETRON" data-action="zoom" title="zoom!"></img>
     <figcaption>
-      <center class="caption-text">NETRON</center>
+      <center class="caption-text">
+        <p style="margin: 0;">NETRON</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
     </figcaption>
   </figure>
 </p>

@@ -27,6 +27,16 @@
 		
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+		<script>
+				
+				document.addEventListener('DOMContentLoaded', function () {
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%'
+						}).listen('.img-zoomable')
+				})
+		</script>
+
 		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
 		
 		<script src="https://aben20807.github.io/js/story.js"></script>

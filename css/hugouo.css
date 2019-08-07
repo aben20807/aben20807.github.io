@@ -166,3 +166,34 @@ main {
 .gphoto-media {
     margin-bottom: 2rem;
 }
+font.douyin{
+    text-shadow:-2px 0 rgba(0,255,255,.5),2px 0 rgba(255,0,0,.5);
+    animation:shake-it .5s reverse infinite cubic-bezier(.68,-.55,.27,1.55)
+}
+@-moz-keyframes shake-it {
+    0% { text-shadow: 0 0 rgba(0,255,255,.5),0 0 rgba(255,0,0,.5) }
+    25% { text-shadow: -1px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    50% { text-shadow: -3px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    100% { text-shadow: 1px 0 rgba(0,255,255,.5),3px 0 rgba(255,0,0,.5) }
+}
+
+@-webkit-keyframes shake-it {
+    0% { text-shadow: 0 0 rgba(0,255,255,.5),0 0 rgba(255,0,0,.5) }
+    25% { text-shadow: -1px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    50% { text-shadow: -3px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    100% { text-shadow: 1px 0 rgba(0,255,255,.5),3px 0 rgba(255,0,0,.5) }
+}
+
+@-o-keyframes shake-it {
+    0% { text-shadow: 0 0 rgba(0,255,255,.5),0 0 rgba(255,0,0,.5) }
+    25% { text-shadow: -1px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    50% { text-shadow: -3px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    100% { text-shadow: 1px 0 rgba(0,255,255,.5),3px 0 rgba(255,0,0,.5) }
+}
+
+@keyframes shake-it {
+    0% { text-shadow: 0 0 rgba(0,255,255,.5),0 0 rgba(255,0,0,.5) }
+    25% { text-shadow: -1px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    50% { text-shadow: -3px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
+    100% { text-shadow: 1px 0 rgba(0,255,255,.5),3px 0 rgba(255,0,0,.5) }
+}
