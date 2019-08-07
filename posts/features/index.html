@@ -40,7 +40,7 @@
 		<script>
 				
 				document.addEventListener('DOMContentLoaded', function () {
-						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%'
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%', enableGrab: false
 						}).listen('.img-zoomable')
 				})
 		</script>
@@ -130,6 +130,11 @@
 
 
 
+
+
+
+
+
 <p>記錄一下一些特性和使用方式</p>
 
 <h1 id="標題-heading">標題 (heading)&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#標題-heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
@@ -165,7 +170,20 @@
 <p>目前並不打算直接上傳到 github，所以找了一些方式<br />
 一般圖片</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">alt</span>](<span style="color:#a6e22e">https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)</code></pre></div>
-<p><img src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" alt="alt" /></p>
+<p>
+  <figure class="gphoto-media">
+    <img src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="alt" data-action="zoom" title="zoom!"></img>
+    <figcaption>
+      <center class="caption-text">
+        <p style="margin: 0;">alt</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
+    </figcaption>
+  </figure>
+</p>
 
 <p>這裡大部份會使用 google 雲端當作圖床<br />
 不過從取得連結那裡會拿到：<a href="https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</a><br />
