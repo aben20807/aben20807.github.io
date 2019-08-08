@@ -147,6 +147,11 @@
 
 
 
+
+
+
+
+
 <!-- https://drive.google.com/uc?export=view&id= -->
 
 <p>真的是隔很久&hellip;.藉口就不多說了 OuO</p>
@@ -156,14 +161,14 @@
 <h1 id="前言">前言&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br />
-然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
 
 <p>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-<br />
-2019.06.17 更新：扯，原來官網就有&hellip;.<a href="https://keras.io/examples/mnist_cnn/">https://keras.io/examples/mnist_cnn/</a><br />
+2019.06.17 更新：扯，原來官網就有&hellip;.<a href="https://keras.io/examples/mnist_cnn/" target="_blank">https://keras.io/examples/mnist_cnn/</a><br />
 然後我發現我整篇都把 MNIST 打成 MINST&hellip;.<br />
 ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
 
-<p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model">How can I save a Keras model?</a> 看看吧。</p>
+<p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 看看吧。</p>
 
 <p>所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
 
@@ -259,7 +264,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 
 <h2 id="只存-mnist-的權重">只存 MNIST 的權重&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
+<p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> keras
 <span style="color:#f92672">from</span> keras.datasets <span style="color:#f92672">import</span> mnist
 <span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
@@ -455,7 +460,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 <span style="color:#ae81ff">3</span></code></pre></div>
 <h2 id="突破-加個輸入層">突破，加個輸入層？&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#突破-加個輸入層"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
+<p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
 <span style="color:#f92672">import</span> tvm.relay <span style="color:#f92672">as</span> relay
@@ -512,7 +517,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 
 <h1 id="其他">其他&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#其他"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<h2 id="lutzroeder-netron-https-github-com-lutzroeder-netron"><a href="https://github.com/lutzroeder/netron"><code>lutzroeder/netron</code></a>&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#lutzroeder-netron-https-github-com-lutzroeder-netron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="lutzroeder-netron-https-github-com-lutzroeder-netron"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a>&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#lutzroeder-netron-https-github-com-lutzroeder-netron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>發現了一個視覺化工具可以看模型。
 
