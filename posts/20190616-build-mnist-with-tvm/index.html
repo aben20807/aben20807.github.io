@@ -44,6 +44,11 @@
 						}).listen('.img-zoomable')
 				})
 		</script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
+		<noscript>
+				<style type="text/css"> .lazyload { display:none; } </style>
+		</noscript>
 
 		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
 		
@@ -163,10 +168,12 @@
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br />
 然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
 
-<p>~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-<br />
-2019.06.17 更新：扯，原來官網就有&hellip;.<a href="https://keras.io/examples/mnist_cnn/" target="_blank">https://keras.io/examples/mnist_cnn/</a><br />
-然後我發現我整篇都把 MNIST 打成 MINST&hellip;.<br />
-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-</p>
+<hr />
+
+<p>2019.06.17 更新：扯，原來官網就有&hellip;.<a href="https://keras.io/examples/mnist_cnn/" target="_blank">https://keras.io/examples/mnist_cnn/</a><br />
+然後我發現我整篇都把 MNIST 打成 MINST&hellip;.</p>
+
+<hr />
 
 <p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 看看吧。</p>
 
@@ -326,7 +333,10 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
 <p>跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
   <figure class="gphoto-media">
-    <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
+    <noscript>
+      <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
+    </noscript>
+    <img data-src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable lazyload' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
     <figcaption>
       <center class="caption-text">
         <p style="margin: 0;">train a MNIST model with Keras</p>
@@ -522,7 +532,10 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 <p>發現了一個視覺化工具可以看模型。
 
   <figure class="gphoto-media">
-    <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable' alt="NETRON" data-action="zoom" title="zoom!"></img>
+    <noscript>
+      <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable' alt="NETRON" data-action="zoom" title="zoom!"></img>
+    </noscript>
+    <img data-src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable lazyload' alt="NETRON" data-action="zoom" title="zoom!"></img>
     <figcaption>
       <center class="caption-text">
         <p style="margin: 0;">NETRON</p>

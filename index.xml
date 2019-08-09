@@ -65,10 +65,12 @@
 &lt;p&gt;最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@&lt;br /&gt;
 然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
 
-&lt;p&gt;~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-&lt;br /&gt;
-2019.06.17 更新：扯，原來官網就有&amp;hellip;.&lt;a href=&#34;https://keras.io/examples/mnist_cnn/&#34;&gt;https://keras.io/examples/mnist_cnn/&lt;/a&gt;&lt;br /&gt;
-然後我發現我整篇都把 MNIST 打成 MINST&amp;hellip;.&lt;br /&gt;
-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;2019.06.17 更新：扯，原來官網就有&amp;hellip;.&lt;a href=&#34;https://keras.io/examples/mnist_cnn/&#34;&gt;https://keras.io/examples/mnist_cnn/&lt;/a&gt;&lt;br /&gt;
+然後我發現我整篇都把 MNIST 打成 MINST&amp;hellip;.&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 看看吧。&lt;/p&gt;
 
@@ -1543,11 +1545,14 @@ gcc t.c
       <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;
 
 &lt;h1 id=&#34;標題-heading&#34;&gt;標題 (heading)&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;# h1
-&lt;span style=&#34;color:#75715e&#34;&gt;## h2
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;### h3
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### h4 支援 emoji 😄
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;##### h5 支援中文~&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;# h1
+## h2
+### h3
+#### h4 支援 emoji 😄
+##### h5 支援中文~
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&#34;h1&#34;&gt;h1&lt;/h1&gt;
 
 &lt;h2 id=&#34;h2&#34;&gt;h2&lt;/h2&gt;
@@ -1570,6 +1575,24 @@ gcc t.c
     &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a;
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;橫線&#34;&gt;橫線&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;引用&#34;&gt;引用&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; The more I learn, the more I realize how much I don&#39;t know.  
+&amp;gt; --- Albert Einstein
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The more I learn, the more I realize how much I don&amp;rsquo;t know.&lt;br /&gt;
+&amp;mdash; Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h1 id=&#34;插入圖片&#34;&gt;插入圖片&lt;/h1&gt;
 
 &lt;p&gt;目前並不打算直接上傳到 github，所以找了一些方式&lt;br /&gt;
@@ -1590,7 +1613,53 @@ gcc t.c
           &lt;center class=&#34;caption-text&#34;&gt;title here&lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
-      &lt;/p&gt;</description>
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;youtube&#34;&gt;YouTube&lt;/h1&gt;
+
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;
+{{&amp;lt; youtube &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/watch?v=jC3jnC1dsAg&amp;quot;&#34;&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg&amp;quot;&lt;/a&gt; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+
+
+&lt;div
+  style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 &#34;&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=1&#34;
+  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
+  class=&#34;center&#34;
+  allowfullscreen frameborder=&#34;0&#34;
+  title=&#34;YouTube Video&#34;&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;
+{{&amp;lt; youtube &amp;ldquo;&lt;a href=&#34;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&amp;quot;&#34;&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&amp;quot;&lt;/a&gt; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+
+
+&lt;div
+  style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 &#34;&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=500&#34;
+  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
+  class=&#34;center&#34;
+  allowfullscreen frameborder=&#34;0&#34;
+  title=&#34;YouTube Video&#34;&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
     </item>
     
     <item>

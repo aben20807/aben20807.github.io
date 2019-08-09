@@ -44,6 +44,11 @@
 						}).listen('.img-zoomable')
 				})
 		</script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
+		<noscript>
+				<style type="text/css"> .lazyload { display:none; } </style>
+		</noscript>
 
 		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
 		
@@ -143,11 +148,14 @@
 <p>記錄一下一些特性和使用方式</p>
 
 <h1 id="標題-heading">標題 (heading)&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#標題-heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># h1
-<span style="color:#75715e">## h2
-</span><span style="color:#75715e">### h3
-</span><span style="color:#75715e">#### h4 支援 emoji 😄
-</span><span style="color:#75715e"></span>##### h5 支援中文~</code></pre></div>
+
+<pre><code># h1
+## h2
+### h3
+#### h4 支援 emoji 😄
+##### h5 支援中文~
+</code></pre>
+
 <h1 id="h1">h1&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#h1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <h2 id="h2">h2&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#h2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
@@ -170,6 +178,24 @@
     <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">return</span> a;
 }</code></pre></div>
+<h1 id="橫線">橫線&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#橫線"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<pre><code>---
+</code></pre>
+
+<hr />
+
+<h1 id="引用">引用&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#引用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<pre><code>&gt; The more I learn, the more I realize how much I don't know.  
+&gt; --- Albert Einstein
+</code></pre>
+
+<blockquote>
+<p>The more I learn, the more I realize how much I don&rsquo;t know.<br />
+&mdash; Albert Einstein</p>
+</blockquote>
+
 <h1 id="插入圖片">插入圖片&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#插入圖片"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>目前並不打算直接上傳到 github，所以找了一些方式<br />
@@ -177,7 +203,10 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">alt</span>](<span style="color:#a6e22e">https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)</code></pre></div>
 <p>
   <figure class="gphoto-media">
-    <img src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="alt" data-action="zoom" title="zoom!"></img>
+    <noscript>
+      <img src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="alt" data-action="zoom" title="zoom!"></img>
+    </noscript>
+    <img data-src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable lazyload' alt="alt" data-action="zoom" title="zoom!"></img>
     <figcaption>
       <center class="caption-text">
         <p style="margin: 0;">alt</p>
@@ -196,7 +225,10 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">google-title here</span>](<span style="color:#a6e22e">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)</code></pre></div>
 <p>
   <figure class="gphoto-media">
-    <img src="https://drive.google.com/uc?export=view&id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="title here" data-action="zoom" title="zoom!"></img>
+    <noscript>
+      <img src="https://drive.google.com/uc?export=view&id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="title here" data-action="zoom" title="zoom!"></img>
+    </noscript>
+    <img data-src="https://drive.google.com/uc?export=view&id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable lazyload' alt="title here" data-action="zoom" title="zoom!"></img>
     <figcaption>
       <center class="caption-text">
         <p style="margin: 0;">title here</p>
@@ -207,6 +239,52 @@
       </center>
     </figcaption>
   </figure>
+</p>
+
+<h1 id="youtube">YouTube&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#youtube"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p><pre><code>
+{{&lt; youtube &ldquo;<a href="https://www.youtube.com/watch?v=jC3jnC1dsAg&quot;" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg&quot;</a> &gt;}}
+</code></pre>
+
+
+
+
+
+
+
+<div
+  style=" position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 ">
+<iframe src="https://www.youtube.com/embed/jC3jnC1dsAg?start=1"
+  style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+  class="center"
+  allowfullscreen frameborder="0"
+  title="YouTube Video">
+</iframe>
+</div>
+</p>
+
+<p><pre><code>
+{{&lt; youtube &ldquo;<a href="https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&quot;" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&quot;</a> &gt;}}
+</code></pre>
+
+
+
+
+
+
+
+<div
+  style=" position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 ">
+<iframe src="https://www.youtube.com/embed/jC3jnC1dsAg?start=500"
+  style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+  class="center"
+  allowfullscreen frameborder="0"
+  title="YouTube Video">
+</iframe>
+</div>
 </p>
       <div class="row">
         
@@ -274,8 +352,23 @@
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%a9%ab%e7%b7%9a">
+                     橫線
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%bc%95%e7%94%a8">
+                     引用
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
                   <a class="toc-link smoothScroll" href="#%e6%8f%92%e5%85%a5%e5%9c%96%e7%89%87">
                      插入圖片
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#youtube">
+                     YouTube
                   </a>
                 </li>
             </ul><li class="nav-item pa3-ns">
