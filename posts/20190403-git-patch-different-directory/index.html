@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.56.3" />
+		<meta name="generator" content="Hugo 0.57.0" />
 
 		
 		<meta name="og:title" content="不同路徑之 Git Patch" />
@@ -149,10 +149,10 @@
 
 <p>最近也算常用 git，不過有些特殊的功能都沒用過，這次也不算是學學看，而是真的要用到了，總之就是還個技術債順便記錄。不過會用到這個情境的應該算是少數。</p>
 
-<h1 id="tl-dr">tl;dr&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#tl-dr"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="tl-dr" class="article-heading">tl;dr<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#tl-dr"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git format-patch --relative &lt;SHA&gt; ./ -o /tmp/patches
 $ git am /tmp/patches/*.patch</code></pre></div>
-<h1 id="前言">前言&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>git 有一個好用的工具可以針對 repo 上面的 commit 產生補丁檔 (patch)。詳細用法可以去查看官方說明文件 <a href="https://git-scm.com/docs/git-format-patch" target="_blank">git format-patch</a>。</p>
 
@@ -162,7 +162,7 @@ $ git am /tmp/patches/*.patch</code></pre></div>
 
 <p>限制：內部檔案名稱要相同</p>
 
-<h1 id="範例檔案架構">範例檔案架構&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#範例檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="範例檔案架構" class="article-heading">範例檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#範例檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>接下來利用簡單的範例來模擬。</p>
 
@@ -196,7 +196,7 @@ $ git am /tmp/patches/*.patch</code></pre></div>
 * b551578 - Modify file_1
 * a257187 - Add sth in A
 * a1f4b9e - init</code></pre></div>
-<h1 id="產生-patch">產生 patch&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#產生-patch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="產生-patch" class="article-heading">產生 patch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#產生-patch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>開始產生 patch 囉，首先 <code>cd</code> 到子資料夾，接著打入下方指令，<code>a1f4b9e</code> 是起始 commit，如果這個子專案是從中間才開始追蹤的話也可以從中間的 commit 開始。可以看到它只會針對 a 中有修改的部份才產生 patch 檔。<code>-o</code> 是指定輸出的路徑，完全可以依照自己喜好修改。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd A/a/
@@ -204,7 +204,7 @@ $ git format-patch --relative a1f4b9e ./ -o /tmp/patches
 /tmp/patches/0001-Modify-file_1.patch
 /tmp/patches/0002-Modify-file_1-and-sth_in_A.txt.patch
 /tmp/patches/0003-Add-file_2-in-a.patch</code></pre></div>
-<h1 id="套用-patch">套用 patch&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#套用-patch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="套用-patch" class="article-heading">套用 patch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#套用-patch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>套用 patch 到專案B</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bach" data-lang="bach">$ cd B/

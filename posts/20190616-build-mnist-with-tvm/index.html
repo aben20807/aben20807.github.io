@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.56.3" />
+		<meta name="generator" content="Hugo 0.57.0" />
 
 		
 		<meta name="og:title" content="Build MNIST with TVM" />
@@ -163,7 +163,7 @@
 
 <p>這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO</p>
 
-<h1 id="前言">前言&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br />
 然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
@@ -181,16 +181,16 @@
 
 <p>P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO</p>
 
-<h1 id="環境">環境&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="環境" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <ul>
 <li>ubuntu 18.04</li>
 <li>TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)</li>
 </ul>
 
-<h1 id="一堆程式碼上菜囉">一堆程式碼上菜囉&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#一堆程式碼上菜囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="一堆程式碼上菜囉" class="article-heading">一堆程式碼上菜囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#一堆程式碼上菜囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<h2 id="原始-cnnpredict-py">原始 <code>cnnPredict.py</code>&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#原始-cnnpredict-py"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="原始-cnnpredict-py" class="article-heading">原始 <code>cnnPredict.py</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#原始-cnnpredict-py"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>注意要下載或複製那個程式碼，<code>cnn.h5</code> 跟 <code>test3.png</code> 一樣要放對位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.misc <span style="color:#f92672">import</span> imread, imresize
@@ -213,7 +213,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 <p>很好，可以執行～</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span></code></pre></div>
-<h2 id="加入-tvm-囉">加入 TVM 囉&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#加入-tvm-囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="加入-tvm-囉" class="article-heading">加入 TVM 囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#加入-tvm-囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
 <span style="color:#f92672">import</span> tvm.relay <span style="color:#f92672">as</span> relay
@@ -269,7 +269,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 <span style="color:#f92672">}</span></code></pre></div>
 <p>扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&hellip;.</p>
 
-<h2 id="只存-mnist-的權重">只存 MNIST 的權重&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="只存-mnist-的權重" class="article-heading">只存 MNIST 的權重<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> keras
@@ -349,7 +349,7 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
   </figure>
 </p>
 
-<h2 id="自己用-keras-建構一個-mnist-再餵給-tvm">自己用 Keras 建構一個 MNIST 再餵給 TVM&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#自己用-keras-建構一個-mnist-再餵給-tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="自己用-keras-建構一個-mnist-再餵給-tvm" class="article-heading">自己用 Keras 建構一個 MNIST 再餵給 TVM<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#自己用-keras-建構一個-mnist-再餵給-tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>把上面產生的權重餵給自己建構的模型</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
@@ -422,7 +422,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 <span style="color:#f92672">}</span></code></pre></div>
 <p>扯，結果竟然一模一樣。</p>
 
-<h2 id="檢驗剛剛建立的模型是否正確">檢驗剛剛建立的模型是否正確&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#檢驗剛剛建立的模型是否正確"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="檢驗剛剛建立的模型是否正確" class="article-heading">檢驗剛剛建立的模型是否正確<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#檢驗剛剛建立的模型是否正確"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>總之先試試看是不是跟直接讀 <code>cnn.h5</code> 一樣。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
@@ -468,7 +468,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 <p>很好，是一樣&hellip;.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span></code></pre></div>
-<h2 id="突破-加個輸入層">突破，加個輸入層？&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#突破-加個輸入層"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="突破-加個輸入層" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#突破-加個輸入層"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
@@ -525,9 +525,9 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 <span style="color:#ae81ff">3</span></code></pre></div>
 <p>扯，竟然過了 QuQ</p>
 
-<h1 id="其他">其他&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#其他"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="其他" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#其他"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<h2 id="lutzroeder-netron-https-github-com-lutzroeder-netron"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a>&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#lutzroeder-netron-https-github-com-lutzroeder-netron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="lutzroeder-netron-https-github-com-lutzroeder-netron" class="article-heading"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#lutzroeder-netron-https-github-com-lutzroeder-netron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <p>發現了一個視覺化工具可以看模型。
 
@@ -548,7 +548,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
   </figure>
 </p>
 
-<h2 id="想看中間的-shape-的話">想看中間的 shape 的話&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#想看中間的-shape-的話"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="想看中間的-shape-的話" class="article-heading">想看中間的 shape 的話<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#想看中間的-shape-的話"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> layer <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>layers:
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>input_shape)
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>input)

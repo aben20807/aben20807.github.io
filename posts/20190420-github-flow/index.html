@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.56.3" />
+		<meta name="generator" content="Hugo 0.57.0" />
 
 		
 		<meta name="og:title" content="Github Flow" />
@@ -149,7 +149,7 @@
 
 <p>最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。</p>
 
-<h1 id="前言">前言&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>其實是看了 <a href="https://guides.github.com/introduction/flow/" target="_blank">Understanding the GitHub flow</a> 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。</p>
 
@@ -158,7 +158,7 @@
 <p>&lt;注意&gt; 因為目前專案還不算大型，所以目前遇到的狀況算是比較簡易的。
 &lt;注意&gt; 由於我也是初心者，如果我有誤解的話請跟我說，感激不盡。</p>
 
-<h1 id="github-flow">GitHub flow&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#github-flow"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="github-flow" class="article-heading">GitHub flow<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#github-flow"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>這個流程，主要是去掉 Git flow 有兩條主線的麻煩。不過誰比較好，還是得看用途，更有 GitLab flow 是合併兩個來用的＠＠</p>
 
@@ -174,7 +174,7 @@
 <p>從主要專案(upstream) fork 一份到自己的帳號(origin)，修改 origin，從 origin/master 新增分支，開發完後將分支 push 到 origin/新分支 上後直接用新分支對 upstream/master 開啟 PR。</p>
 </blockquote>
 
-<h1 id="fork-and-pr">Fork and PR&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#fork-and-pr"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="fork-and-pr" class="article-heading">Fork and PR<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#fork-and-pr"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>首先，PR 可以達到討論及 code review 的效果，為了達到 PR 我們必須把主專案 fork 一份到自己的帳號。而 PR 的方式主要就是透過 GitHub 網頁提供的界面進行操作。</p>
 
@@ -197,16 +197,16 @@
   </figure>
 </p>
 
-<h1 id="branch">Branch&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#branch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="branch" class="article-heading">Branch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#branch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>Branch 在 git 中花費相當少，因為它就只是一個標籤，所以應該盡量使用它。GitHub flow 中保證 master 上的每一個版本都是可佈署的，因此在此流程中不建議直接在 master 上加 commit 而是在 master 上開一個 branch 出來。</p>
 
 <p>&lt;注意&gt; 一定要從 master 開 branch
 但是又有一個特例：就是當別人還沒 merge 我的 PR 可是我接下來的開發又需要有這個 PR 的內容的時候。網路上我找到有人問這個問題 <a href="https://softwareengineering.stackexchange.com/questions/310427/in-github-flow-is-it-ok-to-base-feature-branch-on-another-feature-branch" target="_blank">傳送門</a>，好像就只能在 branch 分出另一個 branch 來先暫時用。</p>
 
-<h1 id="流程">流程&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#流程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="流程" class="article-heading">流程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#流程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<h2 id="初始化">初始化&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#初始化"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="初始化" class="article-heading">初始化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#初始化"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <ol>
 <li>Fork 主要專案到自己的 GitHub 帳號</li>
@@ -218,7 +218,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add upstream &lt;主要專案的 url&gt;</code></pre></div></li>
 </ol>
 
-<h2 id="開發中">開發中&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#開發中"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="開發中" class="article-heading">開發中<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#開發中"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
 <ol>
 <li><p>前往 master 分支 (一開始就在 master 可以不用)</p>
@@ -248,7 +248,7 @@ $ git push origin new_feature</code></pre></div></li>
 開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。</p></li>
 </ol>
 
-<h1 id="參考資料">參考資料&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <ul>
 <li><a href="https://medium.com/@yengttt/開發用到的git流程-c9082b914974" target="_blank">這次專案用到的Git流程</a>：本篇主要流程來自這裡，更詳盡請點擊參考。</li>

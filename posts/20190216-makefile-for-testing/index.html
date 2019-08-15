@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.56.3" />
+		<meta name="generator" content="Hugo 0.57.0" />
 
 		
 		<meta name="og:title" content="Makefile for Testing" />
@@ -153,7 +153,7 @@
 </code></pre></div>
 <p>這樣只需要用 <code>$ make test</code> 就可以測試輸入 input.txt，並把結果存到 output.txt</p>
 
-<h1 id="舊方法">舊方法&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#舊方法"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="舊方法" class="article-heading">舊方法<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#舊方法"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>不過若是有很多種輸入測資的話會有點麻煩，當然還是可以寫成這樣</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">test1</span><span style="color:#f92672">:</span>
@@ -173,7 +173,7 @@
 </code></pre></div>
 <p>這樣寫的缺點就是每次測資增加的時候舊需要修改 Makefile</p>
 
-<h1 id="makefile-內建函式">Makefile 內建函式&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#makefile-內建函式"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="makefile-內建函式" class="article-heading">Makefile 內建函式<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#makefile-內建函式"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>不過其實有更好的寫法，利用 makefile 內建的函式</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INPUT_DIR <span style="color:#f92672">=</span> input/linux/
@@ -189,11 +189,11 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 
 <p>這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile</p>
 
-<h1 id="完整範例">完整範例&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#完整範例"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="完整範例" class="article-heading">完整範例<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#完整範例"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<h2 id="檔案們">檔案們&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#檔案們"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="檔案們" class="article-heading">檔案們<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#檔案們"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<h3 id="t-c"><code>t.c</code>:&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#t-c"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<h3 id="t-c" class="article-heading"><code>t.c</code>:<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#t-c"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
@@ -202,7 +202,7 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
     printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a <span style="color:#f92672">+</span> b);
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }</code></pre></div>
-<h3 id="makefile"><code>Makefile</code>:&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#makefile"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<h3 id="makefile" class="article-heading"><code>Makefile</code>:<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#makefile"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">CC <span style="color:#f92672">=</span> gcc
 EXEC <span style="color:#f92672">=</span> a.out
 
@@ -229,7 +229,7 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
     rm -rf <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span> a.out
 </code></pre></div>
-<h3 id="檔案架構">檔案架構&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<h3 id="檔案架構" class="article-heading">檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 
 <pre><code>$ tree .
 .
@@ -243,9 +243,9 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 └── t.c
 </code></pre>
 
-<h2 id="使用">使用&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#使用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="使用" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<h3 id="指令同為-make-test">指令同為 <code>$ make test</code>&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#指令同為-make-test"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<h3 id="指令同為-make-test" class="article-heading">指令同為 <code>$ make test</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#指令同為-make-test"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make test
 gcc t.c
 ./a.out &lt; input/linux/test2.txt &gt; output/linux/test2.txt
@@ -257,7 +257,7 @@ gcc t.c
 ./a.out &lt; input/linux/test1.txt &gt; output/linux/test1.txt
 <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>
 <span style="color:#ae81ff">7</span></code></pre></div>
-<h3 id="結果檔案架構">結果檔案架構&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#結果檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<h3 id="結果檔案架構" class="article-heading">結果檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#結果檔案架構"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 
 <pre><code>$ tree .
 .
@@ -276,7 +276,7 @@ gcc t.c
 └── t.c
 </code></pre>
 
-<h1 id="後記">後記&nbsp;<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 1.0rem; color: black;" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="後記" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>上面的簡單例子中可能看不出 <code>$(INPUTS)</code> 跟 <code>$(OUTPUTS)</code> 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 <code>%</code> 出馬，就像 <code>$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt</code> 來表示輸入輸出的檔名要一致。</p>
       <div class="row">
