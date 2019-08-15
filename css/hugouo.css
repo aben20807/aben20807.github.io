@@ -209,6 +209,9 @@ main {
         opacity: 1.0;
     }
 }
+blockquote > p{
+    margin: .9em 0 .3em;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Limelight);
 blockquote{
