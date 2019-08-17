@@ -94,8 +94,11 @@ p {
     line-height: 1.953em;
     margin: 0 0 1.3em;
 }
+p + ul {
+    margin-top: -1.2em;
+}
 ul {
-    margin: 0 0 0em;
+    margin: 0 0 1.3em;
 }
 ul, li {
     font-size: .95rem !important;
@@ -285,4 +288,10 @@ font.douyin{
     25% { text-shadow: -1px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
     50% { text-shadow: -3px 0 rgba(0,255,255,.5),1px 0 rgba(255,0,0,.5) }
     100% { text-shadow: 1px 0 rgba(0,255,255,.5),3px 0 rgba(255,0,0,.5) }
+}
+.img-zoomable {
+    transition: transform .4s ease-in;
+}
+.img-zoomable:hover {
+    transform: scale(1.02);
 }
