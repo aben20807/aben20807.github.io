@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Valgrind 的 Memcheck</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://aben20807.github.io/index.xml">
+		<link rel="canonical" href="https://aben20807.github.io/posts/20190817-valgrind-memcheck/">
+		
+		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.57.1" />
+
+		
+		<meta name="og:title" content="Valgrind 的 Memcheck" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="https://drive.google.com/uc?export=view&id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="https://aben20807.github.io/posts/20190817-valgrind-memcheck/" />
+		<meta name="og:site_name" content="Valgrind 的 Memcheck" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="https://aben20807.github.io/css/tachyons.min.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/story.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/descartes.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/hugouo.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/allinone.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i|Fira+Mono|Lora|Noto+Sans|Roboto+Mono&amp;subset=latin-ext" rel="stylesheet">
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+		<script>
+				
+				document.addEventListener('DOMContentLoaded', function () {
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%', enableGrab: false
+						}).listen('.img-zoomable')
+				})
+		</script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
+		<noscript>
+				<style type="text/css"> .lazyload { display:none; } </style>
+		</noscript>
+
+		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
+		
+		<script src="https://aben20807.github.io/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white section-posts page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('https://drive.google.com/uc?export=view&amp;id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud'); background-position: center;">
+			<div class="bg-black-60 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="https://aben20807.github.io/" title="Home">
+						<img src="https://aben20807.github.io/img/logo.jpg" class="w2 h2 br-100" alt="記錄用" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
+						<a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
+						<a class="link f5 ml2 dim near-white" href="/about">關於</a>
+						<a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
+						<a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
+						<a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/" role="subscription" title="Subscription"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="https://aben20807.github.io/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Valgrind 的 Memcheck</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2019-08-17T11:17:09&#43;08:00">Aug 17, 2019</time>
+								<span class="display-print">by Huang Po-Hsuan</span>
+								 in <a href="https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7" class="no-underline category title-link near-white dim">軟體工具</a>
+								<span class="display-print">at https://aben20807.github.io/posts/20190817-valgrind-memcheck/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<div class="row bg-white">
+  <div class="column col-1">
+    <article class="center bg-white br-3 pv1 ph4 lh-copy f5 nested-links mw7">
+      
+      <div class="row">
+        <div class="col-md-8">
+        
+          <div class="mb-5">
+            
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://aben20807.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://aben20807.github.io/tags/valgrind" role="button">valgrind </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/profiling" role="button">profiling </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/c" role="button">C </a></li>
+      
+    
+  </div>
+</div>
+          </div>
+        
+        </div>
+      </div>
+      
+<script src="https://code.iconify.design/1/1.0.0-rc6/iconify.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- https://drive.google.com/uc?export=view&id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f -->
+
+<p>簡單玩玩 @@</p>
+
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p>之前大學時期 (講得好像很久之前 OuO) 的某幾個作業我有拿來測試自己的程式碼是否有 memory leak 的情況，會發生這種情況主要原因是沒有對每一個 alloc 做 free。</p>
+
+<h1 id="環境" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<ul>
+<li>T490s</li>
+<li>Ubuntu 18.04</li>
+</ul>
+
+<h1 id="valgrind-的-memcheck" class="article-heading">Valgrind 的 Memcheck<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#valgrind-的-memcheck"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p>要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 <strong>memcheck</strong>，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (<a href="https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation" target="_blank">Instrumentation</a>) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value" target="_blank">Valid-value bits</a>) 及 A bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress" target="_blank">Valid-address bits</a>)。此外，還實做了記憶體分配器 (<a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation" target="_blank">memory allocator</a>)，也就是定義了 <code>malloc</code> 與 <code>free</code> 之類的函式來記錄呼叫次數。</p>
+
+<p>總結來說，主要用來做以下項目檢測：</p>
+
+<ul>
+<li>使用位初始化的記憶體空間</li>
+<li>讀或寫一塊已經 <code>free</code> 過得區塊</li>
+<li>讀或寫超過一塊 <code>malloc</code> 取得合法的大小</li>
+<li>記憶體洩漏 (<a href="https://en.wikipedia.org/wiki/Memory_leak" target="_blank">Memory leaks</a>)</li>
+</ul>
+
+<p>不過插入外程式碼是有代價的，就是效能會變低許多。</p>
+
+<h2 id="安裝" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#安裝"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install valgrind</code></pre></div>
+<h2 id="使用" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<h3 id="測試記憶體洩漏-memory-leak-detection" class="article-heading">測試記憶體洩漏 (Memory leak detection)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#測試記憶體洩漏-memory-leak-detection"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>) malloc(<span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
+    printf(<span style="color:#e6db74">&#34;%p</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a);
+    <span style="color:#75715e">// free(a);
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></div>
+<h3 id="編譯" class="article-heading">編譯<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#編譯"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+
+<p><code>-g</code> 代表加入除錯資訊，可以讓 valgrind 指出在程式的那一行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gcc -o test test.c -g</code></pre></div>
+<h3 id="利用-valgrind-抓-memory-leak" class="article-heading">利用 valgrind 抓 memory leak<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#利用-valgrind-抓-memory-leak"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">==18006== Memcheck, a memory error detector
+==18006== Copyright (C) 2002-2017, and GNU GPL&#39;d, by Julian Seward et al.
+==18006== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==18006== Command: ./test
+==18006== 
+0x522d040
+==18006== 
+==18006== HEAP SUMMARY:
+==18006==     in use at exit: 4,096 bytes in 1 blocks
+==18006==   total heap usage: 2 allocs, 1 frees, 5,120 bytes allocated
+==18006== 
+==18006== 4,096 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==18006==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18006==    by 0x10869B: main (test.c:5)
+==18006== 
+==18006== LEAK SUMMARY:
+==18006==    definitely lost: 4,096 bytes in 1 blocks
+==18006==    indirectly lost: 0 bytes in 0 blocks
+==18006==      possibly lost: 0 bytes in 0 blocks
+==18006==    still reachable: 0 bytes in 0 blocks
+==18006==         suppressed: 0 bytes in 0 blocks
+==18006== 
+==18006== For counts of detected and suppressed errors, rerun with: -v
+==18006== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)</code></pre></div>
+<h2 id="分析" class="article-heading">分析<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#分析"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>程式中我們 malloc 的一塊 1024 個整數大小 (4 bytes) 的記憶體空間，程式結束前沒有呼叫 free 因此產生的 memory leak 的現象。可以看到 valgrind 指出我們在程式第 5 行 <code>int *a = (int *) malloc(1024 * sizeof(int));</code> 分配了 4096 bytes 的記憶體。</p>
+
+<p>此外這裡有一個有趣的現象，就是總共分配的大小是 5120 bytes，這是因為 <code>printf</code> 的關係，這個函式會固定使用 1024 bytes 的記憶體空間。所以 5120 = 4096 + 1024。</p>
+
+<h1 id="有顏色版本-colour-valgrind" class="article-heading">有顏色版本：colour-valgrind<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#有顏色版本-colour-valgrind"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<h2 id="安裝-1" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#安裝-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip3 install colour-valgrind <span style="color:#75715e"># 需要 python</span></code></pre></div>
+<h2 id="如果喜歡的話可以直接加在-bashrc" class="article-heading">如果喜歡的話可以直接加在 <code>~/.bashrc</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#如果喜歡的話可以直接加在-bashrc"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias valgrind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;colour-valgrind&#39;</span></code></pre></div>
+<h2 id="使用-1" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>基本上就直接跟 valgrind 一樣</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ colour-valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test</code></pre></div>
+<p>
+  <figure class="gphoto-media">
+    <noscript>
+      <img src="https://drive.google.com/uc?export=view&id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" class='center img-zoomable' alt="結果" data-action="zoom" title="zoom!"></img>
+    </noscript>
+    <img data-src="https://drive.google.com/uc?export=view&id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" class='center img-zoomable lazyload' alt="結果" data-action="zoom" title="zoom!"></img>
+    <figcaption>
+      <center class="caption-text">
+        <p style="margin: 0;">結果</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
+    </figcaption>
+  </figure>
+</p>
+
+<h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<ul>
+<li><a href="http://valgrind.org/docs/manual/mc-manual.html" target="_blank">Valgrind User Manual - 4. Memcheck: a memory error detector</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Valgrind" target="_blank">https://en.wikipedia.org/wiki/Valgrind</a></li>
+</ul>
+      <div class="row">
+        
+<script type="text/javascript">
+  document.write("<iframe scrolling='no' frameborder='0' class='center' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='' src='https://button.like.co/in/embed/aben20807/button?referrer="+encodeURIComponent(location.href.split("?")[0].split("#")[0])+"'></iframe>");
+</script>
+
+      </div>
+      
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "forrecording" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+  </div><div id="toc" class="column col-2">
+
+  
+  <div class="toc toc-nav toc-pills ml-0 col-3">
+      <li class="nav-item pb-3 text-center">
+        <span class="font-weight-bold mb-2">- CATALOG - </span>
+      </li><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%89%8d%e8%a8%80">
+                     前言
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e7%92%b0%e5%a2%83">
+                     環境
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#valgrind-%e7%9a%84-memcheck">
+                     Valgrind 的 Memcheck
+                  </a>
+                </li>
+            </ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%ae%89%e8%a3%9d">
+                     安裝
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e4%bd%bf%e7%94%a8">
+                     使用
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%b8%ac%e8%a9%a6%e8%a8%98%e6%86%b6%e9%ab%94%e6%b4%a9%e6%bc%8f-memory-leak-detection">
+                     測試記憶體洩漏 (Memory leak detection)
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e7%b7%a8%e8%ad%af">
+                     編譯
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%88%a9%e7%94%a8-valgrind-%e6%8a%93-memory-leak">
+                     利用 valgrind 抓 memory leak
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%88%86%e6%9e%90">
+                     分析
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%9c%89%e9%a1%8f%e8%89%b2%e7%89%88%e6%9c%ac-colour-valgrind">
+                     有顏色版本：colour-valgrind
+                  </a>
+                </li>
+            </ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%ae%89%e8%a3%9d-1">
+                     安裝
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%a6%82%e6%9e%9c%e5%96%9c%e6%ad%a1%e7%9a%84%e8%a9%b1%e5%8f%af%e4%bb%a5%e7%9b%b4%e6%8e%a5%e5%8a%a0%e5%9c%a8-bashrc">
+                     如果喜歡的話可以直接加在 ~/.bashrc
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e4%bd%bf%e7%94%a8-1">
+                     使用
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99">
+                     參考資料
+                  </a>
+                </li>
+            </ul><li class="nav-item pa3-ns">
+        <div>
+  <a class='goto' id='gotop'>Back to top</a>
+</div>
+<div>
+  <a class='goto' id='gobottom'>Go to bottom</a>
+</div>
+<script type='text/javascript'>
+  
+var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
+$.getScript( url, function() {
+  $("#gotop").click(function(event){
+    $('html,body').animate({scrollTop:0}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
+  });
+  $("#gobottom").click(function(event){
+    $('html,body').animate({scrollTop:$(document).height()}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
+  });
+});
+</script>
+
+      </li>
+    </div></div></div>
+
+		</main>
+		
+			
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role="contentinfo">
+			<p class="w-50 fr tr">
+      Made with Hugo and
+      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2019 Huang Po-Hsuan
+			</p>
+		</footer>
+		
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123296010-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	
+	</body>
+</html>

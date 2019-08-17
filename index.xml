@@ -7,10 +7,126 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Thu, 15 Aug 2019 22:16:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Aug 2019 11:17:09 +0800</lastBuildDate>
     
     <atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Valgrind 的 Memcheck</title>
+      <link>https://aben20807.github.io/posts/20190817-valgrind-memcheck/</link>
+      <pubDate>Sat, 17 Aug 2019 11:17:09 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190817-valgrind-memcheck/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f --&gt;
+
+&lt;p&gt;簡單玩玩 @@&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;之前大學時期 (講得好像很久之前 OuO) 的某幾個作業我有拿來測試自己的程式碼是否有 memory leak 的情況，會發生這種情況主要原因是沒有對每一個 alloc 做 free。&lt;/p&gt;
+
+&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;T490s&lt;/li&gt;
+&lt;li&gt;Ubuntu 18.04&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;valgrind-的-memcheck&#34;&gt;Valgrind 的 Memcheck&lt;/h1&gt;
+
+&lt;p&gt;要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 &lt;strong&gt;memcheck&lt;/strong&gt;，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation&#34;&gt;Instrumentation&lt;/a&gt;) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value&#34;&gt;Valid-value bits&lt;/a&gt;) 及 A bits (&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress&#34;&gt;Valid-address bits&lt;/a&gt;)。此外，還實做了記憶體分配器 (&lt;a href=&#34;https://en.wikipedia.org/wiki/C_dynamic_memory_allocation&#34;&gt;memory allocator&lt;/a&gt;)，也就是定義了 &lt;code&gt;malloc&lt;/code&gt; 與 &lt;code&gt;free&lt;/code&gt; 之類的函式來記錄呼叫次數。&lt;/p&gt;
+
+&lt;p&gt;總結來說，主要用來做以下項目檢測：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用位初始化的記憶體空間&lt;/li&gt;
+&lt;li&gt;讀或寫一塊已經 &lt;code&gt;free&lt;/code&gt; 過得區塊&lt;/li&gt;
+&lt;li&gt;讀或寫超過一塊 &lt;code&gt;malloc&lt;/code&gt; 取得合法的大小&lt;/li&gt;
+&lt;li&gt;記憶體洩漏 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Memory_leak&#34;&gt;Memory leaks&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;不過插入外程式碼是有代價的，就是效能會變低許多。&lt;/p&gt;
+
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo apt install valgrind&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;測試記憶體洩漏-memory-leak-detection&#34;&gt;測試記憶體洩漏 (Memory leak detection)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;) malloc(&lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;sizeof&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;));
+    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%p&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, a);
+    &lt;span style=&#34;color:#75715e&#34;&gt;// free(a);
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;編譯&#34;&gt;編譯&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;-g&lt;/code&gt; 代表加入除錯資訊，可以讓 valgrind 指出在程式的那一行。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ gcc -o test test.c -g&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;利用-valgrind-抓-memory-leak&#34;&gt;利用 valgrind 抓 memory leak&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ valgrind --leak-check&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;full --show-leak-kinds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;all ./test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;==18006== Memcheck, a memory error detector
+==18006== Copyright (C) 2002-2017, and GNU GPL&amp;#39;d, by Julian Seward et al.
+==18006== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==18006== Command: ./test
+==18006== 
+0x522d040
+==18006== 
+==18006== HEAP SUMMARY:
+==18006==     in use at exit: 4,096 bytes in 1 blocks
+==18006==   total heap usage: 2 allocs, 1 frees, 5,120 bytes allocated
+==18006== 
+==18006== 4,096 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==18006==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==18006==    by 0x10869B: main (test.c:5)
+==18006== 
+==18006== LEAK SUMMARY:
+==18006==    definitely lost: 4,096 bytes in 1 blocks
+==18006==    indirectly lost: 0 bytes in 0 blocks
+==18006==      possibly lost: 0 bytes in 0 blocks
+==18006==    still reachable: 0 bytes in 0 blocks
+==18006==         suppressed: 0 bytes in 0 blocks
+==18006== 
+==18006== For counts of detected and suppressed errors, rerun with: -v
+==18006== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+
+&lt;p&gt;程式中我們 malloc 的一塊 1024 個整數大小 (4 bytes) 的記憶體空間，程式結束前沒有呼叫 free 因此產生的 memory leak 的現象。可以看到 valgrind 指出我們在程式第 5 行 &lt;code&gt;int *a = (int *) malloc(1024 * sizeof(int));&lt;/code&gt; 分配了 4096 bytes 的記憶體。&lt;/p&gt;
+
+&lt;p&gt;此外這裡有一個有趣的現象，就是總共分配的大小是 5120 bytes，這是因為 &lt;code&gt;printf&lt;/code&gt; 的關係，這個函式會固定使用 1024 bytes 的記憶體空間。所以 5120 = 4096 + 1024。&lt;/p&gt;
+
+&lt;h1 id=&#34;有顏色版本-colour-valgrind&#34;&gt;有顏色版本：colour-valgrind&lt;/h1&gt;
+
+&lt;h2 id=&#34;安裝-1&#34;&gt;安裝&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ pip3 install colour-valgrind &lt;span style=&#34;color:#75715e&#34;&gt;# 需要 python&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;如果喜歡的話可以直接加在-bashrc&#34;&gt;如果喜歡的話可以直接加在 &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;alias valgrind&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;colour-valgrind&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;使用-1&#34;&gt;使用&lt;/h2&gt;
+
+&lt;p&gt;基本上就直接跟 valgrind 一樣&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ colour-valgrind --leak-check&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;full --show-leak-kinds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;all ./test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud&#34; alt=&#34;結果&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;結果&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html&#34;&gt;Valgrind User Manual - 4. Memcheck: a memory error detector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Valgrind&#34;&gt;https://en.wikipedia.org/wiki/Valgrind&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Regex101</title>
