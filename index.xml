@@ -13,62 +13,1801 @@
     
     
     <item>
-      <title>Posts</title>
-      <link>https://aben20807.github.io/posts/</link>
+      <title>Regex101</title>
+      <link>https://aben20807.github.io/posts/20190815-regexp/</link>
       <pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/</guid>
+      <guid>https://aben20807.github.io/posts/20190815-regexp/</guid>
       
       
-      <description></description>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP --&gt;
+
+&lt;p&gt;我現在才知道這個是不是偏爛啊&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;因為要調整網站的一些東西，所以需要寫一些正規表達式 (regular expression)，不過一直試都失敗，上網找資料才發現一個好網站。傳送門：&lt;a href=&#34;https://regex101.com/&#34;&gt;https://regex101.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1-H5FG7NzGBMSEqNv6iJ0z2QfY3hQoXW5&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1-H5FG7NzGBMSEqNv6iJ0z2QfY3hQoXW5&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;一開始看到連結還以為是什麼內容農場，結果不是XDD&lt;/p&gt;
+
+&lt;h1 id=&#34;使用&#34;&gt;使用&lt;/h1&gt;
+
+&lt;p&gt;左方有語言選項，因為不同語言的正規表達式可能會有些許的差異，所以就選擇正在使用的語言，因為 Hugo 是 Golang 寫的所以網站的表達式要選用 Go 語言。&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1Oz0fVpydicxt3X97ywQ-Z45YHePTf6-l&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1Oz0fVpydicxt3X97ywQ-Z45YHePTf6-l&#34; alt=&#34;選擇 Golang&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;選擇 Golang&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;基本功能就是填入表達式，接著可以輸入測試字串看是否吻合，如果中間有 group 的話也會標示不同顏色，這點我覺得超棒。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=11ScFQm6k0GbA3TPJbA7AysE8btF7dsdL&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=11ScFQm6k0GbA3TPJbA7AysE8btF7dsdL&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;圖上範例就是我想要用來修改文章的標題 (heading)，加上錨定符號用。&lt;/p&gt;
+
+&lt;p&gt;簡單範例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(&amp;lt;(h[1-9]) id=\&amp;quot;([^\&amp;quot;]+)\&amp;quot;(.+))(&amp;lt;/h[1-9]+&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然後我是用這個來做取代來換成我想要的樣式，例如：
+&lt;pre style=&#39;word-break: break-word; white-space:pre-line;&#39;&gt;
+replaceRE &amp;ldquo;(&amp;lt;(h[1-9]) id=\&amp;ldquo;([^\&amp;ldquo;]+)\&amp;ldquo;(.+))(&lt;/h[1-9]+&gt;)&amp;rdquo; &lt;code&gt;&amp;lt;${2} id=&amp;quot;${3}&amp;quot; class=&amp;quot;article-heading&amp;quot;${4}&amp;lt;a class=&amp;quot;headline-hash smoothScroll hover-show scrollspy&amp;quot; style=&amp;quot;font-size: 0.75em; color: black; padding-left: 0.25em&amp;quot; href=&amp;quot;#${3}&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;iconify&amp;quot; data-icon=&amp;quot;octicon-link&amp;quot; data-inline=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt; ${5}&lt;/code&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;原本的標題就會變成
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1yubxNXgTK8uZV07Bo52PzBUHN2Tjf8rY&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1yubxNXgTK8uZV07Bo52PzBUHN2Tjf8rY&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://aben20807.github.io/about/</link>
-      <pubDate>Mon, 04 Feb 2019 18:07:12 +0800</pubDate>
+      <title>別把人家的好心視為理所當然</title>
+      <link>https://aben20807.github.io/posts/20190804-tiny-action/</link>
+      <pubDate>Sun, 04 Aug 2019 11:08:11 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/about/</guid>
+      <guid>https://aben20807.github.io/posts/20190804-tiny-action/</guid>
       
       
-      <description>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 
-&lt;h1 id=&#34;關於我&#34;&gt;關於我&lt;/h1&gt;
+&lt;p&gt;其實原本 6 月中就要寫了，結果因為沒拍到照片所以就先延後 (明明是自己懶惰&lt;/p&gt;
 
-&lt;p&gt;我是黃柏瑄，沒啥綽號大家平常就都直接叫我柏瑄，最常用的表情符號是 OuO。目前是成功大學大四的學生，研究所已經申請到，還是會繼續待著。目前自稱算是一個 vim 的重度使用者，本篇也是用 vim 編輯的。家住彰化，有產葡萄、芒果、香蕉 (當然都不是我自己種的 OAO)。&lt;/p&gt;
+&lt;p&gt;6 月中還蠻嚴重的就是香港反送中的事件開始，到現在 8 月了仍然有罷工及遊行，不過本篇不會討論這個事件。 雖說不討論但其實有些相關。記得當時許多人跟風換了頭貼濾鏡，但我認為有一些人只會盲從表現自己好像有在關注社會議題反而忽略身邊的事。 若真的去探討哪些人，其實並不限於換頭貼的人，也不是換頭貼就會這樣，換頭貼只是剛好是附近發生的大事。所以並不是想要嘴這些換頭貼的人喔。&lt;/p&gt;
 
-&lt;h1 id=&#34;關於此部落格&#34;&gt;關於此部落格&lt;/h1&gt;
+&lt;p&gt;讓我想發文的遠因是大家都會把雨傘晾在走廊，導火線是前室友針對此事的&lt;a href=&#34;https://www.moedict.tw/%E5%BC%B7%E8%BE%AF&#34;&gt;強 (ㄑ一ㄤˇ) 辯&lt;/a&gt;，先來講講發生了什麼事吧。&lt;/p&gt;
 
-&lt;p&gt;此網站所記錄的題材並沒有設限，主要以資訊相關為主，不過會跟之前的&amp;rdquo;記錄用&amp;rdquo;不太一樣，會多一點生活相關的記錄 (儘量啦)，另外也會有一些家裡種的水果的介紹 (應該啦)，總之就比較隨性一點 (算是吧)。對了，沒意外的話會把舊網站搬過來喔 (大概吧)。&lt;br /&gt;
-目前算是剛建置，所以諸多不足還請包涵~~~&lt;br /&gt;
-維護網站的專案一樣是開源的喔，可以去翻翻有用的東西 OuO - &lt;a href=&#34;https://github.com/aben20807/blog-post&#34;&gt;傳送門&lt;/a&gt;&lt;br /&gt;
-如果有什麼願望清單的話可以發個 &lt;a href=&#34;https://github.com/aben20807/blog-post/issues&#34;&gt;issue&lt;/a&gt; 喔 (雖然&amp;hellip;.QuQ)&lt;/p&gt;
+&lt;p&gt;下雨天，大部分的人都會撐雨傘，拿回宿舍後就會打開然後放在走廊上，若是短暫的放置是還可以，不過幾乎所有人都是會放到過夜的，等到了隔天，打掃阿姨因為要推工作車，但因為有放雨傘所以過不去，因此就需要一個一個收雨傘才能前進。&lt;/p&gt;
 
-&lt;h1 id=&#34;授權方式&#34;&gt;授權方式&lt;/h1&gt;
-
-&lt;p&gt;沒意外若沒註明參考資料的是自己寫的，可以遵守 &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34;&gt;CC BY-NC 4.0&lt;/a&gt; 修改或分享。&lt;/p&gt;
-
-&lt;h1 id=&#34;聯絡方式&#34;&gt;聯絡方式&lt;/h1&gt;
+&lt;p&gt;我的前室友提出以下幾點：&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;E-mail: aben20807[at]gmail.com&lt;/li&gt;
-&lt;li&gt;GitHub: &lt;a href=&#34;https://github.com/aben20807&#34;&gt;aben20807&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Blogger (舊網站): &lt;a href=&#34;https://aben20807.blogspot.com/&#34;&gt;記錄用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;雨傘打開放在外面比較快乾&lt;/li&gt;
+&lt;li&gt;打掃阿姨有領薪水，而且沒看過她抱怨&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;贊助&#34;&gt;???贊助&lt;/h1&gt;
-</description>
+&lt;p&gt;我對這些有些疑問。乾比較快需要放整晚嗎？另外，走廊是公共空間，照理說是不可以放置私人物品。還有正常打掃工作是不會包含收雨傘的，她幫忙收是因為這樣才能工作，沒有抱怨是因為人很好。因此帶入今天的主題，「別把人家的好心視為理所當然」。&lt;/p&gt;
+
+&lt;p&gt;(當然，這位室友事後說他是硬要辯&lt;/p&gt;
+
+&lt;p&gt;突然發現要講的沒有很多，只是希望大家多去思考，平時其實會有許多類似的情況，多去將心比心，而不是以為換個頭貼就有多關心這個社會，請從身邊最微小的事開始去實際力行，這個社會才能一點一滴的變好。&lt;/p&gt;
+
+&lt;p&gt;當然你可能好奇我怎麼晾雨傘，我是直接收傘的狀況下放到房間地上，不用綁起來，利用房間冷氣會讓房間乾燥的特性，放一個晚上基本上就乾了。給你們參考 OuO&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Search</title>
-      <link>https://aben20807.github.io/search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Build MNIST with TVM</title>
+      <link>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</link>
+      <pubDate>Sun, 16 Jun 2019 17:40:59 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/search/</guid>
+      <guid>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</guid>
       
       
-      <description></description>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;真的是隔很久&amp;hellip;.藉口就不多說了 OuO&lt;/p&gt;
+
+&lt;p&gt;這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@&lt;br /&gt;
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;2019.06.17 更新：扯，原來官網就有&amp;hellip;.&lt;a href=&#34;https://keras.io/examples/mnist_cnn/&#34;&gt;https://keras.io/examples/mnist_cnn/&lt;/a&gt;&lt;br /&gt;
+然後我發現我整篇都把 MNIST 打成 MINST&amp;hellip;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 看看吧。&lt;/p&gt;
+
+&lt;p&gt;所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。&lt;/p&gt;
+
+&lt;p&gt;P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ubuntu 18.04&lt;/li&gt;
+&lt;li&gt;TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;一堆程式碼上菜囉&#34;&gt;一堆程式碼上菜囉&lt;/h1&gt;
+
+&lt;h2 id=&#34;原始-cnnpredict-py&#34;&gt;原始 &lt;code&gt;cnnPredict.py&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;注意要下載或複製那個程式碼，&lt;code&gt;cnn.h5&lt;/code&gt; 跟 &lt;code&gt;test3.png&lt;/code&gt; 一樣要放對位置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; load_model(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cnn.h5&amp;#39;&lt;/span&gt;)
+out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(x)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(out))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很好，可以執行～&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;加入-tvm-囉&#34;&gt;加入 TVM 囉&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load model from pre-trained file&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; load_model(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;cnn.h5&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compile with tvm&lt;/span&gt;
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict_tvm.py
+In &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;main&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;: 
+v0.0.1
+fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_2: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_3: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_4: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_5: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9216&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_6: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_7: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_8: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  %0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%0, %v_param_2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%2, %v_param_3, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%3, %v_param_4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.max_pool2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%5, pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, strides&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;an internal invariant was violated &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; typechecking your program &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;:05:21&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nullptr: 
+; 
+  %7 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; transpose&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%6, axes&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %8 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.batch_flatten&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%7&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %9 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%8, %v_param_5, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %10 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%9, %v_param_6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %11 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %12 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%11, %v_param_7, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %13 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%12, %v_param_8&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&amp;hellip;.&lt;/p&gt;
+
+&lt;h2 id=&#34;只存-mnist-的權重&#34;&gt;只存 MNIST 的權重&lt;/h2&gt;
+
+&lt;p&gt;只好使用上面提到 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 的方式只存權重出來，這裡我們只需要改最後一行，&lt;code&gt;save&lt;/code&gt; 改成 &lt;code&gt;save_weights&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; backend &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; K
+
+batch_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+epochs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# input image dimensions&lt;/span&gt;
+img_rows, img_cols &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# the data, shuffled and split between train and test sets&lt;/span&gt;
+(x_train, y_train), (x_test, y_test) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mnist&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_data()
+
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+input_shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (img_rows, img_cols, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x_train &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+x_test &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;x_train shape:&amp;#39;&lt;/span&gt;, x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x_train&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;train samples&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(x_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test samples&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# convert class vectors to binary class matrices&lt;/span&gt;
+y_train &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to_categorical(y_train, num_classes)
+y_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;utils&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to_categorical(y_test, num_classes)
+
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;),
+                 activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;,
+                 input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, (&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;compile(loss&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;losses&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;categorical_crossentropy,
+              optimizer&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;keras&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;optimizers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Adadelta(),
+              metrics&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;accuracy&amp;#39;&lt;/span&gt;])
+
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit(x_train, y_train,
+          batch_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;batch_size,
+          epochs&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;epochs,
+          verbose&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,
+          validation_data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(x_test, y_test))
+score &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(x_test, y_test, verbose&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test loss:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Test accuracy:&amp;#39;&lt;/span&gt;, score[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;])
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;save_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; alt=&#34;train a MNIST model with Keras&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;train a MNIST model with Keras&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;自己用-keras-建構一個-mnist-再餵給-tvm&#34;&gt;自己用 Keras 建構一個 MNIST 再餵給 TVM&lt;/h2&gt;
+
+&lt;p&gt;把上面產生的權重餵給自己建構的模型&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
+
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict_tvm.py
+In &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;main&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;: 
+v0.0.1
+fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_2: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_3: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_4: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_5: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9216&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_6: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_7: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, %v_param_8: Tensor&lt;span style=&#34;color:#f92672&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;, float32&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+  %0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_param_1, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%0, %v_param_2&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.conv2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%2, %v_param_3, channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%3, %v_param_4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %5 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%4&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.max_pool2d&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%5, pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, strides&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;an internal invariant was violated &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; typechecking your program &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;:21:27&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nullptr: 
+; 
+  %7 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; transpose&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%6, axes&lt;span style=&#34;color:#f92672&#34;&gt;=[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+  %8 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.batch_flatten&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%7&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %9 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%8, %v_param_5, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %10 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%9, %v_param_6&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %11 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.relu&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %12 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.dense&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%11, %v_param_7, units&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  %13 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nn.bias_add&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%12, %v_param_8&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+  nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，結果竟然一模一樣。&lt;/p&gt;
+
+&lt;h2 id=&#34;檢驗剛剛建立的模型是否正確&#34;&gt;檢驗剛剛建立的模型是否正確&lt;/h2&gt;
+
+&lt;p&gt;總之先試試看是不是跟直接讀 &lt;code&gt;cnn.h5&lt;/code&gt; 一樣。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Perform the prediction&lt;/span&gt;
+out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(x)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(out))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很好，是一樣&amp;hellip;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;突破-加個輸入層&#34;&gt;突破，加個輸入層？&lt;/h2&gt;
+
+&lt;p&gt;在找解決方式的過程中突然看到&lt;a href=&#34;https://stackoverflow.com/a/49600827/6734174&#34;&gt;這裡&lt;/a&gt;提到有 &lt;code&gt;InputLayer&lt;/code&gt;，不如加看看。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; load_model
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.models &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Sequential
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Dense, Dropout, Flatten, InputLayer
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.layers &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Conv2D, MaxPooling2D
+num_classes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+input_shape &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imread(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;test3.png&amp;#39;&lt;/span&gt;,mode&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Compute a bit-wise inversion so black becomes white and vice versa&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;invert(x)
+&lt;span style=&#34;color:#75715e&#34;&gt;# Make it the right size&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; imresize(x,(&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;))
+&lt;span style=&#34;color:#75715e&#34;&gt;# Convert to a 4D tensor to feed into our model&lt;/span&gt;
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;)
+x &lt;span style=&#34;color:#f92672&#34;&gt;/=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# model = load_model(&amp;#39;cnn.h5&amp;#39;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Construct a MNIST model&lt;/span&gt;
+model &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Sequential()
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(InputLayer(input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;, input_shape&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;input_shape))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Conv2D(&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;, kernel_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;), activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(MaxPooling2D(pool_size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.25&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Flatten())
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;relu&amp;#39;&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dropout(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;))
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(Dense(num_classes, activation&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;softmax&amp;#39;&lt;/span&gt;))
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Load the weights that we get from last program&lt;/span&gt;
+model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mnist_weights.h5&amp;#39;&lt;/span&gt;)
+
+shape_dict &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;input_1&amp;#39;&lt;/span&gt;: (&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;)}
+func, params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frontend&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;from_keras(model, shape_dict)
+target &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;llvm&amp;#34;&lt;/span&gt;
+ctx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cpu(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_config(opt_level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;):
+    executor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; relay&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_module&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_executor(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;graph&amp;#39;&lt;/span&gt;, func, ctx, target)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# Pperform the prediction&lt;/span&gt;
+dtype &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;float32&amp;#39;&lt;/span&gt;
+tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;evaluate(func)(tvm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nd&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array(x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(dtype)), &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;params)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argmax(tvm_out&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;asnumpy()[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 test_mnist.py
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;扯，竟然過了 QuQ&lt;/p&gt;
+
+&lt;h1 id=&#34;其他&#34;&gt;其他&lt;/h1&gt;
+
+&lt;h2 id=&#34;lutzroeder-netron-https-github-com-lutzroeder-netron&#34;&gt;&lt;a href=&#34;https://github.com/lutzroeder/netron&#34;&gt;&lt;code&gt;lutzroeder/netron&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;發現了一個視覺化工具可以看模型。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP&#34; alt=&#34;NETRON&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;NETRON&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;想看中間的-shape-的話&#34;&gt;想看中間的 shape 的話&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; layer &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_shape)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;output_shape)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;output)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;---&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Github Flow (2)</title>
+      <link>https://aben20807.github.io/posts/20190421-github-flow-2/</link>
+      <pubDate>Sun, 21 Apr 2019 19:13:02 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190421-github-flow-2/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;針對昨天的再多釐清一些。順便補充一些東西。&lt;/p&gt;
+
+&lt;h1 id=&#34;關於流程&#34;&gt;關於流程&lt;/h1&gt;
+
+&lt;p&gt;昨天的流程主要是有需要 fork 的，通常是針對那些你無法對原始專案直接操作的狀況。&lt;/p&gt;
+
+&lt;p&gt;如果對同一個專案使用 GitHub flow 也是可以的，也就是說在同一個專案中開啟 branch 在對自己開啟 PR，或許這就是我一開始有點困惑的原因，結果是都適用。&lt;/p&gt;
+
+&lt;h1 id=&#34;pr-被-merge-後呢&#34;&gt;PR 被 merge 後呢&lt;/h1&gt;
+
+&lt;h2 id=&#34;更新-merge-commit&#34;&gt;更新 merge commit&lt;/h2&gt;
+
+&lt;p&gt;接下來要做的就是更新一下自己的 master (origin 跟 local)。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+$ git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;刪除-branch&#34;&gt;刪除 branch&lt;/h2&gt;
+
+&lt;p&gt;GitHub 上在被 merge 的 PR 的界面會出現可以刪除 branch 的按鈕。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除完成後會出現提示，貌似還可以復原呢。這個步驟後你帳號遠端上的那個 branch 就不見了。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;再來是更新到本地端。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 列出本地端的分支 (加上遠端記錄)&lt;/span&gt;
+$ git branch -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1QifWjcp6goVP329L8aBoeV98yVze_XAc&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1QifWjcp6goVP329L8aBoeV98yVze_XAc&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除遠端記錄&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 模擬遠端可刪除分支&lt;/span&gt;
+$ git remote prune origin --dry-run
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# 執行刪除&lt;/span&gt;
+$ git remote prune origin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;刪除本地分支後就大功告成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git branch -d new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.fizerkhan.com/blog/posts/Clean-up-your-local-branches-after-merge-and-delete-in-GitHub.html&#34;&gt;Clean up your local branches after merge and delete in GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Github Flow</title>
+      <link>https://aben20807.github.io/posts/20190420-github-flow/</link>
+      <pubDate>Sat, 20 Apr 2019 21:04:32 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190420-github-flow/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;其實是看了 &lt;a href=&#34;https://guides.github.com/introduction/flow/&#34;&gt;Understanding the GitHub flow&lt;/a&gt; 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。&lt;/p&gt;
+
+&lt;p&gt;p.s. 這裡有翻譯版：&lt;a href=&#34;https://medium.com/@trylovetom/讓我們來了解-github-flow-吧-4144caf1f1bf&#34;&gt;讓我們來了解 GitHub Flow 吧！&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;注意&amp;gt; 因為目前專案還不算大型，所以目前遇到的狀況算是比較簡易的。
+&amp;lt;注意&amp;gt; 由於我也是初心者，如果我有誤解的話請跟我說，感激不盡。&lt;/p&gt;
+
+&lt;h1 id=&#34;github-flow&#34;&gt;GitHub flow&lt;/h1&gt;
+
+&lt;p&gt;這個流程，主要是去掉 Git flow 有兩條主線的麻煩。不過誰比較好，還是得看用途，更有 GitLab flow 是合併兩個來用的＠＠&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;GitHub flow 只專注在 master 身上，從 master 上開啟 feature branch，在該 branch 上開發(會有一些 commit)，最後在透過 PR(pull request) 合併到 master。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上面這句看似簡單，其實相當複雜，我盡量詳盡解釋。&lt;/p&gt;
+
+&lt;p&gt;更清楚的解釋應該為：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;從主要專案(upstream) fork 一份到自己的帳號(origin)，修改 origin，從 origin/master 新增分支，開發完後將分支 push 到 origin/新分支 上後直接用新分支對 upstream/master 開啟 PR。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;fork-and-pr&#34;&gt;Fork and PR&lt;/h1&gt;
+
+&lt;p&gt;首先，PR 可以達到討論及 code review 的效果，為了達到 PR 我們必須把主專案 fork 一份到自己的帳號。而 PR 的方式主要就是透過 GitHub 網頁提供的界面進行操作。&lt;/p&gt;
+
+&lt;p&gt;不過，我試了一下，發現同一個 repo 還是可以透過 branch 發 PR 的，這我就有點不確定為何一定要 fork，或許 fork 是不一定，不過更改自己的 repo 會比較心安一點，尤其若是常使用&amp;hellip;.
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;branch&#34;&gt;Branch&lt;/h1&gt;
+
+&lt;p&gt;Branch 在 git 中花費相當少，因為它就只是一個標籤，所以應該盡量使用它。GitHub flow 中保證 master 上的每一個版本都是可佈署的，因此在此流程中不建議直接在 master 上加 commit 而是在 master 上開一個 branch 出來。&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;注意&amp;gt; 一定要從 master 開 branch
+但是又有一個特例：就是當別人還沒 merge 我的 PR 可是我接下來的開發又需要有這個 PR 的內容的時候。網路上我找到有人問這個問題 &lt;a href=&#34;https://softwareengineering.stackexchange.com/questions/310427/in-github-flow-is-it-ok-to-base-feature-branch-on-another-feature-branch&#34;&gt;傳送門&lt;/a&gt;，好像就只能在 branch 分出另一個 branch 來先暫時用。&lt;/p&gt;
+
+&lt;h1 id=&#34;流程&#34;&gt;流程&lt;/h1&gt;
+
+&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Fork 主要專案到自己的 GitHub 帳號&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Clone 自己 GitHub 中的專案 (fork 過來的)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone &amp;lt;自己專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定 upstream 來源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;開發中&#34;&gt;開發中&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;前往 master 分支 (一開始就在 master 可以不用)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;新增並前往 feature 分支&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;開始開發功能&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git add XXX
+$ git commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout master
+$ git fetch upstream
+$ git merge upstream/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout new_feature
+$ git rebase master
+$ git push origin new_feature&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;發 PR
+開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@yengttt/開發用到的git流程-c9082b914974&#34;&gt;這次專案用到的Git流程&lt;/a&gt;：本篇主要流程來自這裡，更詳盡請點擊參考。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://poychang.github.io/guide-to-use-github-flow/&#34;&gt;如何使用 GitHub Flow 來參與開源專案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>不同路徑之 Git Patch</title>
+      <link>https://aben20807.github.io/posts/20190403-git-patch-different-directory/</link>
+      <pubDate>Wed, 03 Apr 2019 16:50:28 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190403-git-patch-different-directory/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近也算常用 git，不過有些特殊的功能都沒用過，這次也不算是學學看，而是真的要用到了，總之就是還個技術債順便記錄。不過會用到這個情境的應該算是少數。&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;tl;dr&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git format-patch --relative &amp;lt;SHA&amp;gt; ./ -o /tmp/patches
+$ git am /tmp/patches/*.patch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;git 有一個好用的工具可以針對 repo 上面的 commit 產生補丁檔 (patch)。詳細用法可以去查看官方說明文件 &lt;a href=&#34;https://git-scm.com/docs/git-format-patch&#34;&gt;git format-patch&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;這裡主要記錄一個使用情境：要把專案A 下的子專案a 的修改記錄做成 patch 給專案B 使用，注意，專案a 與專案B 是同一個專案。&lt;/p&gt;
+
+&lt;p&gt;會有這樣需求主要是因為 B 是開源專案，然後我們拿來修改後變成 A 的子專案。當然最好的方式是用 fork，然後利用 submodule 管理，不過因為只有一個 repo 可以使用，所以就採用這個作法。&lt;/p&gt;
+
+&lt;p&gt;限制：內部檔案名稱要相同&lt;/p&gt;
+
+&lt;h1 id=&#34;範例檔案架構&#34;&gt;範例檔案架構&lt;/h1&gt;
+
+&lt;p&gt;接下來利用簡單的範例來模擬。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;repo A&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;A
+├── a
+│   └── file_1.txt
+└── sth_in_A.txt
+
+* a257187 - &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; Add sth in A
+* a1f4b9e - init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;repo B&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;B
+└── file_1.txt
+
+* 63998ea - &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接著進行一些修改 (記得用 git 去追蹤修改記錄)&lt;/p&gt;
+
+&lt;p&gt;我們測試一些不同的行為，可以從下方 commit message 看出，同時修改(&lt;code&gt;eb948ee&lt;/code&gt;)也可以喔&lt;/p&gt;
+
+&lt;p&gt;大概像是這樣&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;A
+├── a
+│   ├── file_1.txt
+│   └── file_2.txt
+└── sth_in_A.txt
+
+* 0f5c75e - &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; Add file_2 in a
+* eb948ee - Modify file_1 and sth_in_A.txt
+* 26bde10 - Modify sth_in_A.txt
+* b551578 - Modify file_1
+* a257187 - Add sth in A
+* a1f4b9e - init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;產生-patch&#34;&gt;產生 patch&lt;/h1&gt;
+
+&lt;p&gt;開始產生 patch 囉，首先 &lt;code&gt;cd&lt;/code&gt; 到子資料夾，接著打入下方指令，&lt;code&gt;a1f4b9e&lt;/code&gt; 是起始 commit，如果這個子專案是從中間才開始追蹤的話也可以從中間的 commit 開始。可以看到它只會針對 a 中有修改的部份才產生 patch 檔。&lt;code&gt;-o&lt;/code&gt; 是指定輸出的路徑，完全可以依照自己喜好修改。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cd A/a/
+$ git format-patch --relative a1f4b9e ./ -o /tmp/patches
+/tmp/patches/0001-Modify-file_1.patch
+/tmp/patches/0002-Modify-file_1-and-sth_in_A.txt.patch
+/tmp/patches/0003-Add-file_2-in-a.patch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;套用-patch&#34;&gt;套用 patch&lt;/h1&gt;
+
+&lt;p&gt;套用 patch 到專案B&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bach&#34; data-lang=&#34;bach&#34;&gt;$ cd B/
+$ git am /tmp/patches/*.patch
+Applying: Modify file_1
+Applying: Modify file_1 and sth_in_A.txt
+Applying: Add file_2 in a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最後可以看到它把所有的 commit 都一一重現&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;B
+├── file_1.txt
+└── file_2.txt
+
+* e28e672 - &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; Add file_2 in a
+* 24d4693 - Modify file_1 and sth_in_A.txt
+* 96d0b8c - Modify file_1
+* 63998ea - init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Makefile Help Message</title>
+      <link>https://aben20807.github.io/posts/20190402-makefile-help-message/</link>
+      <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190402-makefile-help-message/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。&lt;/p&gt;
+
+&lt;p&gt;原本可能在寫完所有 rule 後要再加一個 &lt;code&gt;help&lt;/code&gt; 來寫準備印出來給使用者的內容。如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &amp;lt;target&amp;gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  action1\tDo action 1.\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  action2\tDo action 2.\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  help\t\tShow help message.\n&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m&#34; alt=&#34;結果&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;結果&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;這種方式在數量一多下會很麻煩，尤其是要不斷確認上面是否有被更動。所以找到許多人針對每個 target 的註解去產生 help 資訊。這裡使用 perl 跟 awk 幫忙。&lt;/p&gt;
+
+&lt;p&gt;下方印出的結果同上就不貼圖片了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &amp;lt;target&amp;gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@perl -nle&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;print $&amp;amp; if m{^[a-zA-Z0-9_-]+:.*?## .*$$}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;MAKEFILE_LIST&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		sort | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN {FS = &amp;#34;:.*?## &amp;#34;}; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;		{printf &amp;#34;  %-18s %s\n&amp;#34;, $$1, $$2}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;稍微解釋一下 perl 那一行&lt;/p&gt;
+
+&lt;p&gt;首先就是先使用 regexp 去 match 符合的表達式，&lt;code&gt;^[a-zA-Z0-9_-]+:.*?## .*$$&lt;/code&gt; 表示由一個單字(可能含數字)開頭 &lt;code&gt;:&lt;/code&gt; 後方是相依的部份，最後是用 &lt;code&gt;##&lt;/code&gt; 註解的描述。&lt;/p&gt;
+
+&lt;p&gt;接著利用 pipe (&lt;code&gt;|&lt;/code&gt;) 給 awk，它可以針對欄 (column) 去操作文字，&lt;code&gt;BEGIN&lt;/code&gt; 區塊表示初始化宣告，也就是輸入的字串是用 &lt;code&gt;##&lt;/code&gt; 當作分割符號，最後利用 &lt;code&gt;printf()&lt;/code&gt; 去把第一欄及第二欄印出來。&lt;/p&gt;
+
+&lt;p&gt;最後最後，加上點顏色頗不錯 OuO&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# color
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;BLUE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;34m
+NC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;0m
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 1...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;action2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 2.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Doing action 2...&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Show help message.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage:\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;  make &lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;BLUE&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;lt;target&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;NC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;\n\n&amp;#34;&lt;/span&gt;
+	@printf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Targets:\n&amp;#34;&lt;/span&gt;
+	@perl -nle&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;print $&amp;amp; if m{^[a-zA-Z0-9_-]+:.*?## .*$$}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;MAKEFILE_LIST&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		sort | &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN {FS = &amp;#34;:.*?## &amp;#34;}; \
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;		{printf &amp;#34;$(BLUE)  %-18s$(NC) %s\n&amp;#34;, $$1, $$2}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G&#34; alt=&#34;有顏色版本&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;有顏色版本&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h3 id=&#34;參考資料&#34;&gt;參考資料&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nedbatchelder.com/blog/201804/makefile_help_target.html&#34;&gt;Makefile help target&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>First Met Hugo</title>
+      <link>https://aben20807.github.io/posts/20190321-first-met-hugo/</link>
+      <pubDate>Thu, 21 Mar 2019 22:20:12 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br /&gt;
+就請多見諒＠＠&lt;/p&gt;
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;從 Blogger 轉出來的原因可以去關於的頁面看看，我就不再贅述，此篇主要也不會手把手的教學如何用 Hugo 從頭到尾架設一個網頁，因為網路上有相當多這類的教學，我主要是記錄一些比較特別地方。接著跟我唸三遍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;前端坑好深，前端坑好深，前端坑好深&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;安裝&#34;&gt;安裝&lt;/h1&gt;
+
+&lt;p&gt;說不教好像也有點無情，不過在 GitHub 架 Hugo 真的太過簡單了，步驟真的算少，所以我就推給其他文章吧(可以先看完整篇再開始)：&lt;a href=&#34;https://medium.com/@chs_wei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&#34;&gt;在 GitHub 部署 Hugo 靜態網站&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;安裝-注意事項&#34;&gt;安裝 - 注意事項&lt;/h1&gt;
+
+&lt;p&gt;Ubuntu 請用 &lt;code&gt;snap&lt;/code&gt; 來安裝比較新的版本，用 &lt;code&gt;apt&lt;/code&gt; 會發現一堆主題不能用因為版本過舊。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo snap install hugo
+$ hugo version
+Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: &lt;span style=&#34;color:#ae81ff&#34;&gt;2019&lt;/span&gt;-02-01T13:33:06Z&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;結果注意事項就把 Hugo 全部安裝完成了＠＠，部屬在 GitHub 就跟大部分用法相同。&lt;/p&gt;
+
+&lt;h1 id=&#34;部落格架構配置&#34;&gt;部落格架構配置&lt;/h1&gt;
+
+&lt;p&gt;因為 Hugo 會針對主題和文章經過 &lt;code&gt;hugo&lt;/code&gt; 指令去產生一個完整的網站並預設放在 &lt;code&gt;public/&lt;/code&gt; 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 &lt;code&gt;public/&lt;/code&gt; push 到 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，寫文章的就創建另一個 &lt;code&gt;blog-post&lt;/code&gt; 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。&lt;/p&gt;
+
+&lt;p&gt;但是，一般上面這種是會把主題的檔案都複製到你寫文章的 repo 裡這樣就可以自訂一些前端設計。&lt;/p&gt;
+
+&lt;p&gt;我覺得這樣還不夠乾淨！因此我的方式是使用三個 repo：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;blog-post：存文章&lt;/li&gt;
+&lt;li&gt;hugOuO：主題&lt;/li&gt;
+&lt;li&gt;aben20807.github.io：發布網站&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;沒錯，多一個 repo 追蹤主題，由於 Hugo 會自動的搜尋一些資料夾找尋網站設定，在一開始的資料夾找不到時，會根據 &lt;code&gt;config.toml&lt;/code&gt; 中設定的主題去 &lt;code&gt;themes/&lt;/code&gt; 找對應的主題，所以一開始的資料夾就不要有任何前端的檔案，除非像是 google analytics 需要放置規定的檔案，不然所有的前端設計 (架構, css, javascript) 都放在主題的 repo 中。當然這是給那些會修改別人主題的人的建議，如果是直接用現成的那就不需要多一個 repo 了。&lt;/p&gt;
+
+&lt;p&gt;以下是一個簡單的檔案結構：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;blog-post/ &amp;lt;----------------------- repo &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;: 存文章
+├── config.toml
+├── content
+│   ├── about
+│   ├── _index.md
+│   └── posts/ &amp;lt;------------------- 文章會在這裡
+├── themes/
+│   └── hugOuO/ &amp;lt;------------------ repo &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;: 主題
+│       ├── archetypes/
+│       │   ├── default.md
+│       │   └── posts.md
+│       ├── layouts/
+│       │   ├── &lt;span style=&#34;color:#ae81ff&#34;&gt;404&lt;/span&gt;.html
+│       │   ├── _default/
+│       │   ├── index.html
+│       │   ├── index.json
+│       │   ├── index.rss.xml
+│       │   ├── partials/
+│       │   └── shortcodes/
+│       ├── static/
+│       │   ├── css/
+│       │   ├── img/
+│       │   └── js/
+│       └── theme.toml
+└── public/ &amp;lt;---------------------- repo &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;: 發布網站&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;這樣安排的缺點&#34;&gt;這樣安排的缺點&lt;/h2&gt;
+
+&lt;p&gt;這麼多 repo 就是一個蠻大的缺點，不過若是非常在意的話可以利用 branch 來讓三個 repo 合併。&lt;br /&gt;
+但是這個缺點有一個優點 (?)，就是可以刷 GitHub 的 contributions 啊！每次寫文章改一堆東西就會綠一片OuO&lt;/p&gt;
+
+&lt;h2 id=&#34;其他&#34;&gt;其他&lt;/h2&gt;
+
+&lt;p&gt;當然也可以利用 GitHub 和其他工具達到持續集成、部署，參考：&lt;a href=&#34;https://axdlog.com/zh/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/&#34;&gt;利用Travis CI和Hugo將Blog自動部署到Github Pages&lt;/a&gt;。不過我是有點點懶惰，所以我就用 &lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/deploy.sh&#34;&gt;script&lt;/a&gt; 來部屬。&lt;/p&gt;
+
+&lt;p&gt;還有 &lt;code&gt;blog-post&lt;/code&gt; repo 可以用 &lt;code&gt;.gitattributes&lt;/code&gt; 來讓 GitHub 把 markdown 當作一個語言來計算，&lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/.gitattributes&#34;&gt;傳送門&lt;/a&gt;。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ&#34; alt=&#34;結果展示&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;結果展示&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;圖片&#34;&gt;圖片&lt;/h1&gt;
+
+&lt;p&gt;通常架設在 GitHub 的靜態網站都會直接把圖片也傳到 repo 中，雖然說這樣會比較快而且方便，但是我不建議用 git 去追蹤圖片，到最後會非常肥大。所以我一開始就有想說用 google 雲端當作一個圖床 (Flickr 1TB 回來啊QuQ)，反正有學校帳號算是有無限空間吧 (還是當學生的小福利＠＠)，再加上 google 圖片可以無限上傳，我手機拍照的圖片都會自動上傳了，然後也可以跟雲端連結，也就是說在 google 雲端透過檔案存取到 google 圖片的檔案。不過因為它的 api 還不是說很好用，就是雲端右鍵拿到的連結是不能直接嵌入網頁的，所以要手動複製 id，我覺得頗麻煩就乾脆寫一個可以偵測是否在 markdown 使用 google 雲端的圖片，然後把它轉成對應的 url 同時提供點擊就可以直接連過去，這樣就可以放大檢視了。&lt;/p&gt;
+
+&lt;p&gt;作法就是我的文章若要用到 google 雲端的圖片就要用以下語法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;google-標題&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;從雲端裡面右鍵拿到的分享連結&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;沒意外這篇文章內文都是用這個方式加圖片的，唯一缺點就是明顯慢很多＠＠，雖然慢會影響 SEO，不過算了，就會看的人就會來看吧。說到這個，流量很明顯跟 Blogger 時期差很多＠＠，實做&lt;a href=&#34;https://github.com/aben20807/hugOuO/blob/master/layouts/partials/custom-content.html#L5-L23&#34;&gt;傳送門&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h1 id=&#34;文章&#34;&gt;文章&lt;/h1&gt;
+
+&lt;p&gt;對於文章，我建議可以用日期當作檔名的前綴，以便排序。我的主題就會自動切割日期。Hugo 也有 permalinks 功能，就是把日期當作網站的路徑，不過我懶得用了＠＠&lt;/p&gt;
+
+&lt;h1 id=&#34;優點啦&#34;&gt;優點啦&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;單一執行檔，只需要安裝 hugo，其他什麼 ruby, python, node 都不用。&lt;/li&gt;
+&lt;li&gt;建制快速，號稱目前地表最快，尤其當網站一多，目前有找到跟 Jekyll 的比較&lt;a href=&#34;https://forestry.io/blog/hugo-vs-jekyll-benchmark/&#34;&gt;傳送門&lt;/a&gt;，跟 Hexo 的可能還要找一下。&lt;/li&gt;
+&lt;li&gt;網站內容乾淨，也就是上面的缺點啦，我是覺得這是優點 OuO，分多個 repo 不是很好嗎。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;有趣的功能&#34;&gt;有趣的功能&lt;/h1&gt;
+
+&lt;p&gt;下面這些功能其實不限於 Hugo，只要有想要其實都可以把它加到自己的網站，甚至是從頭自己刻的也可。不要忘了開頭念三次的東西 OuO&lt;/p&gt;
+
+&lt;h2 id=&#34;1-搜尋&#34;&gt;1. 搜尋&lt;/h2&gt;
+
+&lt;p&gt;由於之前 Blogger 算是內建搜尋的，所以這裡算是研究頗久，原本要使用一些已經做成套件的切字工具，但是中文字真的太難搞定了，所以我乾脆直接用 google 提供的搜尋：Google Custom Search。一樣，這裡就不一一教學，請移駕：&lt;a href=&#34;https://blog.yowko.com/google-search-in-hugo/&#34;&gt;將 Google自訂搜尋引擎 (Google Custom Search) 搭配 OpenSearch 加至 Hugo 網站中&lt;/a&gt;。真的要參考實做的話可以來這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/6f6b62898791322876091d4db98d580b8a7accdc#diff-44f0b83d58ef03d7cee156de462be50c&#34;&gt;commit&lt;/a&gt; 看看。對了，設定完後要等個幾天才會可以搜尋，我那時候以為我哪裡設定錯誤，結果等個幾天就可以用了。結果可以到這個&lt;a href=&#34;https://aben20807.github.io/search/&#34;&gt;頁面&lt;/a&gt;查看。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh&#34; alt=&#34;搜尋範例&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;搜尋範例&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;2-toc-table-of-content&#34;&gt;2. TOC (Table Of Content)&lt;/h2&gt;
+
+&lt;p&gt;Hugo 算有提供 toc 工具，但是用起來沒這麼好看，例如它無法設定深度，不管幾層就都會做成 toc 也就是 h1~6 都有，造成空間浪費。這裡我也是弄超級久，最後我是參考 &lt;a href=&#34;https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/#/hugo%E7%9A%84table-of-content&#34;&gt;AllinOne&lt;/a&gt; 這個主題的實做方式：&lt;a href=&#34;https://github.com/orianna-zzo/AllinOne/blob/master/layouts/partials/toc.html&#34;&gt;toc.html&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;3-headline-hash&#34;&gt;3. Headline Hash&lt;/h2&gt;
+
+&lt;p&gt;也就是滑鼠移到標題會出現一個 anchor 可以產生直接跳到這個標題的連結，直接參考：&lt;a href=&#34;https://discourse.gohugo.io/t/adding-anchor-next-to-headers/1726&#34;&gt;Adding anchor next to headers&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;4-smooth-scroll&#34;&gt;4. Smooth Scroll&lt;/h2&gt;
+
+&lt;p&gt;這個可以讓移動有滾動的動畫而不是直接跳到那邊，我是使用 &lt;code&gt;jquery.smooth-scroll.min.js&lt;/code&gt; 來達成，請參考這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/68fa52f8d25c90d003fec296081427d12c6724cf#diff-0aa74fe7c8cd2a2b79dab67ece16cb02&#34;&gt;commit&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-scrollspy&#34;&gt;5. Scrollspy&lt;/h2&gt;
+
+&lt;p&gt;讓右邊的 toc 自動標記現在所在的標題位置，我是從 &lt;a href=&#34;https://stackoverflow.com/questions/30348314/how-to-use-scrollspy-without-using-bootstrap/49257431#49257431&#34;&gt;how to use scrollspy without using bootstrap 的其中一個回答&lt;/a&gt; 改成這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/94b0b7344de07858b4ed346bc76b30caafa71220#comments&#34;&gt;commit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.3.4.5. 合起來差不多就是這樣：
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;6-自動換標題-ouo&#34;&gt;6. 自動換標題 OuO&lt;/h2&gt;
+
+&lt;p&gt;這算是一個有趣但是沒啥實用性的功能，我是在 &lt;a href=&#34;https://diygod.me/&#34;&gt;https://diygod.me/&lt;/a&gt; 看到的，當你暫時離開去其他分頁時，它的標題就會變換。建議不要在手機上用這個功能。參考：&lt;a href=&#34;https://blog.youdivi.com/tutorials/change-browser-tab-title-tab-not-active/&#34;&gt;CHANGE BROWSER TAB TITLE WHEN TAB NOT ACTIVE&lt;/a&gt;，&lt;a href=&#34;https://github.com/aben20807/blog-post/commit/4a468cb27289453f1a53ccb05db50343877438d8#diff-0aa74fe7c8cd2a2b79dab67ece16cb02&#34;&gt;commit&lt;/a&gt;，如何排擠手機：&lt;a href=&#34;https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery/3540295#3540295&#34;&gt;What is the best way to detect a mobile device in jQuery?&lt;/a&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;7-e-mail-subscribe-mailchimp-https-mailchimp-com&#34;&gt;7. E-mail subscribe (&lt;a href=&#34;https://mailchimp.com/&#34;&gt;mailchimp&lt;/a&gt;)&lt;/h2&gt;
+
+&lt;p&gt;原本 Blogger 有 G+ 當作一個社群平台來分享發布的文章，不過這裡就沒有了，我想說需要有一個方法來提供讀者訂閱，不能叫他自己去申請 GitHub 然後訂閱我網站的 repo 吧。所以我就找到這個服務，它免費版提供 2000 個訂閱者，一個月可以寄 12000 封 e-mail，對我來說算是非常夠用了(吧＠＠)，剛剛看原本還以為只有兩個人 (我跟我的分身帳號)，結果竟然多一個人了！還不來&lt;a href=&#34;https://aben20807.github.io/subscription/&#34;&gt;訂閱&lt;/a&gt;？&lt;/p&gt;
+
+&lt;p&gt;mailchimp 的用法其實官網就有提供，我英文不太行的看久一點就可以架設好服務了，我相信你們可以的 (?)&lt;/p&gt;
+
+&lt;h2 id=&#34;8-google-analytics&#34;&gt;8. google analytics&lt;/h2&gt;
+
+&lt;p&gt;Google 的流量監測，Hugo 已經有寫好可以直接用，在 &lt;code&gt;config.toml&lt;/code&gt; 直接加上自己的 token 就好，然後還要上傳一個證明是自己網站的 html 檔案，放在 &lt;code&gt;static/&lt;/code&gt; 裡面就可以。上面有提到流量差異大致上就如下，我 Blogger 那邊已經很久沒更新了，一天還是快 100 個人造訪呢 OuO。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF&#34; alt=&#34;左：Blogger，右：這個網站QuQ&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;左：Blogger，右：這個網站QuQ&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;9-hued&#34;&gt;9. hued&lt;/h2&gt;
+
+&lt;p&gt;因為每次編輯時都要用很長的路徑 &lt;code&gt;content/posts/xxxx.md&lt;/code&gt;，頗煩躁，所以就寫了一個把指令包起來的 script，安裝方式可以看 &lt;a href=&#34;https://github.com/aben20807/blog-post#hued&#34;&gt;README&lt;/a&gt;，還有補全喔，雖然應該是只有 oh-my-bash 可用。&lt;/p&gt;
+
+&lt;h2 id=&#34;10-disqus-評論系統&#34;&gt;10. Disqus 評論系統&lt;/h2&gt;
+
+&lt;p&gt;設定方式跟 google analytics 一樣簡單，簡單到我都忘了要設定&amp;hellip;.設定 short name 即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Emacs 安裝 rainbow-delimiters 插件</title>
+      <link>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</link>
+      <pubDate>Thu, 07 Mar 2019 20:23:24 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;恩&amp;hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。&lt;br /&gt;
+本篇記錄一下安裝插件的過程&lt;br /&gt;
+(雖然我這篇還是用 vim 打的&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;這個插件的名稱是 &lt;code&gt;rainbow-delimiters&lt;/code&gt;，顧名思義就是讓對應的括號有相同的顏色，這在一堆括號的語言 lisp 中可以對初學者較為友善。&lt;/p&gt;
+
+&lt;h1 id=&#34;emacs-安裝&#34;&gt;emacs 安裝&lt;/h1&gt;
+
+&lt;p&gt;emacs 的安裝方式就還是提一下，不然我應該記不起來@@&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo add-apt-repository ppa:ubuntu-elisp/ppa
+$ sudo apt-get update
+$ sudo apt-get install emacs-snapshot emacs-snapshot-el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;超基本按鍵&#34;&gt;超基本按鍵&lt;/h1&gt;
+
+&lt;p&gt;我是超新手，所以只暫時記錄最重要的@@&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl-x ctrl-s&lt;/code&gt;：儲存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl-x ctrl-c&lt;/code&gt;：離開&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;新增設定檔&#34;&gt;新增設定檔&lt;/h1&gt;
+
+&lt;p&gt;首先需要新增一個設定檔，就像 vim 中的 &lt;code&gt;.vimrc&lt;/code&gt; 一樣，而為了方便管理我使用 &lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;，我們就直接用 emacs 編輯吧～&lt;/p&gt;
+
+&lt;p&gt;Note. &lt;code&gt;-nw&lt;/code&gt; 可以用非 GUI 的方式開啟 emacs&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ mkdir ~/.emacs.d/
+$ emacs -nw ~/.emacs.d/init.el&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;支援-melpa-https-melpa-org-插件庫&#34;&gt;支援 &lt;a href=&#34;https://melpa.org/#/&#34;&gt;MELPA&lt;/a&gt; 插件庫&lt;/h1&gt;
+
+&lt;p&gt;打開之後貼上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package&lt;/span&gt;)
+(&lt;span style=&#34;color:#66d9ef&#34;&gt;let*&lt;/span&gt; ((no-ssl (and (memq system-type &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(windows-nt ms-dos))
+                    (&lt;span style=&#34;color:#a6e22e&#34;&gt;not&lt;/span&gt; (gnutls-available-p))))
+       (proto (&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; no-ssl &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;)))
+  &lt;span style=&#34;color:#75715e&#34;&gt;;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired                                         &lt;/span&gt;
+  (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;cons&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;melpa&amp;#34;&lt;/span&gt;(concat proto&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://melpa.org/packages/&amp;#34;&lt;/span&gt;)) &lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt;)
+  &lt;span style=&#34;color:#75715e&#34;&gt;;;(add-to-list &amp;#39;package-archives (cons&amp;#34;melpa-stable&amp;#34;(concat proto&amp;#34;://stable.melpa.org/packages/&amp;#34;)) t)                            &lt;/span&gt;
+  (when (&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;lt;&lt;/span&gt; emacs-major-version &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;)
+    &lt;span style=&#34;color:#75715e&#34;&gt;;; For important compatibility libraries like cl-lib                                                                           &lt;/span&gt;
+    (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gnu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; (concat proto &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://elpa.gnu.org/packages/&amp;#34;&lt;/span&gt;)))))
+(package-initialize)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;新增-rainbow-delimiters-插件&#34;&gt;新增 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 插件&lt;/h1&gt;
+
+&lt;p&gt;退出 (上面有記錄怎麼儲存跟離開) 後重新開啟 emacs&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ emacs -nw&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;按下 &lt;code&gt;alt-x&lt;/code&gt; 後輸入 &lt;code&gt;package-list-packages&lt;/code&gt; 接著按下 &lt;code&gt;Enter&lt;/code&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;會發現出現一個各種插件的頁面。&lt;/p&gt;
+
+&lt;p&gt;搜尋方式請按 &lt;code&gt;ctrl-s&lt;/code&gt; 後輸入 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 接著 &lt;code&gt;Enter&lt;/code&gt;  即可找到
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;在那一行按下 &lt;code&gt;i&lt;/code&gt; 會發現最前方多了一個 &lt;code&gt;I&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note. 要取消請按 &lt;code&gt;u&lt;/code&gt;
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;選完後按下 &lt;code&gt;x&lt;/code&gt; 就可以安裝了&lt;/p&gt;
+
+&lt;p&gt;結果最後還需要加東西到 &lt;code&gt;~/emacs.d/init.el&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters&lt;/span&gt;)
+(add-hook &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;prog-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters-mode&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;改完之後會發現有很淺的變色了&lt;/p&gt;
+
+&lt;h1 id=&#34;自訂顏色&#34;&gt;自訂顏色&lt;/h1&gt;
+
+&lt;p&gt;結果就如封面所示。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(custom-set-variables
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(package-selected-packages &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters)))
+(custom-set-faces
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-1-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dark orange&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-2-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deep pink&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-3-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chartreuse&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-4-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;deep sky blue&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-5-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yellow&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-6-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orchid&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-7-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring green&amp;#34;&lt;/span&gt;))))
+ &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-8-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sienna1&amp;#34;&lt;/span&gt;))))
+)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://5xruby.tw/posts/emacs-part1/&#34;&gt;Emacs 入坑引導 - 打造自己的 Ruby IDE - Part 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.emacswiki.org/emacs/RainbowDelimiters&#34;&gt;RainbowDelimiters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ericscrivner.me/2015/06/better-emacs-rainbow-delimiters-color-scheme/&#34;&gt;Better Emacs Rainbow Delimiters Color Scheme&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>把 app 加到 ubuntu 的 dash 目錄</title>
+      <link>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</link>
+      <pubDate>Sat, 02 Mar 2019 10:40:02 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190302-add-app-to-ubuntu-dash-home/</guid>
+      
+      
+      <description>&lt;p&gt;所謂的 dash 就有點像是在 windows 10 點擊「開始」出現的很多 app 的畫面。而在 ubuntu 中有些程式的安裝方式是從網路上下載壓縮檔後解壓縮，一般要啟動的話就需要先去打開那個資料夾再點擊，有點麻煩，所以就找了一個最簡單的方式將要用的程式加到 dash 中。&lt;/p&gt;
+
+&lt;p&gt;測試系統：Ubuntu 18.04&lt;/p&gt;
+
+&lt;h1 id=&#34;使用-gnome-desktop-item-edit&#34;&gt;使用 gnome-desktop-item-edit&lt;/h1&gt;
+
+&lt;p&gt;首先安裝 &lt;code&gt;gnome-desktop-item-edit&lt;/code&gt; 這個工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo apt install --no-install-recommends gnome-panel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接著新增一個應用程式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo gnome-desktop-item-edit /usr/share/applications/ --create-new&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;出現一個小框框，填入名稱以及程式所在&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1YFjaDpgQhBUacfdD38UnId97hAoPG1QL&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1YFjaDpgQhBUacfdD38UnId97hAoPG1QL&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;點 OK 後就會出現了，不需要重新登入或關機&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; alt=&#34;最下排左邊數來第二個&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;最下排左邊數來第二個&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;圖標是預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo vim /usr/share/applications/VisualVM.desktop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;加上-icon-路徑&#34;&gt;加上 icon 路徑&lt;/h1&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1rAWhlWkLTVIJ8JhS_o-o-gZW1grBVbQU&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1rAWhlWkLTVIJ8JhS_o-o-gZW1grBVbQU&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;儲存後就可以看到結果了&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1P1k41x1OtC9bbsphoYVyNTBoA14xDTKf&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1P1k41x1OtC9bbsphoYVyNTBoA14xDTKf&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxconfig.org/how-to-create-desktop-shortcut-launcher-on-ubuntu-18-04-bionic-beaver-linux#h6-3-desktop-shortcut-creation-with-gnome-desktop-item-edit&#34;&gt;Desktop Shortcut creation with gnome-desktop-item-edit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>訂閱囉</title>
+      <link>https://aben20807.github.io/posts/20190227-subscription/</link>
+      <pubDate>Wed, 27 Feb 2019 17:39:51 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190227-subscription/</guid>
+      
+      
+      <description>&lt;p&gt;訂閱起來～訂閱起來～&lt;/p&gt;
+
+&lt;p&gt;本篇主要是測試訂閱有沒有問題 (希望沒有&lt;/p&gt;
+
+&lt;p&gt;要訂閱的話可以透過右上角的信箱圖案填寫 email&lt;/p&gt;
+
+&lt;p&gt;或是真的懶的話：&lt;a href=&#34;https://aben20807.github.io/subscription/&#34;&gt;https://aben20807.github.io/subscription/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;如果是 Gmail 的話可能會被分到「促銷內容」可以透過篩選器喔。或是用右鍵來修改已經寄到信箱的信的標籤喔。&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=19Ftzj_DlKmuTLeyybZw0V50ucBLHuiJ7&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=19Ftzj_DlKmuTLeyybZw0V50ucBLHuiJ7&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Talk About Shame</title>
+      <link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
+      <pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
+      
+      
+      <description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;四者之中，恥尤為要&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;
+
+&lt;h1 id=&#34;關於標題&#34;&gt;關於標題&lt;/h1&gt;
+
+&lt;p&gt;(有時候英文標題就懶的改了，不然就是改了有點怪，想這次的，所以我就不改囉＠＠&lt;/p&gt;
+
+&lt;p&gt;說到英文，「恥」在英文翻譯是 shame，不過在四維的英文中其對應的是 honor。根據不專業的討論，shame 是貶義，而英文卻傾向用褒義表達，更進一步的去解釋可以想成「恥」是讓我們了解什麼是不榮耀的事，大概是這樣。&lt;/p&gt;
+
+&lt;p&gt;(圖片有點震撼我知道 OuO&lt;/p&gt;
+
+&lt;h1 id=&#34;正題&#34;&gt;正題&lt;/h1&gt;
+
+&lt;p&gt;為何會突然講這個主題呢？其實很多事情都是先學會，然後在之後才會去遇到，甚至體會到一開始接觸到時沒有獲得的感觸。這次談的這個主題其實已經在腦海中想過頗多次，但就如同上述，是我在高中學到這段課文後過了很久才漸漸有看法。或許到大學這段期間還不算久，我想會有更多的東西可能是我到老還無法了解的吧。&lt;/p&gt;
+
+&lt;p&gt;總結那篇課文，其認為人會違反一些道德倫理，是因為無恥所導致。&lt;/p&gt;
+
+&lt;p&gt;結合到日常生活中，最微小的可以從那些不遵守交通規則的人身上看出，他們將這些視為理所當然，例如在台南闖紅燈是再稀鬆平常不過的事了，在那些人眼中我看不到一絲的羞恥感。這或許也是現行法律所無法顧慮的吧，之前上課總說法律是道德的最低標準，這也是為何重刑不管用，酒駕的還是會酒駕，因為罰錢根本是小事，內心的道德感一點也沒有覺得自己做錯。我覺得可能要更善加利用輿論壓力才能有效降低，例如酒駕就會有標籤，可能求職時就需要出示之類的，但這都只是外部的約束，主要還是要自己感覺到「恥」。&lt;/p&gt;
+
+&lt;p&gt;除了這些，更有人會合理化自己的行為，認為自己沒有影響別人什麼的，其實就需要去思考那為何需要訂定交通規則。&lt;/p&gt;
+
+&lt;p&gt;另外，亂丟垃圾也是，真心不懂為何有人就是會把垃圾留在離垃圾桶不到五步距離的飲水機上。總之族繁不及備載，這些事一直都會發生。&lt;/p&gt;
+
+&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
+
+&lt;p&gt;好啦，其實也沒有要戰什麼，其實是想表達自己看到的現象彷彿跟以前學到的有些許映射。總之呢，希望世界和平，做人有多一點點羞恥心去用不同的角度去看待事情，這樣才能打造更和諧的社會。&lt;/p&gt;
+
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
+
+&lt;p&gt;其實我是覺得我可能過於看重這件事了，所以會變得比較怕去麻煩別人，當然這有好有壞，我是不太建議像我這樣的個性，因為時常要跟自己打架 XDD。人活著也不是要一直去注意他人的眼光，去找一個適合自己的光譜位置，然後貫徹自己的想法吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Makefile for Testing</title>
+      <link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link>
+      <pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
+      
+      
+      <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input.txt &amp;gt; output.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;
+
+&lt;h1 id=&#34;舊方法&#34;&gt;舊方法&lt;/h1&gt;
+
+&lt;p&gt;不過若是有很多種輸入測資的話會有點麻煩，當然還是可以寫成這樣&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test2&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;或是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
+    ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
+    ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣寫的缺點就是每次測資增加的時候舊需要修改 Makefile&lt;/p&gt;
+
+&lt;h1 id=&#34;makefile-內建函式&#34;&gt;Makefile 內建函式&lt;/h1&gt;
+
+&lt;p&gt;不過其實有更好的寫法，利用 makefile 內建的函式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
+INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
+OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wildcard&lt;/code&gt;: 獲取輸入檔案列表&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;notdir&lt;/code&gt;: 獲得檔案名稱 (去掉前面路徑)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;addprefix&lt;/code&gt;: 加上前綴 (修改輸出路徑)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile&lt;/p&gt;
+
+&lt;h1 id=&#34;完整範例&#34;&gt;完整範例&lt;/h1&gt;
+
+&lt;h2 id=&#34;檔案們&#34;&gt;檔案們&lt;/h2&gt;
+
+&lt;h3 id=&#34;t-c&#34;&gt;&lt;code&gt;t.c&lt;/code&gt;:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, b;
+    scanf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d%d&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;a, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;b);
+    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%d&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;makefile&#34;&gt;&lt;code&gt;Makefile&lt;/code&gt;:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;CC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gcc
+EXEC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a.out
+
+INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
+INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+OUTPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output/linux/
+OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;addprefix &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;,&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;notdir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)))&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; all, test, mk_parent_dir
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;all&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;mk_parent_dir&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    @mkdir -p &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; mk_parent_dir &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUTS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;$(OUTPUT_DIR)%.txt&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;%.txt &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;EXEC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+    ./a.out &amp;lt; $&amp;lt; &amp;gt; $@
+    @cat $&amp;lt; $@ &lt;span style=&#34;color:#75715e&#34;&gt;# cat the content of file&lt;/span&gt;
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;$(EXEC)&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; t.c
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; t.c
+
+&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+    rm -rf &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; a.out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;檔案架構&#34;&gt;檔案架構&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree .
+.
+├── input
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+├── Makefile
+├── output
+└── t.c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;指令同為-make-test&#34;&gt;指令同為 &lt;code&gt;$ make test&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ make test
+gcc t.c
+./a.out &amp;lt; input/linux/test2.txt &amp;gt; output/linux/test2.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+./a.out &amp;lt; input/linux/test3.txt &amp;gt; output/linux/test3.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;78&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;177&lt;/span&gt;
+./a.out &amp;lt; input/linux/test1.txt &amp;gt; output/linux/test1.txt
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;結果檔案架構&#34;&gt;結果檔案架構&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree .
+.
+├── a.out
+├── input
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+├── Makefile
+├── output
+│   └── linux
+│       ├── test1.txt
+│       ├── test2.txt
+│       └── test3.txt
+└── t.c
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
+
+&lt;p&gt;上面的簡單例子中可能看不出 &lt;code&gt;$(INPUTS)&lt;/code&gt; 跟 &lt;code&gt;$(OUTPUTS)&lt;/code&gt; 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 &lt;code&gt;%&lt;/code&gt; 出馬，就像 &lt;code&gt;$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt&lt;/code&gt; 來表示輸入輸出的檔名要一致。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>咖啡木蠹蛾</title>
+      <link>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</link>
+      <pubDate>Tue, 12 Feb 2019 22:51:30 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</guid>
+      
+      
+      <description>&lt;p&gt;(以下圖片皆攝於 2019.02.03)&lt;/p&gt;
+
+&lt;p&gt;咖啡木蠹蛾，學名 Zeuzera Coffeae Nietner
+詳細可以去行政院農業委員會 農業試驗所提供的&lt;a href=&#34;http://web.tari.gov.tw/techcd/%E6%9E%9C%E6%A8%B9/%E5%B8%B8%E7%B6%A0%E6%9E%9C%E6%A8%B9/%E6%A5%8A%E6%A1%83/%E8%9F%B2%E5%AE%B3/%E6%A5%8A%E6%A1%83-%E5%92%96%E5%95%A1%E6%9C%A8%E8%A0%B9%E8%9B%BE.htm&#34;&gt;圖鑑&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=14FU_jdoqFlTPkXxMENhMgayz86EkCfeGvg&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=14FU_jdoqFlTPkXxMENhMgayz86EkCfeGvg&#34; alt=&#34;點圖可放大喔 OuO&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;點圖可放大喔 OuO&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;總之呢就是害蟲，幼蟲會把樹木的枝條蛀空。&lt;/p&gt;
+
+&lt;p&gt;我們家就是幾乎不噴農藥雜草也不會一定要用除草劑處理的光禿禿的，所以難免有害蟲。
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1W2XiqPRhfVaMGkPwO_wRMIiIO_o1tdZH3g&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1W2XiqPRhfVaMGkPwO_wRMIiIO_o1tdZH3g&#34; alt=&#34;灑水中的葡萄園&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;灑水中的葡萄園&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;這隻剛從蛹中出來就被我拍到，然後通報給老媽，她趁牠還沒出去產卵就把牠處理掉了。&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1hssv_igXB1P3KEfEcCT5o2lbT64TF8JcbA&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1hssv_igXB1P3KEfEcCT5o2lbT64TF8JcbA&#34; alt=&#34;蛹，仔細看第1張圖會看到喔&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;蛹，仔細看第1張圖會看到喔&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1GzQL4C-PyzQEkUnv7T2InNbzfUyjR2qZRg&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1GzQL4C-PyzQEkUnv7T2InNbzfUyjR2qZRg&#34; alt=&#34;葡萄營養珠(老媽說是氮珠)&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;葡萄營養珠(老媽說是氮珠)&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Features</title>
+      <link>https://aben20807.github.io/posts/features/</link>
+      <pubDate>Wed, 06 Feb 2019 09:37:31 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/features/</guid>
+      
+      
+      <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;
+
+&lt;h1 id=&#34;標題-heading&#34;&gt;標題 (heading)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;# h1
+## h2
+### h3
+#### h4 支援 emoji 😄
+##### h5 支援中文~
+###### h6 
+####### h7 最多只有到 6 級
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;h1&#34;&gt;h1&lt;/h1&gt;
+
+&lt;h2 id=&#34;h2&#34;&gt;h2&lt;/h2&gt;
+
+&lt;h3 id=&#34;h3&#34;&gt;h3&lt;/h3&gt;
+
+&lt;h4 id=&#34;h4-支援-emoji&#34;&gt;h4 支援 emoji 😄&lt;/h4&gt;
+
+&lt;h5 id=&#34;h5-支援中文&#34;&gt;h5 支援中文~&lt;/h5&gt;
+
+&lt;h6 id=&#34;h6&#34;&gt;h6&lt;/h6&gt;
+
+&lt;p&gt;####### h7 最多只有到 6 級&lt;/p&gt;
+
+&lt;p&gt;右邊會有浮動 TOC (table of contents)，可點擊！&lt;br /&gt;
+只會顯示 h1 ~ h3 過長會變成 &amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;test中文-1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&#34;&gt;test中文 1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&lt;/h3&gt;
+
+&lt;h1 id=&#34;code-section&#34;&gt;Code section&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;()
+{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1 id=&#34;強調字型&#34;&gt;強調字型&lt;/h1&gt;
+
+&lt;p&gt;可參考：&lt;a href=&#34;https://www.markdownguide.org/basic-syntax/#emphasis&#34;&gt;https://www.markdownguide.org/basic-syntax/#emphasis&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;__粗體__  
+**粗體**  
+_斜體_  
+*斜體*  
+__*粗斜體*__
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;粗體&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;粗體&lt;/strong&gt;&lt;br /&gt;
+&lt;em&gt;斜體&lt;/em&gt;&lt;br /&gt;
+&lt;em&gt;斜體&lt;/em&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;粗斜體&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;橫線&#34;&gt;橫線&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;項目-bullet&#34;&gt;項目 (Bullet)&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;+ a
+  + 1
+  + 2
++ b
+  1. OuO
+  2. QuQ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a
+
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;b
+
+&lt;ol&gt;
+&lt;li&gt;OuO&lt;/li&gt;
+&lt;li&gt;QuQ&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;引用&#34;&gt;引用&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; The more I learn, the more I realize how much I don&#39;t know.  
+&amp;gt; --- Albert Einstein
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The more I learn, the more I realize how much I don&amp;rsquo;t know.&lt;br /&gt;
+&amp;mdash; Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;插入圖片&#34;&gt;插入圖片&lt;/h1&gt;
+
+&lt;p&gt;目前並不打算直接上傳到 github，所以找了一些方式&lt;br /&gt;
+一般圖片&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;alt&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://drive.google.com/uc?export=view&amp;amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://drive.google.com/uc?export=view&amp;amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;這裡大部份會使用 google 雲端當作圖床&lt;br /&gt;
+不過從取得連結那裡會拿到：&lt;a href=&#34;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&#34;&gt;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/a&gt;&lt;br /&gt;
+要改成上面的連結才行，所以我動了一些手腳，下面還會顯示標題說明，點擊即可在新分頁開啟可放大的圖片瀏覽器&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;google-title here&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&#34; alt=&#34;title here&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;title here&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h1 id=&#34;youtube&#34;&gt;YouTube&lt;/h1&gt;
+
+&lt;p&gt;&lt;pre&gt;
+{{&amp;lt; youtube &amp;quot;&lt;span&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=jC3jnC1dsAg&#34;&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg&lt;/a&gt;&lt;/span&gt;&amp;quot; &amp;gt;}}
+&lt;/pre&gt;
+
+
+
+
+
+
+
+&lt;div
+  style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 &#34;&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=1&#34;
+  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
+  class=&#34;center&#34;
+  allowfullscreen frameborder=&#34;0&#34;
+  title=&#34;YouTube Video&#34;&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;pre&gt;
+{{&amp;lt; youtube &amp;quot;&lt;span&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&#34;&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&lt;/a&gt;&lt;/span&gt;&amp;quot; &amp;gt;}}
+&lt;/pre&gt;
+
+
+
+
+
+
+
+&lt;div
+  style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  //16:9 &#34;&gt;
+&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=500&#34;
+  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
+  class=&#34;center&#34;
+  allowfullscreen frameborder=&#34;0&#34;
+  title=&#34;YouTube Video&#34;&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Happy New Year</title>
+      <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
+      <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
+      
+      
+      <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;
+
+&lt;p&gt;第一天用比較偏累，基本上把會用的東西都裝一裝了，例如：google analysitcs, disqus。likecoin 的部份我覺得可能還要找方法，不然拖慢許多載入速度。&lt;/p&gt;
+
+&lt;p&gt;總之，主因大致上可以推給 G+ 關閉吧，加上在 Blogger 那邊改主題頗累 (外加煩躁) 選擇 Hugo 主要是速度吧，號稱目前最快，原本考慮的 Jekyll 跟 Hexo 似乎在文章多的時候都會慢，所以就直上了(?)。&lt;/p&gt;
+
+&lt;p&gt;這裡會發的文會更偏向記錄，要說是日記也是可，不過我相信我自己絕對不可能日更，尤其是已經在研究所幹活了，可能這篇第一篇也是最後一篇也說不定。&lt;/p&gt;
+
+&lt;p&gt;恩&amp;hellip;也不知道怎麼結尾，那就這樣吧 OuO&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.57.0" />
+		<meta name="generator" content="Hugo 0.57.1" />
 
 		
 		<meta name="og:title" content="Features" />
@@ -154,6 +154,8 @@
 ### h3
 #### h4 支援 emoji 😄
 ##### h5 支援中文~
+###### h6 
+####### h7 最多只有到 6 級
 </code></pre>
 
 <h1 id="h1" class="article-heading">h1<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
@@ -165,6 +167,10 @@
 <h4 id="h4-支援-emoji" class="article-heading">h4 支援 emoji 😄<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h4-支援-emoji"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h4>
 
 <h5 id="h5-支援中文" class="article-heading">h5 支援中文~<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h5-支援中文"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h5>
+
+<h6 id="h6" class="article-heading">h6<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h6>
+
+<p>####### h7 最多只有到 6 級</p>
 
 <p>右邊會有浮動 TOC (table of contents)，可點擊！<br />
 只會顯示 h1 ~ h3 過長會變成 &hellip;</p>
@@ -178,12 +184,54 @@
     <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
     <span style="color:#66d9ef">return</span> a;
 }</code></pre></div>
+<h1 id="強調字型" class="article-heading">強調字型<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#強調字型"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p>可參考：<a href="https://www.markdownguide.org/basic-syntax/#emphasis" target="_blank">https://www.markdownguide.org/basic-syntax/#emphasis</a></p>
+
+<pre><code>__粗體__  
+**粗體**  
+_斜體_  
+*斜體*  
+__*粗斜體*__
+</code></pre>
+
+<p><strong>粗體</strong><br />
+<strong>粗體</strong><br />
+<em>斜體</em><br />
+<em>斜體</em><br />
+<strong><em>粗斜體</em></strong></p>
+
 <h1 id="橫線" class="article-heading">橫線<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#橫線"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <pre><code>---
 </code></pre>
 
 <hr />
+
+<h1 id="項目-bullet" class="article-heading">項目 (Bullet)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#項目-bullet"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<pre><code>+ a
+  + 1
+  + 2
++ b
+  1. OuO
+  2. QuQ
+</code></pre>
+
+<ul>
+<li>a
+
+<ul>
+<li>1</li>
+<li>2</li>
+</ul></li>
+<li>b
+
+<ol>
+<li>OuO</li>
+<li>QuQ</li>
+</ol></li>
+</ul>
 
 <h1 id="引用" class="article-heading">引用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#引用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
@@ -243,9 +291,9 @@
 
 <h1 id="youtube" class="article-heading">YouTube<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#youtube"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<p><pre><code>
-{{&lt; youtube &ldquo;<a href="https://www.youtube.com/watch?v=jC3jnC1dsAg&quot;" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg&quot;</a> &gt;}}
-</code></pre>
+<p><pre>
+{{&lt; youtube &quot;<span><a href="https://www.youtube.com/watch?v=jC3jnC1dsAg" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg</a></span>&quot; &gt;}}
+</pre>
 
 
 
@@ -265,9 +313,9 @@
 </div>
 </p>
 
-<p><pre><code>
-{{&lt; youtube &ldquo;<a href="https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&quot;" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&quot;</a> &gt;}}
-</code></pre>
+<p><pre>
+{{&lt; youtube &quot;<span><a href="https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500" target="_blank">https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500</a></span>&quot; &gt;}}
+</pre>
 
 
 
@@ -352,8 +400,18 @@
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%bc%b7%e8%aa%bf%e5%ad%97%e5%9e%8b">
+                     強調字型
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
                   <a class="toc-link smoothScroll" href="#%e6%a9%ab%e7%b7%9a">
                      橫線
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e9%a0%85%e7%9b%ae-bullet">
+                     項目 (Bullet)
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
