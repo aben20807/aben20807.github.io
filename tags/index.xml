@@ -8,10 +8,37 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 17 Aug 2019 11:17:09 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 22:18:43 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大學</title>
+      <link>https://aben20807.github.io/tags/%E5%A4%A7%E5%AD%B8/</link>
+      <pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/%E5%A4%A7%E5%AD%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>學習</title>
+      <link>https://aben20807.github.io/tags/%E5%AD%B8%E7%BF%92/</link>
+      <pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/%E5%AD%B8%E7%BF%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>雜談</title>
+      <link>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</link>
+      <pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>C</title>
@@ -55,15 +82,6 @@
       <pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/regexp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>雜談</title>
-      <link>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</link>
-      <pubDate>Sun, 04 Aug 2019 11:08:11 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</guid>
       <description></description>
     </item>
     

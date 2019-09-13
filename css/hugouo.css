@@ -91,7 +91,7 @@ pre {
 }
 p {
     font-size: .95rem !important;
-    line-height: 1.953em;
+    line-height: 1.753em;
     margin: 0 0 1.3em;
 }
 p + ul {
@@ -106,9 +106,14 @@ ul, li {
 }
 img {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
 }
-
+.img-container img {
+    max-height: 100%;
+}
+.img-container {
+    height: 60vh;
+}
 .row {
     display: flex;
 }
@@ -123,6 +128,9 @@ img {
     }
     .side-bar {
         display: none;
+    }
+    .img-container {
+        height: 100%;
     }
 }
 .side-bar {
@@ -256,7 +264,8 @@ blockquote::before{
 }
 
 .gphoto-media {
-    margin-bottom: 2rem;
+    max-width: 100%;
+    max-height: 100%;
 }
 font.douyin{
     text-shadow:-2px 0 rgba(0,255,255,.5),2px 0 rgba(255,0,0,.5);

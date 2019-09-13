@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.57.1" />
+		<meta name="generator" content="Hugo 0.58.0" />
 
 		
 		<meta name="og:title" content="Build MNIST with TVM" />
@@ -332,14 +332,16 @@ score <span style="color:#f92672">=</span> model<span style="color:#f92672">.</s
 model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)</code></pre></div>
 <p>跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
-  <figure class="gphoto-media">
-    <noscript>
-      <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
-    </noscript>
-    <img data-src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable lazyload' alt="train a MNIST model with Keras" data-action="zoom" title="zoom!"></img>
+  <figure class="gphoto-media center">
+    <div class="img-container center">
+      <noscript>
+        <img src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable' alt="train a MNIST model with Keras" data-action="zoom" title=""></img>
+      </noscript>
+      <img data-src="https://drive.google.com/uc?export=view&id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" class='center img-zoomable lazyload' alt="train a MNIST model with Keras" data-action="zoom" title=""></img>
+    </div>
     <figcaption>
       <center class="caption-text">
-        <p style="margin: 0;">train a MNIST model with Keras</p>
+        <p style="margin: .7rem 0 0;">train a MNIST model with Keras</p>
         <!-- hide the link -->
         <font class="douyin hover-show">
           <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
@@ -531,14 +533,16 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 
 <p>發現了一個視覺化工具可以看模型。
 
-  <figure class="gphoto-media">
-    <noscript>
-      <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable' alt="NETRON" data-action="zoom" title="zoom!"></img>
-    </noscript>
-    <img data-src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable lazyload' alt="NETRON" data-action="zoom" title="zoom!"></img>
+  <figure class="gphoto-media center">
+    <div class="img-container center">
+      <noscript>
+        <img src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable' alt="NETRON" data-action="zoom" title=""></img>
+      </noscript>
+      <img data-src="https://drive.google.com/uc?export=view&id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" class='center img-zoomable lazyload' alt="NETRON" data-action="zoom" title=""></img>
+    </div>
     <figcaption>
       <center class="caption-text">
-        <p style="margin: 0;">NETRON</p>
+        <p style="margin: .7rem 0 0;">NETRON</p>
         <!-- hide the link -->
         <font class="douyin hover-show">
           <a href="https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
@@ -555,6 +559,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>output_shape)
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>output)
     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;---&#34;</span>)</code></pre></div>
+      Last modified: Jun 16, 2019
       <div class="row">
         
 <script type="text/javascript">
