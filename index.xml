@@ -12,6 +12,208 @@
     
     
     <item>
+      <title>資料整理</title>
+      <link>https://aben20807.github.io/posts/20191019-data-statistic/</link>
+      <pubDate>Sat, 19 Oct 2019 11:20:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20191019-data-statistic/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs --&gt;
+
+&lt;p&gt;剛好用到一些蠻有用的工具，記錄一下&lt;/p&gt;
+
+&lt;p&gt;資料：一個檔案 13 個數字共有 10,000 個檔案。&lt;br /&gt;
+目的：視覺化平均後的 13 欄資料&lt;br /&gt;
+主要分作以下步驟：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;合併 10,000 筆資料到一個檔案方便複製&lt;/li&gt;
+&lt;li&gt;用 Google Spreadsheet 來平均並製作圖表&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;1-合併&#34;&gt;1. 合併&lt;/h2&gt;
+
+&lt;p&gt;檔案架構大致如下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;├── mae_0000.txt
+├── mae_0001.txt
+├── mae_0002.txt
+├── mae_0003.txt
+├── mae_0004.txt
+├── mae_0005.txt
+├── mae_0006.txt
+├── mae_0007.txt
+├── mae_0008.txt
+├── mae_0009.txt
+├── mae_0010.txt
+├── mae_0011.txt
+├── mae_0012.txt
+.
+.
+.
+└── mae_9999.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;所以首先我們需要合併，這裡介紹一個頗好用的指令 &lt;code&gt;paste&lt;/code&gt;。 &lt;code&gt;paste&lt;/code&gt; 可以將資料水平合併，例如：(左邊行號，右邊內容)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat a.txt b.txt c.txt 
+───────┬──────────────────────────────────────────
+       │ File: a.txt
+───────┼──────────────────────────────────────────
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+───────┴──────────────────────────────────────────
+───────┬──────────────────────────────────────────
+       │ File: b.txt
+───────┼──────────────────────────────────────────
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;
+───────┴──────────────────────────────────────────
+───────┬──────────────────────────────────────────
+       │ File: c.txt
+───────┼──────────────────────────────────────────
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;
+───────┴──────────────────────────────────────────&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ paste *.txt &amp;gt; all.txt
+$ cat all.txt 
+───────┬──────────────────────────────────────────
+       │ File: all.txt
+───────┼──────────────────────────────────────────
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;
+   &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   │ &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;
+───────┴──────────────────────────────────────────&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;所以我們一樣可以用 &lt;code&gt;paste *.txt &amp;gt; all.txt&lt;/code&gt; 來把 10,000 資料都整理到同一個檔案，&lt;/p&gt;
+
+&lt;p&gt;此時如果出現 &lt;code&gt;Too many open files&lt;/code&gt; 的錯誤，可以使用以下指令來增加同時可開啟的檔案數&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ulimit -Hn &lt;span style=&#34;color:#ae81ff&#34;&gt;10240&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# The hard limit&lt;/span&gt;
+$ ulimit -Sn &lt;span style=&#34;color:#ae81ff&#34;&gt;10240&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# The soft limit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;成功變成一個檔案後發現它的 column 太多了 Spreadsheet 無法直接貼上，所以接下來要轉置一下。&lt;/p&gt;
+
+&lt;p&gt;這裡我們使用 awk 來幫忙，新增一個 &lt;code&gt;transpose.sh&lt;/code&gt; 的檔案，內容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env bash
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    for (i=1; i&amp;lt;=NF; i++)  {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        a[NR,i] = $i
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    }
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;NF&amp;gt;p { p = NF }
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;END {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    for(j=1; j&amp;lt;=p; j++) {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        str=a[1,j]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        for(i=2; i&amp;lt;=NR; i++){
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            str=str&amp;#34; &amp;#34;a[i,j];
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        }
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        print str
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    }
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&amp;#39;&lt;/span&gt; $1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;變更一下執行權限，就可以執行了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ chmod +x transpose.sh 
+$ ./transpose.sh all.txt &amp;gt; all_tr.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣資料就會從原本的往右長變成往下長&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ&#34; alt=&#34;轉置前&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;轉置前&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O&#34; alt=&#34;轉置後&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;轉置後&lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;h2 id=&#34;使用-google-spreadsheep&#34;&gt;使用 Google Spreadsheep&lt;/h2&gt;
+
+&lt;p&gt;這裡可能比較沒啥，就是貼上去，這裡我覺得不要用 vim 開啟，找個方便複製的 (例如：VSCode)&lt;/p&gt;
+
+&lt;p&gt;用 Ctrl-v 貼上 Spreadsheet 時可能會花一點時間&lt;/p&gt;
+
+&lt;p&gt;不過發現它把所有的 column 合在一起了&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;我們選取第一個 column 然後點上方的 &amp;ldquo;資料&amp;rdquo; &amp;gt; &amp;ldquo;將文字分隔成不同欄&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;它會自動將第一個 column 分出來，這時後會冒出一個小視窗 (有點不明顯，有時候要滾動一下才會出現)，把下拉式選單點開選擇 &amp;ldquo;空格&amp;rdquo; 這樣它就會把所有 column 分開了。&lt;/p&gt;
+
+&lt;p&gt;
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      
+
+      &lt;figure class=&#34;gphoto-media&#34;&gt;
+        &lt;a href=&#34;https://drive.google.com/open?id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs&#34; target=&#34;_blank&#34;&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs&#34; alt=&#34; &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+        &lt;/a&gt;
+        &lt;figcaption&gt;
+          &lt;center class=&#34;caption-text&#34;&gt; &lt;/center&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;/p&gt;
+
+&lt;p&gt;平均跟圖表部份就按照一般試算表的使用方式，就不記錄了。&lt;/p&gt;
+
+&lt;h2 id=&#34;參考&#34;&gt;參考&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/1729980/6734174&#34;&gt;An efficient way to transpose a file in Bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/a/205646&#34;&gt;Combining large amount of files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>天氣之子 Weathering With You</title>
       <link>https://aben20807.github.io/posts/20190919-weathering-with-you/</link>
       <pubDate>Thu, 19 Sep 2019 23:35:06 +0800</pubDate>
