@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 記錄用</title>
@@ -8,10 +8,21 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 19 Oct 2019 11:20:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 20:27:13 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Numpy Array Truncate</title>
+      <link>https://aben20807.github.io/posts/20191022-numpy-array-truncate/</link>
+      <pubDate>Tue, 22 Oct 2019 20:27:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20191022-numpy-array-truncate/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;踩個雷 OuO&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>資料整理</title>

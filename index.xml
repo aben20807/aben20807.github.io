@@ -12,6 +12,84 @@
     
     
     <item>
+      <title>Numpy Array Truncate</title>
+      <link>https://aben20807.github.io/posts/20191022-numpy-array-truncate/</link>
+      <pubDate>Tue, 22 Oct 2019 20:27:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20191022-numpy-array-truncate/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;踩個雷 OuO&lt;/p&gt;
+
+&lt;p&gt;numpy 的 &lt;code&gt;trunc&lt;/code&gt; [1] 好像沒有針對小數點以下幾位做設定，一次只能全砍變成整數，可是又不能用 &lt;code&gt;around&lt;/code&gt; [2] 解決。&lt;/p&gt;
+
+&lt;p&gt;網路上有找到解法 [3]：很直覺，就是先乘大，truncate 後再除&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;trunc&lt;/span&gt;(values, decs&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trunc(values&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decs)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decs)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;不過這有個問題，可以從以下程式觀察：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;trunc&lt;/span&gt;(a, decimals&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trunc(a&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decimals)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decimals)
+
+arr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;float32(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1.123456789&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2.234567890&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3.45678901&lt;/span&gt;]))
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)
+
+arr_tr6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr6)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr6&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)
+
+arr_tr20 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;輸出如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+float32
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.123456 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+float64
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568357467651 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567880630493 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789016723633&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+object&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;不對啊，型別怎麼不一樣了 OAO&lt;/p&gt;
+
+&lt;p&gt;所以如果不想要型別被改動的話可能要在最後轉成原來的型別&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;trunc&lt;/span&gt;(a, decimals&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;trunc(a&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decimals)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;decimals))&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)
+
+arr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;float32(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1.123456789&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2.234567890&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3.45678901&lt;/span&gt;]))
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)
+
+arr_tr6 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr6)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr6&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)
+
+arr_tr20 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;輸出：(但是就有型別限制的最大儲存長度了)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+float32
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.123456 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+float32
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+float32&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;完美 OuO&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[1] &lt;a href=&#34;https://docs.scipy.org/doc/numpy/reference/generated/numpy.trunc.html&#34;&gt;numpy.trunc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[2] &lt;a href=&#34;https://docs.scipy.org/doc/numpy/reference/generated/numpy.around.html&#34;&gt;numpy.around&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[3] &lt;a href=&#34;https://stackoverflow.com/a/46020635/6734174&#34;&gt;Truncating decimal digits numpy array of floats&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
       <title>資料整理</title>
       <link>https://aben20807.github.io/posts/20191019-data-statistic/</link>
       <pubDate>Sat, 19 Oct 2019 11:20:13 +0800</pubDate>
