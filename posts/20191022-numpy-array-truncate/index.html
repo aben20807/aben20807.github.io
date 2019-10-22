@@ -175,11 +175,11 @@ arr_tr20 <span style="color:#f92672">=</span> trunc(arr, <span style="color:#ae8
 <span style="color:#66d9ef">print</span>(arr_tr20)
 <span style="color:#66d9ef">print</span>(arr_tr20<span style="color:#f92672">.</span>dtype)</code></pre></div>
 <p>輸出如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.1234568 <span style="color:#ae81ff">2</span>.2345679 <span style="color:#ae81ff">3</span>.456789 <span style="color:#f92672">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[1.1234568 2.2345679 3.456789 ]
 float32
-<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.123456 <span style="color:#ae81ff">2</span>.234567 <span style="color:#ae81ff">3</span>.456789<span style="color:#f92672">]</span>
+[1.123456 2.234567 3.456789]
 float64
-<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.1234568357467651 <span style="color:#ae81ff">2</span>.234567880630493 <span style="color:#ae81ff">3</span>.456789016723633<span style="color:#f92672">]</span>
+[1.1234568357467651 2.234567880630493 3.456789016723633]
 object</code></pre></div>
 <p>不對啊，型別怎麼不一樣了 OAO</p>
 
@@ -201,11 +201,11 @@ arr_tr20 <span style="color:#f92672">=</span> trunc(arr, <span style="color:#ae8
 <span style="color:#66d9ef">print</span>(arr_tr20)
 <span style="color:#66d9ef">print</span>(arr_tr20<span style="color:#f92672">.</span>dtype)</code></pre></div>
 <p>輸出：(但是就有型別限制的最大儲存長度了)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.1234568 <span style="color:#ae81ff">2</span>.2345679 <span style="color:#ae81ff">3</span>.456789 <span style="color:#f92672">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[1.1234568 2.2345679 3.456789 ]
 float32
-<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.123456 <span style="color:#ae81ff">2</span>.234567 <span style="color:#ae81ff">3</span>.456789<span style="color:#f92672">]</span>
+[1.123456 2.234567 3.456789]
 float32
-<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>.1234568 <span style="color:#ae81ff">2</span>.2345679 <span style="color:#ae81ff">3</span>.456789 <span style="color:#f92672">]</span>
+[1.1234568 2.2345679 3.456789 ]
 float32</code></pre></div>
 <p>完美 OuO</p>
 

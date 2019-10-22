@@ -46,11 +46,11 @@ arr_tr20 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;輸出如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;[1.1234568 2.2345679 3.456789 ]
 float32
-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.123456 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+[1.123456 2.234567 3.456789]
 float64
-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568357467651 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567880630493 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789016723633&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+[1.1234568357467651 2.234567880630493 3.456789016723633]
 object&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;不對啊，型別怎麼不一樣了 OAO&lt;/p&gt;
 
@@ -72,11 +72,11 @@ arr_tr20 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; trunc(arr, &lt
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(arr_tr20&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dtype)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;輸出：(但是就有型別限制的最大儲存長度了)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;[1.1234568 2.2345679 3.456789 ]
 float32
-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.123456 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.234567 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+[1.123456 2.234567 3.456789]
 float32
-&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;.1234568 &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;.2345679 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;.456789 &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+[1.1234568 2.2345679 3.456789 ]
 float32&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;完美 OuO&lt;/p&gt;
 
