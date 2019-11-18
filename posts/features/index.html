@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.0" />
+		<meta name="generator" content="Hugo 0.59.1" />
 
 		
 		<meta name="og:title" content="Features" />
@@ -33,6 +33,21 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i|Fira+Mono|Lora|Noto+Sans|Roboto+Mono&amp;subset=latin-ext" rel="stylesheet">
 		
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+			  tex2jax: {
+				inlineMath: [['$','$']],
+				displayMath: [['$$','$$']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+					 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			  }
+			});
+		</script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
@@ -105,7 +120,7 @@
 		
 <div class="row bg-white">
   <div class="column col-1">
-    <article class="center bg-white br-3 pv1 ph4 lh-copy f5 nested-links mw7">
+    <article class="center bg-white br-3 pv1 ph4 lh-copy f5 nested-links" style="max-width:720px">
       
       <div class="row">
         <div class="col-md-8">
@@ -145,6 +160,8 @@
 
 
 
+
+
 <p>記錄一下一些特性和使用方式</p>
 
 <h1 id="標題-heading" class="article-heading">標題 (heading)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#標題-heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
@@ -164,11 +181,11 @@
 
 <h3 id="h3" class="article-heading">h3<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 
-<h4 id="h4-支援-emoji" class="article-heading">h4 支援 emoji 😄<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h4-支援-emoji"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h4>
+<h4 id="h4-支援-emoji" class="article-heading">h4 支援 emoji 😄<a class="headline-hash smoothScroll hover-show" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h4-支援-emoji"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h4>
 
-<h5 id="h5-支援中文" class="article-heading">h5 支援中文~<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h5-支援中文"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h5>
+<h5 id="h5-支援中文" class="article-heading">h5 支援中文~<a class="headline-hash smoothScroll hover-show" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h5-支援中文"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h5>
 
-<h6 id="h6" class="article-heading">h6<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h6>
+<h6 id="h6" class="article-heading">h6<a class="headline-hash smoothScroll hover-show" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#h6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h6>
 
 <p>####### h7 最多只有到 6 級</p>
 
@@ -251,7 +268,7 @@ __*粗斜體*__
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">alt</span>](<span style="color:#a6e22e">https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)</code></pre></div>
 <p>
   <figure class="gphoto-media center">
-    <div class="img-container center">
+    <div class="img-container center" style="width:73%;">
       <noscript>
         <img src="https://drive.google.com/uc?export=view&amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="alt" data-action="zoom" title=""></img>
       </noscript>
@@ -275,7 +292,7 @@ __*粗斜體*__
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">google-title here</span>](<span style="color:#a6e22e">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)</code></pre></div>
 <p>
   <figure class="gphoto-media center">
-    <div class="img-container center">
+    <div class="img-container center" style="width:73%;">
       <noscript>
         <img src="https://drive.google.com/uc?export=view&id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" class='center img-zoomable' alt="title here" data-action="zoom" title=""></img>
       </noscript>
@@ -434,13 +451,13 @@ __*粗斜體*__
                      YouTube
                   </a>
                 </li>
-            </ul><li class="nav-item pa3-ns">
-        <div>
-  <a class='goto' id='gotop'>Back to top</a>
-</div>
-<div>
-  <a class='goto' id='gobottom'>Go to bottom</a>
-</div>
+            </ul><ul class='toc'>
+        <li class='toc-item' >
+  <a class='goto pl1 toc-item' id='gotop'>⊛ Back to top</a>
+</li>
+<li class='toc-item' >
+  <a class='goto pl1 toc-item' id='gobottom'>⊛ Go to bottom</a>
+</li>
 <script type='text/javascript'>
   
 var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
@@ -458,7 +475,7 @@ $.getScript( url, function() {
 });
 </script>
 
-      </li>
+      </ul>
     </div></div></div>
 
 		</main>

@@ -8,10 +8,55 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Tue, 22 Oct 2019 20:27:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 08:53:13 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C</title>
+      <link>https://aben20807.github.io/tags/c/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>coding style</title>
+      <link>https://aben20807.github.io/tags/coding-style/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/coding-style/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming sense</title>
+      <link>https://aben20807.github.io/tags/programming-sense/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/programming-sense/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>可讀性</title>
+      <link>https://aben20807.github.io/tags/%E5%8F%AF%E8%AE%80%E6%80%A7/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/%E5%8F%AF%E8%AE%80%E6%80%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>小技巧</title>
+      <link>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>numpy</title>
@@ -100,15 +145,6 @@
       <pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/%E9%9B%9C%E8%AB%87/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://aben20807.github.io/tags/c/</link>
-      <pubDate>Sat, 17 Aug 2019 11:17:09 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/c/</guid>
       <description></description>
     </item>
     
@@ -208,15 +244,6 @@
       <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/makefile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>小技巧</title>
-      <link>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description></description>
     </item>
     

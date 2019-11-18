@@ -8,10 +8,21 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Tue, 22 Oct 2019 20:27:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 08:53:13 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Programming Sense (1)</title>
+      <link>https://aben20807.github.io/posts/20191116-programming-sense/</link>
+      <pubDate>Sat, 16 Nov 2019 08:53:13 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20191116-programming-sense/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+
+&lt;p&gt;主要是我自己編寫邊學慢慢累積的，說真的也找不太到相關的資源，要搜尋也不知道下什麼關鍵字，問別人其實也很難在一時半刻裡解釋清楚，所以就拿來發一篇吧 OuO&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Numpy Array Truncate</title>

@@ -1,50 +1,51 @@
-h1 { font-size: 1.30em; }
-h2 { font-size: 1.25em; }
-h3 { font-size: 1.20em; }
-h4 { font-size: 1.15em; }
-h5 { font-size: 1.10em; }
-h6 { font-size: 1.05em; }
-h1.article-heading {
-    padding-bottom: 0.25em;
+h1 { font-size: 28px; }
+h2 { font-size: 26px; }
+h3 { font-size: 25px; }
+h4 { font-size: 22px; }
+h5 { font-size: 22px; }
+h6 { font-size: 21px; }
+h1.article-heading:after {
+    content: "";
+    display: block;
     border-bottom: 2px solid #dfe2e5;
 }
 h1.article-heading:before {
     font-family: 'Roboto Mono';
     content: "#";
-    color:#428bca;
+    color:#2060a8;
     padding-right: 0.25em;
 }
 h2.article-heading:before {
     font-family: 'Roboto Mono';
     content: "##";
-    color:#428bca;
+    color:#2060a8;
     padding-right: 0.25em;
 }
 h3.article-heading:before {
     font-family: 'Roboto Mono';
     content: "###";
-    color:#428bca;
+    color:#2060a8;
     padding-right: 0.25em;
 }
 h4.article-heading:before {
     font-family: 'Roboto Mono';
-    content: "#*4";
-    color:#428bca;
+    content: "####";
+    color:#2060a8;
     padding-right: 0.25em;
 }
 h5.article-heading:before {
     font-family: 'Roboto Mono';
-    content: "#*5";
-    color:#428bca;
+    content: "#####";
+    color:#2060a8;
     padding-right: 0.25em;
 }
 h6.article-heading:before {
     font-family: 'Roboto Mono';
-    content: "#*6";
-    color:#428bca;
+    content: "######";
+    color:#2060a8;
     padding-right: 0.25em;
 }
-body, p {
+body, p, ul, li {
     font-family: 'Noto Sans', 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
     word-break: break-word;
 }
@@ -59,7 +60,8 @@ h5,
 h6 {
     font-family: 'Lora', 'Noto Sans', 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
     word-break: break-word;
-    margin: .7em 0rem;
+    margin: 0em;
+    padding: .6em 0em .3em;
 }
 h1 > code,
 h2 > code,
@@ -82,16 +84,19 @@ h6:hover .hover-show {
     opacity: 1.0;
 }
 pre {
-    font-size: .9rem !important;
+    font-size: 18px !important;
     max-width: 100%;
     height: auto;
+}
+.mrow {
+    padding-right: 12px !important;
 }
 #hdr {
     text-shadow: black 0.1em 0.1em 0.2em
 }
 p {
-    font-size: .95rem !important;
-    line-height: 1.753em;
+    font-size: 20px !important;
+    line-height: 1.653em;
     margin: 0 0 1.3em;
 }
 p + ul {
@@ -101,8 +106,8 @@ ul {
     margin: 0 0 1.3em;
 }
 ul, li {
-    font-size: .95rem !important;
-    line-height: 1.453em;
+    font-size: 20px !important;
+    line-height: 1.653em;
 }
 img {
     max-width: 100%;
@@ -166,11 +171,11 @@ a:hover {
 }
 
 .toc-nav .toc-item, .toc-nav .toc-link {
-    font-size: .8rem;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 1.4rem;
+    line-height: 1.35em;
     padding: 0 5px;
-    color: #666666;
+    color: #444444;
     -webkit-border-radius: 0;
     border-radius: 0;
     text-decoration: none;
@@ -211,8 +216,6 @@ main {
 
 .goto {
     cursor: pointer;
-    color: #666666;
-    padding-left: .7rem;
 }
 
 .goto:hover {
@@ -238,28 +241,27 @@ main {
 }
 blockquote > p{
     margin: .9em 0 .3em;
+    font-family:'Lora', 'Noto Sans', 'Quattrocento Sans';
+    font-size: 19px !important;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Limelight);
 blockquote{
-    margin:50px auto;
-    font-style:italic;
+    margin:30px auto;
+    font-style:unset;
     color: #555555;
-    font-size: 90%;
     padding:1.2em 10px 1.2em 40px;
-    border-left:8px solid #428bca;
+    border-left:8px solid #2060a8;
     line-height:1.2;
     position: relative;
     background:#EDEDED;
 }
 
 blockquote::before{
-  font-family:Limelight;
   content: "\201C";
-  color:#428bca;
-  font-size:4em;
+  color:#2060a8;
+  font-size:77px;
   position: absolute;
-  left:-45px;
+  left:15px;
   top:0px;
 }
 

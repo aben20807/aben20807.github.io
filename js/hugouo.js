@@ -52,7 +52,7 @@ $.getScript( url, function() {
 
 /* Scrollspy */
 $(window).bind('scroll', function() {
-  var currentTop = $(window).scrollTop();
+  var currentTop = $(window).scrollTop() + 40;
   var elems = $('.scrollspy');
   elems.each(function(index) {
     var elemTop = $(this).offset().top - 20;
