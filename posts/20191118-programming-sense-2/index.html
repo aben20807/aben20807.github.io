@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Programming Sense (2)</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://aben20807.github.io/index.xml">
+		<link rel="canonical" href="https://aben20807.github.io/posts/20191118-programming-sense-2/">
+		
+		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
+		
+		
+		<meta name="generator" content="Hugo 0.59.1" />
+
+		
+		<meta name="og:title" content="Programming Sense (2)" />
+		<meta name="og:type" content="article" />
+		<meta name="og:image" content="https://images.unsplash.com/photo-1539392253103-78d190be0116?ixlib=rb-1.2.1&auto=format&fit=crop&w=2689&q=80" />
+		<meta name="og:description" content="" />
+		<meta name="og:url" content="https://aben20807.github.io/posts/20191118-programming-sense-2/" />
+		<meta name="og:site_name" content="Programming Sense (2)" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@" />
+
+
+		
+		<link rel="stylesheet" href="https://aben20807.github.io/css/tachyons.min.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/story.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/descartes.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/hugouo.css" />
+		<link rel="stylesheet" href="https://aben20807.github.io/css/allinone.css" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i|Fira+Mono|Lora|Noto+Sans|Roboto+Mono&amp;subset=latin-ext" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+			  tex2jax: {
+				inlineMath: [['$','$']],
+				displayMath: [['$$','$$']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+					 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			  }
+			});
+		</script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+		<script>
+				
+				document.addEventListener('DOMContentLoaded', function () {
+						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%', enableGrab: false
+						}).listen('.img-zoomable')
+				})
+		</script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
+		<noscript>
+				<style type="text/css"> .lazyload { display:none; } </style>
+		</noscript>
+
+		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
+		
+		<script src="https://aben20807.github.io/js/story.js"></script>
+
+	</head>
+	<body class="ma0 bg-white section-posts page-kind-page is-page-true ">
+		
+		<header class="cover bg-top" style="background-image: url('https://images.unsplash.com/photo-1539392253103-78d190be0116?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2689&amp;q=80'); background-position: center;">
+			<div class="bg-black-60 bb bt">
+
+				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
+					<a href="https://aben20807.github.io/" title="Home">
+						<img src="https://aben20807.github.io/img/logo.jpg" class="w2 h2 br-100" alt="記錄用" />
+					</a>
+					<div class="fr h2 pv2 tr">
+						<a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
+						<a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
+						<a class="link f5 ml2 dim near-white" href="/about">關於</a>
+						<a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
+						<a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
+						<a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
+						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml" title="RSS Feed"></a>
+						<a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/" role="subscription" title="Subscription"></a>
+						<a class="link f5 ml2 dim near-white fas fa-search" href="https://aben20807.github.io/search/" role="search" title="Search"></a>
+					</div>
+				</nav>
+
+				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Programming Sense (2)</h1>
+					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+						
+						
+							
+								Published
+								<time datetime="2019-11-18T11:36:33&#43;08:00">Nov 18, 2019</time>
+								<span class="display-print">by Huang Po-Hsuan</span>
+								 in <a href="https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88" class="no-underline category title-link near-white dim">程式設計</a>
+								<span class="display-print">at https://aben20807.github.io/posts/20191118-programming-sense-2/</span>
+							
+						
+					</h2>
+				</div>
+
+				
+				
+				
+				<div class="w-100 cf hide-print">
+					<a class="fr f6 ma0 pa2 link white-50 dim fas fa-camera" href="https://unsplash.com/photos/LSC9t3kWOdE" title="Photo Credit"></a>
+				</div>
+				
+				
+
+			</div>
+		</header>
+		
+		<main role="main">
+		
+<div class="row bg-white">
+  <div class="column col-1">
+    <article class="center bg-white br-3 pv1 ph4 lh-copy f5 nested-links" style="max-width:720px">
+      
+      <div class="row">
+        <div class="col-md-8">
+        
+          <div class="mb-5">
+            
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://aben20807.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://aben20807.github.io/tags/programming-sense" role="button">programming sense </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7" role="button">小技巧 </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/coding-style" role="button">coding style </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/c" role="button">c </a></li>
+      
+    
+      <li><a href="https://aben20807.github.io/tags/%E5%8F%AF%E8%AE%80%E6%80%A7" role="button">可讀性 </a></li>
+      
+    
+  </div>
+</div>
+          </div>
+        
+        </div>
+      </div>
+      
+<script src="https://code.iconify.design/1/1.0.0-rc6/iconify.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- https://drive.google.com/uc?export=view&id= -->
+
+<p>結果因為太多項了導致右邊的目錄超出邊界，所以還是要拆成兩篇。QuQ</p>
+
+<p><a href="https://aben20807.github.io/posts/20191116-programming-sense/" target="_blank">{{ 上一篇傳送門：Programming Sense (1) }}</a></p>
+
+<h1 id="抽像化-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science" class="article-heading">抽像化 (<a href="https://en.wikipedia.org/wiki/Abstraction_(computer_science)" target="_blank">Abstraction</a>)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#抽像化-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p>盡量的抽象化自己的程式，最簡單的方式就是把相關的程式碼包成一塊，而不是散在主函式中，包起來的動作通常稱作封裝 (<a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank">Encapsulation</a>)，也有實作成 ADT (<a href="https://en.wikipedia.org/wiki/Abstract_data_type" target="_blank">Abstract data type</a>) 一說。</p>
+
+<p>主要目的就是讓程式碼可重複使用，並讓簡化主函式的流程。抽象化過程要想著如何讓別人 (包括未來的自己) 使用自己的程式碼。可以透過將函式切成一個函式只做一件事讓可重複利用率提高。</p>
+
+<p>例如實作一個 Queue 時，可以將存放的結構 (陣列)、操作指標 (front, rear) 放在同一個 <code>struct</code> 中，甚至將 enqueue 和 dequeue 做成函式指標 (function pointer) 一起放入 <code>struct</code> 中。注意，以下程式碼尚未測試過&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// 結構定義
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Queue {
+  <span style="color:#66d9ef">char</span> que[<span style="color:#ae81ff">26</span>];
+  <span style="color:#66d9ef">int</span> front;
+  <span style="color:#66d9ef">int</span> rear;
+  <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>enque)(<span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> a);
+  <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>deque)(<span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>);
+};
+
+<span style="color:#75715e">// 初始化
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span><span style="color:#a6e22e">init_queue</span>() {
+  <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>ret <span style="color:#f92672">=</span> calloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Queue), <span style="color:#ae81ff">1</span>);
+  ret<span style="color:#f92672">-&gt;</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-&gt;</span>rear <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-&gt;</span>enque <span style="color:#f92672">=</span> enque; <span style="color:#75715e">// 須另外定義 enque 函式
+</span><span style="color:#75715e"></span>  ret<span style="color:#f92672">-&gt;</span>deque <span style="color:#f92672">=</span> deque; <span style="color:#75715e">// 須另外定義 deque 函式
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> ret;
+}
+
+<span style="color:#75715e">// 使用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>q <span style="color:#f92672">=</span> init_queue();
+  q<span style="color:#f92672">-&gt;</span>enque(q, <span style="color:#e6db74">&#39;A&#39;</span>);
+  q<span style="color:#f92672">-&gt;</span>deque(q);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></div>
+<h1 id="寫程式的過程" class="article-heading">寫程式的過程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#寫程式的過程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<h2 id="思考" class="article-heading">思考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#思考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>不先思考就直接寫程式的話是很危險的，通常最後很容易落得需要打掉重練的情況，預先思考可以避免掉一些盲點。</p>
+
+<p>
+  <figure class="gphoto-media center">
+    <div class="img-container center" style="width:73%;">
+      <noscript>
+        <img src="https://drive.google.com/uc?export=view&id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
+      </noscript>
+      <img data-src="https://drive.google.com/uc?export=view&id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
+    </div>
+    <figcaption>
+      <center class="caption-text">
+        <p style="margin: .7rem 0 0;"> </p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
+    </figcaption>
+  </figure>
+</p>
+
+<h3 id="待解決的問題" class="article-heading">待解決的問題<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#待解決的問題"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+
+<p>首先得理解題目或問題的要求，如果有提供範例輸入輸出的話請一定要按照給定的格式，不能多也不能少。不過這在現實中比較少見，很多情況是要去設計防呆的。</p>
+
+<p>直覺的解法一定有，但是通常會有大量的迴圈拖慢程式執行，儘管現在的硬體好到讓我們感覺不出差異，但是還是需要正視這個問題，因為當需求一擴大，效能瓶頸就會是一個大問題。</p>
+
+<p>以下題目來自 108-1 成大資工 資料結構作業三 (這裡放上題目，不過我不打算解它，雖然這樣會比較完整，可是我真的沒空 QuQ)</p>
+
+<iframe src="https://drive.google.com/file/d/1N7S4ynPmXpMYVZVgJdL0_h0K_IYXCwUl/preview" width="720" height="480"></iframe>
+
+<h3 id="是否能簡化" class="article-heading">是否能簡化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#是否能簡化"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+
+<p>以範例問題來說，題目會給定 N 個團體，每個群體的人數不定。最直觀的方法是使用二維陣列存放這 N 個團體各自的成員，要檢查 A 是否屬於某個群體時使用雙層迴圈去搜尋這個二維陣列，都找不到則代表不屬於任何團體。</p>
+
+<p>然而這樣每次搜尋都要耗費不少資源，甚至需要不少程式碼。更好的作法可以對題目的細節做解讀，題目提到成員只會有 A~Z 所以我們可以直接產生一個長度為 26 的整數陣列 <code>people_group_ids</code> (更好的方式是使用 dict 不過 C 沒有內建) 來存放這 26 的人的團體編號，為了方便初始化，可以讓 0 代表沒有團體接著往上累加，讀取到範例輸入讀取到 3 A B C 時，在陣列的 0 1 2 位置上填入 1，等到要查詢 A 的團體編號時就可以使用 <code>people_group_ids[0]</code> 來查詢了，原本 $O(nm)$ 的複雜度直接降為 $O(1)$，程式碼上也較為清楚。另外關於 A 對應 0 要怎麼寫，這就需要對字元有一些了解，可以觀察一下 <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank">ASCII 表格</a>，<code>person = 'B';</code> 的話我們只需要使用 <code>person - 'A'</code>; 就可以得到 <code>1</code> 了，把這個操作放到函式中增加可讀性的話更棒如下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_group_id</span>(
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person) {
+  <span style="color:#66d9ef">return</span> people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>];
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set_group_id</span>(
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person,
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> group_id) {
+  people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>] <span style="color:#f92672">=</span> group_id;
+}</code></pre></div>
+<p>插隊的話只需要從 queue 的頭找 <code>group_id</code> 相同的人即可。</p>
+
+<h3 id="事前設計" class="article-heading">事前設計<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#事前設計"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+
+<p>這裡表達的不是一定要畫出 UML 或是先做好完整架構圖，而是有一點架構就可以，有簡易的流程圖當然更棒，但是我自己通常會在腦中進行，遇到比較大型的才會拿一張紙畫一下流程，這裡推薦 <a href="https://www.draw.io/" target="_blank">draw.io</a> 這個完美的應用程式，可以應付各種圖。</p>
+
+<h2 id="小步前進-持續驗證" class="article-heading">小步前進，持續驗證<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#小步前進-持續驗證"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<blockquote>
+<p>寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。<br />
+&mdash; Yoda 生活筆記 (Lee You Tang) [1]</p>
+</blockquote>
+
+<p>等萬事俱備只欠打扣時我們就可以開始寫程式囉，最有效率的流程就是小步前進逐步驗證，不要一次就把程式打完，這樣執行發現跟結果不一樣時，問題就會非常難找，是輸入錯誤還是中間的邏輯錯誤或是輸出錯誤，若沒有逐步驗證的話，哪個階段出問題真的很難定位。</p>
+
+<p>我的做法會先將輸入部分完成，並且印出結果確認是否跟想像中的結果一模一樣，這裡必須要注意是否有奇怪的換行，或是輸出的順序不對等等問題，因為 C 的輸入會有許多隱藏的陷阱，也許是把空格也當成一個成員之類的。操作的指令也是把讀到的直接印出來確認。驗證完畢才繼續往下一步走。 細心檢查每一個魔鬼細節才能達到最終目的。</p>
+
+<p>強烈建議每一次的驗證完後搭配 git commit 把階段性成果記錄下來。</p>
+
+<p>enque 跟 deque 一樣分開驗證，這時候我們需要加上一些輔助的程式碼幫助我們印出 queue 的內容，來保證每次的操作都是正確的。例如：<code>print_queue()</code>。</p>
+
+<h1 id="除錯-debug" class="article-heading">除錯 (Debug)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#除錯-debug"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<h2 id="編譯訊息" class="article-heading">編譯訊息<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#編譯訊息"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>編譯器產生的訊息相當重要，而且不是只有 Error 重要，Warning 也是一大關鍵，所以千萬不要忽略這些警告，反而要將這些警告視為錯誤，這裡推薦在編譯的時候加上 <code>-Wall -Werror</code> 這樣那些警告就會導致編譯錯誤了。</p>
+
+<h2 id="設計測資" class="article-heading">設計測資<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#設計測資"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 [4]。</p>
+
+<h2 id="註解大法" class="article-heading">註解大法<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#註解大法"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>用註解部份程式碼來找出錯誤是最簡單的方式，但這我通常是用來幫別人抓錯的時候會用，因為我不確定其是否使用逐步驗證的方式，因此只有結果錯誤，但是中間的過程無法直接看出是哪邊有問題，利用註解的方式隔離未驗證的程式碼來逐步比對。</p>
+
+<h2 id="printf-好夥伴" class="article-heading"><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#printf-好夥伴"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 [2]。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_queue</span>(<span style="color:#66d9ef">struct</span> Queue <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> q) {
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">++</span>) {
+    printf(<span style="color:#e6db74">&#34;%c &#34;</span>, q<span style="color:#f92672">-&gt;</span>que[i]);
+  }
+  printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}</code></pre></div>
+<h2 id="gdb" class="article-heading">GDB<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+
+<p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 [3]。</p>
+
+<h1 id="後記" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<p>突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。</p>
+
+<h1 id="參考" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+
+<ul>
+<li>[1]: <a href="https://yodalee.blogspot.com/2019/11/rust-visitor.html" target="_blank">把一顆樹寫出來是會有多難</a></li>
+<li>[2]: <a href="https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak" target="_blank">Tearing apart printf()</a></li>
+<li>[3]: <a href="https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html" target="_blank">107.06.18 好看的 gdb, gdb-dashboard</a></li>
+<li>[4]: <a href="https://aben20807.github.io/posts/20190216-makefile-for-testing/" target="_blank">Makefile for Testing</a></li>
+</ul>
+      Last modified: Nov 18, 2019
+      <div class="row">
+        
+<script type="text/javascript">
+  document.write("<iframe scrolling='no' frameborder='0' class='center' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='' src='https://button.like.co/in/embed/aben20807/button?referrer="+encodeURIComponent(location.href.split("?")[0].split("#")[0])+"'></iframe>");
+</script>
+
+      </div>
+      
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "forrecording" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+  </div><div id="toc" class="column col-2">
+
+  
+  <div class="toc toc-nav toc-pills ml-0 col-3">
+      <li class="nav-item pb-3 text-center">
+        <span class="font-weight-bold mb-2">- CATALOG - </span>
+      </li><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%8a%bd%e5%83%8f%e5%8c%96-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science">
+                     抽像化 (Abstraction)
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%af%ab%e7%a8%8b%e5%bc%8f%e7%9a%84%e9%81%8e%e7%a8%8b">
+                     寫程式的過程
+                  </a>
+                </li>
+            </ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%80%9d%e8%80%83">
+                     思考
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%be%85%e8%a7%a3%e6%b1%ba%e7%9a%84%e5%95%8f%e9%a1%8c">
+                     待解決的問題
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e6%98%af%e5%90%a6%e8%83%bd%e7%b0%a1%e5%8c%96">
+                     是否能簡化
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e4%ba%8b%e5%89%8d%e8%a8%ad%e8%a8%88">
+                     事前設計
+                  </a>
+                </li>
+            </ul></ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%b0%8f%e6%ad%a5%e5%89%8d%e9%80%b2-%e6%8c%81%e7%ba%8c%e9%a9%97%e8%ad%89">
+                     小步前進，持續驗證
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e9%99%a4%e9%8c%af-debug">
+                     除錯 (Debug)
+                  </a>
+                </li>
+            </ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e7%b7%a8%e8%ad%af%e8%a8%8a%e6%81%af">
+                     編譯訊息
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e8%a8%ad%e8%a8%88%e6%b8%ac%e8%b3%87">
+                     設計測資
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e8%a8%bb%e8%a7%a3%e5%a4%a7%e6%b3%95">
+                     註解大法
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#printf-%e5%a5%bd%e5%a4%a5%e4%bc%b4">
+                     printf 好夥伴
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#gdb">
+                     GDB
+                  </a>
+                </li>
+            </ul></ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%be%8c%e8%a8%98">
+                     後記
+                  </a>
+                </li>
+            </ul><ul class="toc"><li class="toc-item">
+                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83">
+                     參考
+                  </a>
+                </li>
+            </ul><ul class='toc'>
+        <li class='toc-item' >
+  <a class='goto pl1 toc-item' id='gotop'>⊛ Back to top</a>
+</li>
+<li class='toc-item' >
+  <a class='goto pl1 toc-item' id='gobottom'>⊛ Go to bottom</a>
+</li>
+<script type='text/javascript'>
+  
+var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
+$.getScript( url, function() {
+  $("#gotop").click(function(event){
+    $('html,body').animate({scrollTop:0}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
+  });
+  $("#gobottom").click(function(event){
+    $('html,body').animate({scrollTop:$(document).height()}, 300,'swing', function() {
+      $('a.toc-link').removeClass('active');
+    });
+  });
+});
+</script>
+
+      </ul>
+    </div></div></div>
+
+		</main>
+		
+			
+		
+		
+		
+		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role="contentinfo">
+			<p class="w-50 fr tr">
+      Made with Hugo and
+      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
+			</p>
+			<p class="w-50 near-white">
+				&copy; 2019 Huang Po-Hsuan
+			</p>
+		</footer>
+		
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123296010-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+	
+	</body>
+</html>
