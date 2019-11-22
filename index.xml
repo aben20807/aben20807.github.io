@@ -201,13 +201,13 @@
 &lt;p&gt;
       &lt;figure class=&#34;gphoto-media&#34;&gt;
         &lt;a href=&#34;https://drive.google.com/open?id=1kYWGLrrnkeQaVo2OwbMZQddDu6iIn-do&#34; target=&#34;_blank&#34;&gt;
-          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1kYWGLrrnkeQaVo2OwbMZQddDu6iIn-do&#34; alt=&#34;vi... [7]&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1kYWGLrrnkeQaVo2OwbMZQddDu6iIn-do&#34; alt=&#34;vi... &#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
         &lt;/a&gt;
         &lt;figcaption&gt;
-          &lt;center class=&#34;caption-text&#34;&gt;vi... [7]&lt;/center&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;vi... &lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
-      &lt;/p&gt;
+       &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:7&#34;&gt;&lt;a href=&#34;#fn:ouo:7&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;vscode&#34;&gt;VSCode&lt;/h2&gt;
 
@@ -257,13 +257,13 @@
 &lt;p&gt;
       &lt;figure class=&#34;gphoto-media&#34;&gt;
         &lt;a href=&#34;https://drive.google.com/open?id=1srj3r8VaQ4_csG69Lr3vQD_ENvjEXmJH&#34; target=&#34;_blank&#34;&gt;
-          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1srj3r8VaQ4_csG69Lr3vQD_ENvjEXmJH&#34; alt=&#34;pythonize [8]... 別亂學 XDD&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
+          &lt;img src=&#34;https://drive.google.com/uc?export=view&amp;id=1srj3r8VaQ4_csG69Lr3vQD_ENvjEXmJH&#34; alt=&#34;pythonize ... 別亂學 XDD&#34; title=&#34;Open in the new tab&#34;&gt;&lt;/img&gt;
         &lt;/a&gt;
         &lt;figcaption&gt;
-          &lt;center class=&#34;caption-text&#34;&gt;pythonize [8]... 別亂學 XDD&lt;/center&gt;
+          &lt;center class=&#34;caption-text&#34;&gt;pythonize ... 別亂學 XDD&lt;/center&gt;
         &lt;/figcaption&gt;
       &lt;/figure&gt;
-      &lt;/p&gt;
+       &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:8&#34;&gt;&lt;a href=&#34;#fn:ouo:8&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;google-coding-style&#34;&gt;Google Coding Style&lt;/h2&gt;
 
@@ -317,7 +317,7 @@
 
 &lt;h3 id=&#34;縮排-indent&#34;&gt;縮排 (Indent)&lt;/h3&gt;
 
-&lt;p&gt;我以前偏好 4 個空格，但是最近有往兩個空格移動的趨勢，另外 Google 也是以 2 個空格為主。然而 Linux kernel 是使用 tab，這裡其實只要跟合作的夥伴們講好統一使用一種即可，就不提有統計指出用 space 賺的錢比用 tab 的人多了 [5]。&lt;/p&gt;
+&lt;p&gt;我以前偏好 4 個空格，但是最近有往兩個空格移動的趨勢，另外 Google 也是以 2 個空格為主。然而 Linux kernel 是使用 tab，這裡其實只要跟合作的夥伴們講好統一使用一種即可，就不提有統計指出用 space 賺的錢比用 tab 的人多了 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:5&#34;&gt;&lt;a href=&#34;#fn:ouo:5&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 
 &lt;h3 id=&#34;if-statement&#34;&gt;If Statement&lt;/h3&gt;
 
@@ -339,13 +339,13 @@
 &lt;h4 id=&#34;加上空格們-1&#34;&gt;加上空格們&lt;/h4&gt;
 
 &lt;p&gt;注意 &lt;code&gt;;&lt;/code&gt; 前不要後要。&lt;br /&gt;
-這裡用 &lt;code&gt;i++&lt;/code&gt; 或 &lt;code&gt;++i&lt;/code&gt; 其實基本上沒有效能差異 [1]，編譯器會幫你最佳化，我更喜歡 &lt;code&gt;i++&lt;/code&gt; 因為要改成 &lt;code&gt;i+=2&lt;/code&gt; 之類的比較方便，另外也是有 &lt;code&gt;i-=-1&lt;/code&gt; [2] 這種邪教&amp;hellip;&lt;/p&gt;
+這裡用 &lt;code&gt;i++&lt;/code&gt; 或 &lt;code&gt;++i&lt;/code&gt; 其實基本上沒有效能差異 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:1&#34;&gt;&lt;a href=&#34;#fn:ouo:1&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;，編譯器會幫你最佳化，我更喜歡 &lt;code&gt;i++&lt;/code&gt; 因為要改成 &lt;code&gt;i+=2&lt;/code&gt; 之類的比較方便，另外也是有 &lt;code&gt;i-=-1&lt;/code&gt; &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:2&#34;&gt;&lt;a href=&#34;#fn:ouo:2&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; 這種邪教&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; some_number; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
   printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;OuO&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;pointer-變數宣告&#34;&gt;Pointer 變數宣告&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;int*x;&lt;/code&gt;、&lt;code&gt;int *x;&lt;/code&gt;、&lt;code&gt;int* x&lt;/code&gt;、&lt;code&gt;int * x&lt;/code&gt; 都是可編譯的寫法，在 C 中 &lt;code&gt;int *x;&lt;/code&gt; 更為常用。C++ 中反而是 &lt;code&gt;int* x;&lt;/code&gt; [3]。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;int*x;&lt;/code&gt;、&lt;code&gt;int *x;&lt;/code&gt;、&lt;code&gt;int* x&lt;/code&gt;、&lt;code&gt;int * x&lt;/code&gt; 都是可編譯的寫法，在 C 中 &lt;code&gt;int *x;&lt;/code&gt; 更為常用。C++ 中反而是 &lt;code&gt;int* x;&lt;/code&gt; &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:3&#34;&gt;&lt;a href=&#34;#fn:ouo:3&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 
 &lt;h3 id=&#34;命名-naming-convention&#34;&gt;命名 (Naming Convention)&lt;/h3&gt;
 
@@ -369,7 +369,7 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;初始化-initialize&#34;&gt;初始化 (Initialize)&lt;/h2&gt;
 
-&lt;p&gt;寫 C 語言時要注意變數的初始化，以免結果跟自己所想的不一樣，這是因為在規格書中的定義中提到，只有全域變數或是靜態 (static) 變數會被初始化，其他未初始化的則不會有明確的初始值。 C99 §6.7.8.10 [4]。在陣列的初始化若要全部定義為 &lt;code&gt;\0&lt;/code&gt;，我們可以直接在宣告中使用 &lt;code&gt;{}&lt;/code&gt; 即可，因為規格書中有規定若初始化的個數不足則會比照靜態變數 C99 §6.7.8.21 [4]:&lt;/p&gt;
+&lt;p&gt;寫 C 語言時要注意變數的初始化，以免結果跟自己所想的不一樣，這是因為在規格書中的定義中提到，只有全域變數或是靜態 (static) 變數會被初始化，其他未初始化的則不會有明確的初始值。 C99 §6.7.8.10 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:4&#34;&gt;&lt;a href=&#34;#fn:ouo:4&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。在陣列的初始化若要全部定義為 &lt;code&gt;\0&lt;/code&gt;，我們可以直接在宣告中使用 &lt;code&gt;{}&lt;/code&gt; 即可，因為規格書中有規定若初始化的個數不足則會比照靜態變數 C99 §6.7.8.21 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:4&#34;&gt;&lt;a href=&#34;#fn:ouo:4&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 每個變數宣告時搭配初始化
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;// 陣列初始化以下都可以
@@ -378,18 +378,18 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; que[&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;註解-comment&#34;&gt;註解 (Comment)&lt;/h2&gt;
 
-&lt;p&gt;請盡量使用英文來註解，因為英文比較不像中文那樣一詞多義，可以較明確的敘述，若執意要用中文就需要注意編碼，目前主流應該是使用 UTF8。內容部份可以多記錄一點上下文而不是僅僅該行程式碼做了什麼事，通常註解會拿來說明整個函式，會需要一行一行註解的情況比較少並會用高可讀性的程式馬來替代。我之前有找到一篇非常詳盡的指南 [6] 可以參考看看 (雖然我也沒有仔細讀完就是了＠＠&lt;/p&gt;
+&lt;p&gt;請盡量使用英文來註解，因為英文比較不像中文那樣一詞多義，可以較明確的敘述，若執意要用中文就需要注意編碼，目前主流應該是使用 UTF8。內容部份可以多記錄一點上下文而不是僅僅該行程式碼做了什麼事，通常註解會拿來說明整個函式，會需要一行一行註解的情況比較少並會用高可讀性的程式馬來替代。我之前有找到一篇非常詳盡的指南 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:6&#34;&gt;&lt;a href=&#34;#fn:ouo:6&#34;&gt;8&lt;/a&gt;&lt;/sup&gt; 可以參考看看 (雖然我也沒有仔細讀完就是了＠＠&lt;/p&gt;
 
 &lt;p&gt;寫法上注意空格即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// OuO
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* OuO */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;副作用-side-effect&#34;&gt;副作用 (Side Effect)&lt;/h2&gt;
+&lt;h2 id=&#34;副-作用-side-effect&#34;&gt;副:作用 (Side Effect)&lt;/h2&gt;
 
 &lt;p&gt;副作用 (&lt;a href=&#34;https://en.wikibooks.org/wiki/C_Programming/Side_effects_and_sequence_points&#34;&gt;Side Effect&lt;/a&gt;) 聽起來好像很不妙，簡單來說就是會在函式內部修改到參數的情況。其實這在一般程式語言中頗為常見，沒有這項功能的話程式會變得相當難寫，例如 Functional language 寫起來就頗耗費腦力。&lt;/p&gt;
 
 &lt;h3 id=&#34;在函式宣告時點出副作用&#34;&gt;在函式宣告時點出副作用&lt;/h3&gt;
 
-&lt;p&gt;但是在開發過程需要適時隔離變化，C 語言提供了 &lt;code&gt;const&lt;/code&gt; 修飾字來標示該參數在函式中不會被修改。以下範例中的 &lt;code&gt;rear&lt;/code&gt; 和 &lt;code&gt;orig&lt;/code&gt;  不會被修改到內容，所以可以利用 &lt;code&gt;const&lt;/code&gt; 來提醒函式呼叫者該參數不會被改動，反之 &lt;code&gt;front&lt;/code&gt; 就有機會被改動。詳細的排列組合可以參考 [9]。&lt;/p&gt;
+&lt;p&gt;但是在開發過程需要適時隔離變化，C 語言提供了 &lt;code&gt;const&lt;/code&gt; 修飾字來標示該參數在函式中不會被修改。以下範例中的 &lt;code&gt;rear&lt;/code&gt; 和 &lt;code&gt;orig&lt;/code&gt;  不會被修改到內容，所以可以利用 &lt;code&gt;const&lt;/code&gt; 來提醒函式呼叫者該參數不會被改動，反之 &lt;code&gt;front&lt;/code&gt; 就有機會被改動。詳細的排列組合可以參考 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:9&#34;&gt;&lt;a href=&#34;#fn:ouo:9&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;deque&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;orig, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;rear) {
   &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;rear) {
     printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Empty&amp;#34;&lt;/span&gt;);
@@ -406,7 +406,7 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; rear) {&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;需要修改的才傳入其指標-pointer&#34;&gt;需要修改的才傳入其指標 (Pointer)&lt;/h3&gt;
 
-&lt;p&gt;這裡要先宣導一個觀念就是 C 語言只有 Pass By Value，也就是只會複製傳入變數的數值，傳入指標也是一樣，我們只是傳入了指標這個數值，而透過這個指標的取值 (dereference) 可以改動對應的記憶體位置 C99 §6.5.2.2.4 [4]。而因為 C 的函式回傳值只限一個，所以大部分會使用修改參數的方式來回傳數值，而真正的回傳值就用來表示函式是否正確執行，否則就回傳對應的錯誤碼。&lt;/p&gt;
+&lt;p&gt;這裡要先宣導一個觀念就是 C 語言只有 Pass By Value，也就是只會複製傳入變數的數值，傳入指標也是一樣，我們只是傳入了指標這個數值，而透過這個指標的取值 (dereference) 可以改動對應的記憶體位置 C99 §6.5.2.2.4 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:4&#34;&gt;&lt;a href=&#34;#fn:ouo:4&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。而因為 C 的函式回傳值只限一個，所以大部分會使用修改參數的方式來回傳數值，而真正的回傳值就用來表示函式是否正確執行，否則就回傳對應的錯誤碼。&lt;/p&gt;
 
 &lt;p&gt;上面那樣改起來好像太奇葩，更好的解決方式是要先思考，把將要在函式內部更動變數在傳入其指標，其餘的只須把數值傳進去即可。當然若是傳入陣列就還是需要指標就像 &lt;code&gt;orig&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 因為最後一個參數不會變動而且只需要其數值
@@ -441,13 +441,13 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;避免使用危險的函式們&#34;&gt;避免使用危險的函式們&lt;/h2&gt;
 
-&lt;p&gt;C 語言給予使用者相當大的彈性但用起來需要知道自己在做什麼，否則會有許多安全性漏洞，有一些函式很容易造成誤用，連資深工程師也常用錯，因此蠻多專案直接把不安全的函式禁用，例如 Git [12]，Intel 的 safestringlib 也有一個完整列表 [13]。以下給出一些較常見的。&lt;/p&gt;
+&lt;p&gt;C 語言給予使用者相當大的彈性但用起來需要知道自己在做什麼，否則會有許多安全性漏洞，有一些函式很容易造成誤用，連資深工程師也常用錯，因此蠻多專案直接把不安全的函式禁用，例如 Git &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:12&#34;&gt;&lt;a href=&#34;#fn:ouo:12&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;，Intel 的 safestringlib 也有一個完整列表 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:13&#34;&gt;&lt;a href=&#34;#fn:ouo:13&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;。以下給出一些較常見的。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;gets()&lt;/code&gt; [10] C11 已經不支援，請改用 &lt;code&gt;fgets()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gets()&lt;/code&gt; &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:10&#34;&gt;&lt;a href=&#34;#fn:ouo:10&#34;&gt;12&lt;/a&gt;&lt;/sup&gt; C11 已經不支援，請改用 &lt;code&gt;fgets()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;strcpy()&lt;/code&gt; 沒有長度偵測。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;strncpy()&lt;/code&gt; 有長度但是不會在結尾補上 &lt;code&gt;\0&lt;/code&gt; [11]。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ato*()&lt;/code&gt; 改用 &lt;code&gt;strto*()&lt;/code&gt; 利於錯誤處理 C99 §7.20.1 [4]。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strncpy()&lt;/code&gt; 有長度但是不會在結尾補上 &lt;code&gt;\0&lt;/code&gt; &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:11&#34;&gt;&lt;a href=&#34;#fn:ouo:11&#34;&gt;13&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ato*()&lt;/code&gt; 改用 &lt;code&gt;strto*()&lt;/code&gt; 利於錯誤處理 C99 §7.20.1 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:4&#34;&gt;&lt;a href=&#34;#fn:ouo:4&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;其他習慣&#34;&gt;其他習慣&lt;/h2&gt;
@@ -457,24 +457,39 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://aben20807.github.io/posts/20191118-programming-sense-2/&#34;&gt;{{ 下一篇傳送門：Programming Sense (2) }}&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
 
-&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+&lt;hr /&gt;
 
-&lt;ul&gt;
-&lt;li&gt;[1]: &lt;a href=&#34;https://stackoverflow.com/a/24887/6734174&#34;&gt;Is there a performance difference between i++ and ++i in C?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[2]: &lt;a href=&#34;https://twitter.com/DasSurma/status/1192736235447619584&#34;&gt;&lt;code&gt;i-=-1&lt;/code&gt; is hipster, expressive and symmetric&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[3]: &lt;a href=&#34;http://www.stroustrup.com/bs_faq2.html#whitespace&#34;&gt;Is &lt;code&gt;int* p;&lt;/code&gt; right or is &lt;code&gt;int *p;&lt;/code&gt; right?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[4]: &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;C99 規格書 ISO/IEC 9899:TC3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[5]: &lt;a href=&#34;https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&#34;&gt;Developers Who Use Spaces Make More Money Than Those Who Use Tabs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[6]: &lt;a href=&#34;http://antirez.com/news/124&#34;&gt;Writing system software: code comments.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[7]: &lt;a href=&#34;https://twitter.com/tpope/status/1172743697315835904&#34;&gt;Tim Pope: when people ask me to recommend a text editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[8]: &lt;a href=&#34;https://www.reddit.com/r/ProgrammerHumor/comments/2wrxyt/a_python_programmer_attempting_java/&#34;&gt;A Python programmer attempting Java&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[9]: &lt;a href=&#34;https://stackoverflow.com/a/1143272&#34;&gt;What is the difference between const int*, const int * const, and int const *?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[10]: &lt;a href=&#34;https://cwe.mitre.org/data/definitions/242.html&#34;&gt;CWE-242: Use of Inherently Dangerous Function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[11]: &lt;a href=&#34;https://devblogs.microsoft.com/oldnewthing/?p=36773&#34;&gt;How can code that tries to prevent a buffer overflow end up causing one?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[12]: &lt;a href=&#34;https://github.com/git/git/blob/master/banned.h&#34;&gt;git/banned.h&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[13]: &lt;a href=&#34;https://github.com/intel/safestringlib/wiki/SDL-List-of-Banned-Functions&#34;&gt;SDL List of Banned Functions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;ol&gt;
+&lt;li id=&#34;fn:ouo:7&#34;&gt;&lt;a href=&#34;https://twitter.com/tpope/status/1172743697315835904&#34;&gt;Tim Pope: when people ask me to recommend a text editor&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:7&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:8&#34;&gt;&lt;a href=&#34;https://www.reddit.com/r/ProgrammerHumor/comments/2wrxyt/a_python_programmer_attempting_java/&#34;&gt;A Python programmer attempting Java&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:8&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:5&#34;&gt;&lt;a href=&#34;https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&#34;&gt;Developers Who Use Spaces Make More Money Than Those Who Use Tabs&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:5&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:1&#34;&gt;&lt;a href=&#34;https://stackoverflow.com/a/24887/6734174&#34;&gt;Is there a performance difference between i++ and ++i in C?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:1&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:2&#34;&gt;&lt;a href=&#34;https://twitter.com/DasSurma/status/1192736235447619584&#34;&gt;&lt;code&gt;i-=-1&lt;/code&gt; is hipster, expressive and symmetric&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:2&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:3&#34;&gt;&lt;a href=&#34;http://www.stroustrup.com/bs_faq2.html#whitespace&#34;&gt;Is &lt;code&gt;int* p;&lt;/code&gt; right or is &lt;code&gt;int *p;&lt;/code&gt; right?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:3&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:4&#34;&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;C99 規格書 ISO/IEC 9899:TC3&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:4&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:6&#34;&gt;&lt;a href=&#34;http://antirez.com/news/124&#34;&gt;Writing system software: code comments.&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:6&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:9&#34;&gt;&lt;a href=&#34;https://stackoverflow.com/a/1143272&#34;&gt;What is the difference between const int*, const int * const, and int const *?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:9&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:12&#34;&gt;&lt;a href=&#34;https://github.com/git/git/blob/master/banned.h&#34;&gt;git/banned.h&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:12&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:13&#34;&gt;&lt;a href=&#34;https://github.com/intel/safestringlib/wiki/SDL-List-of-Banned-Functions&#34;&gt;SDL List of Banned Functions&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:13&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:10&#34;&gt;&lt;a href=&#34;https://cwe.mitre.org/data/definitions/242.html&#34;&gt;CWE-242: Use of Inherently Dangerous Function&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:10&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:11&#34;&gt;&lt;a href=&#34;https://devblogs.microsoft.com/oldnewthing/?p=36773&#34;&gt;How can code that tries to prevent a buffer overflow end up causing one?&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:11&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>

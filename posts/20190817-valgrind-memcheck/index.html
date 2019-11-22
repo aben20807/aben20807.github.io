@@ -168,6 +168,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- https://drive.google.com/uc?export=view&id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f -->
 
 <p>簡單玩玩 @@</p>
@@ -185,7 +198,7 @@
 
 <h1 id="valgrind-的-memcheck" class="article-heading">Valgrind 的 Memcheck<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#valgrind-的-memcheck"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
-<p>要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 <strong>memcheck</strong>，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (<a href="https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation" target="_blank">Instrumentation</a>) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value" target="_blank">Valid-value bits</a>) 及 A bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress" target="_blank">Valid-address bits</a>)。此外，還實做了記憶體分配器 (<a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation" target="_blank">memory allocator</a>)，也就是定義了 <code>malloc</code> 與 <code>free</code> 之類的函式來記錄呼叫次數。</p>
+<p>要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 <strong>memcheck</strong>，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (<a href="https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation" target="_blank">Instrumentation</a>) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value">Valid-value bits</a>) 及 A bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress">Valid-address bits</a>)。此外，還實做了記憶體分配器 (<a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation" target="_blank">memory allocator</a>)，也就是定義了 <code>malloc</code> 與 <code>free</code> 之類的函式來記錄呼叫次數。</p>
 
 <p>總結來說，主要用來做以下項目檢測：</p>
 
@@ -280,7 +293,7 @@
 <h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <ul>
-<li><a href="http://valgrind.org/docs/manual/mc-manual.html" target="_blank">Valgrind User Manual - 4. Memcheck: a memory error detector</a></li>
+<li><a href="http://valgrind.org/docs/manual/mc-manual.html">Valgrind User Manual - 4. Memcheck: a memory error detector</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Valgrind" target="_blank">https://en.wikipedia.org/wiki/Valgrind</a></li>
 </ul>
       Last modified: Aug 17, 2019

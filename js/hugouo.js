@@ -29,17 +29,25 @@ jQuery(document).ready(function( $ ) {
   });
 });
 
+
+function jq(myid) {
+  // Ref: https://learn.jquery.com/using-jquery-core/faq/how-do-i-select-an-element-by-an-id-that-has-characters-used-in-css-notation/
+  return myid.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
+}
 /* Smooth scroll */
 var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
 $.getScript( url, function() {
   $(".smoothScroll").click(function(event){
     event.preventDefault();
     //calculate destination place
-    var dest=0;
-    if($(decodeURI(this.hash)).offset().top > $(document).height()-$(window).height()){
-      dest=$(document).height()-$(window).height();
+    var dest = 0;
+    console.log(jq(decodeURI(this.hash)));
+    console.log($(jq(decodeURI(this.hash))));
+    target = $(jq(decodeURI(this.hash)))
+    if(target.offset().top > $(document).height()-$(window).height()){
+      dest = $(document).height()-$(window).height();
     }else{
-      dest=$(decodeURI(this.hash)).offset().top;
+      dest = target.offset().top;
     }
     //go to destination
     $('html,body').animate({scrollTop:dest}, 300, 'swing');

@@ -306,3 +306,16 @@ font.douyin{
 .img-zoomable:hover {
     transform: scale(1.02);
 }
+.footnote-ref > a, a.footnote-return {
+    color:#2060a8;
+}
+.footnote-ref:before {
+    font-family: 'Roboto Mono';
+    content: "[";
+    color:#2060a8;
+}
+.footnote-ref:after {
+    font-family: 'Roboto Mono';
+    content: "]";
+    color:#2060a8;
+}
