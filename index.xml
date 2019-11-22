@@ -112,7 +112,7 @@
 
 &lt;blockquote&gt;
 &lt;p&gt;寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。&lt;br /&gt;
-&amp;mdash; Yoda 生活筆記 (Lee You Tang) [1]&lt;/p&gt;
+&amp;mdash; Yoda 生活筆記 (Lee You Tang) &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:1&#34;&gt;&lt;a href=&#34;#fn:ouo:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;等萬事俱備只欠打扣時我們就可以開始寫程式囉，最有效率的流程就是小步前進逐步驗證，不要一次就把程式打完，這樣執行發現跟結果不一樣時，問題就會非常難找，是輸入錯誤還是中間的邏輯錯誤或是輸出錯誤，若沒有逐步驗證的話，哪個階段出問題真的很難定位。&lt;/p&gt;
@@ -131,7 +131,7 @@
 
 &lt;h2 id=&#34;設計測資&#34;&gt;設計測資&lt;/h2&gt;
 
-&lt;p&gt;題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 [4]。&lt;/p&gt;
+&lt;p&gt;題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:4&#34;&gt;&lt;a href=&#34;#fn:ouo:4&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 
 &lt;h2 id=&#34;註解大法&#34;&gt;註解大法&lt;/h2&gt;
 
@@ -139,7 +139,7 @@
 
 &lt;h2 id=&#34;printf-好夥伴&#34;&gt;&lt;code&gt;printf&lt;/code&gt; 好夥伴&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;printf()&lt;/code&gt; 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 [2]。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;printf()&lt;/code&gt; 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:2&#34;&gt;&lt;a href=&#34;#fn:ouo:2&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;print_queue&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; Queue &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; q) {
   &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
     printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%c &amp;#34;&lt;/span&gt;, q&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;que[i]);
@@ -148,20 +148,26 @@
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;gdb&#34;&gt;GDB&lt;/h2&gt;
 
-&lt;p&gt;GDB (&lt;a href=&#34;https://www.gnu.org/software/gdb/&#34;&gt;The GNU Project Debugger&lt;/a&gt;) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 &lt;a href=&#34;https://github.com/cyrus-and/gdb-dashboard&#34;&gt;GDB dashboard&lt;/a&gt; 可以參考 [3]。&lt;/p&gt;
+&lt;p&gt;GDB (&lt;a href=&#34;https://www.gnu.org/software/gdb/&#34;&gt;The GNU Project Debugger&lt;/a&gt;) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 &lt;a href=&#34;https://github.com/cyrus-and/gdb-dashboard&#34;&gt;GDB dashboard&lt;/a&gt; 可以參考 &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ouo:3&#34;&gt;&lt;a href=&#34;#fn:ouo:3&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 
 &lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 
 &lt;p&gt;突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
 
-&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
+&lt;hr /&gt;
 
-&lt;ul&gt;
-&lt;li&gt;[1]: &lt;a href=&#34;https://yodalee.blogspot.com/2019/11/rust-visitor.html&#34;&gt;把一顆樹寫出來是會有多難&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[2]: &lt;a href=&#34;https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak&#34;&gt;Tearing apart printf()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[3]: &lt;a href=&#34;https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html&#34;&gt;107.06.18 好看的 gdb, gdb-dashboard&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[4]: &lt;a href=&#34;https://aben20807.github.io/posts/20190216-makefile-for-testing/&#34;&gt;Makefile for Testing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;ol&gt;
+&lt;li id=&#34;fn:ouo:1&#34;&gt;&lt;a href=&#34;https://yodalee.blogspot.com/2019/11/rust-visitor.html&#34;&gt;把一顆樹寫出來是會有多難&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:1&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:4&#34;&gt;&lt;a href=&#34;https://aben20807.github.io/posts/20190216-makefile-for-testing/&#34;&gt;Makefile for Testing&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:4&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:2&#34;&gt;&lt;a href=&#34;https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak&#34;&gt;Tearing apart printf()&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:2&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ouo:3&#34;&gt;&lt;a href=&#34;https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html&#34;&gt;107.06.18 好看的 gdb, gdb-dashboard&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ouo:3&#34;&gt;&lt;sup&gt;[↩]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>

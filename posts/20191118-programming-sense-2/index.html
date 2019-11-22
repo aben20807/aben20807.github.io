@@ -293,7 +293,7 @@
 
 <blockquote>
 <p>寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。<br />
-&mdash; Yoda 生活筆記 (Lee You Tang) [1]</p>
+&mdash; Yoda 生活筆記 (Lee You Tang) <sup class="footnote-ref" id="fnref:ouo:1"><a class='smoothScroll' href="#fn:ouo:1">1</a></sup></p>
 </blockquote>
 
 <p>等萬事俱備只欠打扣時我們就可以開始寫程式囉，最有效率的流程就是小步前進逐步驗證，不要一次就把程式打完，這樣執行發現跟結果不一樣時，問題就會非常難找，是輸入錯誤還是中間的邏輯錯誤或是輸出錯誤，若沒有逐步驗證的話，哪個階段出問題真的很難定位。</p>
@@ -312,7 +312,7 @@
 
 <h2 id="設計測資" class="article-heading">設計測資<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#設計測資"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 [4]。</p>
+<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 <sup class="footnote-ref" id="fnref:ouo:4"><a class='smoothScroll' href="#fn:ouo:4">2</a></sup>。</p>
 
 <h2 id="註解大法" class="article-heading">註解大法<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#註解大法"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
@@ -320,7 +320,7 @@
 
 <h2 id="printf-好夥伴" class="article-heading"><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#printf-好夥伴"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 [2]。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
+<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup class="footnote-ref" id="fnref:ouo:2"><a class='smoothScroll' href="#fn:ouo:2">3</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_queue</span>(<span style="color:#66d9ef">struct</span> Queue <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> q) {
   <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">++</span>) {
     printf(<span style="color:#e6db74">&#34;%c &#34;</span>, q<span style="color:#f92672">-&gt;</span>que[i]);
@@ -329,21 +329,27 @@
 }</code></pre></div>
 <h2 id="gdb" class="article-heading">GDB<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 
-<p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 [3]。</p>
+<p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 <sup class="footnote-ref" id="fnref:ouo:3"><a class='smoothScroll' href="#fn:ouo:3">4</a></sup>。</p>
 
 <h1 id="後記" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 
 <p>突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。</p>
+<div class="footnotes">
 
-<h1 id="參考" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<hr />
 
-<ul>
-<li>[1]: <a href="https://yodalee.blogspot.com/2019/11/rust-visitor.html" target="_blank">把一顆樹寫出來是會有多難</a></li>
-<li>[2]: <a href="https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak" target="_blank">Tearing apart printf()</a></li>
-<li>[3]: <a href="https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html" target="_blank">107.06.18 好看的 gdb, gdb-dashboard</a></li>
-<li>[4]: <a href="https://aben20807.github.io/posts/20190216-makefile-for-testing/" target="_blank">Makefile for Testing</a></li>
-</ul>
-      Last modified: Nov 18, 2019
+<ol>
+<li id="fn:ouo:1"><a href="https://yodalee.blogspot.com/2019/11/rust-visitor.html" target="_blank">把一顆樹寫出來是會有多難</a>
+ <a class='smoothScroll footnote-return' href="#fnref:ouo:1"><sup>[↩]</sup></a></li>
+<li id="fn:ouo:4"><a href="https://aben20807.github.io/posts/20190216-makefile-for-testing/" target="_blank">Makefile for Testing</a>
+ <a class='smoothScroll footnote-return' href="#fnref:ouo:4"><sup>[↩]</sup></a></li>
+<li id="fn:ouo:2"><a href="https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak" target="_blank">Tearing apart printf()</a>
+ <a class='smoothScroll footnote-return' href="#fnref:ouo:2"><sup>[↩]</sup></a></li>
+<li id="fn:ouo:3"><a href="https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html" target="_blank">107.06.18 好看的 gdb, gdb-dashboard</a>
+ <a class='smoothScroll footnote-return' href="#fnref:ouo:3"><sup>[↩]</sup></a></li>
+</ol>
+</div>
+      Last modified: Nov 22, 2019
       <div class="row">
         
 <script type="text/javascript">
@@ -447,11 +453,6 @@
             </ul></ul><ul class="toc"><li class="toc-item">
                   <a class="toc-link smoothScroll" href="#%e5%be%8c%e8%a8%98">
                      後記
-                  </a>
-                </li>
-            </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83">
-                     參考
                   </a>
                 </li>
             </ul><ul class='toc'>
