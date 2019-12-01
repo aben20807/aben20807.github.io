@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="Valgrind 的 Memcheck" />
@@ -181,56 +181,44 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f -->
-
+<!-- raw HTML omitted -->
 <p>簡單玩玩 @@</p>
-
-<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>之前大學時期 (講得好像很久之前 OuO) 的某幾個作業我有拿來測試自己的程式碼是否有 memory leak 的情況，會發生這種情況主要原因是沒有對每一個 alloc 做 free。</p>
-
-<h1 id="環境" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading1" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li>T490s</li>
 <li>Ubuntu 18.04</li>
 </ul>
-
-<h1 id="valgrind-的-memcheck" class="article-heading">Valgrind 的 Memcheck<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#valgrind-的-memcheck"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="valgrind--memcheck" class="article-heading">Valgrind 的 Memcheck<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#valgrind--memcheck"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 <strong>memcheck</strong>，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (<a href="https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation" target="_blank">Instrumentation</a>) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value">Valid-value bits</a>) 及 A bits (<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress">Valid-address bits</a>)。此外，還實做了記憶體分配器 (<a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation" target="_blank">memory allocator</a>)，也就是定義了 <code>malloc</code> 與 <code>free</code> 之類的函式來記錄呼叫次數。</p>
-
 <p>總結來說，主要用來做以下項目檢測：</p>
-
 <ul>
 <li>使用位初始化的記憶體空間</li>
 <li>讀或寫一塊已經 <code>free</code> 過得區塊</li>
 <li>讀或寫超過一塊 <code>malloc</code> 取得合法的大小</li>
 <li>記憶體洩漏 (<a href="https://en.wikipedia.org/wiki/Memory_leak" target="_blank">Memory leaks</a>)</li>
 </ul>
-
 <p>不過插入外程式碼是有代價的，就是效能會變低許多。</p>
-
-<h2 id="安裝" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#安裝"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install valgrind</code></pre></div>
-<h2 id="使用" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
-<h3 id="測試記憶體洩漏-memory-leak-detection" class="article-heading">測試記憶體洩漏 (Memory leak detection)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#測試記憶體洩漏-memory-leak-detection"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+<h2 id="heading2" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install valgrind
+</code></pre></div><h2 id="heading3" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h3 id="-memory-leak-detection" class="article-heading">測試記憶體洩漏 (Memory leak detection)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-memory-leak-detection"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>a <span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>) malloc(<span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">int</span>));
-    printf(<span style="color:#e6db74">&#34;%p</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a);
+    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%p</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a);
     <span style="color:#75715e">// free(a);
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}</code></pre></div>
-<h3 id="編譯" class="article-heading">編譯<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#編譯"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-
+}
+</code></pre></div><h3 id="heading4" class="article-heading">編譯<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p><code>-g</code> 代表加入除錯資訊，可以讓 valgrind 指出在程式的那一行。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gcc -o test test.c -g</code></pre></div>
-<h3 id="利用-valgrind-抓-memory-leak" class="article-heading">利用 valgrind 抓 memory leak<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#利用-valgrind-抓-memory-leak"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">==18006== Memcheck, a memory error detector
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gcc -o test test.c -g
+</code></pre></div><h3 id="-valgrind--memory-leak" class="article-heading">利用 valgrind 抓 memory leak<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-valgrind--memory-leak"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">==18006== Memcheck, a memory error detector
 ==18006== Copyright (C) 2002-2017, and GNU GPL&#39;d, by Julian Seward et al.
 ==18006== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
 ==18006== Command: ./test
@@ -253,45 +241,20 @@
 ==18006==         suppressed: 0 bytes in 0 blocks
 ==18006== 
 ==18006== For counts of detected and suppressed errors, rerun with: -v
-==18006== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)</code></pre></div>
-<h2 id="分析" class="article-heading">分析<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#分析"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+==18006== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+</code></pre></div><h2 id="heading5" class="article-heading">分析<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>程式中我們 malloc 的一塊 1024 個整數大小 (4 bytes) 的記憶體空間，程式結束前沒有呼叫 free 因此產生的 memory leak 的現象。可以看到 valgrind 指出我們在程式第 5 行 <code>int *a = (int *) malloc(1024 * sizeof(int));</code> 分配了 4096 bytes 的記憶體。</p>
-
 <p>此外這裡有一個有趣的現象，就是總共分配的大小是 5120 bytes，這是因為 <code>printf</code> 的關係，這個函式會固定使用 1024 bytes 的記憶體空間。所以 5120 = 4096 + 1024。</p>
-
-<h1 id="有顏色版本-colour-valgrind" class="article-heading">有顏色版本：colour-valgrind<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#有顏色版本-colour-valgrind"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
-<h2 id="安裝-1" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#安裝-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip3 install colour-valgrind <span style="color:#75715e"># 需要 python</span></code></pre></div>
-<h2 id="如果喜歡的話可以直接加在-bashrc" class="article-heading">如果喜歡的話可以直接加在 <code>~/.bashrc</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#如果喜歡的話可以直接加在-bashrc"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias valgrind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;colour-valgrind&#39;</span></code></pre></div>
-<h2 id="使用-1" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h1 id="colourvalgrind" class="article-heading">有顏色版本：colour-valgrind<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#colourvalgrind"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="heading6" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pip3 install colour-valgrind <span style="color:#75715e"># 需要 python</span>
+</code></pre></div><h2 id="-bashrc" class="article-heading">如果喜歡的話可以直接加在 <code>~/.bashrc</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-bashrc"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias valgrind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;colour-valgrind&#39;</span>
+</code></pre></div><h2 id="heading7" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading7"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>基本上就直接跟 valgrind 一樣</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ colour-valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test</code></pre></div>
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" class='center img-zoomable' alt="結果" data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" class='center img-zoomable lazyload' alt="結果" data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;">結果</p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
-<h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ colour-valgrind --leak-check<span style="color:#f92672">=</span>full --show-leak-kinds<span style="color:#f92672">=</span>all ./test
+</code></pre></div><p><img src="https://drive.google.com/open?id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud" alt="google-結果"></p>
+<h1 id="heading8" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading8"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li><a href="http://valgrind.org/docs/manual/mc-manual.html">Valgrind User Manual - 4. Memcheck: a memory error detector</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Valgrind" target="_blank">https://en.wikipedia.org/wiki/Valgrind</a></li>
@@ -333,72 +296,72 @@
       <li class="nav-item pb-3 text-center">
         <span class="font-weight-bold mb-2">- CATALOG - </span>
       </li><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%89%8d%e8%a8%80">
+                  <a class="toc-link smoothScroll" href="#heading">
                      前言
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e7%92%b0%e5%a2%83">
+                  <a class="toc-link smoothScroll" href="#heading1">
                      環境
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#valgrind-%e7%9a%84-memcheck">
+                  <a class="toc-link smoothScroll" href="#valgrind--memcheck">
                      Valgrind 的 Memcheck
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%ae%89%e8%a3%9d">
+                  <a class="toc-link smoothScroll" href="#heading2">
                      安裝
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e4%bd%bf%e7%94%a8">
+                  <a class="toc-link smoothScroll" href="#heading3">
                      使用
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%b8%ac%e8%a9%a6%e8%a8%98%e6%86%b6%e9%ab%94%e6%b4%a9%e6%bc%8f-memory-leak-detection">
+                  <a class="toc-link smoothScroll" href="#-memory-leak-detection">
                      測試記憶體洩漏 (Memory leak detection)
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e7%b7%a8%e8%ad%af">
+                  <a class="toc-link smoothScroll" href="#heading4">
                      編譯
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%88%a9%e7%94%a8-valgrind-%e6%8a%93-memory-leak">
+                  <a class="toc-link smoothScroll" href="#-valgrind--memory-leak">
                      利用 valgrind 抓 memory leak
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%88%86%e6%9e%90">
+                  <a class="toc-link smoothScroll" href="#heading5">
                      分析
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%9c%89%e9%a1%8f%e8%89%b2%e7%89%88%e6%9c%ac-colour-valgrind">
+                  <a class="toc-link smoothScroll" href="#colourvalgrind">
                      有顏色版本：colour-valgrind
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%ae%89%e8%a3%9d-1">
+                  <a class="toc-link smoothScroll" href="#heading6">
                      安裝
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%a6%82%e6%9e%9c%e5%96%9c%e6%ad%a1%e7%9a%84%e8%a9%b1%e5%8f%af%e4%bb%a5%e7%9b%b4%e6%8e%a5%e5%8a%a0%e5%9c%a8-bashrc">
+                  <a class="toc-link smoothScroll" href="#-bashrc">
                      如果喜歡的話可以直接加在 ~/.bashrc
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e4%bd%bf%e7%94%a8-1">
+                  <a class="toc-link smoothScroll" href="#heading7">
                      使用
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99">
+                  <a class="toc-link smoothScroll" href="#heading8">
                      參考資料
                   </a>
                 </li>

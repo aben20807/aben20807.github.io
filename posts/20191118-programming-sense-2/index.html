@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="Programming Sense (2)" />
@@ -191,18 +191,12 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id= -->
-
+<!-- raw HTML omitted -->
 <p>結果因為太多項了導致右邊的目錄超出邊界，所以還是要拆成兩篇。QuQ</p>
-
 <p><a href="https://aben20807.github.io/posts/20191116-programming-sense/" target="_blank">{{ 上一篇傳送門：Programming Sense (1) }}</a></p>
-
-<h1 id="抽像化-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science" class="article-heading">抽像化 (<a href="https://en.wikipedia.org/wiki/Abstraction_(computer_science)" target="_blank">Abstraction</a>)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#抽像化-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="-abstractionhttpsenwikipediaorgwikiabstractioncomputerscience" class="article-heading">抽像化 (<a href="https://en.wikipedia.org/wiki/Abstraction_(computer_science)" target="_blank">Abstraction</a>)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-abstractionhttpsenwikipediaorgwikiabstractioncomputerscience"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>盡量的抽象化自己的程式，最簡單的方式就是把相關的程式碼包成一塊，而不是散在主函式中，包起來的動作通常稱作封裝 (<a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)" target="_blank">Encapsulation</a>)，也有實作成 ADT (<a href="https://en.wikipedia.org/wiki/Abstract_data_type" target="_blank">Abstract data type</a>) 一說。</p>
-
 <p>主要目的就是讓程式碼可重複使用，並讓簡化主函式的流程。抽象化過程要想著如何讓別人 (包括未來的自己) 使用自己的程式碼。可以透過將函式切成一個函式只做一件事讓可重複利用率提高。</p>
-
 <p>例如實作一個 Queue 時，可以將存放的結構 (陣列)、操作指標 (front, rear) 放在同一個 <code>struct</code> 中，甚至將 enqueue 和 dequeue 做成函式指標 (function pointer) 一起放入 <code>struct</code> 中。注意，以下程式碼尚未測試過&hellip;</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// 結構定義
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Queue {
@@ -216,139 +210,92 @@
 <span style="color:#75715e">// 初始化
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span><span style="color:#a6e22e">init_queue</span>() {
   <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>ret <span style="color:#f92672">=</span> calloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Queue), <span style="color:#ae81ff">1</span>);
-  ret<span style="color:#f92672">-&gt;</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-  ret<span style="color:#f92672">-&gt;</span>rear <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-  ret<span style="color:#f92672">-&gt;</span>enque <span style="color:#f92672">=</span> enque; <span style="color:#75715e">// 須另外定義 enque 函式
-</span><span style="color:#75715e"></span>  ret<span style="color:#f92672">-&gt;</span>deque <span style="color:#f92672">=</span> deque; <span style="color:#75715e">// 須另外定義 deque 函式
+  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rear <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>enque <span style="color:#f92672">=</span> enque; <span style="color:#75715e">// 須另外定義 enque 函式
+</span><span style="color:#75715e"></span>  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>deque <span style="color:#f92672">=</span> deque; <span style="color:#75715e">// 須另外定義 deque 函式
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> ret;
 }
 
 <span style="color:#75715e">// 使用
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
   <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>q <span style="color:#f92672">=</span> init_queue();
-  q<span style="color:#f92672">-&gt;</span>enque(q, <span style="color:#e6db74">&#39;A&#39;</span>);
-  q<span style="color:#f92672">-&gt;</span>deque(q);
+  q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>enque(q, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>);
+  q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>deque(q);
   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}</code></pre></div>
-<h1 id="寫程式的過程" class="article-heading">寫程式的過程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#寫程式的過程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
-<h2 id="思考" class="article-heading">思考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#思考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+}
+</code></pre></div><h1 id="heading" class="article-heading">寫程式的過程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="heading1" class="article-heading">思考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>不先思考就直接寫程式的話是很危險的，通常最後很容易落得需要打掉重練的情況，預先思考可以避免掉一些盲點。</p>
-
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
-<h3 id="待解決的問題" class="article-heading">待解決的問題<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#待解決的問題"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-
+<p><img src="https://drive.google.com/open?id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA" alt="google- "></p>
+<h3 id="heading2" class="article-heading">待解決的問題<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>首先得理解題目或問題的要求，如果有提供範例輸入輸出的話請一定要按照給定的格式，不能多也不能少。不過這在現實中比較少見，很多情況是要去設計防呆的。</p>
-
 <p>直覺的解法一定有，但是通常會有大量的迴圈拖慢程式執行，儘管現在的硬體好到讓我們感覺不出差異，但是還是需要正視這個問題，因為當需求一擴大，效能瓶頸就會是一個大問題。</p>
-
 <p>以下題目來自 108-1 成大資工 資料結構作業三 (這裡放上題目，不過我不打算解它，雖然這樣會比較完整，可是我真的沒空 QuQ)</p>
-
-<iframe src="https://drive.google.com/file/d/1N7S4ynPmXpMYVZVgJdL0_h0K_IYXCwUl/preview" width="100%" height="340px"></iframe>
-
-<h3 id="是否能簡化" class="article-heading">是否能簡化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#是否能簡化"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-
+<!-- raw HTML omitted -->
+<h3 id="heading3" class="article-heading">是否能簡化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>以範例問題來說，題目會給定 N 個團體，每個群體的人數不定。最直觀的方法是使用二維陣列存放這 N 個團體各自的成員，要檢查 A 是否屬於某個群體時使用雙層迴圈去搜尋這個二維陣列，都找不到則代表不屬於任何團體。</p>
-
 <p>然而這樣每次搜尋都要耗費不少資源，甚至需要不少程式碼。更好的作法可以對題目的細節做解讀，題目提到成員只會有 A~Z 所以我們可以直接產生一個長度為 26 的整數陣列 <code>people_group_ids</code> (更好的方式是使用 dict 不過 C 沒有內建) 來存放這 26 的人的團體編號，為了方便初始化，可以讓 0 代表沒有團體接著往上累加，讀取到範例輸入讀取到 3 A B C 時，在陣列的 0 1 2 位置上填入 1，等到要查詢 A 的團體編號時就可以使用 <code>people_group_ids[0]</code> 來查詢了，原本 $O(nm)$ 的複雜度直接降為 $O(1)$，程式碼上也較為清楚。另外關於 A 對應 0 要怎麼寫，這就需要對字元有一些了解，可以觀察一下 <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank">ASCII 表格</a>，<code>person = 'B';</code> 的話我們只需要使用 <code>person - 'A'</code>; 就可以得到 <code>1</code> 了，把這個操作放到函式中增加可讀性的話更棒如下。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_group_id</span>(
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person) {
-  <span style="color:#66d9ef">return</span> people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>];
+  <span style="color:#66d9ef">return</span> people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>];
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set_group_id</span>(
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> group_id) {
-  people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>] <span style="color:#f92672">=</span> group_id;
-}</code></pre></div>
-<p>插隊的話只需要從 queue 的頭找 <code>group_id</code> 相同的人即可。</p>
-
-<h3 id="事前設計" class="article-heading">事前設計<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#事前設計"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-
+  people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> group_id;
+}
+</code></pre></div><p>插隊的話只需要從 queue 的頭找 <code>group_id</code> 相同的人即可。</p>
+<h3 id="heading4" class="article-heading">事前設計<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>這裡表達的不是一定要畫出 UML 或是先做好完整架構圖，而是有一點架構就可以，有簡易的流程圖當然更棒，但是我自己通常會在腦中進行，遇到比較大型的才會拿一張紙畫一下流程，這裡推薦 <a href="https://www.draw.io/" target="_blank">draw.io</a> 這個完美的應用程式，可以應付各種圖。</p>
-
-<h2 id="小步前進-持續驗證" class="article-heading">小步前進，持續驗證<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#小步前進-持續驗證"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h2 id="heading5" class="article-heading">小步前進，持續驗證<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <blockquote>
-<p>寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。<br />
-&mdash; Yoda 生活筆記 (Lee You Tang) <sup class="footnote-ref" id="fnref:ouo:1"><a class='smoothScroll' href="#fn:ouo:1">1</a></sup></p>
+<p>寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。<br>
+&mdash; Yoda 生活筆記 (Lee You Tang) <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 </blockquote>
-
 <p>等萬事俱備只欠打扣時我們就可以開始寫程式囉，最有效率的流程就是小步前進逐步驗證，不要一次就把程式打完，這樣執行發現跟結果不一樣時，問題就會非常難找，是輸入錯誤還是中間的邏輯錯誤或是輸出錯誤，若沒有逐步驗證的話，哪個階段出問題真的很難定位。</p>
-
 <p>我的做法會先將輸入部分完成，並且印出結果確認是否跟想像中的結果一模一樣，這裡必須要注意是否有奇怪的換行，或是輸出的順序不對等等問題，因為 C 的輸入會有許多隱藏的陷阱，也許是把空格也當成一個成員之類的。操作的指令也是把讀到的直接印出來確認。驗證完畢才繼續往下一步走。 細心檢查每一個魔鬼細節才能達到最終目的。</p>
-
 <p>強烈建議每一次的驗證完後搭配 git commit 把階段性成果記錄下來。</p>
-
 <p>enque 跟 deque 一樣分開驗證，這時候我們需要加上一些輔助的程式碼幫助我們印出 queue 的內容，來保證每次的操作都是正確的。例如：<code>print_queue()</code>。</p>
-
-<h1 id="除錯-debug" class="article-heading">除錯 (Debug)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#除錯-debug"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
-<h2 id="編譯訊息" class="article-heading">編譯訊息<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#編譯訊息"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h1 id="-debug" class="article-heading">除錯 (Debug)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-debug"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="heading6" class="article-heading">編譯訊息<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>編譯器產生的訊息相當重要，而且不是只有 Error 重要，Warning 也是一大關鍵，所以千萬不要忽略這些警告，反而要將這些警告視為錯誤，這裡推薦在編譯的時候加上 <code>-Wall -Werror</code> 這樣那些警告就會導致編譯錯誤了。</p>
-
-<h2 id="設計測資" class="article-heading">設計測資<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#設計測資"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
-<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 <sup class="footnote-ref" id="fnref:ouo:4"><a class='smoothScroll' href="#fn:ouo:4">2</a></sup>。</p>
-
-<h2 id="註解大法" class="article-heading">註解大法<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#註解大法"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h2 id="heading7" class="article-heading">設計測資<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading7"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。</p>
+<h2 id="heading8" class="article-heading">註解大法<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading8"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>用註解部份程式碼來找出錯誤是最簡單的方式，但這我通常是用來幫別人抓錯的時候會用，因為我不確定其是否使用逐步驗證的方式，因此只有結果錯誤，但是中間的過程無法直接看出是哪邊有問題，利用註解的方式隔離未驗證的程式碼來逐步比對。</p>
-
-<h2 id="printf-好夥伴" class="article-heading"><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#printf-好夥伴"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
-<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup class="footnote-ref" id="fnref:ouo:2"><a class='smoothScroll' href="#fn:ouo:2">3</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
+<h2 id="printf-" class="article-heading"><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#printf-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_queue</span>(<span style="color:#66d9ef">struct</span> Queue <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> q) {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">++</span>) {
-    printf(<span style="color:#e6db74">&#34;%c &#34;</span>, q<span style="color:#f92672">-&gt;</span>que[i]);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
+    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c </span><span style="color:#e6db74">&#34;</span>, q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>que[i]);
   }
-  printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-}</code></pre></div>
-<h2 id="gdb" class="article-heading">GDB<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
-<p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 <sup class="footnote-ref" id="fnref:ouo:3"><a class='smoothScroll' href="#fn:ouo:3">4</a></sup>。</p>
-
-<h1 id="後記" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+  printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}
+</code></pre></div><h2 id="gdb" class="article-heading">GDB<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
+<h1 id="heading9" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading9"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:ouo:1"><a href="https://yodalee.blogspot.com/2019/11/rust-visitor.html" target="_blank">把一顆樹寫出來是會有多難</a>
- <a class='smoothScroll footnote-return' href="#fnref:ouo:1"><sup>[↩]</sup></a></li>
-<li id="fn:ouo:4"><a href="https://aben20807.github.io/posts/20190216-makefile-for-testing/" target="_blank">Makefile for Testing</a>
- <a class='smoothScroll footnote-return' href="#fnref:ouo:4"><sup>[↩]</sup></a></li>
-<li id="fn:ouo:2"><a href="https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak" target="_blank">Tearing apart printf()</a>
- <a class='smoothScroll footnote-return' href="#fnref:ouo:2"><sup>[↩]</sup></a></li>
-<li id="fn:ouo:3"><a href="https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html" target="_blank">107.06.18 好看的 gdb, gdb-dashboard</a>
- <a class='smoothScroll footnote-return' href="#fnref:ouo:3"><sup>[↩]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://yodalee.blogspot.com/2019/11/rust-visitor.html" target="_blank">把一顆樹寫出來是會有多難</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://www.maizure.org/projects/printf/index.html?fbclid=IwAR2fPTM7CxfIWD7pC_crmp-UFDPG2RZ7BH-62e-TCjPmxhzwLyT_D7oEYak" target="_blank">Tearing apart printf()</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://aben20807.blogspot.com/2018/06/1070618-gdb-gdb-dashboard.html" target="_blank">107.06.18 好看的 gdb, gdb-dashboard</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://aben20807.github.io/posts/20190216-makefile-for-testing/" target="_blank">Makefile for Testing</a></p>
+</li>
 </ol>
-</div>
+</section>
       Last modified: Nov 22, 2019
       <div class="row">
         
@@ -386,62 +333,62 @@
       <li class="nav-item pb-3 text-center">
         <span class="font-weight-bold mb-2">- CATALOG - </span>
       </li><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%8a%bd%e5%83%8f%e5%8c%96-abstraction-https-en-wikipedia-org-wiki-abstraction-computer-science">
+                  <a class="toc-link smoothScroll" href="#-abstractionhttpsenwikipediaorgwikiabstractioncomputerscience">
                      抽像化 (Abstraction)
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%af%ab%e7%a8%8b%e5%bc%8f%e7%9a%84%e9%81%8e%e7%a8%8b">
+                  <a class="toc-link smoothScroll" href="#heading">
                      寫程式的過程
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%80%9d%e8%80%83">
+                  <a class="toc-link smoothScroll" href="#heading1">
                      思考
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%be%85%e8%a7%a3%e6%b1%ba%e7%9a%84%e5%95%8f%e9%a1%8c">
+                  <a class="toc-link smoothScroll" href="#heading2">
                      待解決的問題
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%98%af%e5%90%a6%e8%83%bd%e7%b0%a1%e5%8c%96">
+                  <a class="toc-link smoothScroll" href="#heading3">
                      是否能簡化
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e4%ba%8b%e5%89%8d%e8%a8%ad%e8%a8%88">
+                  <a class="toc-link smoothScroll" href="#heading4">
                      事前設計
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%b0%8f%e6%ad%a5%e5%89%8d%e9%80%b2-%e6%8c%81%e7%ba%8c%e9%a9%97%e8%ad%89">
+                  <a class="toc-link smoothScroll" href="#heading5">
                      小步前進，持續驗證
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e9%99%a4%e9%8c%af-debug">
+                  <a class="toc-link smoothScroll" href="#-debug">
                      除錯 (Debug)
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e7%b7%a8%e8%ad%af%e8%a8%8a%e6%81%af">
+                  <a class="toc-link smoothScroll" href="#heading6">
                      編譯訊息
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e8%a8%ad%e8%a8%88%e6%b8%ac%e8%b3%87">
+                  <a class="toc-link smoothScroll" href="#heading7">
                      設計測資
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e8%a8%bb%e8%a7%a3%e5%a4%a7%e6%b3%95">
+                  <a class="toc-link smoothScroll" href="#heading8">
                      註解大法
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#printf-%e5%a5%bd%e5%a4%a5%e4%bc%b4">
+                  <a class="toc-link smoothScroll" href="#printf-">
                      printf 好夥伴
                   </a>
                 </li>
@@ -451,7 +398,7 @@
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%be%8c%e8%a8%98">
+                  <a class="toc-link smoothScroll" href="#heading9">
                      後記
                   </a>
                 </li>

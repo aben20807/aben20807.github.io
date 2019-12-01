@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="Github Flow" />
@@ -175,115 +175,79 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id= -->
-
+<!-- raw HTML omitted -->
 <p>最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。</p>
-
-<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>其實是看了 <a href="https://guides.github.com/introduction/flow/" target="_blank">Understanding the GitHub flow</a> 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。</p>
-
-<p>p.s. 這裡有翻譯版：<a href="https://medium.com/@trylovetom/讓我們來了解-github-flow-吧-4144caf1f1bf" target="_blank">讓我們來了解 GitHub Flow 吧！</a></p>
-
+<p>p.s. 這裡有翻譯版：<a href="https://medium.com/@trylovetom/%E8%AE%93%E6%88%91%E5%80%91%E4%BE%86%E4%BA%86%E8%A7%A3-github-flow-%E5%90%A7-4144caf1f1bf" target="_blank">讓我們來了解 GitHub Flow 吧！</a></p>
 <p>&lt;注意&gt; 因為目前專案還不算大型，所以目前遇到的狀況算是比較簡易的。
 &lt;注意&gt; 由於我也是初心者，如果我有誤解的話請跟我說，感激不盡。</p>
-
 <h1 id="github-flow" class="article-heading">GitHub flow<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#github-flow"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
 <p>這個流程，主要是去掉 Git flow 有兩條主線的麻煩。不過誰比較好，還是得看用途，更有 GitLab flow 是合併兩個來用的＠＠</p>
-
 <blockquote>
 <p>GitHub flow 只專注在 master 身上，從 master 上開啟 feature branch，在該 branch 上開發(會有一些 commit)，最後在透過 PR(pull request) 合併到 master。</p>
 </blockquote>
-
 <p>上面這句看似簡單，其實相當複雜，我盡量詳盡解釋。</p>
-
 <p>更清楚的解釋應該為：</p>
-
 <blockquote>
 <p>從主要專案(upstream) fork 一份到自己的帳號(origin)，修改 origin，從 origin/master 新增分支，開發完後將分支 push 到 origin/新分支 上後直接用新分支對 upstream/master 開啟 PR。</p>
 </blockquote>
-
 <h1 id="fork-and-pr" class="article-heading">Fork and PR<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#fork-and-pr"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
 <p>首先，PR 可以達到討論及 code review 的效果，為了達到 PR 我們必須把主專案 fork 一份到自己的帳號。而 PR 的方式主要就是透過 GitHub 網頁提供的界面進行操作。</p>
-
 <p>不過，我試了一下，發現同一個 repo 還是可以透過 branch 發 PR 的，這我就有點不確定為何一定要 fork，或許 fork 是不一定，不過更改自己的 repo 會比較心安一點，尤其若是常使用&hellip;.
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<img src="https://drive.google.com/open?id=1poKsFmBeJ650xMa6OtgxMUGNE8NYo8fy" alt="google- "></p>
 <h1 id="branch" class="article-heading">Branch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#branch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
 <p>Branch 在 git 中花費相當少，因為它就只是一個標籤，所以應該盡量使用它。GitHub flow 中保證 master 上的每一個版本都是可佈署的，因此在此流程中不建議直接在 master 上加 commit 而是在 master 上開一個 branch 出來。</p>
-
 <p>&lt;注意&gt; 一定要從 master 開 branch
 但是又有一個特例：就是當別人還沒 merge 我的 PR 可是我接下來的開發又需要有這個 PR 的內容的時候。網路上我找到有人問這個問題 <a href="https://softwareengineering.stackexchange.com/questions/310427/in-github-flow-is-it-ok-to-base-feature-branch-on-another-feature-branch" target="_blank">傳送門</a>，好像就只能在 branch 分出另一個 branch 來先暫時用。</p>
-
-<h1 id="流程" class="article-heading">流程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#流程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
-<h2 id="初始化" class="article-heading">初始化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#初始化"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h1 id="heading1" class="article-heading">流程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="heading2" class="article-heading">初始化<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <ol>
 <li>Fork 主要專案到自己的 GitHub 帳號</li>
-
-<li><p>Clone 自己 GitHub 中的專案 (fork 過來的)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone &lt;自己專案的 url&gt;</code></pre></div></li>
-
-<li><p>設定 upstream 來源</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add upstream &lt;主要專案的 url&gt;</code></pre></div></li>
+<li>Clone 自己 GitHub 中的專案 (fork 過來的)</li>
 </ol>
-
-<h2 id="開發中" class="article-heading">開發中<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#開發中"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone &lt;自己專案的 url&gt;
+</code></pre></div><ol start="3">
+<li>設定 upstream 來源</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add upstream &lt;主要專案的 url&gt;
+</code></pre></div><h2 id="heading3" class="article-heading">開發中<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <ol>
-<li><p>前往 master 分支 (一開始就在 master 可以不用)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master</code></pre></div></li>
-
-<li><p>新增並前往 feature 分支</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout -b new_feature</code></pre></div></li>
-
-<li><p>開始開發功能</p>
+<li>前往 master 分支 (一開始就在 master 可以不用)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master
+</code></pre></div><ol start="2">
+<li>新增並前往 feature 分支</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout -b new_feature
+</code></pre></div><ol start="3">
+<li>開始開發功能</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git add XXX
-$ git commit</code></pre></div></li>
-
-<li><p>push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git push origin new_feature</code></pre></div></li>
-
-<li><p>準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端</p>
+$ git commit
+</code></pre></div><ol start="4">
+<li>push 到自己帳號的專案 (3. 4. 可以混用，push 完後一樣可以 commit 再 push)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git push origin new_feature
+</code></pre></div><ol start="5">
+<li>準備發起 PR，先把專案更新到最新，也就是把 upstream 的東西更新到自己本地端</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout master
 $ git fetch upstream
-$ git merge upstream/master</code></pre></div></li>
-
-<li><p>回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch</p>
+$ git merge upstream/master
+</code></pre></div><ol start="6">
+<li>回到 feature 分支把 master 中從 upstream 來的新 commit 更新回 feature branch</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout new_feature
 $ git rebase master
-$ git push origin new_feature</code></pre></div></li>
-
-<li><p>發 PR
-開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。</p></li>
+$ git push origin new_feature
+</code></pre></div><ol start="7">
+<li>發 PR
+開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。</li>
 </ol>
-
-<h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading4" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
-<li><a href="https://medium.com/@yengttt/開發用到的git流程-c9082b914974" target="_blank">這次專案用到的Git流程</a>：本篇主要流程來自這裡，更詳盡請點擊參考。</li>
+<li><a href="https://medium.com/@yengttt/%E9%96%8B%E7%99%BC%E7%94%A8%E5%88%B0%E7%9A%84git%E6%B5%81%E7%A8%8B-c9082b914974" target="_blank">這次專案用到的Git流程</a>：本篇主要流程來自這裡，更詳盡請點擊參考。</li>
 <li><a href="https://poychang.github.io/guide-to-use-github-flow/" target="_blank">如何使用 GitHub Flow 來參與開源專案</a></li>
 </ul>
       Last modified: Apr 20, 2019
@@ -323,7 +287,7 @@ $ git push origin new_feature</code></pre></div></li>
       <li class="nav-item pb-3 text-center">
         <span class="font-weight-bold mb-2">- CATALOG - </span>
       </li><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%89%8d%e8%a8%80">
+                  <a class="toc-link smoothScroll" href="#heading">
                      前言
                   </a>
                 </li>
@@ -343,22 +307,22 @@ $ git push origin new_feature</code></pre></div></li>
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%b5%81%e7%a8%8b">
+                  <a class="toc-link smoothScroll" href="#heading1">
                      流程
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%88%9d%e5%a7%8b%e5%8c%96">
+                  <a class="toc-link smoothScroll" href="#heading2">
                      初始化
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e9%96%8b%e7%99%bc%e4%b8%ad">
+                  <a class="toc-link smoothScroll" href="#heading3">
                      開發中
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99">
+                  <a class="toc-link smoothScroll" href="#heading4">
                      參考資料
                   </a>
                 </li>

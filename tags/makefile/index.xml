@@ -19,8 +19,7 @@
       <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190402-makefile-help-message/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。&lt;/p&gt;</description>
     </item>
     
@@ -31,12 +30,10 @@
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid>
       <description>&lt;p&gt;Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p&gt;
-
 &lt;p&gt;例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
     ./a.out &amp;lt; input.txt &amp;gt; output.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;</description>
     </item>
     
   </channel>

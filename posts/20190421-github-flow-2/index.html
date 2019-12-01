@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="Github Flow (2)" />
@@ -175,141 +175,38 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id= -->
-
+<!-- raw HTML omitted -->
 <p>針對昨天的再多釐清一些。順便補充一些東西。</p>
-
-<h1 id="關於流程" class="article-heading">關於流程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#關於流程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading" class="article-heading">關於流程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>昨天的流程主要是有需要 fork 的，通常是針對那些你無法對原始專案直接操作的狀況。</p>
-
 <p>如果對同一個專案使用 GitHub flow 也是可以的，也就是說在同一個專案中開啟 branch 在對自己開啟 PR，或許這就是我一開始有點困惑的原因，結果是都適用。</p>
-
-<h1 id="pr-被-merge-後呢" class="article-heading">PR 被 merge 後呢<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#pr-被-merge-後呢"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
-<h2 id="更新-merge-commit" class="article-heading">更新 merge commit<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#更新-merge-commit"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h1 id="pr--merge-" class="article-heading">PR 被 merge 後呢<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#pr--merge-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="-merge-commit" class="article-heading">更新 merge commit<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-merge-commit"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>接下來要做的就是更新一下自己的 master (origin 跟 local)。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git fetch upstream
 $ git checkout master
 $ git merge upstream/master
-$ git push origin master</code></pre></div>
-<h2 id="刪除-branch" class="article-heading">刪除 branch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#刪除-branch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+$ git push origin master
+</code></pre></div><h2 id="-branch" class="article-heading">刪除 branch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-branch"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>GitHub 上在被 merge 的 PR 的界面會出現可以刪除 branch 的按鈕。
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<img src="https://drive.google.com/open?id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i" alt="google- "></p>
 <p>刪除完成後會出現提示，貌似還可以復原呢。這個步驟後你帳號遠端上的那個 branch 就不見了。
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<img src="https://drive.google.com/open?id=1Q39-VcdZ36CqtvOh0NCu1Ix35JxwuzaQ" alt="google- "></p>
 <p>再來是更新到本地端。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 列出本地端的分支 (加上遠端記錄)</span>
-$ git branch -a</code></pre></div>
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1QifWjcp6goVP329L8aBoeV98yVze_XAc" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1QifWjcp6goVP329L8aBoeV98yVze_XAc" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1QifWjcp6goVP329L8aBoeV98yVze_XAc" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+$ git branch -a
+</code></pre></div><p><img src="https://drive.google.com/open?id=1QifWjcp6goVP329L8aBoeV98yVze_XAc" alt="google- "></p>
 <p>刪除遠端記錄</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 模擬遠端可刪除分支</span>
 $ git remote prune origin --dry-run
 
 <span style="color:#75715e"># 執行刪除</span>
-$ git remote prune origin</code></pre></div>
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+$ git remote prune origin
+</code></pre></div><p><img src="https://drive.google.com/open?id=1w1LtPh3fYn6s2EO21yof6Xh8T60Gw-Zc" alt="google- ">
+<img src="https://drive.google.com/open?id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0" alt="google- "></p>
 <p>刪除本地分支後就大功告成</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git branch -d new_feature</code></pre></div>
-<h1 id="參考" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git branch -d new_feature
+</code></pre></div><h1 id="heading1" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li><a href="http://www.fizerkhan.com/blog/posts/Clean-up-your-local-branches-after-merge-and-delete-in-GitHub.html">Clean up your local branches after merge and delete in GitHub</a></li>
 </ul>
@@ -350,27 +247,27 @@ $ git remote prune origin</code></pre></div>
       <li class="nav-item pb-3 text-center">
         <span class="font-weight-bold mb-2">- CATALOG - </span>
       </li><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e9%97%9c%e6%96%bc%e6%b5%81%e7%a8%8b">
+                  <a class="toc-link smoothScroll" href="#heading">
                      關於流程
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#pr-%e8%a2%ab-merge-%e5%be%8c%e5%91%a2">
+                  <a class="toc-link smoothScroll" href="#pr--merge-">
                      PR 被 merge 後呢
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%9b%b4%e6%96%b0-merge-commit">
+                  <a class="toc-link smoothScroll" href="#-merge-commit">
                      更新 merge commit
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%88%aa%e9%99%a4-branch">
+                  <a class="toc-link smoothScroll" href="#-branch">
                      刪除 branch
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83">
+                  <a class="toc-link smoothScroll" href="#heading1">
                      參考
                   </a>
                 </li>

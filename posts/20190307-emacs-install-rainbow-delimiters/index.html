@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="Emacs 安裝 rainbow-delimiters 插件" />
@@ -175,38 +175,28 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id= -->
-
-<p>恩&hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。<br />
-本篇記錄一下安裝插件的過程<br />
+<!-- raw HTML omitted -->
+<p>恩&hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。<br>
+本篇記錄一下安裝插件的過程<br>
 (雖然我這篇還是用 vim 打的&hellip;.</p>
-
 <p>這個插件的名稱是 <code>rainbow-delimiters</code>，顧名思義就是讓對應的括號有相同的顏色，這在一堆括號的語言 lisp 中可以對初學者較為友善。</p>
-
-<h1 id="emacs-安裝" class="article-heading">emacs 安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#emacs-安裝"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="emacs-" class="article-heading">emacs 安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#emacs-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>emacs 的安裝方式就還是提一下，不然我應該記不起來@@</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo add-apt-repository ppa:ubuntu-elisp/ppa
 $ sudo apt-get update
-$ sudo apt-get install emacs-snapshot emacs-snapshot-el</code></pre></div>
-<h1 id="超基本按鍵" class="article-heading">超基本按鍵<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#超基本按鍵"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+$ sudo apt-get install emacs-snapshot emacs-snapshot-el
+</code></pre></div><h1 id="heading" class="article-heading">超基本按鍵<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>我是超新手，所以只暫時記錄最重要的@@</p>
-
 <ul>
 <li><code>ctrl-x ctrl-s</code>：儲存</li>
 <li><code>ctrl-x ctrl-c</code>：離開</li>
 </ul>
-
-<h1 id="新增設定檔" class="article-heading">新增設定檔<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#新增設定檔"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+<h1 id="heading1" class="article-heading">新增設定檔<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>首先需要新增一個設定檔，就像 vim 中的 <code>.vimrc</code> 一樣，而為了方便管理我使用 <code>~/.emacs.d/init.el</code>，我們就直接用 emacs 編輯吧～</p>
-
 <p>Note. <code>-nw</code> 可以用非 GUI 的方式開啟 emacs</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir ~/.emacs.d/
-$ emacs -nw ~/.emacs.d/init.el</code></pre></div>
-<h1 id="支援-melpa-https-melpa-org-插件庫" class="article-heading">支援 <a href="https://melpa.org/#/" target="_blank">MELPA</a> 插件庫<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#支援-melpa-https-melpa-org-插件庫"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+$ emacs -nw ~/.emacs.d/init.el
+</code></pre></div><h1 id="-melpahttpsmelpaorg-" class="article-heading">支援 <a href="https://melpa.org/#/" target="_blank">MELPA</a> 插件庫<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-melpahttpsmelpaorg-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>打開之後貼上</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;package</span>)
 (<span style="color:#66d9ef">let*</span> ((no-ssl (and (memq system-type <span style="color:#f92672">&#39;</span>(windows-nt ms-dos))
@@ -218,87 +208,24 @@ $ emacs -nw ~/.emacs.d/init.el</code></pre></div>
   (when (<span style="color:#a6e22e">&lt;</span> emacs-major-version <span style="color:#ae81ff">24</span>)
     <span style="color:#75715e">;; For important compatibility libraries like cl-lib                                                                           </span>
     (add-to-list <span style="color:#e6db74">&#39;package-archives</span><span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;gnu&#34;</span> <span style="color:#f92672">.</span> (concat proto <span style="color:#e6db74">&#34;://elpa.gnu.org/packages/&#34;</span>)))))
-(package-initialize)</code></pre></div>
-<h1 id="新增-rainbow-delimiters-插件" class="article-heading">新增 <code>rainbow-delimiters</code> 插件<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#新增-rainbow-delimiters-插件"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+(package-initialize)
+</code></pre></div><h1 id="-rainbowdelimiters-" class="article-heading">新增 <code>rainbow-delimiters</code> 插件<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-rainbowdelimiters-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>退出 (上面有記錄怎麼儲存跟離開) 後重新開啟 emacs</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ emacs -nw</code></pre></div>
-<p>按下 <code>alt-x</code> 後輸入 <code>package-list-packages</code> 接著按下 <code>Enter</code>
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ emacs -nw
+</code></pre></div><p>按下 <code>alt-x</code> 後輸入 <code>package-list-packages</code> 接著按下 <code>Enter</code>
+<img src="https://drive.google.com/open?id=1tcS1Yxs-I0J1Nf63528PVypU7LmrhDhG" alt="google- "></p>
 <p>會發現出現一個各種插件的頁面。</p>
-
 <p>搜尋方式請按 <code>ctrl-s</code> 後輸入 <code>rainbow-delimiters</code> 接著 <code>Enter</code>  即可找到
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<img src="https://drive.google.com/open?id=1lQa5BBsjLRQxUheS41WTRi1maN1AtA90" alt="google- "></p>
 <p>在那一行按下 <code>i</code> 會發現最前方多了一個 <code>I</code></p>
-
 <p>Note. 要取消請按 <code>u</code>
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<img src="https://drive.google.com/open?id=1DuzQMOTEc4MO4HByxDhKCpVu30fr3FvV" alt="google- "></p>
 <p>選完後按下 <code>x</code> 就可以安裝了</p>
-
 <p>結果最後還需要加東西到 <code>~/emacs.d/init.el</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;rainbow-delimiters</span>)
-(add-hook <span style="color:#e6db74">&#39;prog-mode-hook</span> <span style="color:#e6db74">&#39;rainbow-delimiters-mode</span>)</code></pre></div>
-<p>改完之後會發現有很淺的變色了</p>
-
-<h1 id="自訂顏色" class="article-heading">自訂顏色<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#自訂顏色"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+(add-hook <span style="color:#e6db74">&#39;prog-mode-hook</span> <span style="color:#e6db74">&#39;rainbow-delimiters-mode</span>)
+</code></pre></div><p>改完之後會發現有很淺的變色了</p>
+<h1 id="heading2" class="article-heading">自訂顏色<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>結果就如封面所示。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(custom-set-variables
  <span style="color:#f92672">&#39;</span>(package-selected-packages <span style="color:#f92672">&#39;</span>(rainbow-delimiters)))
@@ -311,9 +238,8 @@ $ emacs -nw ~/.emacs.d/init.el</code></pre></div>
  <span style="color:#f92672">&#39;</span>(rainbow-delimiters-depth-6-face ((<span style="color:#66d9ef">t</span> (<span style="color:#e6db74">:foreground</span> <span style="color:#e6db74">&#34;orchid&#34;</span>))))
  <span style="color:#f92672">&#39;</span>(rainbow-delimiters-depth-7-face ((<span style="color:#66d9ef">t</span> (<span style="color:#e6db74">:foreground</span> <span style="color:#e6db74">&#34;spring green&#34;</span>))))
  <span style="color:#f92672">&#39;</span>(rainbow-delimiters-depth-8-face ((<span style="color:#66d9ef">t</span> (<span style="color:#e6db74">:foreground</span> <span style="color:#e6db74">&#34;sienna1&#34;</span>))))
-)</code></pre></div>
-<h1 id="參考資料" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考資料"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-
+)
+</code></pre></div><h1 id="heading3" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li><a href="https://5xruby.tw/posts/emacs-part1/" target="_blank">Emacs 入坑引導 - 打造自己的 Ruby IDE - Part 1</a></li>
 <li><a href="https://www.emacswiki.org/emacs/RainbowDelimiters" target="_blank">RainbowDelimiters</a></li>
@@ -356,37 +282,37 @@ $ emacs -nw ~/.emacs.d/init.el</code></pre></div>
       <li class="nav-item pb-3 text-center">
         <span class="font-weight-bold mb-2">- CATALOG - </span>
       </li><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#emacs-%e5%ae%89%e8%a3%9d">
+                  <a class="toc-link smoothScroll" href="#emacs-">
                      emacs 安裝
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e8%b6%85%e5%9f%ba%e6%9c%ac%e6%8c%89%e9%8d%b5">
+                  <a class="toc-link smoothScroll" href="#heading">
                      超基本按鍵
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%96%b0%e5%a2%9e%e8%a8%ad%e5%ae%9a%e6%aa%94">
+                  <a class="toc-link smoothScroll" href="#heading1">
                      新增設定檔
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%94%af%e6%8f%b4-melpa-https-melpa-org-%e6%8f%92%e4%bb%b6%e5%ba%ab">
+                  <a class="toc-link smoothScroll" href="#-melpahttpsmelpaorg-">
                      支援 MELPA 插件庫
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e6%96%b0%e5%a2%9e-rainbow-delimiters-%e6%8f%92%e4%bb%b6">
+                  <a class="toc-link smoothScroll" href="#-rainbowdelimiters-">
                      新增 rainbow-delimiters 插件
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e8%87%aa%e8%a8%82%e9%a1%8f%e8%89%b2">
+                  <a class="toc-link smoothScroll" href="#heading2">
                      自訂顏色
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99">
+                  <a class="toc-link smoothScroll" href="#heading3">
                      參考資料
                   </a>
                 </li>

@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.59.1" />
+		<meta name="generator" content="Hugo 0.60.0" />
 
 		
 		<meta name="og:title" content="資料整理" />
@@ -181,21 +181,16 @@
 
 
 
-<!-- https://drive.google.com/uc?export=view&id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs -->
-
+<!-- raw HTML omitted -->
 <p>剛好用到一些蠻有用的工具，記錄一下</p>
-
-<p>資料：一個檔案 13 個數字共有 10,000 個檔案。<br />
-目的：視覺化平均後的 13 欄資料<br />
+<p>資料：一個檔案 13 個數字共有 10,000 個檔案。<br>
+目的：視覺化平均後的 13 欄資料<br>
 主要分作以下步驟：</p>
-
 <ol>
 <li>合併 10,000 筆資料到一個檔案方便複製</li>
 <li>用 Google Spreadsheet 來平均並製作圖表</li>
 </ol>
-
-<h2 id="1-合併" class="article-heading">1. 合併<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#1-合併"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h2 id="1-" class="article-heading">1. 合併<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#1-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>檔案架構大致如下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">├── mae_0000.txt
 ├── mae_0001.txt
@@ -213,8 +208,8 @@
 .
 .
 .
-└── mae_9999.txt</code></pre></div>
-<p>所以首先我們需要合併，這裡介紹一個頗好用的指令 <code>paste</code>。 <code>paste</code> 可以將資料水平合併，例如：(左邊行號，右邊內容)</p>
+└── mae_9999.txt
+</code></pre></div><p>所以首先我們需要合併，這裡介紹一個頗好用的指令 <code>paste</code>。 <code>paste</code> 可以將資料水平合併，例如：(左邊行號，右邊內容)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat a.txt b.txt c.txt 
 ───────┬──────────────────────────────────────────
        │ File: a.txt
@@ -239,7 +234,9 @@
    <span style="color:#ae81ff">2</span>   │ <span style="color:#ae81ff">10</span>
    <span style="color:#ae81ff">3</span>   │ <span style="color:#ae81ff">11</span>
    <span style="color:#ae81ff">4</span>   │ <span style="color:#ae81ff">12</span>
-───────┴──────────────────────────────────────────</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ paste *.txt &gt; all.txt
+───────┴──────────────────────────────────────────
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ paste *.txt &gt; all.txt
 $ cat all.txt 
 ───────┬──────────────────────────────────────────
        │ File: all.txt
@@ -248,14 +245,12 @@ $ cat all.txt
    <span style="color:#ae81ff">2</span>   │ <span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">6</span>   <span style="color:#ae81ff">10</span>
    <span style="color:#ae81ff">3</span>   │ <span style="color:#ae81ff">3</span>   <span style="color:#ae81ff">7</span>   <span style="color:#ae81ff">11</span>
    <span style="color:#ae81ff">4</span>   │ <span style="color:#ae81ff">4</span>   <span style="color:#ae81ff">8</span>   <span style="color:#ae81ff">12</span>
-───────┴──────────────────────────────────────────</code></pre></div>
-<p>所以我們一樣可以用 <code>paste *.txt &gt; all.txt</code> 來把 10,000 資料都整理到同一個檔案，</p>
-
+───────┴──────────────────────────────────────────
+</code></pre></div><p>所以我們一樣可以用 <code>paste *.txt &gt; all.txt</code> 來把 10,000 資料都整理到同一個檔案，</p>
 <p>此時如果出現 <code>Too many open files</code> 的錯誤，可以使用以下指令來增加同時可開啟的檔案數</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ulimit -Hn <span style="color:#ae81ff">10240</span> <span style="color:#75715e"># The hard limit</span>
-$ ulimit -Sn <span style="color:#ae81ff">10240</span> <span style="color:#75715e"># The soft limit</span></code></pre></div>
-<p>成功變成一個檔案後發現它的 column 太多了 Spreadsheet 無法直接貼上，所以接下來要轉置一下。</p>
-
+$ ulimit -Sn <span style="color:#ae81ff">10240</span> <span style="color:#75715e"># The soft limit</span>
+</code></pre></div><p>成功變成一個檔案後發現它的 column 太多了 Spreadsheet 無法直接貼上，所以接下來要轉置一下。</p>
 <p>這裡我們使用 awk 來幫忙，新增一個 <code>transpose.sh</code> 的檔案，內容如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>awk <span style="color:#e6db74">&#39;
@@ -273,165 +268,26 @@ $ ulimit -Sn <span style="color:#ae81ff">10240</span> <span style="color:#75715e
 </span><span style="color:#e6db74">        }
 </span><span style="color:#e6db74">        print str
 </span><span style="color:#e6db74">    }
-</span><span style="color:#e6db74">}&#39;</span> $1</code></pre></div>
-<p>變更一下執行權限，就可以執行了</p>
+</span><span style="color:#e6db74">}&#39;</span> $1
+</code></pre></div><p>變更一下執行權限，就可以執行了</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ chmod +x transpose.sh 
-$ ./transpose.sh all.txt &gt; all_tr.txt</code></pre></div>
-<p>這樣資料就會從原本的往右長變成往下長</p>
-
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ" class='center img-zoomable' alt="轉置前" data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ" class='center img-zoomable lazyload' alt="轉置前" data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;">轉置前</p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O" class='center img-zoomable' alt="轉置後" data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O" class='center img-zoomable lazyload' alt="轉置後" data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;">轉置後</p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
-<h2 id="使用-google-spreadsheep" class="article-heading">使用 Google Spreadsheep<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用-google-spreadsheep"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+$ ./transpose.sh all.txt &gt; all_tr.txt
+</code></pre></div><p>這樣資料就會從原本的往右長變成往下長</p>
+<p><img src="https://drive.google.com/open?id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ" alt="google-轉置前">
+<img src="https://drive.google.com/open?id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O" alt="google-轉置後"></p>
+<h2 id="-google-spreadsheep" class="article-heading">使用 Google Spreadsheep<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-google-spreadsheep"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>這裡可能比較沒啥，就是貼上去，這裡我覺得不要用 vim 開啟，找個方便複製的 (例如：VSCode)</p>
-
 <p>用 Ctrl-v 貼上 Spreadsheet 時可能會花一點時間</p>
-
 <p>不過發現它把所有的 column 合在一起了</p>
-
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<p><img src="https://drive.google.com/open?id=1jluF0VN_pDaifwAjVaJVsklIb5j3w7nN" alt="google- "></p>
 <p>我們選取第一個 column 然後點上方的 &ldquo;資料&rdquo; &gt; &ldquo;將文字分隔成不同欄&rdquo;</p>
-
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<p><img src="https://drive.google.com/open?id=1daksDj4iW6FCgvoTi9pxrQks7RYxBd4c" alt="google- "></p>
 <p>它會自動將第一個 column 分出來，這時後會冒出一個小視窗 (有點不明顯，有時候要滾動一下才會出現)，把下拉式選單點開選擇 &ldquo;空格&rdquo; 這樣它就會把所有 column 分開了。</p>
-
-<p>
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-
-
-  <figure class="gphoto-media center">
-    <div class="img-container center" style="width:73%;">
-      <noscript>
-        <img src="https://drive.google.com/uc?export=view&id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs" class='center img-zoomable' alt=" " data-action="zoom" title=""></img>
-      </noscript>
-      <img data-src="https://drive.google.com/uc?export=view&id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs" class='center img-zoomable lazyload' alt=" " data-action="zoom" title=""></img>
-    </div>
-    <figcaption>
-      <center class="caption-text">
-        <p style="margin: .7rem 0 0;"> </p>
-        <!-- hide the link -->
-        <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
-        </font>
-      </center>
-    </figcaption>
-  </figure>
-</p>
-
+<p><img src="https://drive.google.com/open?id=13wfpf9aTKIqahEW-WUjAWkTAH-zwLlAf" alt="google- ">
+<img src="https://drive.google.com/open?id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn" alt="google- ">
+<img src="https://drive.google.com/open?id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs" alt="google- "></p>
 <p>平均跟圖表部份就按照一般試算表的使用方式，就不記錄了。</p>
-
-<h2 id="參考" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-
+<h2 id="heading" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <ul>
 <li><a href="https://stackoverflow.com/a/1729980/6734174" target="_blank">An efficient way to transpose a file in Bash</a></li>
 <li><a href="https://unix.stackexchange.com/a/205646" target="_blank">Combining large amount of files</a></li>
