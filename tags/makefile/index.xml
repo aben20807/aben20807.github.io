@@ -19,7 +19,7 @@
       <pubDate>Tue, 02 Apr 2019 09:06:15 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/posts/20190402-makefile-help-message/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。&lt;/p&gt;</description>
     </item>
     

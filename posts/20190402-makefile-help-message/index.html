@@ -178,7 +178,7 @@
 
 
 
-<!-- raw HTML omitted -->
+<!-- https://drive.google.com/uc?export=view&id= -->
 <p>最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。</p>
 <p>原本可能在寫完所有 rule 後要再加一個 <code>help</code> 來寫準備印出來給使用者的內容。如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">action1</span><span style="color:#f92672">:</span> <span style="color:#75715e">## Do action 1.
@@ -194,7 +194,25 @@
 	@printf <span style="color:#e6db74">&#34;  action1\tDo action 1.\n&#34;</span>
 	@printf <span style="color:#e6db74">&#34;  action2\tDo action 2.\n&#34;</span>
 	@printf <span style="color:#e6db74">&#34;  help\t\tShow help message.\n&#34;</span>
-</code></pre></div><p><img src="https://drive.google.com/open?id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m" alt="google-結果"></p>
+</code></pre></div><p>
+  <figure class="gphoto-media center">
+    <div class="img-container center" style="width:73%;">
+      <noscript>
+        <img src="https://drive.google.com/uc?export=view&id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m" class="center img-zoomable" alt="結果" data-action="zoom" title="">
+      </noscript>
+      <img data-src="https://drive.google.com/uc?export=view&id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m" class="center img-zoomable lazyload" alt="結果" data-action="zoom" title="">
+    </div>
+    <figcaption>
+      <center class="caption-text">
+        <p style="margin: .7rem 0 0;">結果</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1IwQiOPfxIXVfPhZ76N7UX497HuZ-lA3m" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
+    </figcaption>
+  </figure>
+</p>
 <p>這種方式在數量一多下會很麻煩，尤其是要不斷確認上面是否有被更動。所以找到許多人針對每個 target 的註解去產生 help 資訊。這裡使用 perl 跟 awk 幫忙。</p>
 <p>下方印出的結果同上就不貼圖片了。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">action1</span><span style="color:#f92672">:</span> <span style="color:#75715e">## Do action 1.
@@ -233,7 +251,25 @@ NC <span style="color:#f92672">=</span> <span style="color:#ae81ff">\0</span>33<
 </span><span style="color:#ae81ff"></span>		sort | <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>		awk <span style="color:#e6db74">&#39;BEGIN {FS = &#34;:.*?## &#34;}; \
 </span><span style="color:#e6db74">		{printf &#34;$(BLUE)  %-18s$(NC) %s\n&#34;, $$1, $$2}&#39;</span>
-</code></pre></div><p><img src="https://drive.google.com/open?id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G" alt="google-有顏色版本"></p>
+</code></pre></div><p>
+  <figure class="gphoto-media center">
+    <div class="img-container center" style="width:73%;">
+      <noscript>
+        <img src="https://drive.google.com/uc?export=view&id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G" class="center img-zoomable" alt="有顏色版本" data-action="zoom" title="">
+      </noscript>
+      <img data-src="https://drive.google.com/uc?export=view&id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G" class="center img-zoomable lazyload" alt="有顏色版本" data-action="zoom" title="">
+    </div>
+    <figcaption>
+      <center class="caption-text">
+        <p style="margin: .7rem 0 0;">有顏色版本</p>
+        <!-- hide the link -->
+        <font class="douyin hover-show">
+          <a href="https://drive.google.com/open?id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+        </font>
+      </center>
+    </figcaption>
+  </figure>
+</p>
 <h3 id="heading" class="article-heading">參考資料<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <ul>
 <li><a href="https://nedbatchelder.com/blog/201804/makefile_help_target.html" target="_blank">Makefile help target</a></li>

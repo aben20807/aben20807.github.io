@@ -12,6 +12,55 @@
     
     
     <item>
+      <title>Hugo v0.60</title>
+      <link>https://aben20807.github.io/posts/20191201-hugo-0-60/</link>
+      <pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20191201-hugo-0-60/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+&lt;p&gt;記錄一下 hugo 的改變 QuQ&lt;/p&gt;
+&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;因為實在改的有點多東西，直接在 FB 發(抱)文(怨)又有點沒架構，所以乾脆來個小整理。另外這也不是全部，主要是我有遇到的 QuQ&lt;/p&gt;
+&lt;p&gt;這裡主要是從 0.59 到 0.60 &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; 的一些記錄。&lt;/p&gt;
+&lt;h1 id=&#34;heading1&#34;&gt;不同之處&lt;/h1&gt;
+&lt;h2 id=&#34;parser&#34;&gt;Parser&lt;/h2&gt;
+&lt;p&gt;最大不同就是 markdown parser 從原本的 &lt;a href=&#34;https://github.com/russross/blackfriday&#34;&gt;Blackfriday&lt;/a&gt; 換成使用 &lt;a href=&#34;https://github.com/yuin/goldmark/&#34;&gt;Goldmark&lt;/a&gt; 為預設了。所以有一堆是用 regex 改的內容全都要再改規則＠＠，例如 &lt;code&gt;&amp;lt;img xxx /&amp;gt;&lt;/code&gt; 這類的 self-closing tags &lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; 把最後的 &lt;code&gt;/&lt;/code&gt; 去掉了變成 &lt;code&gt;&amp;lt;img xxx&amp;gt;&lt;/code&gt;，所以剛剛是看不到圖片的。我已經改成讓 &lt;code&gt;/&lt;/code&gt; 可有可無了&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;footnote&#34;&gt;Footnote&lt;/h2&gt;
+&lt;p&gt;Footnote 的部份被大改了，產生的 html 跟原本的不太一樣，然後 0.60.1 好像有一些修改 &lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; ，所以可能還要再等等 QuQ，目前 snap 最新還在 0.60.0 所以還不能返回 (&lt;code&gt;footnoteAnchorPrefix&lt;/code&gt;, &lt;code&gt;footnoteReturnLinkContents&lt;/code&gt; 也還沒看到實作&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;)。之後還要加入 smooth scroll 讓捲動有動畫而不是直接跳 (這邊我也是用 regex)。&lt;/p&gt;
+&lt;h2 id=&#34;-markdown--html&#34;&gt;預設不可以在 markdown 中使用 html&lt;/h2&gt;
+&lt;p&gt;如果有加一些非 markdown 語法的 html 的話預設會變成 &lt;code&gt;&amp;lt;!-- raw HTML omitted --&amp;gt;&lt;/code&gt;
+(例如從 google 雲端嵌入 pdf 檔案之類的)，如果想要修改這個預設 &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; 的話可以在 config.tmol 裡面加入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;]
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;]
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;renderer&lt;/span&gt;]
+&lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading2&#34;&gt;後記&lt;/h1&gt;
+&lt;p&gt;J 個改變的速度其實有點小惱人，每次都想棄用 snap，但換個想法，這是走在世界的尖端啊 (x&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugo/releases/tag/v0.60.0&#34;&gt;hugo v0.60.0 release&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://discuss.codecademy.com/t/no-ending-for-self-closing-link-element/201099&#34;&gt;No ending &amp;lsquo;/&amp;rsquo; for self-closing link element?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yuin/goldmark/blob/54fc7c3/extension/footnote.go#L236-L247&#34;&gt;yuin/goldmark:236-247&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugo/issues/6551&#34;&gt;Support footnote return links #6551&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/getting-started/configuration-markup/&#34;&gt;Configure Markup&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</description>
+    </item>
+    
+    <item>
       <title>Programming Sense (2)</title>
       <link>https://aben20807.github.io/posts/20191118-programming-sense-2/</link>
       <pubDate>Mon, 18 Nov 2019 11:36:33 +0800</pubDate>
@@ -19,7 +68,7 @@
       <guid>https://aben20807.github.io/posts/20191118-programming-sense-2/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;結果因為太多項了導致右邊的目錄超出邊界，所以還是要拆成兩篇。QuQ&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://aben20807.github.io/posts/20191116-programming-sense/&#34;&gt;{{ 上一篇傳送門：Programming Sense (1) }}&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;-abstractionhttpsenwikipediaorgwikiabstractioncomputerscience&#34;&gt;抽像化 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Abstraction_(computer_science)&#34;&gt;Abstraction&lt;/a&gt;)&lt;/h1&gt;
@@ -60,7 +109,7 @@
 &lt;p&gt;首先得理解題目或問題的要求，如果有提供範例輸入輸出的話請一定要按照給定的格式，不能多也不能少。不過這在現實中比較少見，很多情況是要去設計防呆的。&lt;/p&gt;
 &lt;p&gt;直覺的解法一定有，但是通常會有大量的迴圈拖慢程式執行，儘管現在的硬體好到讓我們感覺不出差異，但是還是需要正視這個問題，因為當需求一擴大，效能瓶頸就會是一個大問題。&lt;/p&gt;
 &lt;p&gt;以下題目來自 108-1 成大資工 資料結構作業三 (這裡放上題目，不過我不打算解它，雖然這樣會比較完整，可是我真的沒空 QuQ)&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;iframe src=&#34;https://drive.google.com/file/d/1N7S4ynPmXpMYVZVgJdL0_h0K_IYXCwUl/preview&#34; width=&#34;100%&#34; height=&#34;340px&#34;&gt;&lt;/iframe&gt;
 &lt;h3 id=&#34;heading3&#34;&gt;是否能簡化&lt;/h3&gt;
 &lt;p&gt;以範例問題來說，題目會給定 N 個團體，每個群體的人數不定。最直觀的方法是使用二維陣列存放這 N 個團體各自的成員，要檢查 A 是否屬於某個群體時使用雙層迴圈去搜尋這個二維陣列，都找不到則代表不屬於任何團體。&lt;/p&gt;
 &lt;p&gt;然而這樣每次搜尋都要耗費不少資源，甚至需要不少程式碼。更好的作法可以對題目的細節做解讀，題目提到成員只會有 A~Z 所以我們可以直接產生一個長度為 26 的整數陣列 &lt;code&gt;people_group_ids&lt;/code&gt; (更好的方式是使用 dict 不過 C 沒有內建) 來存放這 26 的人的團體編號，為了方便初始化，可以讓 0 代表沒有團體接著往上累加，讀取到範例輸入讀取到 3 A B C 時，在陣列的 0 1 2 位置上填入 1，等到要查詢 A 的團體編號時就可以使用 &lt;code&gt;people_group_ids[0]&lt;/code&gt; 來查詢了，原本 $O(nm)$ 的複雜度直接降為 $O(1)$，程式碼上也較為清楚。另外關於 A 對應 0 要怎麼寫，這就需要對字元有一些了解，可以觀察一下 &lt;a href=&#34;https://en.wikipedia.org/wiki/ASCII&#34;&gt;ASCII 表格&lt;/a&gt;，&lt;code&gt;person = &#39;B&#39;;&lt;/code&gt; 的話我們只需要使用 &lt;code&gt;person - &#39;A&#39;&lt;/code&gt;; 就可以得到 &lt;code&gt;1&lt;/code&gt; 了，把這個操作放到函式中增加可讀性的話更棒如下。&lt;/p&gt;
@@ -134,7 +183,7 @@
       <guid>https://aben20807.github.io/posts/20191116-programming-sense/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;主要是我自己編寫邊學慢慢累積的，說真的也找不太到相關的資源，要搜尋也不知道下什麼關鍵字，問別人其實也很難在一時半刻裡解釋清楚，所以就拿來發一篇吧 OuO&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;期中加資格考的爆炸禮拜終於結束，其實比我想得還要容易，雖然我都很沒把握，因為我幾乎不狂寫考古題，而是以觀念取勝，有沒有取到就不確定了。&lt;/p&gt;
@@ -354,7 +403,7 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
       <guid>https://aben20807.github.io/posts/20191022-numpy-array-truncate/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;踩個雷 OuO&lt;/p&gt;
 &lt;p&gt;numpy 的 &lt;code&gt;trunc&lt;/code&gt; [1] 好像沒有針對小數點以下幾位做設定，一次只能全砍變成整數，可是又不能用 &lt;code&gt;around&lt;/code&gt; [2] 解決。&lt;/p&gt;
 &lt;p&gt;網路上有找到解法 [3]：很直覺，就是先乘大，truncate 後再除&lt;/p&gt;
@@ -426,7 +475,7 @@ float32
       <guid>https://aben20807.github.io/posts/20191019-data-statistic/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs --&gt;
 &lt;p&gt;剛好用到一些蠻有用的工具，記錄一下&lt;/p&gt;
 &lt;p&gt;資料：一個檔案 13 個數字共有 10,000 個檔案。&lt;br&gt;
 目的：視覺化平均後的 13 欄資料&lt;br&gt;
@@ -547,7 +596,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190919-weathering-with-you/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1e-W33G5mxkcyW8UggrgalOOMiN0rCVHG --&gt;
 &lt;p&gt;看完直接來寫一波 OuO&lt;br&gt;
 趁還沒看其他人的影評先來說一下看完當下的一些感想&lt;br&gt;
 !!!! 強烈暴雷注意 !!!!&lt;/p&gt;
@@ -639,7 +688,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190911-how-i-learn-in-university/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=https://drive.google.com/open?id=11dfe_7DVpwD2njTDBgIu23p1B4c_M7-d --&gt;
 &lt;p&gt;大學畢業後突然有感，感覺需要記錄一下。&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;其實這只是一段紀錄，不是要說你們一定要學著這樣做，當然如果你覺得不錯可以試試看，不過如果發現太晚看到了，沒關係，生命自會找到出路，人生裡沒有什麼是繞遠路的。總之把這篇當作是&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%80%96%E5%AD%98%E8%80%85%E5%81%8F%E5%B7%AE&#34;&gt;倖存者偏差&lt;/a&gt;的文章我也不會說什麼。&lt;/p&gt;
@@ -700,7 +749,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190817-valgrind-memcheck/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f --&gt;
 &lt;p&gt;簡單玩玩 @@&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;之前大學時期 (講得好像很久之前 OuO) 的某幾個作業我有拿來測試自己的程式碼是否有 memory leak 的情況，會發生這種情況主要原因是沒有對每一個 alloc 做 free。&lt;/p&gt;
@@ -788,7 +837,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190815-regexp/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP --&gt;
 &lt;p&gt;我現在才知道這個是不是偏爛啊&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;因為要調整網站的一些東西，所以需要寫一些正規表達式 (regular expression)，不過一直試都失敗，上網找資料才發現一個好網站。傳送門：https://regex101.com/&lt;/p&gt;
@@ -803,8 +852,9 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;p&gt;簡單範例：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;(&amp;lt;(h[1-9]) id=\&amp;quot;([^\&amp;quot;]+)\&amp;quot;(.+))(&amp;lt;/h[1-9]+&amp;gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然後我是用這個來做取代來換成我想要的樣式，例如：&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre style=&#39;word-break: break-word; white-space:pre-line;&#39;&gt;
+replaceRE &#34;(&lt;(h[1-9]) id=\&#34;([^\&#34;]+)\&#34;(.+))(&lt;/h[1-9]+&gt;)&#34; `&lt;${2} id=&#34;${3}&#34; class=&#34;article-heading&#34;${4}&lt;a class=&#34;headline-hash smoothScroll hover-show scrollspy&#34; style=&#34;font-size: 0.75em; color: black; padding-left: 0.25em&#34; href=&#34;#${3}&#34;&gt;&lt;span class=&#34;iconify&#34; data-icon=&#34;octicon-link&#34; data-inline=&#34;false&#34;&gt;&lt;/span&gt;&lt;/a&gt; ${5}`
+&lt;/pre&gt;
 &lt;p&gt;原本的標題就會變成
 &lt;img src=&#34;https://drive.google.com/open?id=1yubxNXgTK8uZV07Bo52PzBUHN2Tjf8rY&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;</description>
     </item>
@@ -817,7 +867,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190804-tiny-action/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;其實原本 6 月中就要寫了，結果因為沒拍到照片所以就先延後 (明明是自己懶惰&lt;/p&gt;
 &lt;p&gt;6 月中還蠻嚴重的就是香港反送中的事件開始，到現在 8 月了仍然有罷工及遊行，不過本篇不會討論這個事件。 雖說不討論但其實有些相關。記得當時許多人跟風換了頭貼濾鏡，但我認為有一些人只會盲從表現自己好像有在關注社會議題反而忽略身邊的事。 若真的去探討哪些人，其實並不限於換頭貼的人，也不是換頭貼就會這樣，換頭貼只是剛好是附近發生的大事。所以並不是想要嘴這些換頭貼的人喔。&lt;/p&gt;
 &lt;p&gt;讓我想發文的遠因是大家都會把雨傘晾在走廊，導火線是前室友針對此事的&lt;a href=&#34;https://www.moedict.tw/%E5%BC%B7%E8%BE%AF&#34;&gt;強 (ㄑ一ㄤˇ) 辯&lt;/a&gt;，先來講講發生了什麼事吧。&lt;/p&gt;
@@ -841,7 +891,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       <guid>https://aben20807.github.io/posts/20190616-build-mnist-with-tvm/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;真的是隔很久&amp;hellip;.藉口就不多說了 OuO&lt;/p&gt;
 &lt;p&gt;這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
@@ -1195,7 +1245,7 @@ tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;spa
       <guid>https://aben20807.github.io/posts/20190421-github-flow-2/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;針對昨天的再多釐清一些。順便補充一些東西。&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;關於流程&lt;/h1&gt;
 &lt;p&gt;昨天的流程主要是有需要 fork 的，通常是針對那些你無法對原始專案直接操作的狀況。&lt;/p&gt;
@@ -1240,7 +1290,7 @@ $ git remote prune origin
       <guid>https://aben20807.github.io/posts/20190420-github-flow/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;其實是看了 &lt;a href=&#34;https://guides.github.com/introduction/flow/&#34;&gt;Understanding the GitHub flow&lt;/a&gt; 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。&lt;/p&gt;
@@ -1325,7 +1375,7 @@ $ git push origin new_feature
       <guid>https://aben20807.github.io/posts/20190403-git-patch-different-directory/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;最近也算常用 git，不過有些特殊的功能都沒用過，這次也不算是學學看，而是真的要用到了，總之就是還個技術債順便記錄。不過會用到這個情境的應該算是少數。&lt;/p&gt;
 &lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git format-patch --relative &amp;lt;SHA&amp;gt; ./ -o /tmp/patches
@@ -1399,7 +1449,7 @@ Applying: Add file_2 in a
       <guid>https://aben20807.github.io/posts/20190402-makefile-help-message/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;最近蠻常用 Makefile 的，想說寫一個 help 選項，這樣就不用要使用時都要打開 Makefile 看怎麼用，意外查到可以使用小技巧來印出 help。達到註解及文件的效果。&lt;/p&gt;
 &lt;p&gt;原本可能在寫完所有 rule 後要再加一個 &lt;code&gt;help&lt;/code&gt; 來寫準備印出來給使用者的內容。如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;action1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Do action 1.
@@ -1469,7 +1519,7 @@ NC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;
       <guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br&gt;
 就請多見諒＠＠&lt;/p&gt;
 &lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
@@ -1579,7 +1629,7 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
       <guid>https://aben20807.github.io/posts/20190307-emacs-install-rainbow-delimiters/</guid>
       
       
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;恩&amp;hellip;.身為一個 vimer，我還是想試試看 emacs，所以就選了系上的一堂教 lisp 的課。&lt;br&gt;
 本篇記錄一下安裝插件的過程&lt;br&gt;
 (雖然我這篇還是用 vim 打的&amp;hellip;.&lt;/p&gt;
@@ -1957,8 +2007,9 @@ __*粗斜體*__
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;google-title here&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&#34; alt=&#34;google-title here&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;youtube&#34;&gt;YouTube&lt;/h1&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;
+{{&amp;lt; youtube &amp;quot;&lt;span&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg&lt;/span&gt;&amp;quot; &amp;gt;}}
+&lt;/pre&gt;
 
 
 
@@ -1977,8 +2028,9 @@ __*粗斜體*__
 &lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;pre&gt;
+{{&amp;lt; youtube &amp;quot;&lt;span&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&lt;/span&gt;&amp;quot; &amp;gt;}}
+&lt;/pre&gt;
 
 
 

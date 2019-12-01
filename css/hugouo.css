@@ -318,3 +318,6 @@ font.douyin{
     content: "]";
     color:#2060a8;
 }
+.footnotes p {
+    margin: 0;
+}

@@ -8,10 +8,28 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Mon, 18 Nov 2019 11:36:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2019 17:26:34 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>html</title>
+      <link>https://aben20807.github.io/tags/html/</link>
+      <pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://aben20807.github.io/tags/hugo/</link>
+      <pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>c</title>
@@ -163,15 +181,6 @@
       <pubDate>Sat, 17 Aug 2019 11:17:09 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/valgrind/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://aben20807.github.io/tags/hugo/</link>
-      <pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
