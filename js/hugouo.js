@@ -27,6 +27,13 @@ jQuery(document).ready(function( $ ) {
     }
     setTimeout(original, 1000);
   });
+
+  // ref: https://stackoverflow.com/a/24742225/6734174
+  $('#toc-scroll').mouseenter(function(event) {
+    $('body').css('overflow', 'hidden');
+  }).mouseleave(function(event) {
+    $('body').css('overflow', '');
+  });
 });
 
 
@@ -60,6 +67,8 @@ $.getScript( url, function() {
 
 /* Scrollspy */
 $(window).bind('scroll', function() {
+  // link to the toc's scrollbar
+  $('#toc-scroll').scrollTop($(this).scrollTop() / 50);
   var currentTop = $(window).scrollTop() + 40;
   var elems = $('.scrollspy');
   elems.each(function(index) {

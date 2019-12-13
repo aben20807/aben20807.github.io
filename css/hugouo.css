@@ -4,7 +4,11 @@
     --deep-orange: #ff6456;
     --light-orange: #ffb980;
 }
-body { counter-reset: h1_cnt; }
+body {
+    /* ref: https://stackoverflow.com/a/44000322/6734174 */
+    width: 100vw;
+    counter-reset: h1_cnt;
+}
 h1 { font-size: 25px; counter-reset: h2_cnt; }
 h2 { font-size: 24px; counter-reset: h3_cnt; }
 h3 { font-size: 23px; counter-reset: h4_cnt; }
@@ -330,4 +334,42 @@ a.footnote-ref:hover, a.footnote-backref:hover {
 }
 .footnotes p {
     margin: 0;
+}
+/* Scrollbar style,
+    ref: https://noootown.wordpress.com/2016/01/23/css-custom-scrollbar/
+    ref: https://stackoverflow.com/a/22907848/6734174
+*/
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+::-webkit-scrollbar:vertical {
+    width: 5px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: rgb(219,219,219);
+}
+#toc-scroll {
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.noselect {
+    /* https://stackoverflow.com/a/4407335/6734174 */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome, Opera and Firefox */
 }
