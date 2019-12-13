@@ -356,11 +356,14 @@ a.footnote-ref:hover, a.footnote-backref:hover {
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    background: rgb(219,219,219);
+    background: #aaaaaa;
 }
 #toc-scroll {
     max-height: 50vh;
     overflow-y: scroll;
+}
+.hide-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 .noselect {
