@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.60.0" />
+		<meta name="generator" content="Hugo 0.61.0" />
 
 		
 		<meta name="og:title" content="不同路徑之 Git Patch" />
@@ -185,7 +185,7 @@ $ git am /tmp/patches/*.patch
 <p>這裡主要記錄一個使用情境：要把專案A 下的子專案a 的修改記錄做成 patch 給專案B 使用，注意，專案a 與專案B 是同一個專案。</p>
 <p>會有這樣需求主要是因為 B 是開源專案，然後我們拿來修改後變成 A 的子專案。當然最好的方式是用 fork，然後利用 submodule 管理，不過因為只有一個 repo 可以使用，所以就採用這個作法。</p>
 <p>限制：內部檔案名稱要相同</p>
-<h1 id="heading1" class="article-heading">範例檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-1" class="article-heading">範例檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>接下來利用簡單的範例來模擬。</p>
 <p><code>repo A</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">A
@@ -222,7 +222,7 @@ $ git format-patch --relative a1f4b9e ./ -o /tmp/patches
 /tmp/patches/0001-Modify-file_1.patch
 /tmp/patches/0002-Modify-file_1-and-sth_in_A.txt.patch
 /tmp/patches/0003-Add-file_2-in-a.patch
-</code></pre></div><h1 id="-patch1" class="article-heading">套用 patch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-patch1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+</code></pre></div><h1 id="-patch-1" class="article-heading">套用 patch<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-patch-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>套用 patch 到專案B</p>
 <pre><code class="language-bach" data-lang="bach">$ cd B/
 $ git am /tmp/patches/*.patch

@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.60.0" />
+		<meta name="generator" content="Hugo 0.61.0" />
 
 		
 		<meta name="og:title" content="First Met Hugo" />
@@ -190,15 +190,15 @@
 <blockquote>
 <p>前端坑好深，前端坑好深，前端坑好深</p>
 </blockquote>
-<h1 id="heading1" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-1" class="article-heading">安裝<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>說不教好像也有點無情，不過在 GitHub 架 Hugo 真的太過簡單了，步驟真的算少，所以我就推給其他文章吧(可以先看完整篇再開始)：<a href="https://medium.com/@chs_wei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40" target="_blank">在 GitHub 部署 Hugo 靜態網站</a></p>
-<h1 id="--" class="article-heading">安裝 - 注意事項<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#--"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="---" class="article-heading">安裝 - 注意事項<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#---"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>Ubuntu 請用 <code>snap</code> 來安裝比較新的版本，用 <code>apt</code> 會發現一堆主題不能用因為版本過舊。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo snap install hugo
 $ hugo version
 Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 </code></pre></div><p>結果注意事項就把 Hugo 全部安裝完成了＠＠，部屬在 GitHub 就跟大部分用法相同。</p>
-<h1 id="heading2" class="article-heading">部落格架構配置<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-2" class="article-heading">部落格架構配置<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>因為 Hugo 會針對主題和文章經過 <code>hugo</code> 指令去產生一個完整的網站並預設放在 <code>public/</code> 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 <code>public/</code> push 到 <code>&lt;username&gt;.github.io</code>，寫文章的就創建另一個 <code>blog-post</code> 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。</p>
 <p>但是，一般上面這種是會把主題的檔案都複製到你寫文章的 repo 裡這樣就可以自訂一些前端設計。</p>
 <p>我覺得這樣還不夠乾淨！因此我的方式是使用三個 repo：</p>
@@ -234,10 +234,10 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 │       │   └── js/
 │       └── theme.toml
 └── public/ &lt;---------------------- repo 3: 發布網站
-</code></pre></div><h2 id="heading3" class="article-heading">這樣安排的缺點<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre></div><h2 id="heading-3" class="article-heading">這樣安排的缺點<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>這麼多 repo 就是一個蠻大的缺點，不過若是非常在意的話可以利用 branch 來讓三個 repo 合併。<br>
 但是這個缺點有一個優點 (?)，就是可以刷 GitHub 的 contributions 啊！每次寫文章改一堆東西就會綠一片OuO</p>
-<h2 id="heading4" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="heading-4" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>當然也可以利用 GitHub 和其他工具達到持續集成、部署，參考：<a href="https://axdlog.com/zh/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/" target="_blank">利用Travis CI和Hugo將Blog自動部署到Github Pages</a>。不過我是有點點懶惰，所以我就用 <a href="https://github.com/aben20807/blog-post/blob/master/deploy.sh" target="_blank">script</a> 來部屬。</p>
 <p>還有 <code>blog-post</code> repo 可以用 <code>.gitattributes</code> 來讓 GitHub 把 markdown 當作一個語言來計算，<a href="https://github.com/aben20807/blog-post/blob/master/.gitattributes" target="_blank">傳送門</a>。
 
@@ -259,20 +259,20 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
     </figcaption>
   </figure>
 </p>
-<h1 id="heading5" class="article-heading">圖片<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-5" class="article-heading">圖片<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>通常架設在 GitHub 的靜態網站都會直接把圖片也傳到 repo 中，雖然說這樣會比較快而且方便，但是我不建議用 git 去追蹤圖片，到最後會非常肥大。所以我一開始就有想說用 google 雲端當作一個圖床 (Flickr 1TB 回來啊QuQ)，反正有學校帳號算是有無限空間吧 (還是當學生的小福利＠＠)，再加上 google 圖片可以無限上傳，我手機拍照的圖片都會自動上傳了，然後也可以跟雲端連結，也就是說在 google 雲端透過檔案存取到 google 圖片的檔案。不過因為它的 api 還不是說很好用，就是雲端右鍵拿到的連結是不能直接嵌入網頁的，所以要手動複製 id，我覺得頗麻煩就乾脆寫一個可以偵測是否在 markdown 使用 google 雲端的圖片，然後把它轉成對應的 url 同時提供點擊就可以直接連過去，這樣就可以放大檢視了。</p>
 <p>作法就是我的文章若要用到 google 雲端的圖片就要用以下語法：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">![<span style="color:#f92672">google-標題</span>](<span style="color:#a6e22e">從雲端裡面右鍵拿到的分享連結</span>)
 </code></pre></div><p>沒意外這篇文章內文都是用這個方式加圖片的，唯一缺點就是明顯慢很多＠＠，雖然慢會影響 SEO，不過算了，就會看的人就會來看吧。說到這個，流量很明顯跟 Blogger 時期差很多＠＠，實做<a href="https://github.com/aben20807/hugOuO/blob/master/layouts/partials/custom-content.html#L5-L23" target="_blank">傳送門</a>。</p>
-<h1 id="heading6" class="article-heading">文章<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-6" class="article-heading">文章<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>對於文章，我建議可以用日期當作檔名的前綴，以便排序。我的主題就會自動切割日期。Hugo 也有 permalinks 功能，就是把日期當作網站的路徑，不過我懶得用了＠＠</p>
-<h1 id="heading7" class="article-heading">優點啦<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading7"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-7" class="article-heading">優點啦<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-7"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li>單一執行檔，只需要安裝 hugo，其他什麼 ruby, python, node 都不用。</li>
 <li>建制快速，號稱目前地表最快，尤其當網站一多，目前有找到跟 Jekyll 的比較<a href="https://forestry.io/blog/hugo-vs-jekyll-benchmark/" target="_blank">傳送門</a>，跟 Hexo 的可能還要找一下。</li>
 <li>網站內容乾淨，也就是上面的缺點啦，我是覺得這是優點 OuO，分多個 repo 不是很好嗎。</li>
 </ul>
-<h1 id="heading8" class="article-heading">有趣的功能<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading8"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-8" class="article-heading">有趣的功能<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-8"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>下面這些功能其實不限於 Hugo，只要有想要其實都可以把它加到自己的網站，甚至是從頭自己刻的也可。不要忘了開頭念三次的東西 OuO</p>
 <h2 id="1-" class="article-heading">1. 搜尋<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#1-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>由於之前 Blogger 算是內建搜尋的，所以這裡算是研究頗久，原本要使用一些已經做成套件的切字工具，但是中文字真的太難搞定了，所以我乾脆直接用 google 提供的搜尋：Google Custom Search。一樣，這裡就不一一教學，請移駕：<a href="https://blog.yowko.com/google-search-in-hugo/" target="_blank">將 Google自訂搜尋引擎 (Google Custom Search) 搭配 OpenSearch 加至 Hugo 網站中</a>。真的要參考實做的話可以來這個 <a href="https://github.com/aben20807/blog-post/commit/6f6b62898791322876091d4db98d580b8a7accdc#diff-44f0b83d58ef03d7cee156de462be50c" target="_blank">commit</a> 看看。對了，設定完後要等個幾天才會可以搜尋，我那時候以為我哪裡設定錯誤，結果等個幾天就可以用了。結果可以到這個<a href="https://aben20807.github.io/search/" target="_blank">頁面</a>查看。
@@ -344,7 +344,7 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
     </figcaption>
   </figure>
 </p>
-<h2 id="7-email-subscribe-mailchimphttpsmailchimpcom" class="article-heading">7. E-mail subscribe (<a href="https://mailchimp.com/" target="_blank">mailchimp</a>)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#7-email-subscribe-mailchimphttpsmailchimpcom"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="7-e-mail-subscribe-mailchimphttpsmailchimpcom" class="article-heading">7. E-mail subscribe (<a href="https://mailchimp.com/" target="_blank">mailchimp</a>)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#7-e-mail-subscribe-mailchimphttpsmailchimpcom"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>原本 Blogger 有 G+ 當作一個社群平台來分享發布的文章，不過這裡就沒有了，我想說需要有一個方法來提供讀者訂閱，不能叫他自己去申請 GitHub 然後訂閱我網站的 repo 吧。所以我就找到這個服務，它免費版提供 2000 個訂閱者，一個月可以寄 12000 封 e-mail，對我來說算是非常夠用了(吧＠＠)，剛剛看原本還以為只有兩個人 (我跟我的分身帳號)，結果竟然多一個人了！還不來<a href="https://aben20807.github.io/subscription/" target="_blank">訂閱</a>？</p>
 <p>mailchimp 的用法其實官網就有提供，我英文不太行的看久一點就可以架設好服務了，我相信你們可以的 (?)</p>
 <h2 id="8-google-analytics" class="article-heading">8. google analytics<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#8-google-analytics"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
@@ -414,47 +414,47 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading1">
+                  <a class="toc-link smoothScroll" href="#heading-1">
                      安裝
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#--">
+                  <a class="toc-link smoothScroll" href="#---">
                      安裝 - 注意事項
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading2">
+                  <a class="toc-link smoothScroll" href="#heading-2">
                      部落格架構配置
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading3">
+                  <a class="toc-link smoothScroll" href="#heading-3">
                      這樣安排的缺點
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading4">
+                  <a class="toc-link smoothScroll" href="#heading-4">
                      其他
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading5">
+                  <a class="toc-link smoothScroll" href="#heading-5">
                      圖片
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading6">
+                  <a class="toc-link smoothScroll" href="#heading-6">
                      文章
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading7">
+                  <a class="toc-link smoothScroll" href="#heading-7">
                      優點啦
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading8">
+                  <a class="toc-link smoothScroll" href="#heading-8">
                      有趣的功能
                   </a>
                 </li>
@@ -489,7 +489,7 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#7-email-subscribe-mailchimphttpsmailchimpcom">
+                  <a class="toc-link smoothScroll" href="#7-e-mail-subscribe-mailchimphttpsmailchimpcom">
                      7. E-mail subscribe (mailchimp)
                   </a>
                 </li>

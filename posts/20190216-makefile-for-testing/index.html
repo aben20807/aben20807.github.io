@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.60.0" />
+		<meta name="generator" content="Hugo 0.61.0" />
 
 		
 		<meta name="og:title" content="Makefile for Testing" />
@@ -208,8 +208,8 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 <li><code>addprefix</code>: 加上前綴 (修改輸出路徑)</li>
 </ul>
 <p>這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile</p>
-<h1 id="heading1" class="article-heading">完整範例<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<h2 id="heading2" class="article-heading">檔案們<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h1 id="heading-1" class="article-heading">完整範例<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="heading-2" class="article-heading">檔案們<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <h3 id="tc" class="article-heading"><code>t.c</code>:<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#tc"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -245,7 +245,7 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 
 <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
     rm -rf <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span> a.out
-</code></pre></div><h3 id="heading3" class="article-heading">檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+</code></pre></div><h3 id="heading-3" class="article-heading">檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <pre><code>$ tree .
 .
 ├── input
@@ -256,7 +256,7 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 ├── Makefile
 ├── output
 └── t.c
-</code></pre><h2 id="heading4" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre><h2 id="heading-4" class="article-heading">使用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <h3 id="--make-test" class="article-heading">指令同為 <code>$ make test</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#--make-test"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make test
 gcc t.c
@@ -269,7 +269,7 @@ gcc t.c
 ./a.out &lt; input/linux/test1.txt &gt; output/linux/test1.txt
 <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>
 <span style="color:#ae81ff">7</span>
-</code></pre></div><h3 id="heading5" class="article-heading">結果檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
+</code></pre></div><h3 id="heading-5" class="article-heading">結果檔案架構<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <pre><code>$ tree .
 .
 ├── a.out
@@ -285,7 +285,7 @@ gcc t.c
 │       ├── test2.txt
 │       └── test3.txt
 └── t.c
-</code></pre><h1 id="heading6" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+</code></pre><h1 id="heading-6" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>上面的簡單例子中可能看不出 <code>$(INPUTS)</code> 跟 <code>$(OUTPUTS)</code> 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 <code>%</code> 出馬，就像 <code>$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt</code> 來表示輸入輸出的檔名要一致。</p>
       Last modified: Feb 16, 2019
       <div class="row">
@@ -334,12 +334,12 @@ gcc t.c
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading1">
+                  <a class="toc-link smoothScroll" href="#heading-1">
                      完整範例
                   </a>
                 </li>
             </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading2">
+                  <a class="toc-link smoothScroll" href="#heading-2">
                      檔案們
                   </a>
                 </li>
@@ -354,12 +354,12 @@ gcc t.c
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading3">
+                  <a class="toc-link smoothScroll" href="#heading-3">
                      檔案架構
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading4">
+                  <a class="toc-link smoothScroll" href="#heading-4">
                      使用
                   </a>
                 </li>
@@ -369,12 +369,12 @@ gcc t.c
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading5">
+                  <a class="toc-link smoothScroll" href="#heading-5">
                      結果檔案架構
                   </a>
                 </li>
             </ul></ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading6">
+                  <a class="toc-link smoothScroll" href="#heading-6">
                      後記
                   </a>
                 </li>

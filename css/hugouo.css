@@ -1,3 +1,9 @@
+:root {
+    --deep-blue: #357edd;
+    --light-blue: #96ccff;
+    --deep-orange: #ff6456;
+    --light-orange: #ffb980;
+}
 body { counter-reset: h1_cnt; }
 h1 { font-size: 25px; counter-reset: h2_cnt; }
 h2 { font-size: 24px; counter-reset: h3_cnt; }
@@ -305,18 +311,22 @@ font.douyin{
 .img-zoomable:hover {
     transform: scale(1.02);
 }
-.footnote-ref > a, a.footnote-return {
-    color:#2060a8;
+a.footnote-ref, a.footnote-backref {
+    color:var(--deep-orange);
 }
-.footnote-ref:before {
+a.footnote-ref:hover, a.footnote-backref:hover {
+    color:var(--light-orange);
+    transition: color .15s ease-in;
+}
+.footnote-ref:before, a.footnote-backref:before {
     font-family: 'Roboto Mono';
     content: "[";
-    color:#2060a8;
+    color:var(--deep-orange);
 }
-.footnote-ref:after {
+.footnote-ref:after, a.footnote-backref:after {
     font-family: 'Roboto Mono';
     content: "]";
-    color:#2060a8;
+    color:var(--deep-orange);
 }
 .footnotes p {
     margin: 0;

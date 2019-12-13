@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
 		
 		
-		<meta name="generator" content="Hugo 0.60.0" />
+		<meta name="generator" content="Hugo 0.61.0" />
 
 		
 		<meta name="og:title" content="Build MNIST with TVM" />
@@ -200,12 +200,12 @@
 <p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 看看吧。</p>
 <p>所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
 <p>P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO</p>
-<h1 id="heading1" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-1" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li>ubuntu 18.04</li>
 <li>TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)</li>
 </ul>
-<h1 id="heading2" class="article-heading">一堆程式碼上菜囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-2" class="article-heading">一堆程式碼上菜囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <h2 id="-cnnpredictpy" class="article-heading">原始 <code>cnnPredict.py</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-cnnpredictpy"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>注意要下載或複製那個程式碼，<code>cnn.h5</code> 跟 <code>test3.png</code> 一樣要放對位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.misc <span style="color:#f92672">import</span> imread, imresize
@@ -436,7 +436,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
   nn.softmax<span style="color:#f92672">(</span>%13, axis<span style="color:#f92672">=</span>1<span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>扯，結果竟然一模一樣。</p>
-<h2 id="heading3" class="article-heading">檢驗剛剛建立的模型是否正確<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="heading-3" class="article-heading">檢驗剛剛建立的模型是否正確<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>總之先試試看是不是跟直接讀 <code>cnn.h5</code> 一樣。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
@@ -481,7 +481,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 </code></pre></div><p>很好，是一樣&hellip;.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span>
-</code></pre></div><h2 id="heading4" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre></div><h2 id="heading-4" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
@@ -537,7 +537,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 test_mnist.py
 <span style="color:#ae81ff">3</span>
 </code></pre></div><p>扯，竟然過了 QuQ</p>
-<h1 id="heading5" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="heading-5" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <h2 id="lutzroedernetronhttpsgithubcomlutzroedernetron" class="article-heading"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#lutzroedernetronhttpsgithubcomlutzroedernetron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>發現了一個視覺化工具可以看模型。
 
@@ -609,12 +609,12 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading1">
+                  <a class="toc-link smoothScroll" href="#heading-1">
                      環境
                   </a>
                 </li>
             </ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading2">
+                  <a class="toc-link smoothScroll" href="#heading-2">
                      一堆程式碼上菜囉
                   </a>
                 </li>
@@ -639,17 +639,17 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading3">
+                  <a class="toc-link smoothScroll" href="#heading-3">
                      檢驗剛剛建立的模型是否正確
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading4">
+                  <a class="toc-link smoothScroll" href="#heading-4">
                      突破，加個輸入層？
                   </a>
                 </li>
             </ul></ul><ul class="toc"><li class="toc-item">
-                  <a class="toc-link smoothScroll" href="#heading5">
+                  <a class="toc-link smoothScroll" href="#heading-5">
                      其他
                   </a>
                 </li>
