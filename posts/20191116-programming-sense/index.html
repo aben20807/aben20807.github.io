@@ -399,7 +399,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <p>寫法上注意空格即可。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// OuO
 </span><span style="color:#75715e"></span><span style="color:#75715e">/* OuO */</span>
-</code></pre></div><h2 id="-side-effect" class="article-heading">副:作用 (Side Effect)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-side-effect"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre></div><h2 id="-side-effect" class="article-heading">副作用 (Side Effect)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-side-effect"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>副作用 (<a href="https://en.wikibooks.org/wiki/C_Programming/Side_effects_and_sequence_points" target="_blank">Side Effect</a>) 聽起來好像很不妙，簡單來說就是會在函式內部修改到參數的情況。其實這在一般程式語言中頗為常見，沒有這項功能的話程式會變得相當難寫，例如 Functional language 寫起來就頗耗費腦力。</p>
 <h3 id="heading-6" class="article-heading">在函式宣告時點出副作用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-6"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>但是在開發過程需要適時隔離變化，C 語言提供了 <code>const</code> 修飾字來標示該參數在函式中不會被修改。以下範例中的 <code>rear</code> 和 <code>orig</code>  不會被修改到內容，所以可以利用 <code>const</code> 來提醒函式呼叫者該參數不會被改動，反之 <code>front</code> 就有機會被改動。詳細的排列組合可以參考 <sup id="fnref:9"><a href="#fn:9" class="footnote-ref smoothScroll" role="doc-noteref">9</a></sup>。</p>
@@ -505,7 +505,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </li>
 </ol>
 </section>
-      Last modified: Nov 22, 2019
+      Last modified: Dec 13, 2019
       <div class="row">
         
 <script type="text/javascript">
@@ -629,7 +629,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
                   <a class="toc-link smoothScroll" href="#-side-effect">
-                     副:作用 (Side Effect)
+                     副作用 (Side Effect)
                   </a>
                 </li>
             </ul></ul><ul class="toc"><ul class="toc"><ul class="toc"><li class="toc-item">

@@ -287,7 +287,7 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;寫法上注意空格即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// OuO
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* OuO */&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-side-effect&#34;&gt;副:作用 (Side Effect)&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-side-effect&#34;&gt;副作用 (Side Effect)&lt;/h2&gt;
 &lt;p&gt;副作用 (&lt;a href=&#34;https://en.wikibooks.org/wiki/C_Programming/Side_effects_and_sequence_points&#34;&gt;Side Effect&lt;/a&gt;) 聽起來好像很不妙，簡單來說就是會在函式內部修改到參數的情況。其實這在一般程式語言中頗為常見，沒有這項功能的話程式會變得相當難寫，例如 Functional language 寫起來就頗耗費腦力。&lt;/p&gt;
 &lt;h3 id=&#34;heading-6&#34;&gt;在函式宣告時點出副作用&lt;/h3&gt;
 &lt;p&gt;但是在開發過程需要適時隔離變化，C 語言提供了 &lt;code&gt;const&lt;/code&gt; 修飾字來標示該參數在函式中不會被修改。以下範例中的 &lt;code&gt;rear&lt;/code&gt; 和 &lt;code&gt;orig&lt;/code&gt;  不會被修改到內容，所以可以利用 &lt;code&gt;const&lt;/code&gt; 來提醒函式呼叫者該參數不會被改動，反之 &lt;code&gt;front&lt;/code&gt; 就有機會被改動。詳細的排列組合可以參考 &lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
