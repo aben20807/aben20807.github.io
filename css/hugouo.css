@@ -27,8 +27,10 @@ h4.article-heading:before,
 h5.article-heading:before,
 h6.article-heading:before {
     font-family: 'Milonga';
+    font-size: 85%;
     color:#2060a8;
     padding-right: 0.45em;
+    vertical-align:middle;
 }
 h1.article-heading:before {
     counter-increment: h1_cnt;
