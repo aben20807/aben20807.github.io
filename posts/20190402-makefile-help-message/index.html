@@ -1,146 +1,154 @@
 <!DOCTYPE html>
 <html lang="zh">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Makefile Help Message</title>
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://aben20807.github.io/index.xml">
-		<link rel="canonical" href="https://aben20807.github.io/posts/20190402-makefile-help-message/">
-		
-		<link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
-		
-		
-		<meta name="generator" content="Hugo 0.61.0" />
 
-		
-		<meta name="og:title" content="Makefile Help Message" />
-		<meta name="og:type" content="article" />
-		<meta name="og:image" content="https://drive.google.com/uc?export=view&id=1jMqjSm6HUMHY3QBm0x51leBBmvBW5EEu" />
-		<meta name="og:description" content="" />
-		<meta name="og:url" content="https://aben20807.github.io/posts/20190402-makefile-help-message/" />
-		<meta name="og:site_name" content="Makefile Help Message" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makefile Help Message</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://aben20807.github.io/index.xml">
+  <link rel="canonical" href="https://aben20807.github.io/posts/20190402-makefile-help-message/">
+  
+  <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
+  
+  
+  <meta name="generator" content="Hugo 0.61.0" />
+
+  
+<meta name="og:title"
+  content="Makefile Help Message" />
+<meta name="og:type" content="article" />
+<meta name="og:image" content="https://drive.google.com/uc?export=view&id=1jMqjSm6HUMHY3QBm0x51leBBmvBW5EEu" />
+<meta name="og:description" content="" />
+<meta name="og:url" content="https://aben20807.github.io/posts/20190402-makefile-help-message/" />
+<meta name="og:site_name"
+  content="Makefile Help Message" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@" />
 
 
-		
-		<link rel="stylesheet" href="https://aben20807.github.io/css/tachyons.min.css" />
-		<link rel="stylesheet" href="https://aben20807.github.io/css/story.css" />
-		<link rel="stylesheet" href="https://aben20807.github.io/css/descartes.css" />
-		<link rel="stylesheet" href="https://aben20807.github.io/css/hugouo.css" />
-		<link rel="stylesheet" href="https://aben20807.github.io/css/allinone.css" />
-		
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i|Fira+Mono|Lora|Noto+Sans|Milonga|Roboto+Mono&amp;subset=latin-ext" rel="stylesheet">
-		
-		
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({
-			  tex2jax: {
-				inlineMath: [['$','$']],
-				displayMath: [['$$','$$']],
-				processEscapes: true,
-				processEnvironments: true,
-				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-				TeX: { equationNumbers: { autoNumber: "AMS" },
-					 extensions: ["AMSmath.js", "AMSsymbols.js"] }
-			  }
-			});
-		</script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/fetch-inject@2.0.4/dist/fetch-inject.umd.min.js"
+    integrity="sha256-paKBtnIrL5ClLfBOtgxh1UqYCjL9790IRvDOnBh2LyI=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://aben20807.github.io/css/tachyons.min.css" async>
+  
+  <link rel="stylesheet" href="https://aben20807.github.io/css/story.css" async>
+  
+  <link rel="stylesheet" href="https://aben20807.github.io/css/hugouo.css" async>
+  <link rel="stylesheet" href="https://aben20807.github.io/css/allinone.css" async>
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" async>
+  <link
+    href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i|Quattrocento:400,700|Spectral:400,400i,700,700i|Fira+Mono|Lora|Noto+Sans+TC|Milonga|Roboto+Mono&amp;subset=latin-ext"
+    rel="stylesheet" async>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
+  <noscript>
+    <style type="text/css">
+      .lazyload {
+        display: none;
+      }
+    </style>
+  </noscript>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		
-		<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
-		<script>
-				
-				document.addEventListener('DOMContentLoaded', function () {
-						new Zooming({ bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%', enableGrab: false
-						}).listen('.img-zoomable')
-				})
-		</script>
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js"></script>
-		<noscript>
-				<style type="text/css"> .lazyload { display:none; } </style>
-		</noscript>
+  
+  
+  
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123296010-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-		<script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js"></script>
-		
-		<script src="https://aben20807.github.io/js/story.js"></script>
+</head>
 
-	</head>
-	<body class="ma0 bg-white section-posts page-kind-page is-page-true ">
-		
-		<header class="cover bg-top" style="background-image: url('https://drive.google.com/uc?export=view&amp;id=1jMqjSm6HUMHY3QBm0x51leBBmvBW5EEu'); background-position: center;">
-			<div class="bg-black-60 bb bt">
+<body
+  class="ma0 bg-white section-posts page-kind-page is-page-true ">
+  
+  <header class="cover bg-top"
+    style="background-image: url('https://drive.google.com/uc?export=view&amp;id=1jMqjSm6HUMHY3QBm0x51leBBmvBW5EEu'); background-position: center;"
+    >
+    <div class="bg-black-60 bb bt">
 
-				<nav class="hide-print sans-serif  border-box pa3 ph5-l">
-					<a href="https://aben20807.github.io/" title="Home">
-						<img src="https://aben20807.github.io/img/logo.jpg" class="w2 h2 br-100" alt="記錄用" />
-					</a>
-					<div class="fr h2 pv2 tr">
-						<a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
-						<a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
-						<a class="link f5 ml2 dim near-white" href="/about">關於</a>
-						<a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
-						<a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
-						<a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
-						<a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml" title="RSS Feed"></a>
-						<a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/" role="subscription" title="Subscription"></a>
-						<a class="link f5 ml2 dim near-white fas fa-search" href="https://aben20807.github.io/search/" role="search" title="Search"></a>
-					</div>
-				</nav>
+      <nav class="hide-print sans-serif  border-box pa3 ph5-l">
+        <a href="https://aben20807.github.io/" title="Home">
+          <img src="https://aben20807.github.io/img/logo.jpg" class="w2 h2 br-100" alt="記錄用" />
+        </a>
+        <div class="fr h2 pv2 tr">
+          <a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
+          <a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
+          <a class="link f5 ml2 dim near-white" href="/about">關於</a>
+          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
+          <a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml"
+            title="RSS Feed"></a>
+          <a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/"
+            role="subscription" title="Subscription"></a>
+          <a class="link f5 ml2 dim near-white fas fa-search" href="https://aben20807.github.io/search/" role="search"
+            title="Search"></a>
+        </div>
+      </nav>
 
-				<div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
-					<h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">Makefile Help Message</h1>
-					<h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
-						
-						
-							
-								Published
-								<time datetime="2019-04-02T09:06:15&#43;08:00">Apr 2, 2019</time>
-								<span class="display-print">by Huang Po-Hsuan</span>
-								 in <a href="https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80" class="no-underline category title-link near-white dim">程式語言</a>
-								<span class="display-print">at https://aben20807.github.io/posts/20190402-makefile-help-message/</span>
-							
-						
-					</h2>
-				</div>
+      <div id="hdr" class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
+        <h1 class="near-white mt1-ns f2 fw3 mb0 mt0 lh-title">
+          Makefile Help Message</h1>
+        <h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
+          
+          
+          
+          Published
+          <time datetime="2019-04-02T09:06:15&#43;08:00">Apr 2, 2019</time>
+          <span class="display-print">by Huang Po-Hsuan</span>
+           in <a
+            href="https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80"
+            class="no-underline category title-link near-white dim">程式語言</a>
+          <span class="display-print">at https://aben20807.github.io/posts/20190402-makefile-help-message/</span>
+          
+          
+        </h2>
+      </div>
 
-				
-				
-				
-				
+      
+      
+      
+      
 
-			</div>
-		</header>
-		
-		<main role="main">
-		
+    </div>
+  </header>
+  
+  <main role="main">
+    
 <div class="row bg-white">
   <div class="column col-1">
     <article class="center bg-white br-3 pv1 ph4 lh-copy f5 nested-links" style="max-width:720px">
       
       <div class="row">
         <div class="col-md-8">
-        
+          
           <div class="mb-5">
-            
-<div class="li-x div-x post-meta">
+            <div class="li-x div-x post-meta">
   <li class="pr-0"><a href="https://aben20807.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://aben20807.github.io/tags/makefile" role="button">makefile </a></li>
-      
+    <li><a href="https://aben20807.github.io/tags/makefile" role="button">makefile </a></li>
     
-      <li><a href="https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7" role="button">小技巧 </a></li>
-      
+    
+    <li><a href="https://aben20807.github.io/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7" role="button">小技巧 </a></li>
+    
     
   </div>
 </div>
           </div>
-        
+          
         </div>
       </div>
       
@@ -278,9 +286,8 @@ NC <span style="color:#f92672">=</span> <span style="color:#ae81ff">\0</span>33<
       <div class="row">
         
 <script type="text/javascript">
-  document.write("<iframe scrolling='no' frameborder='0' class='center' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='' src='https://button.like.co/in/embed/aben20807/button?referrer="+encodeURIComponent(location.href.split("?")[0].split("#")[0])+"'></iframe>");
+  document.write("<iframe scrolling='no' frameborder='0' class='center' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='' src='https://button.like.co/in/embed/aben20807/button?referrer=" + encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
 </script>
-
       </div>
       
       <div id="disqus_thread"></div>
@@ -306,34 +313,65 @@ NC <span style="color:#f92672">=</span> <span style="color:#ae81ff">\0</span>33<
     </article>
   </div></div>
 
-		</main>
-		
-			
-		
-		
-		
-		<footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role="contentinfo">
-			<p class="w-50 fr tr">
+  </main>
+  
+  
+  
+  
+  
+  <footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto"
+    role="contentinfo">
+    <p class="w-50 fr tr">
       Made with Hugo and
       <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
-			</p>
-			<p class="w-50 near-white">
-				&copy; 2019 Huang Po-Hsuan
-			</p>
-		</footer>
-		
-	
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-123296010-2', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+    </p>
+    <p class="w-50 near-white">
+      &copy; 2019 Huang Po-Hsuan
+    </p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://aben20807.github.io/js/hugouo.js" async></script>
+  <script src="https://aben20807.github.io/js/story.js" async></script>
+  
+  <script>
+    fetchInject([
+      "https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"
+    ]).then(() => {
+      baffle(document.querySelector('h1')).start().set({
+        speed: 70,
+      }).reveal(1000, 1000);
+    });
+  </script>
 
-	
-	</body>
+  
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+      inlineMath: [['$','$']],
+      displayMath: [['$$','$$']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+          extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+  </script>
+
+  
+  <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      new Zooming({
+        bgColor: 'rgb(0, 0, 0)', bgOpacity: '0.8', customSize: '200%', enableGrab: false
+      }).listen('.img-zoomable')
+    })
+  </script>
+  
+  
+</body>
+
 </html>

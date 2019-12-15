@@ -630,17 +630,12 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 
 
 
-&lt;div
-  style=&#34; position: relative; width: 100%; height: 100%;
-    padding-bottom: 56.25%;  //16:9 &#34;&gt;
-&lt;iframe src=&#34;https://www.youtube.com/embed/j4fIz2ozjO0?start=1&#34;
-  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
-  class=&#34;center&#34;
-  allowfullscreen frameborder=&#34;0&#34;
-  title=&#34;YouTube Video&#34;&gt;
-&lt;/iframe&gt;
+&lt;div style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  /*16:9*/ &#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/j4fIz2ozjO0?start=1&#34; style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; class=&#34;center&#34;
+    allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
-
 &lt;p&gt;不過，大丈夫 (We&#39;ll be alright) - RADWIMPS 這首的歌詞最棒最符合這部主角的心境了 OuO&lt;/p&gt;
 
 
@@ -649,17 +644,12 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 
 
 
-&lt;div
-  style=&#34; position: relative; width: 100%; height: 100%;
-    padding-bottom: 56.25%;  //16:9 &#34;&gt;
-&lt;iframe src=&#34;https://www.youtube.com/embed/tEL6EQE66FA?start=1&#34;
-  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
-  class=&#34;center&#34;
-  allowfullscreen frameborder=&#34;0&#34;
-  title=&#34;YouTube Video&#34;&gt;
-&lt;/iframe&gt;
+&lt;div style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  /*16:9*/ &#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/tEL6EQE66FA?start=1&#34; style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; class=&#34;center&#34;
+    allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
-
 &lt;p&gt;另外，我上面的淺薄心得都是在看任何影評之前靠著自己寫的，有一個短評我覺得跟我想表達的有點像可是講得非常好 (我太爛啦XD)：【影評/解析】《天氣之子》-為了你，我可以放棄世界 | 超粒方&lt;/p&gt;
 
 
@@ -668,15 +658,11 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 
 
 
-&lt;div
-  style=&#34; position: relative; width: 100%; height: 100%;
-    padding-bottom: 56.25%;  //16:9 &#34;&gt;
-&lt;iframe src=&#34;https://www.youtube.com/embed/xFc8aLYF2e0?start=1&#34;
-  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
-  class=&#34;center&#34;
-  allowfullscreen frameborder=&#34;0&#34;
-  title=&#34;YouTube Video&#34;&gt;
-&lt;/iframe&gt;
+&lt;div style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  /*16:9*/ &#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/xFc8aLYF2e0?start=1&#34; style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; class=&#34;center&#34;
+    allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;</description>
     </item>
     
@@ -2017,17 +2003,12 @@ __*粗斜體*__
 
 
 
-&lt;div
-  style=&#34; position: relative; width: 100%; height: 100%;
-    padding-bottom: 56.25%;  //16:9 &#34;&gt;
-&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=1&#34;
-  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
-  class=&#34;center&#34;
-  allowfullscreen frameborder=&#34;0&#34;
-  title=&#34;YouTube Video&#34;&gt;
-&lt;/iframe&gt;
+&lt;div style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  /*16:9*/ &#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=1&#34; style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; class=&#34;center&#34;
+    allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
-
 &lt;pre&gt;
 {{&amp;lt; youtube &amp;quot;&lt;span&gt;https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&lt;/span&gt;&amp;quot; &amp;gt;}}
 &lt;/pre&gt;
@@ -2038,15 +2019,11 @@ __*粗斜體*__
 
 
 
-&lt;div
-  style=&#34; position: relative; width: 100%; height: 100%;
-    padding-bottom: 56.25%;  //16:9 &#34;&gt;
-&lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=500&#34;
-  style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34;
-  class=&#34;center&#34;
-  allowfullscreen frameborder=&#34;0&#34;
-  title=&#34;YouTube Video&#34;&gt;
-&lt;/iframe&gt;
+&lt;div style=&#34; position: relative; width: 100%; height: 100%;
+    padding-bottom: 56.25%;  /*16:9*/ &#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/jC3jnC1dsAg?start=500&#34; style=&#34; position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; class=&#34;center&#34;
+    allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;</description>
     </item>
     
