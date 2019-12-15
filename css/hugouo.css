@@ -93,7 +93,7 @@ li {
   word-break: break-word;
 }
 code {
-  font-family: "Roboto Mono", "Fira Mono", "Consolas", "monaco", "monospace";
+  font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
 }
 h1,
 h2,
@@ -423,7 +423,7 @@ a.footnote-backref:after {
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: 5px;
+  height: 0px;
 }
 ::-webkit-scrollbar-track {
   -webkit-border-radius: 10px;
