@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.61.0" />
+  <meta name="generator" content="Hugo 0.63.2" />
 
   
 <meta name="og:title"
@@ -201,7 +201,7 @@ if (!doNotTrack) {
 <!-- https://drive.google.com/uc?export=view&id= -->
 <p>真的是隔很久&hellip;.藉口就不多說了 OuO</p>
 <p>這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO</p>
-<h1 id="heading" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br>
 然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
 <hr>
@@ -211,13 +211,13 @@ if (!doNotTrack) {
 <p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 看看吧。</p>
 <p>所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
 <p>P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO</p>
-<h1 id="heading-1" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="環境" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <ul>
 <li>ubuntu 18.04</li>
 <li>TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)</li>
 </ul>
-<h1 id="heading-2" class="article-heading">一堆程式碼上菜囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<h2 id="-cnnpredictpy" class="article-heading">原始 <code>cnnPredict.py</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-cnnpredictpy"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h1 id="一堆程式碼上菜囉" class="article-heading">一堆程式碼上菜囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#一堆程式碼上菜囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h2 id="原始-cnnpredictpy" class="article-heading">原始 <code>cnnPredict.py</code><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#原始-cnnpredictpy"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>注意要下載或複製那個程式碼，<code>cnn.h5</code> 跟 <code>test3.png</code> 一樣要放對位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.misc <span style="color:#f92672">import</span> imread, imresize
 <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
@@ -239,7 +239,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 </code></pre></div><p>很好，可以執行～</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span>
-</code></pre></div><h2 id="-tvm-" class="article-heading">加入 TVM 囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-tvm-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre></div><h2 id="加入-tvm-囉" class="article-heading">加入 TVM 囉<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#加入-tvm-囉"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
 <span style="color:#f92672">import</span> tvm.relay <span style="color:#f92672">as</span> relay
@@ -295,7 +295,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
   nn.softmax<span style="color:#f92672">(</span>%13, axis<span style="color:#f92672">=</span>1<span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&hellip;.</p>
-<h2 id="-mnist-" class="article-heading">只存 MNIST 的權重<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-mnist-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="只存-mnist-的權重" class="article-heading">只存 MNIST 的權重<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> keras
 <span style="color:#f92672">from</span> keras.datasets <span style="color:#f92672">import</span> mnist
@@ -375,7 +375,7 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
     </figcaption>
   </figure>
 </p>
-<h2 id="-keras--mnist--tvm" class="article-heading">自己用 Keras 建構一個 MNIST 再餵給 TVM<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-keras--mnist--tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="自己用-keras-建構一個-mnist-再餵給-tvm" class="article-heading">自己用 Keras 建構一個 MNIST 再餵給 TVM<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#自己用-keras-建構一個-mnist-再餵給-tvm"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>把上面產生的權重餵給自己建構的模型</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
@@ -447,7 +447,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
   nn.softmax<span style="color:#f92672">(</span>%13, axis<span style="color:#f92672">=</span>1<span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>扯，結果竟然一模一樣。</p>
-<h2 id="heading-3" class="article-heading">檢驗剛剛建立的模型是否正確<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-3"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="檢驗剛剛建立的模型是否正確" class="article-heading">檢驗剛剛建立的模型是否正確<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#檢驗剛剛建立的模型是否正確"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>總之先試試看是不是跟直接讀 <code>cnn.h5</code> 一樣。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
@@ -492,7 +492,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 </code></pre></div><p>很好，是一樣&hellip;.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span>
-</code></pre></div><h2 id="heading-4" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-4"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+</code></pre></div><h2 id="突破加個輸入層" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#突破加個輸入層"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
@@ -548,7 +548,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 test_mnist.py
 <span style="color:#ae81ff">3</span>
 </code></pre></div><p>扯，竟然過了 QuQ</p>
-<h1 id="heading-5" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-5"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="其他" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#其他"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <h2 id="lutzroedernetronhttpsgithubcomlutzroedernetron" class="article-heading"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#lutzroedernetronhttpsgithubcomlutzroedernetron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>發現了一個視覺化工具可以看模型。
 
@@ -570,7 +570,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
     </figcaption>
   </figure>
 </p>
-<h2 id="-shape-" class="article-heading">想看中間的 shape 的話<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-shape-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="想看中間的-shape-的話" class="article-heading">想看中間的 shape 的話<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#想看中間的-shape-的話"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> layer <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>layers:
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>input_shape)
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>input)
@@ -615,52 +615,52 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
     <span class="font-weight-bold mb-2">- CATALOG - </span>
   </li>
   <div id="toc-scroll" class="noselect hide-scrollbar"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading">
+        <a class="toc-link smoothScroll" href="#%e5%89%8d%e8%a8%80">
           前言
         </a>
       </li>
       </ul><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-1">
+        <a class="toc-link smoothScroll" href="#%e7%92%b0%e5%a2%83">
           環境
         </a>
       </li>
       </ul><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-2">
+        <a class="toc-link smoothScroll" href="#%e4%b8%80%e5%a0%86%e7%a8%8b%e5%bc%8f%e7%a2%bc%e4%b8%8a%e8%8f%9c%e5%9b%89">
           一堆程式碼上菜囉
         </a>
       </li>
       </ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-cnnpredictpy">
+        <a class="toc-link smoothScroll" href="#%e5%8e%9f%e5%a7%8b-cnnpredictpy">
           原始 cnnPredict.py
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-tvm-">
+        <a class="toc-link smoothScroll" href="#%e5%8a%a0%e5%85%a5-tvm-%e5%9b%89">
           加入 TVM 囉
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-mnist-">
+        <a class="toc-link smoothScroll" href="#%e5%8f%aa%e5%ad%98-mnist-%e7%9a%84%e6%ac%8a%e9%87%8d">
           只存 MNIST 的權重
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-keras--mnist--tvm">
+        <a class="toc-link smoothScroll" href="#%e8%87%aa%e5%b7%b1%e7%94%a8-keras-%e5%bb%ba%e6%a7%8b%e4%b8%80%e5%80%8b-mnist-%e5%86%8d%e9%a4%b5%e7%b5%a6-tvm">
           自己用 Keras 建構一個 MNIST 再餵給 TVM
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-3">
+        <a class="toc-link smoothScroll" href="#%e6%aa%a2%e9%a9%97%e5%89%9b%e5%89%9b%e5%bb%ba%e7%ab%8b%e7%9a%84%e6%a8%a1%e5%9e%8b%e6%98%af%e5%90%a6%e6%ad%a3%e7%a2%ba">
           檢驗剛剛建立的模型是否正確
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-4">
+        <a class="toc-link smoothScroll" href="#%e7%aa%81%e7%a0%b4%e5%8a%a0%e5%80%8b%e8%bc%b8%e5%85%a5%e5%b1%a4">
           突破，加個輸入層？
         </a>
       </li>
       </ul></ul><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-5">
+        <a class="toc-link smoothScroll" href="#%e5%85%b6%e4%bb%96">
           其他
         </a>
       </li>
@@ -670,7 +670,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-shape-">
+        <a class="toc-link smoothScroll" href="#%e6%83%b3%e7%9c%8b%e4%b8%ad%e9%96%93%e7%9a%84-shape-%e7%9a%84%e8%a9%b1">
           想看中間的 shape 的話
         </a>
       </li>
@@ -713,12 +713,12 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
   
   <footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto"
     role="contentinfo">
-    <p class="w-50 fr tr">
+    <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
       <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
     </p>
-    <p class="w-50 near-white">
-      &copy; 2019 Huang Po-Hsuan
+    <p class="w-50 near-white" style="font-size:0.875rem !important;">
+      &copy; 2019-2020 Huang Po-Hsuan
     </p>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

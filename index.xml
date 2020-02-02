@@ -12,6 +12,48 @@
     
     
     <item>
+      <title>20200202</title>
+      <link>https://aben20807.github.io/posts/20200202-20200202/</link>
+      <pubDate>Sun, 02 Feb 2020 11:14:20 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20200202-20200202/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=12Y9AlAEvGKF87LKqiDW_5waH4inUmwQN --&gt;
+&lt;p&gt;Palindrome!&lt;/p&gt;
+&lt;p&gt;想當年，高中程式設計上機考最後一題就是迴文，當時能帶大抄，剛好有迴文所以就直接貼上了，
+記得打了一堆自己不太懂的程式碼。當時我左邊的同學霸氣不帶大抄，雖然他最後一題沒寫出來，不過卻令我相當佩服呢。&lt;/p&gt;
+&lt;p&gt;啊，完蛋，是字串反轉還是迴文判斷啊@@，算了，小時候的事了(x&lt;/p&gt;
+&lt;p&gt;因應時節(?)，所以寫了一個簡單的迴文檢測程式。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; argc, &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;argv[]) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; strdup(argv[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; len &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; strlen(s);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; mid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; mid; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (s[i] &lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s[len &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i]) {
+            printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Not Palindrome QuQ&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;goto&lt;/span&gt; exit;
+        }
+    }
+    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Palindrome! OuO&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
+exit:
+    free(s);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ gcc -o palindrome palindrome.c
+$ ./palindrome &lt;span style=&#34;color:#ae81ff&#34;&gt;20200202&lt;/span&gt;
+Palindrome! OuO
+
+$ ./palindrome &lt;span style=&#34;color:#ae81ff&#34;&gt;20200203&lt;/span&gt;
+Not Palindrome QuQ
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下次迴文，要等到 20211202。再下一次，20300302。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Hugo v0.60</title>
       <link>https://aben20807.github.io/posts/20191201-hugo-0-60/</link>
       <pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate>
@@ -21,22 +63,22 @@
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;記錄一下 hugo 的改變 QuQ&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;因為實在改的有點多東西，直接在 FB 發(抱)文(怨)又有點沒架構，所以乾脆來個小整理。另外這也不是全部，主要是我有遇到的 QuQ&lt;/p&gt;
 &lt;p&gt;這裡主要是從 0.59 到 0.60 &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; 的一些記錄。&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;不同之處&lt;/h1&gt;
+&lt;h1 id=&#34;不同之處&#34;&gt;不同之處&lt;/h1&gt;
 &lt;h2 id=&#34;parser&#34;&gt;Parser&lt;/h2&gt;
 &lt;p&gt;最大不同就是 markdown parser 從原本的 &lt;a href=&#34;https://github.com/russross/blackfriday&#34;&gt;Blackfriday&lt;/a&gt; 換成使用 &lt;a href=&#34;https://github.com/yuin/goldmark/&#34;&gt;Goldmark&lt;/a&gt; 為預設了。所以有一堆是用 regex 改的內容全都要再改規則＠＠，例如 &lt;code&gt;&amp;lt;img xxx /&amp;gt;&lt;/code&gt; 這類的 self-closing tags &lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; 把最後的 &lt;code&gt;/&lt;/code&gt; 去掉了變成 &lt;code&gt;&amp;lt;img xxx&amp;gt;&lt;/code&gt;，所以剛剛是看不到圖片的。我已經改成讓 &lt;code&gt;/&lt;/code&gt; 可有可無了&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;footnote&#34;&gt;Footnote&lt;/h2&gt;
 &lt;p&gt;Footnote 的部份被大改了，產生的 html 跟原本的不太一樣，然後 0.60.1 好像有一些修改 &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; ，所以可能還要再等等 QuQ，目前 snap 最新還在 0.60.0 所以還不能返回 (&lt;code&gt;footnoteAnchorPrefix&lt;/code&gt;, &lt;code&gt;footnoteReturnLinkContents&lt;/code&gt; 也還沒看到實作&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;)。之後還要加入 smooth scroll 讓捲動有動畫而不是直接跳 (這邊我也是用 regex)。&lt;/p&gt;
-&lt;h2 id=&#34;-markdown--html&#34;&gt;預設不可以在 markdown 中使用 html&lt;/h2&gt;
+&lt;h2 id=&#34;預設不可以在-markdown-中使用-html&#34;&gt;預設不可以在 markdown 中使用 html&lt;/h2&gt;
 &lt;p&gt;如果有加一些非 markdown 語法的 html 的話預設會變成 &lt;code&gt;&amp;lt;!-- raw HTML omitted --&amp;gt;&lt;/code&gt;
 (例如從 google 雲端嵌入 pdf 檔案之類的)，如果想要修改這個預設 &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; 的話可以在 config.tmol 裡面加入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;]
 [&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;]
 [&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;renderer&lt;/span&gt;]
 &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading-2&#34;&gt;後記&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;J 個改變的速度其實有點小惱人，每次都想棄用 snap，但換個想法，這是走在世界的尖端啊 (x&lt;/p&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -71,7 +113,7 @@
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;結果因為太多項了導致右邊的目錄超出邊界，所以還是要拆成兩篇。QuQ&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://aben20807.github.io/posts/20191116-programming-sense/&#34;&gt;{{ 上一篇傳送門：Programming Sense (1) }}&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;-abstractionhttpsenwikipediaorgwikiabstraction-computer-science&#34;&gt;抽像化 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Abstraction_(computer_science)&#34;&gt;Abstraction&lt;/a&gt;)&lt;/h1&gt;
+&lt;h1 id=&#34;抽像化-abstractionhttpsenwikipediaorgwikiabstraction_computer_science&#34;&gt;抽像化 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Abstraction_(computer_science)&#34;&gt;Abstraction&lt;/a&gt;)&lt;/h1&gt;
 &lt;p&gt;盡量的抽象化自己的程式，最簡單的方式就是把相關的程式碼包成一塊，而不是散在主函式中，包起來的動作通常稱作封裝 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)&#34;&gt;Encapsulation&lt;/a&gt;)，也有實作成 ADT (&lt;a href=&#34;https://en.wikipedia.org/wiki/Abstract_data_type&#34;&gt;Abstract data type&lt;/a&gt;) 一說。&lt;/p&gt;
 &lt;p&gt;主要目的就是讓程式碼可重複使用，並讓簡化主函式的流程。抽象化過程要想著如何讓別人 (包括未來的自己) 使用自己的程式碼。可以透過將函式切成一個函式只做一件事讓可重複利用率提高。&lt;/p&gt;
 &lt;p&gt;例如實作一個 Queue 時，可以將存放的結構 (陣列)、操作指標 (front, rear) 放在同一個 &lt;code&gt;struct&lt;/code&gt; 中，甚至將 enqueue 和 dequeue 做成函式指標 (function pointer) 一起放入 &lt;code&gt;struct&lt;/code&gt; 中。注意，以下程式碼尚未測試過&amp;hellip;&lt;/p&gt;
@@ -101,16 +143,16 @@
   q&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;deque(q);
   &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading&#34;&gt;寫程式的過程&lt;/h1&gt;
-&lt;h2 id=&#34;heading-1&#34;&gt;思考&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;寫程式的過程&#34;&gt;寫程式的過程&lt;/h1&gt;
+&lt;h2 id=&#34;思考&#34;&gt;思考&lt;/h2&gt;
 &lt;p&gt;不先思考就直接寫程式的話是很危險的，通常最後很容易落得需要打掉重練的情況，預先思考可以避免掉一些盲點。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1uYiTbRQ-bmFDkJE-MC_z-HyemZzzz6kA&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;heading-2&#34;&gt;待解決的問題&lt;/h3&gt;
+&lt;h3 id=&#34;待解決的問題&#34;&gt;待解決的問題&lt;/h3&gt;
 &lt;p&gt;首先得理解題目或問題的要求，如果有提供範例輸入輸出的話請一定要按照給定的格式，不能多也不能少。不過這在現實中比較少見，很多情況是要去設計防呆的。&lt;/p&gt;
 &lt;p&gt;直覺的解法一定有，但是通常會有大量的迴圈拖慢程式執行，儘管現在的硬體好到讓我們感覺不出差異，但是還是需要正視這個問題，因為當需求一擴大，效能瓶頸就會是一個大問題。&lt;/p&gt;
 &lt;p&gt;以下題目來自 108-1 成大資工 資料結構作業三 (這裡放上題目，不過我不打算解它，雖然這樣會比較完整，可是我真的沒空 QuQ)&lt;/p&gt;
 &lt;iframe src=&#34;https://drive.google.com/file/d/1N7S4ynPmXpMYVZVgJdL0_h0K_IYXCwUl/preview&#34; width=&#34;100%&#34; height=&#34;340px&#34;&gt;&lt;/iframe&gt;
-&lt;h3 id=&#34;heading-3&#34;&gt;是否能簡化&lt;/h3&gt;
+&lt;h3 id=&#34;是否能簡化&#34;&gt;是否能簡化&lt;/h3&gt;
 &lt;p&gt;以範例問題來說，題目會給定 N 個團體，每個群體的人數不定。最直觀的方法是使用二維陣列存放這 N 個團體各自的成員，要檢查 A 是否屬於某個群體時使用雙層迴圈去搜尋這個二維陣列，都找不到則代表不屬於任何團體。&lt;/p&gt;
 &lt;p&gt;然而這樣每次搜尋都要耗費不少資源，甚至需要不少程式碼。更好的作法可以對題目的細節做解讀，題目提到成員只會有 A~Z 所以我們可以直接產生一個長度為 26 的整數陣列 &lt;code&gt;people_group_ids&lt;/code&gt; (更好的方式是使用 dict 不過 C 沒有內建) 來存放這 26 的人的團體編號，為了方便初始化，可以讓 0 代表沒有團體接著往上累加，讀取到範例輸入讀取到 3 A B C 時，在陣列的 0 1 2 位置上填入 1，等到要查詢 A 的團體編號時就可以使用 &lt;code&gt;people_group_ids[0]&lt;/code&gt; 來查詢了，原本 $O(nm)$ 的複雜度直接降為 $O(1)$，程式碼上也較為清楚。另外關於 A 對應 0 要怎麼寫，這就需要對字元有一些了解，可以觀察一下 &lt;a href=&#34;https://en.wikipedia.org/wiki/ASCII&#34;&gt;ASCII 表格&lt;/a&gt;，&lt;code&gt;person = &#39;B&#39;;&lt;/code&gt; 的話我們只需要使用 &lt;code&gt;person - &#39;A&#39;&lt;/code&gt;; 就可以得到 &lt;code&gt;1&lt;/code&gt; 了，把這個操作放到函式中增加可讀性的話更棒如下。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_group_id&lt;/span&gt;(
@@ -126,9 +168,9 @@
   people_group_ids[person &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;A&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; group_id;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;插隊的話只需要從 queue 的頭找 &lt;code&gt;group_id&lt;/code&gt; 相同的人即可。&lt;/p&gt;
-&lt;h3 id=&#34;heading-4&#34;&gt;事前設計&lt;/h3&gt;
+&lt;h3 id=&#34;事前設計&#34;&gt;事前設計&lt;/h3&gt;
 &lt;p&gt;這裡表達的不是一定要畫出 UML 或是先做好完整架構圖，而是有一點架構就可以，有簡易的流程圖當然更棒，但是我自己通常會在腦中進行，遇到比較大型的才會拿一張紙畫一下流程，這裡推薦 &lt;a href=&#34;https://www.draw.io/&#34;&gt;draw.io&lt;/a&gt; 這個完美的應用程式，可以應付各種圖。&lt;/p&gt;
-&lt;h2 id=&#34;heading-5&#34;&gt;小步前進，持續驗證&lt;/h2&gt;
+&lt;h2 id=&#34;小步前進持續驗證&#34;&gt;小步前進，持續驗證&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。&lt;br&gt;
 &amp;mdash; Yoda 生活筆記 (Lee You Tang) &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -137,14 +179,14 @@
 &lt;p&gt;我的做法會先將輸入部分完成，並且印出結果確認是否跟想像中的結果一模一樣，這裡必須要注意是否有奇怪的換行，或是輸出的順序不對等等問題，因為 C 的輸入會有許多隱藏的陷阱，也許是把空格也當成一個成員之類的。操作的指令也是把讀到的直接印出來確認。驗證完畢才繼續往下一步走。 細心檢查每一個魔鬼細節才能達到最終目的。&lt;/p&gt;
 &lt;p&gt;強烈建議每一次的驗證完後搭配 git commit 把階段性成果記錄下來。&lt;/p&gt;
 &lt;p&gt;enque 跟 deque 一樣分開驗證，這時候我們需要加上一些輔助的程式碼幫助我們印出 queue 的內容，來保證每次的操作都是正確的。例如：&lt;code&gt;print_queue()&lt;/code&gt;。&lt;/p&gt;
-&lt;h1 id=&#34;-debug&#34;&gt;除錯 (Debug)&lt;/h1&gt;
-&lt;h2 id=&#34;heading-6&#34;&gt;編譯訊息&lt;/h2&gt;
+&lt;h1 id=&#34;除錯-debug&#34;&gt;除錯 (Debug)&lt;/h1&gt;
+&lt;h2 id=&#34;編譯訊息&#34;&gt;編譯訊息&lt;/h2&gt;
 &lt;p&gt;編譯器產生的訊息相當重要，而且不是只有 Error 重要，Warning 也是一大關鍵，所以千萬不要忽略這些警告，反而要將這些警告視為錯誤，這裡推薦在編譯的時候加上 &lt;code&gt;-Wall -Werror&lt;/code&gt; 這樣那些警告就會導致編譯錯誤了。&lt;/p&gt;
-&lt;h2 id=&#34;heading-7&#34;&gt;設計測資&lt;/h2&gt;
+&lt;h2 id=&#34;設計測資&#34;&gt;設計測資&lt;/h2&gt;
 &lt;p&gt;題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 &lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;heading-8&#34;&gt;註解大法&lt;/h2&gt;
+&lt;h2 id=&#34;註解大法&#34;&gt;註解大法&lt;/h2&gt;
 &lt;p&gt;用註解部份程式碼來找出錯誤是最簡單的方式，但這我通常是用來幫別人抓錯的時候會用，因為我不確定其是否使用逐步驗證的方式，因此只有結果錯誤，但是中間的過程無法直接看出是哪邊有問題，利用註解的方式隔離未驗證的程式碼來逐步比對。&lt;/p&gt;
-&lt;h2 id=&#34;printf-&#34;&gt;&lt;code&gt;printf&lt;/code&gt; 好夥伴&lt;/h2&gt;
+&lt;h2 id=&#34;printf-好夥伴&#34;&gt;&lt;code&gt;printf&lt;/code&gt; 好夥伴&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;printf()&lt;/code&gt; 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;print_queue&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; Queue &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; q) {
   &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;) {
@@ -154,7 +196,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;gdb&#34;&gt;GDB&lt;/h2&gt;
 &lt;p&gt;GDB (&lt;a href=&#34;https://www.gnu.org/software/gdb/&#34;&gt;The GNU Project Debugger&lt;/a&gt;) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 &lt;a href=&#34;https://github.com/cyrus-and/gdb-dashboard&#34;&gt;GDB dashboard&lt;/a&gt; 可以參考 &lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;h1 id=&#34;heading-9&#34;&gt;後記&lt;/h1&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。&lt;/p&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
@@ -185,7 +227,7 @@
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;主要是我自己編寫邊學慢慢累積的，說真的也找不太到相關的資源，要搜尋也不知道下什麼關鍵字，問別人其實也很難在一時半刻裡解釋清楚，所以就拿來發一篇吧 OuO&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;期中加資格考的爆炸禮拜終於結束，其實比我想得還要容易，雖然我都很沒把握，因為我幾乎不狂寫考古題，而是以觀念取勝，有沒有取到就不確定了。&lt;/p&gt;
 &lt;p&gt;寫程式很簡單，拿來解決問題就有些難度，最難的是用優雅易懂且嚴謹的程式碼來解決問題，寫得好絕對遠遠好過寫得快。&lt;/p&gt;
 &lt;p&gt;關於這個主題，其實很早就打算寫了，只是一直擱置連架構都沒出來，直到最近有幫同學看一下程式碼，所以覺得這個觀念還是頗為重要，所以整理一下發個文，主要也希望可以幫助比較沒經驗的人，但也不限於此，我相信也會有畢業於資訊工程相關科系而沒有這些觀念。&lt;/p&gt;
@@ -195,7 +237,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;用程式碼來溝通 (Communication Through Code)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;工具&lt;/h1&gt;
+&lt;h1 id=&#34;工具&#34;&gt;工具&lt;/h1&gt;
 &lt;p&gt;「工欲善其事，必先利其器」《論語·衛靈公》 善用工具真的頗為重要，使用得當可以大量減少重複性的動作，如果是寫一般的小程式的話我會建議可以玩看看 &lt;a href=&#34;https://en.wikipedia.org/wiki/Vim_(text_editor)&#34;&gt;VIM&lt;/a&gt; 設定可以參考&lt;a href=&#34;https://github.com/aben20807/aben20807.vim&#34;&gt;我的設定&lt;/a&gt;或直接問我，可以大量減少手部的負擔。大型一點的我會推薦 &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VSCode&lt;/a&gt;，因為內容會偏多所以我就用一個副標題來說明了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1kYWGLrrnkeQaVo2OwbMZQddDu6iIn-do&#34; alt=&#34;google-vi&amp;hellip; &#34;&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;h2 id=&#34;vscode&#34;&gt;VSCode&lt;/h2&gt;
@@ -214,7 +256,7 @@
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1YrpZ2ktFpMxR3Y7MZM0zBrt4DtRFNmga&#34; alt=&#34;google-名稱拿去搜尋即可&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;shell&#34;&gt;Shell&lt;/h2&gt;
 &lt;p&gt;很多指令都是可以幫助懶惰的人，目前我還沒有遇過我想要但是沒有的指令。&lt;/p&gt;
-&lt;h3 id=&#34;-redirection&#34;&gt;重新導向 (Redirection)&lt;/h3&gt;
+&lt;h3 id=&#34;重新導向-redirection&#34;&gt;重新導向 (Redirection)&lt;/h3&gt;
 &lt;p&gt;寫程式時會常使用重新導向 (Redirection) 的方式來減少標準輸入 (stdin) 的次數，用法也相當直觀，只需要先將測試輸入先打在一份文檔 (例如：input.txt) 中，再使用以下指令執行程式即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ./queue &amp;lt; input.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若要把標準輸出 (stdout) 存到另一份文件時呢，當然也是使用重新導向。這適合在輸出很多時或是需要搜尋結果時使用。&lt;/p&gt;
@@ -229,24 +271,24 @@
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1lCoOvNF61c1WaNoZ2MhO9QioANQS3HUS&#34; alt=&#34;google-開啟設定&#34;&gt;
 &lt;img src=&#34;https://drive.google.com/open?id=1RCaxBhfaLrVM84FoD3ekeu4AmtBhnxLJ&#34; alt=&#34;google-搜尋 format style，將欄位改成 Google&#34;&gt;
 &lt;img src=&#34;https://drive.google.com/open?id=1rALSINyYBW1JuCiWsj1IVSLhiI_-_rXd&#34; alt=&#34;google-使用格式化可以用右鍵或是直接按對應的快捷鍵&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;習慣養成&lt;/h1&gt;
+&lt;h1 id=&#34;習慣養成&#34;&gt;習慣養成&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;傻瓜都可以寫出機器能讀懂的代碼，但只有專業程序員才能寫出人能讀懂的代碼。&lt;br&gt;
-&amp;mdash; 系統程序員成長計劃&lt;/p&gt;
+&amp;mdash; 李先靜 《系統程序員成長計劃》&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;coding-style-again&#34;&gt;Coding Style Again&lt;/h2&gt;
 &lt;p&gt;用工具是很方便沒錯，不過盡量還是養成習慣而不依賴工具，這裡介紹幾個比較常見的格式：&lt;/p&gt;
-&lt;h3 id=&#34;-blank&#34;&gt;空行 (Blank)&lt;/h3&gt;
+&lt;h3 id=&#34;空行-blank&#34;&gt;空行 (Blank)&lt;/h3&gt;
 &lt;p&gt;把所有操作寫在同一個函式裡面通常不容易辦到，因此不免會有某些區塊在做相關的事，合理使用空行能夠讓讀者很容易就看出程式碼的這些區塊的用途。&lt;/p&gt;
-&lt;h3 id=&#34;-indent&#34;&gt;縮排 (Indent)&lt;/h3&gt;
-&lt;p&gt;我以前偏好 4 個空格，但是最近有往兩個空格移動的趨勢，另外 Google 也是以 2 個空格為主。然而 Linux kernel 是使用 tab，這裡其實只要跟合作的夥伴們講好統一使用一種即可，就不提有統計指出用 space 賺的錢比用 tab 的人多了 &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;縮排-indent&#34;&gt;縮排 (Indent)&lt;/h3&gt;
+&lt;p&gt;我以前偏好 4 個空格，但是最近有往兩個空格移動的趨勢，另外 Google 也是以 2 個空格為主。然而 Linux kernel 是使用 tab，這裡其實只要跟合作的夥伴們講好統一使用一種即可，就不提有統計指出用 space 賺的錢比用 tab 的人多了 &lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;if-statement&#34;&gt;If Statement&lt;/h3&gt;
-&lt;h4 id=&#34;heading-3&#34;&gt;加上空格們&lt;/h4&gt;
+&lt;h4 id=&#34;加上空格們&#34;&gt;加上空格們&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(condition) {   &lt;span style=&#34;color:#75715e&#34;&gt;// Bad
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (condition){   &lt;span style=&#34;color:#75715e&#34;&gt;// Bad
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(condition){    &lt;span style=&#34;color:#75715e&#34;&gt;// Doubly bad
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (condition) {  &lt;span style=&#34;color:#75715e&#34;&gt;// Good
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;heading-4&#34;&gt;加上大括號們&lt;/h4&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;加上大括號們&#34;&gt;加上大括號們&lt;/h4&gt;
 &lt;p&gt;這裡我會比較嚴格規定自己，就算是只有一行也要加，這樣比較方便擴充，例如臨時要加上 &lt;code&gt;printf&lt;/code&gt; 時就不用再加。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (condition) {
   foo;
@@ -254,16 +296,16 @@
   bar;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;loop-statement&#34;&gt;Loop Statement&lt;/h3&gt;
-&lt;h4 id=&#34;heading-5&#34;&gt;加上空格們&lt;/h4&gt;
+&lt;h4 id=&#34;加上空格們-1&#34;&gt;加上空格們&lt;/h4&gt;
 &lt;p&gt;注意 &lt;code&gt;;&lt;/code&gt; 前不要後要。&lt;br&gt;
-這裡用 &lt;code&gt;i++&lt;/code&gt; 或 &lt;code&gt;++i&lt;/code&gt; 其實基本上沒有效能差異 &lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;，編譯器會幫你最佳化，我更喜歡 &lt;code&gt;i++&lt;/code&gt; 因為要改成 &lt;code&gt;i+=2&lt;/code&gt; 之類的比較方便，另外也是有 &lt;code&gt;i-=-1&lt;/code&gt; &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; 這種邪教&amp;hellip;&lt;/p&gt;
+這裡用 &lt;code&gt;i++&lt;/code&gt; 或 &lt;code&gt;++i&lt;/code&gt; 其實基本上沒有效能差異 &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;，編譯器會幫你最佳化，我更喜歡 &lt;code&gt;i++&lt;/code&gt; 因為要改成 &lt;code&gt;i+=2&lt;/code&gt; 之類的比較方便，另外也是有 &lt;code&gt;i-=-1&lt;/code&gt; &lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; 這種邪教&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; some_number; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;) {
   printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;OuO&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;pointer-&#34;&gt;Pointer 變數宣告&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;int*x;&lt;/code&gt;、&lt;code&gt;int *x;&lt;/code&gt;、&lt;code&gt;int* x&lt;/code&gt;、&lt;code&gt;int * x&lt;/code&gt; 都是可編譯的寫法，在 C 中 &lt;code&gt;int *x;&lt;/code&gt; 更為常用。C++ 中反而是 &lt;code&gt;int* x;&lt;/code&gt; &lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;-naming-convention&#34;&gt;命名 (Naming Convention)&lt;/h3&gt;
-&lt;h4 id=&#34;-variable-function&#34;&gt;檔案名稱、變數 (Variable)、函式 (Function)&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;pointer-變數宣告&#34;&gt;Pointer 變數宣告&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;int*x;&lt;/code&gt;、&lt;code&gt;int *x;&lt;/code&gt;、&lt;code&gt;int* x&lt;/code&gt;、&lt;code&gt;int * x&lt;/code&gt; 都是可編譯的寫法，在 C 中 &lt;code&gt;int *x;&lt;/code&gt; 更為常用。C++ 中反而是 &lt;code&gt;int* x;&lt;/code&gt; &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;命名-naming-convention&#34;&gt;命名 (Naming Convention)&lt;/h3&gt;
+&lt;h4 id=&#34;檔案名稱變數-variable函式-function&#34;&gt;檔案名稱、變數 (Variable)、函式 (Function)&lt;/h4&gt;
 &lt;p&gt;使用 &lt;a href=&#34;https://en.wikipedia.org/wiki/Snake_case&#34;&gt;snake_case&lt;/a&gt; 並取有上下文關係的名字，例如 &lt;code&gt;flag&lt;/code&gt;、&lt;code&gt;count&lt;/code&gt; 就沒有上下文，會不知道這個變數要用來存放什麼東西。&lt;br&gt;
 e.g., &lt;code&gt;http_server_logs.h&lt;/code&gt;、&lt;code&gt;table_name&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Google 的函式也可用 UpperCamelCase，但我個人比較習慣 snake_case，另外函式須以動詞開頭以表明動作。&lt;br&gt;
@@ -271,26 +313,26 @@ e.g., &lt;code&gt;add_table_entry&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&#34;struct-class&#34;&gt;Struct, Class&lt;/h4&gt;
 &lt;p&gt;使用 &lt;a href=&#34;https://en.wikipedia.org/wiki/Camel_case&#34;&gt;UpperCamelCase&lt;/a&gt;&lt;br&gt;
 e.g., &lt;code&gt;UrlTableProperties&lt;/code&gt;, &lt;code&gt;TableInfo&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;-constant&#34;&gt;常數 (Constant)&lt;/h4&gt;
+&lt;h4 id=&#34;常數-constant&#34;&gt;常數 (Constant)&lt;/h4&gt;
 &lt;p&gt;使用全大寫並以 &lt;code&gt;_&lt;/code&gt; 連接。&lt;br&gt;
 e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;-initialize&#34;&gt;初始化 (Initialize)&lt;/h2&gt;
-&lt;p&gt;寫 C 語言時要注意變數的初始化，以免結果跟自己所想的不一樣，這是因為在規格書中的定義中提到，只有全域變數或是靜態 (static) 變數會被初始化，其他未初始化的則不會有明確的初始值。 C99 §6.7.8.10 &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。在陣列的初始化若要全部定義為 &lt;code&gt;\0&lt;/code&gt;，我們可以直接在宣告中使用 &lt;code&gt;{}&lt;/code&gt; 即可，因為規格書中有規定若初始化的個數不足則會比照靜態變數 C99 §6.7.8.21 &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;h2 id=&#34;初始化-initialize&#34;&gt;初始化 (Initialize)&lt;/h2&gt;
+&lt;p&gt;寫 C 語言時要注意變數的初始化，以免結果跟自己所想的不一樣，這是因為在規格書中的定義中提到，只有全域變數或是靜態 (static) 變數會被初始化，其他未初始化的則不會有明確的初始值。 C99 §6.7.8.10 &lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;。在陣列的初始化若要全部定義為 &lt;code&gt;\0&lt;/code&gt;，我們可以直接在宣告中使用 &lt;code&gt;{}&lt;/code&gt; 即可，因為規格書中有規定若初始化的個數不足則會比照靜態變數 C99 §6.7.8.21 &lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 每個變數宣告時搭配初始化
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
 &lt;span style=&#34;color:#75715e&#34;&gt;// 陣列初始化以下都可以
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; que[&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;\0&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;};
 &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; que[&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;};
 &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; que[&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-comment&#34;&gt;註解 (Comment)&lt;/h2&gt;
-&lt;p&gt;請盡量使用英文來註解，因為英文比較不像中文那樣一詞多義，可以較明確的敘述，若執意要用中文就需要注意編碼，目前主流應該是使用 UTF8。內容部份可以多記錄一點上下文而不是僅僅該行程式碼做了什麼事，通常註解會拿來說明整個函式，會需要一行一行註解的情況比較少並會用高可讀性的程式馬來替代。我之前有找到一篇非常詳盡的指南 &lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt; 可以參考看看 (雖然我也沒有仔細讀完就是了＠＠&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;註解-comment&#34;&gt;註解 (Comment)&lt;/h2&gt;
+&lt;p&gt;請盡量使用英文來註解，因為英文比較不像中文那樣一詞多義，可以較明確的敘述，若執意要用中文就需要注意編碼，目前主流應該是使用 UTF8。內容部份可以多記錄一點上下文而不是僅僅該行程式碼做了什麼事，通常註解會拿來說明整個函式，會需要一行一行註解的情況比較少並會用高可讀性的程式馬來替代。我之前有找到一篇非常詳盡的指南 &lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt; 可以參考看看 (雖然我也沒有仔細讀完就是了＠＠&lt;/p&gt;
 &lt;p&gt;寫法上注意空格即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// OuO
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* OuO */&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-side-effect&#34;&gt;副作用 (Side Effect)&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;副作用-side-effect&#34;&gt;副作用 (Side Effect)&lt;/h2&gt;
 &lt;p&gt;副作用 (&lt;a href=&#34;https://en.wikibooks.org/wiki/C_Programming/Side_effects_and_sequence_points&#34;&gt;Side Effect&lt;/a&gt;) 聽起來好像很不妙，簡單來說就是會在函式內部修改到參數的情況。其實這在一般程式語言中頗為常見，沒有這項功能的話程式會變得相當難寫，例如 Functional language 寫起來就頗耗費腦力。&lt;/p&gt;
-&lt;h3 id=&#34;heading-6&#34;&gt;在函式宣告時點出副作用&lt;/h3&gt;
-&lt;p&gt;但是在開發過程需要適時隔離變化，C 語言提供了 &lt;code&gt;const&lt;/code&gt; 修飾字來標示該參數在函式中不會被修改。以下範例中的 &lt;code&gt;rear&lt;/code&gt; 和 &lt;code&gt;orig&lt;/code&gt;  不會被修改到內容，所以可以利用 &lt;code&gt;const&lt;/code&gt; 來提醒函式呼叫者該參數不會被改動，反之 &lt;code&gt;front&lt;/code&gt; 就有機會被改動。詳細的排列組合可以參考 &lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;在函式宣告時點出副作用&#34;&gt;在函式宣告時點出副作用&lt;/h3&gt;
+&lt;p&gt;但是在開發過程需要適時隔離變化，C 語言提供了 &lt;code&gt;const&lt;/code&gt; 修飾字來標示該參數在函式中不會被修改。以下範例中的 &lt;code&gt;rear&lt;/code&gt; 和 &lt;code&gt;orig&lt;/code&gt;  不會被修改到內容，所以可以利用 &lt;code&gt;const&lt;/code&gt; 來提醒函式呼叫者該參數不會被改動，反之 &lt;code&gt;front&lt;/code&gt; 就有機會被改動。詳細的排列組合可以參考 &lt;sup id=&#34;fnref:10&#34;&gt;&lt;a href=&#34;#fn:10&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;deque&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;orig, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;rear) {
   &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;rear) {
     printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Empty&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
@@ -306,8 +348,8 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; orig,
     &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front,
     &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; rear) {
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;-pointer&#34;&gt;需要修改的才傳入其指標 (Pointer)&lt;/h3&gt;
-&lt;p&gt;這裡要先宣導一個觀念就是 C 語言只有 Pass By Value，也就是只會複製傳入變數的數值，傳入指標也是一樣，我們只是傳入了指標這個數值，而透過這個指標的取值 (dereference) 可以改動對應的記憶體位置 C99 §6.5.2.2.4 &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。而因為 C 的函式回傳值只限一個，所以大部分會使用修改參數的方式來回傳數值，而真正的回傳值就用來表示函式是否正確執行，否則就回傳對應的錯誤碼。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;需要修改的才傳入其指標-pointer&#34;&gt;需要修改的才傳入其指標 (Pointer)&lt;/h3&gt;
+&lt;p&gt;這裡要先宣導一個觀念就是 C 語言只有 Pass By Value，也就是只會複製傳入變數的數值，傳入指標也是一樣，我們只是傳入了指標這個數值，而透過這個指標的取值 (dereference) 可以改動對應的記憶體位置 C99 §6.5.2.2.4 &lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;。而因為 C 的函式回傳值只限一個，所以大部分會使用修改參數的方式來回傳數值，而真正的回傳值就用來表示函式是否正確執行，否則就回傳對應的錯誤碼。&lt;/p&gt;
 &lt;p&gt;上面那樣改起來好像太奇葩，更好的解決方式是要先思考，把將要在函式內部更動變數在傳入其指標，其餘的只須把數值傳進去即可。當然若是傳入陣列就還是需要指標就像 &lt;code&gt;orig&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 因為最後一個參數不會變動而且只需要其數值
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 所以直接以常數傳入，當然函式內部就不需要取值了
@@ -322,8 +364,8 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;front &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-7&#34;&gt;多檔案&lt;/h2&gt;
-&lt;h3 id=&#34;-include&#34;&gt;避免重複 include&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;多檔案&#34;&gt;多檔案&lt;/h2&gt;
+&lt;h3 id=&#34;避免重複-include&#34;&gt;避免重複 include&lt;/h3&gt;
 &lt;p&gt;專案擴張下，必然會用到多檔案，這時候就會拆成很多的 &lt;code&gt;.h&lt;/code&gt;, &lt;code&gt;.c&lt;/code&gt; 檔，&lt;code&gt;.h&lt;/code&gt; 用來作為界面的溝通，這時候一定要使用 macro (&lt;a href=&#34;https://en.wikipedia.org/wiki/Include_guard&#34;&gt;Include guard&lt;/a&gt;) 防止重複 include。以下為檔名為 &lt;code&gt;file.h&lt;/code&gt; 的內容範例：&lt;code&gt;FILE_H&lt;/code&gt;, &lt;code&gt;_FILE_H&lt;/code&gt;, &lt;code&gt;__FILE_H__&lt;/code&gt; 都有人用，但一般以第一種為主即可。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;ifndef FILE_H&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;define FILE_H&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
@@ -331,20 +373,20 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;/* ... Declarations etc here ... */&lt;/span&gt;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;endif &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* FILE_H */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;-static-&#34;&gt;用 &lt;code&gt;static&lt;/code&gt; 修飾內部函數&lt;/h3&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;用-static-修飾內部函數&#34;&gt;用 &lt;code&gt;static&lt;/code&gt; 修飾內部函數&lt;/h3&gt;
 &lt;p&gt;如果在多檔案下函數並不是要開放給其他檔案呼叫時，請加上 &lt;code&gt;static&lt;/code&gt; 來保證只有當前檔案內部可以看到那個函數。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;my_local_function&lt;/span&gt;() {
   printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;OuO&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-8&#34;&gt;避免使用危險的函式們&lt;/h2&gt;
-&lt;p&gt;C 語言給予使用者相當大的彈性但用起來需要知道自己在做什麼，否則會有許多安全性漏洞，有一些函式很容易造成誤用，連資深工程師也常用錯，因此蠻多專案直接把不安全的函式禁用，例如 Git &lt;sup id=&#34;fnref:10&#34;&gt;&lt;a href=&#34;#fn:10&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;，Intel 的 safestringlib 也有一個完整列表 &lt;sup id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;。以下給出一些較常見的。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;避免使用危險的函式們&#34;&gt;避免使用危險的函式們&lt;/h2&gt;
+&lt;p&gt;C 語言給予使用者相當大的彈性但用起來需要知道自己在做什麼，否則會有許多安全性漏洞，有一些函式很容易造成誤用，連資深工程師也常用錯，因此蠻多專案直接把不安全的函式禁用，例如 Git &lt;sup id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;，Intel 的 safestringlib 也有一個完整列表 &lt;sup id=&#34;fnref:12&#34;&gt;&lt;a href=&#34;#fn:12&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;12&lt;/a&gt;&lt;/sup&gt;。以下給出一些較常見的。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;gets()&lt;/code&gt; &lt;sup id=&#34;fnref:12&#34;&gt;&lt;a href=&#34;#fn:12&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;12&lt;/a&gt;&lt;/sup&gt; C11 已經不支援，請改用 &lt;code&gt;fgets()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gets()&lt;/code&gt; &lt;sup id=&#34;fnref:13&#34;&gt;&lt;a href=&#34;#fn:13&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;13&lt;/a&gt;&lt;/sup&gt; C11 已經不支援，請改用 &lt;code&gt;fgets()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;strcpy()&lt;/code&gt; 沒有長度偵測。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;strncpy()&lt;/code&gt; 有長度但是不會在結尾補上 &lt;code&gt;\0&lt;/code&gt; &lt;sup id=&#34;fnref:13&#34;&gt;&lt;a href=&#34;#fn:13&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;13&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ato*()&lt;/code&gt; 改用 &lt;code&gt;strto*()&lt;/code&gt; 利於錯誤處理 C99 §7.20.1 &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strncpy()&lt;/code&gt; 有長度但是不會在結尾補上 &lt;code&gt;\0&lt;/code&gt; &lt;sup id=&#34;fnref:14&#34;&gt;&lt;a href=&#34;#fn:14&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;14&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ato*()&lt;/code&gt; 改用 &lt;code&gt;strto*()&lt;/code&gt; 利於錯誤處理 C99 §7.20.1 &lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;heading-9&#34;&gt;其他習慣&lt;/h2&gt;
+&lt;h2 id=&#34;其他習慣&#34;&gt;其他習慣&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;盡量不使用全域變數&lt;/li&gt;
 &lt;/ul&gt;
@@ -359,37 +401,40 @@ e.g., &lt;code&gt;MAX_ROW_SIZE&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.reddit.com/r/ProgrammerHumor/comments/2wrxyt/a_python_programmer_attempting_java/&#34;&gt;A Python programmer attempting Java&lt;/a&gt; &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&#34;&gt;Developers Who Use Spaces Make More Money Than Those Who Use Tabs&lt;/a&gt; &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/absurd/article/details/3181222&#34;&gt;系統程序員成長計劃-走近專業程序員(下)&lt;/a&gt; &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/a/24887/6734174&#34;&gt;Is there a performance difference between i++ and ++i in C?&lt;/a&gt; &lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&#34;&gt;Developers Who Use Spaces Make More Money Than Those Who Use Tabs&lt;/a&gt; &lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/DasSurma/status/1192736235447619584&#34;&gt;&lt;code&gt;i-=-1&lt;/code&gt; is hipster, expressive and symmetric&lt;/a&gt; &lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/a/24887/6734174&#34;&gt;Is there a performance difference between i++ and ++i in C?&lt;/a&gt; &lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:6&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.stroustrup.com/bs_faq2.html#whitespace&#34;&gt;Is &lt;code&gt;int* p;&lt;/code&gt; right or is &lt;code&gt;int *p;&lt;/code&gt; right?&lt;/a&gt; &lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/DasSurma/status/1192736235447619584&#34;&gt;&lt;code&gt;i-=-1&lt;/code&gt; is hipster, expressive and symmetric&lt;/a&gt; &lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:7&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;C99 規格書 ISO/IEC 9899:TC3&lt;/a&gt; &lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.stroustrup.com/bs_faq2.html#whitespace&#34;&gt;Is &lt;code&gt;int* p;&lt;/code&gt; right or is &lt;code&gt;int *p;&lt;/code&gt; right?&lt;/a&gt; &lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:8&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;http://antirez.com/news/124&#34;&gt;Writing system software: code comments.&lt;/a&gt; &lt;a href=&#34;#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf&#34;&gt;C99 規格書 ISO/IEC 9899:TC3&lt;/a&gt; &lt;a href=&#34;#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:9&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/a/1143272&#34;&gt;What is the difference between const int*, const int * const, and int const *?&lt;/a&gt; &lt;a href=&#34;#fnref:9&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://antirez.com/news/124&#34;&gt;Writing system software: code comments.&lt;/a&gt; &lt;a href=&#34;#fnref:9&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:10&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/git/git/blob/master/banned.h&#34;&gt;git/banned.h&lt;/a&gt; &lt;a href=&#34;#fnref:10&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/a/1143272&#34;&gt;What is the difference between const int*, const int * const, and int const *?&lt;/a&gt; &lt;a href=&#34;#fnref:10&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:11&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/intel/safestringlib/wiki/SDL-List-of-Banned-Functions&#34;&gt;SDL List of Banned Functions&lt;/a&gt; &lt;a href=&#34;#fnref:11&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/git/git/blob/master/banned.h&#34;&gt;git/banned.h&lt;/a&gt; &lt;a href=&#34;#fnref:11&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:12&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://cwe.mitre.org/data/definitions/242.html&#34;&gt;CWE-242: Use of Inherently Dangerous Function&lt;/a&gt; &lt;a href=&#34;#fnref:12&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/intel/safestringlib/wiki/SDL-List-of-Banned-Functions&#34;&gt;SDL List of Banned Functions&lt;/a&gt; &lt;a href=&#34;#fnref:12&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:13&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://devblogs.microsoft.com/oldnewthing/?p=36773&#34;&gt;How can code that tries to prevent a buffer overflow end up causing one?&lt;/a&gt; &lt;a href=&#34;#fnref:13&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cwe.mitre.org/data/definitions/242.html&#34;&gt;CWE-242: Use of Inherently Dangerous Function&lt;/a&gt; &lt;a href=&#34;#fnref:13&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:14&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://devblogs.microsoft.com/oldnewthing/?p=36773&#34;&gt;How can code that tries to prevent a buffer overflow end up causing one?&lt;/a&gt; &lt;a href=&#34;#fnref:14&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;</description>
@@ -484,7 +529,7 @@ float32
 &lt;li&gt;合併 10,000 筆資料到一個檔案方便複製&lt;/li&gt;
 &lt;li&gt;用 Google Spreadsheet 來平均並製作圖表&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;1-&#34;&gt;1. 合併&lt;/h2&gt;
+&lt;h2 id=&#34;1-合併&#34;&gt;1. 合併&lt;/h2&gt;
 &lt;p&gt;檔案架構大致如下&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;├── mae_0000.txt
 ├── mae_0001.txt
@@ -569,7 +614,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這樣資料就會從原本的往右長變成往下長&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1dZ7u6raak9lUQiPR5DKxUTRjQJWPTPFZ&#34; alt=&#34;google-轉置前&#34;&gt;
 &lt;img src=&#34;https://drive.google.com/open?id=1_vu6Is-UDZqvWJodUJjdVlmbGokwct5O&#34; alt=&#34;google-轉置後&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;-google-spreadsheep&#34;&gt;使用 Google Spreadsheep&lt;/h2&gt;
+&lt;h2 id=&#34;使用-google-spreadsheep&#34;&gt;使用 Google Spreadsheep&lt;/h2&gt;
 &lt;p&gt;這裡可能比較沒啥，就是貼上去，這裡我覺得不要用 vim 開啟，找個方便複製的 (例如：VSCode)&lt;/p&gt;
 &lt;p&gt;用 Ctrl-v 貼上 Spreadsheet 時可能會花一點時間&lt;/p&gt;
 &lt;p&gt;不過發現它把所有的 column 合在一起了&lt;/p&gt;
@@ -581,7 +626,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;img src=&#34;https://drive.google.com/open?id=1sUbYYqab7gdhWDDSFX0eJUxujb7_zfPn&#34; alt=&#34;google- &#34;&gt;
 &lt;img src=&#34;https://drive.google.com/open?id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;p&gt;平均跟圖表部份就按照一般試算表的使用方式，就不記錄了。&lt;/p&gt;
-&lt;h2 id=&#34;heading&#34;&gt;參考&lt;/h2&gt;
+&lt;h2 id=&#34;參考&#34;&gt;參考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/1729980/6734174&#34;&gt;An efficient way to transpose a file in Bash&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/a/205646&#34;&gt;Combining large amount of files&lt;/a&gt;&lt;/li&gt;
@@ -621,7 +666,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;p&gt;主角們最後為了自己而許願，這並不是妥協於世界已經在崩壞的藉口，而是有所選擇下的結果。&lt;/p&gt;
 &lt;p&gt;老實說我一度以為會想辦法解決這個雨一直下不停的狀況，結果最後是就直接在這裡停止，我想這也是頗好，帶了一點點不是這麼完美的結局結束。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;20190921-&#34;&gt;2019.09.21 補充&lt;/h2&gt;
+&lt;h2 id=&#34;20190921-補充&#34;&gt;2019.09.21 補充&lt;/h2&gt;
 &lt;p&gt;怎麼講呢，認真要挑反而沒有一首代表性的 (跟《你的名字》有點像)，不過我會想放グランドエスケープ(Grand Escape) - RADWIMPS (feat.三浦透子)，因為是電影短版所以那種到高潮處嘎然而止的感覺跟電影有點像，重低音的背景我有點愛但不太適合狂聽就是了。&lt;/p&gt;
 
 
@@ -636,7 +681,7 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
     allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;
   &lt;/iframe&gt;
 &lt;/div&gt;
-&lt;p&gt;不過，大丈夫 (We&#39;ll be alright) - RADWIMPS 這首的歌詞最棒最符合這部主角的心境了 OuO&lt;/p&gt;
+&lt;p&gt;不過，大丈夫 (We&amp;rsquo;ll be alright) - RADWIMPS 這首的歌詞最棒最符合這部主角的心境了 OuO&lt;/p&gt;
 
 
 
@@ -676,14 +721,14 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=https://drive.google.com/open?id=11dfe_7DVpwD2njTDBgIu23p1B4c_M7-d --&gt;
 &lt;p&gt;大學畢業後突然有感，感覺需要記錄一下。&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;其實這只是一段紀錄，不是要說你們一定要學著這樣做，當然如果你覺得不錯可以試試看，不過如果發現太晚看到了，沒關係，生命自會找到出路，人生裡沒有什麼是繞遠路的。總之把這篇當作是&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%80%96%E5%AD%98%E8%80%85%E5%81%8F%E5%B7%AE&#34;&gt;倖存者偏差&lt;/a&gt;的文章我也不會說什麼。&lt;/p&gt;
 &lt;p&gt;另外，雖然主要是大學，不過我覺得這個學習方式是在國中的時候被養成的，高中時有機會得以更加磨練，大學時用的得心應手。&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;國高中的啟蒙&lt;/h1&gt;
+&lt;h1 id=&#34;國高中的啟蒙&#34;&gt;國高中的啟蒙&lt;/h1&gt;
 &lt;p&gt;剛好都是生物課 (結果我現在的領域截然不同)。國中生物課是老師通常用投影片跟講義上課，然後會有東西需要填空，當時是因為老師頗有趣而且會需要畫一堆生物相關的圖片所以我算是蠻認真上課。高中的生物老師一樣有趣，不過教學方式是純板書，而且字相當的「藝術」(當下沒記到的話之後一定會看不懂的那種)，但是因為整理的相當好，所以我都會在他講課的當下把聽到的東西抄成手稿，板書只是用來輔助我沒抄到的部份，這裡訓練到了寫字的速度及反應，然後之後再找時間轉換成比較精美的筆記，突然發現我在高中生物花了很多時間@@。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=11ckRrYyumxt0qTjxS9Dz98gpH6JYNdpx&#34; alt=&#34;google-高中生物手稿&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=11rgEhk6nd47jcfyTdt8KQsk7xRLh_3Ll&#34; alt=&#34;google-高中生物筆記&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;正文&lt;/h1&gt;
+&lt;h1 id=&#34;正文&#34;&gt;正文&lt;/h1&gt;
 &lt;p&gt;好像有蠻多人，不管是自己的心態亦或是將學習意願缺乏怪在教課的教授身上，這群人總是認為自己學習更有效率，甚至課都不用去上，考前讀個幾天或僅需一整夜即可應付大大小小的測驗。其實不然，若只把讀書拿來應付考試實在過於短視。&lt;/p&gt;
 &lt;p&gt;我想說，最懶惰最輕鬆的方式絕對是「認真上課加抄筆記」，我的作法是即時將教授上課所講得知識轉換成自己能快速理解的語言並寫在活頁紙上，我覺得寫字還是很難被取代，因為自由度相當大，臨時要畫圖什麼的可以不需要任何切換。除了考試外，有其他額外的技能能夠訓練，例如教授上課的教學技巧，並非只有教得好的值得學習，那些聽得很吃力的可以學到怎樣的方式是不適合的間接可以拿來調整自己。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=11LbbgbouvwIlnpDm8EPL7mPabBjnPVin&#34; alt=&#34;google-作業系統 process scheduling&#34;&gt;&lt;/p&gt;
@@ -704,14 +749,14 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;p&gt;總之我認為邊上課邊寫出讓自己易於理解筆記的過程，與直譯器 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Interpreter_(computing)&#34;&gt;Interpreter&lt;/a&gt;) 有 87% 相似度，根本就是人體直譯器。 然後算是最近才知道這非常接近&lt;a href=&#34;https://medium.com/y-pointer/%E7%9F%A5%E8%AD%98-967cca95a939&#34;&gt;費曼學習法&lt;/a&gt;，只是我還有加上即時產出。&lt;/p&gt;
 &lt;p&gt;另外因為是即時改寫，所以也算是有訓練到重寫的技能，這在未來寫論文上可能會比較需要。&lt;/p&gt;
 &lt;p&gt;使用這個方法我認為算是比較容易能夠維持好成績的，不會像臨時抱佛腳那樣浮動比較大，至於好成績有什麼用我就另外列在下面了，別在說「大學成績沒啥用，有過就好」這種話，但是當然也是有缺點的。&lt;/p&gt;
-&lt;h1 id=&#34;heading-3&#34;&gt;認真上課的缺點&lt;/h1&gt;
+&lt;h1 id=&#34;認真上課的缺點&#34;&gt;認真上課的缺點&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;需要有人 (教授) 幫忙整理資料變成自己的輸入&lt;/li&gt;
 &lt;li&gt;缺少主動去學習的能力&lt;/li&gt;
 &lt;li&gt;如果需要大量思考的內容會比較吃力，例如：演算法&lt;/li&gt;
 &lt;li&gt;會有更多時間做自己的事，不夠自律的話會浪費時間&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-4&#34;&gt;補充：成績好可能有的好處&lt;/h1&gt;
+&lt;h1 id=&#34;補充成績好可能有的好處&#34;&gt;補充：成績好可能有的好處&lt;/h1&gt;
 &lt;p&gt;(相關規定自己查嘿 OuO)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;獎學金 &amp;ndash; (雖然我沒拿過我們學校的)&lt;/li&gt;
@@ -720,9 +765,9 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;li&gt;出國 GPA &amp;ndash; (據說國外成績看頗重)&lt;/li&gt;
 &lt;li&gt;&lt;del&gt;同學都把你當學霸&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-5&#34;&gt;結論&lt;/h1&gt;
+&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
 &lt;p&gt;整體來說，認真上課的 CP 值真的頗高。&lt;/p&gt;
-&lt;h1 id=&#34;heading-6&#34;&gt;後記&lt;/h1&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;畢業之後回想，這個學習方式是很輕鬆，但是缺點就是自己讀書的時間太少，而這卻是大學跟研究所之間的差異，也就是說讀研究所時，會傾向學生已經具備從書本學習已建構好的知識，研究所則是不會又統一的教材，必須自行找到相關的期刊論文、研究、實驗、找出新方法。因此現在的我就會有之前書讀得太少的感覺。&lt;/p&gt;
 &lt;p&gt;然而這些知識現在大部分都已經散落在網路上的，怎麼下關鍵字找答案以及如何分辨真偽反而是更重要的課題。不過下關鍵字的能力我是覺得我算很不錯，因為很多問題只能自己上網找答案之類的。&lt;/p&gt;</description>
     </item>
@@ -737,14 +782,14 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1_AbE-ZZwgjrCTgCi9ypGCVyYqWvxDO6f --&gt;
 &lt;p&gt;簡單玩玩 @@&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;之前大學時期 (講得好像很久之前 OuO) 的某幾個作業我有拿來測試自己的程式碼是否有 memory leak 的情況，會發生這種情況主要原因是沒有對每一個 alloc 做 free。&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;環境&lt;/h1&gt;
+&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;T490s&lt;/li&gt;
 &lt;li&gt;Ubuntu 18.04&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;valgrind--memcheck&#34;&gt;Valgrind 的 Memcheck&lt;/h1&gt;
+&lt;h1 id=&#34;valgrind-的-memcheck&#34;&gt;Valgrind 的 Memcheck&lt;/h1&gt;
 &lt;p&gt;要一篇講完 Valgrind 基本上有點難，而且東西頗雜，我也是邊摸邊記錄，因為 Valgrind 有很多工具可以用，本篇主要講解預設的工具 &lt;strong&gt;memcheck&lt;/strong&gt;，當然也只是部份的部份而已 QuQ。顧名思義是用來檢測記憶體使用情況，主要用在 C 及 C++。它是以插入額外程式碼 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Profiling_(computer_programming)#Instrumentation&#34;&gt;Instrumentation&lt;/a&gt;) 的方式來記錄記憶體的使用，根據 wiki，memcheck 幾乎對所有指令的周圍都插入額外的檢測程式碼用來追蹤記憶體區塊的有效性 (validity)。原因是因為一開始未被分配的區塊都會是無效 (invalid) 或是未定義 (undefined)，當這些區快被初始化後，memcheck 仍繼續追蹤 V bits (&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html#mc-manual.value&#34;&gt;Valid-value bits&lt;/a&gt;) 及 A bits (&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html#mc-manual.vaddress&#34;&gt;Valid-address bits&lt;/a&gt;)。此外，還實做了記憶體分配器 (&lt;a href=&#34;https://en.wikipedia.org/wiki/C_dynamic_memory_allocation&#34;&gt;memory allocator&lt;/a&gt;)，也就是定義了 &lt;code&gt;malloc&lt;/code&gt; 與 &lt;code&gt;free&lt;/code&gt; 之類的函式來記錄呼叫次數。&lt;/p&gt;
 &lt;p&gt;總結來說，主要用來做以下項目檢測：&lt;/p&gt;
 &lt;ul&gt;
@@ -754,10 +799,10 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;li&gt;記憶體洩漏 (&lt;a href=&#34;https://en.wikipedia.org/wiki/Memory_leak&#34;&gt;Memory leaks&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;不過插入外程式碼是有代價的，就是效能會變低許多。&lt;/p&gt;
-&lt;h2 id=&#34;heading-2&#34;&gt;安裝&lt;/h2&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo apt install valgrind
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-3&#34;&gt;使用&lt;/h2&gt;
-&lt;h3 id=&#34;-memory-leak-detection&#34;&gt;測試記憶體洩漏 (Memory leak detection)&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;h3 id=&#34;測試記憶體洩漏-memory-leak-detection&#34;&gt;測試記憶體洩漏 (Memory leak detection)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
@@ -767,10 +812,10 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
     &lt;span style=&#34;color:#75715e&#34;&gt;// free(a);
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;heading-4&#34;&gt;編譯&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;編譯&#34;&gt;編譯&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;-g&lt;/code&gt; 代表加入除錯資訊，可以讓 valgrind 指出在程式的那一行。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ gcc -o test test.c -g
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;-valgrind--memory-leak&#34;&gt;利用 valgrind 抓 memory leak&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;利用-valgrind-抓-memory-leak&#34;&gt;利用 valgrind 抓 memory leak&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ valgrind --leak-check&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;full --show-leak-kinds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;all ./test
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;==18006== Memcheck, a memory error detector
 ==18006== Copyright (C) 2002-2017, and GNU GPL&amp;#39;d, by Julian Seward et al.
@@ -796,19 +841,19 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 ==18006== 
 ==18006== For counts of detected and suppressed errors, rerun with: -v
 ==18006== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-5&#34;&gt;分析&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
 &lt;p&gt;程式中我們 malloc 的一塊 1024 個整數大小 (4 bytes) 的記憶體空間，程式結束前沒有呼叫 free 因此產生的 memory leak 的現象。可以看到 valgrind 指出我們在程式第 5 行 &lt;code&gt;int *a = (int *) malloc(1024 * sizeof(int));&lt;/code&gt; 分配了 4096 bytes 的記憶體。&lt;/p&gt;
 &lt;p&gt;此外這裡有一個有趣的現象，就是總共分配的大小是 5120 bytes，這是因為 &lt;code&gt;printf&lt;/code&gt; 的關係，這個函式會固定使用 1024 bytes 的記憶體空間。所以 5120 = 4096 + 1024。&lt;/p&gt;
-&lt;h1 id=&#34;colour-valgrind&#34;&gt;有顏色版本：colour-valgrind&lt;/h1&gt;
-&lt;h2 id=&#34;heading-6&#34;&gt;安裝&lt;/h2&gt;
+&lt;h1 id=&#34;有顏色版本colour-valgrind&#34;&gt;有顏色版本：colour-valgrind&lt;/h1&gt;
+&lt;h2 id=&#34;安裝-1&#34;&gt;安裝&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ pip3 install colour-valgrind &lt;span style=&#34;color:#75715e&#34;&gt;# 需要 python&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-bashrc&#34;&gt;如果喜歡的話可以直接加在 &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;如果喜歡的話可以直接加在-bashrc&#34;&gt;如果喜歡的話可以直接加在 &lt;code&gt;~/.bashrc&lt;/code&gt;&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;alias valgrind&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;colour-valgrind&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-7&#34;&gt;使用&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用-1&#34;&gt;使用&lt;/h2&gt;
 &lt;p&gt;基本上就直接跟 valgrind 一樣&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ colour-valgrind --leak-check&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;full --show-leak-kinds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;all ./test
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=10pF-pr6yd5wJxlMfyaUHOrz-5v6iB1Ud&#34; alt=&#34;google-結果&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading-8&#34;&gt;參考資料&lt;/h1&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://valgrind.org/docs/manual/mc-manual.html&#34;&gt;Valgrind User Manual - 4. Memcheck: a memory error detector&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Valgrind&#34;&gt;https://en.wikipedia.org/wiki/Valgrind&lt;/a&gt;&lt;/li&gt;
@@ -825,11 +870,11 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP --&gt;
 &lt;p&gt;我現在才知道這個是不是偏爛啊&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;因為要調整網站的一些東西，所以需要寫一些正規表達式 (regular expression)，不過一直試都失敗，上網找資料才發現一個好網站。傳送門：https://regex101.com/&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1-H5FG7NzGBMSEqNv6iJ0z2QfY3hQoXW5&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;p&gt;一開始看到連結還以為是什麼內容農場，結果不是XDD&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;使用&lt;/h1&gt;
+&lt;h1 id=&#34;使用&#34;&gt;使用&lt;/h1&gt;
 &lt;p&gt;左方有語言選項，因為不同語言的正規表達式可能會有些許的差異，所以就選擇正在使用的語言，因為 Hugo 是 Golang 寫的所以網站的表達式要選用 Go 語言。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1Oz0fVpydicxt3X97ywQ-Z45YHePTf6-l&#34; alt=&#34;google-選擇 Golang&#34;&gt;&lt;/p&gt;
 &lt;p&gt;基本功能就是填入表達式，接著可以輸入測試字串看是否吻合，如果中間有 group 的話也會標示不同顏色，這點我覺得超棒。
@@ -880,7 +925,7 @@ replaceRE &#34;(&lt;(h[1-9]) id=\&#34;([^\&#34;]+)\&#34;(.+))(&lt;/h[1-9]+&gt;)&
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;真的是隔很久&amp;hellip;.藉口就不多說了 OuO&lt;/p&gt;
 &lt;p&gt;這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@&lt;br&gt;
 然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：&lt;a href=&#34;https://github.com/EN10/KerasMNIST&#34;&gt;EN10/KerasMNIST&lt;/a&gt;，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD&lt;/p&gt;
 &lt;hr&gt;
@@ -890,13 +935,13 @@ replaceRE &#34;(&lt;(h[1-9]) id=\&#34;([^\&#34;]+)\&#34;(.+))(&lt;/h[1-9]+&gt;)&
 &lt;p&gt;話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 看看吧。&lt;/p&gt;
 &lt;p&gt;所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。&lt;/p&gt;
 &lt;p&gt;P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;環境&lt;/h1&gt;
+&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;ubuntu 18.04&lt;/li&gt;
 &lt;li&gt;TVM 0.6.dev (6a4d71ff40915611bd42b62994992b879e6be610)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;一堆程式碼上菜囉&lt;/h1&gt;
-&lt;h2 id=&#34;-cnnpredictpy&#34;&gt;原始 &lt;code&gt;cnnPredict.py&lt;/code&gt;&lt;/h2&gt;
+&lt;h1 id=&#34;一堆程式碼上菜囉&#34;&gt;一堆程式碼上菜囉&lt;/h1&gt;
+&lt;h2 id=&#34;原始-cnnpredictpy&#34;&gt;原始 &lt;code&gt;cnnPredict.py&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;注意要下載或複製那個程式碼，&lt;code&gt;cnn.h5&lt;/code&gt; 跟 &lt;code&gt;test3.png&lt;/code&gt; 一樣要放對位置。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.misc &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; imread, imresize
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; np
@@ -918,7 +963,7 @@ out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很好，可以執行～&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-tvm-&#34;&gt;加入 TVM 囉&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;加入-tvm-囉&#34;&gt;加入 TVM 囉&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm.relay &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; relay
@@ -974,7 +1019,7 @@ fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_p
   nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&amp;hellip;.&lt;/p&gt;
-&lt;h2 id=&#34;-mnist-&#34;&gt;只存 MNIST 的權重&lt;/h2&gt;
+&lt;h2 id=&#34;只存-mnist-的權重&#34;&gt;只存 MNIST 的權重&lt;/h2&gt;
 &lt;p&gt;只好使用上面提到 Keras 官網 &lt;a href=&#34;https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model&#34;&gt;How can I save a Keras model?&lt;/a&gt; 的方式只存權重出來，這裡我們只需要改最後一行，&lt;code&gt;save&lt;/code&gt; 改成 &lt;code&gt;save_weights&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; keras
 &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; keras.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mnist
@@ -1036,7 +1081,7 @@ score &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span sty
 model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;save_weights(&lt;span style=&#34;color:#e6db74&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;mnist_weights.h5&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 &lt;img src=&#34;https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV&#34; alt=&#34;google-train a MNIST model with Keras&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;-keras--mnist--tvm&#34;&gt;自己用 Keras 建構一個 MNIST 再餵給 TVM&lt;/h2&gt;
+&lt;h2 id=&#34;自己用-keras-建構一個-mnist-再餵給-tvm&#34;&gt;自己用 Keras 建構一個 MNIST 再餵給 TVM&lt;/h2&gt;
 &lt;p&gt;把上面產生的權重餵給自己建構的模型&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
@@ -1108,7 +1153,7 @@ fn &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%conv2d_1_input, %v_p
   nn.softmax&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;%13, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;扯，結果竟然一模一樣。&lt;/p&gt;
-&lt;h2 id=&#34;heading-3&#34;&gt;檢驗剛剛建立的模型是否正確&lt;/h2&gt;
+&lt;h2 id=&#34;檢驗剛剛建立的模型是否正確&#34;&gt;檢驗剛剛建立的模型是否正確&lt;/h2&gt;
 &lt;p&gt;總之先試試看是不是跟直接讀 &lt;code&gt;cnn.h5&lt;/code&gt; 一樣。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
@@ -1153,7 +1198,7 @@ out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; model&lt;span style
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很好，是一樣&amp;hellip;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 cnnPredict.py
 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-4&#34;&gt;突破，加個輸入層？&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;突破加個輸入層&#34;&gt;突破，加個輸入層？&lt;/h2&gt;
 &lt;p&gt;在找解決方式的過程中突然看到&lt;a href=&#34;https://stackoverflow.com/a/49600827/6734174&#34;&gt;這裡&lt;/a&gt;提到有 &lt;code&gt;InputLayer&lt;/code&gt;，不如加看看。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; nnvm
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tvm
@@ -1209,11 +1254,11 @@ tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;spa
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ python3 test_mnist.py
 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;扯，竟然過了 QuQ&lt;/p&gt;
-&lt;h1 id=&#34;heading-5&#34;&gt;其他&lt;/h1&gt;
+&lt;h1 id=&#34;其他&#34;&gt;其他&lt;/h1&gt;
 &lt;h2 id=&#34;lutzroedernetronhttpsgithubcomlutzroedernetron&#34;&gt;&lt;a href=&#34;https://github.com/lutzroeder/netron&#34;&gt;&lt;code&gt;lutzroeder/netron&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;發現了一個視覺化工具可以看模型。
 &lt;img src=&#34;https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP&#34; alt=&#34;google-NETRON&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;-shape-&#34;&gt;想看中間的 shape 的話&lt;/h2&gt;
+&lt;h2 id=&#34;想看中間的-shape-的話&#34;&gt;想看中間的 shape 的話&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; layer &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; model&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;layers:
     &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_shape)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(layer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input)
@@ -1233,17 +1278,17 @@ tvm_out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; executor&lt;spa
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;針對昨天的再多釐清一些。順便補充一些東西。&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;關於流程&lt;/h1&gt;
+&lt;h1 id=&#34;關於流程&#34;&gt;關於流程&lt;/h1&gt;
 &lt;p&gt;昨天的流程主要是有需要 fork 的，通常是針對那些你無法對原始專案直接操作的狀況。&lt;/p&gt;
 &lt;p&gt;如果對同一個專案使用 GitHub flow 也是可以的，也就是說在同一個專案中開啟 branch 在對自己開啟 PR，或許這就是我一開始有點困惑的原因，結果是都適用。&lt;/p&gt;
-&lt;h1 id=&#34;pr--merge-&#34;&gt;PR 被 merge 後呢&lt;/h1&gt;
-&lt;h2 id=&#34;-merge-commit&#34;&gt;更新 merge commit&lt;/h2&gt;
+&lt;h1 id=&#34;pr-被-merge-後呢&#34;&gt;PR 被 merge 後呢&lt;/h1&gt;
+&lt;h2 id=&#34;更新-merge-commit&#34;&gt;更新 merge commit&lt;/h2&gt;
 &lt;p&gt;接下來要做的就是更新一下自己的 master (origin 跟 local)。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git fetch upstream
 $ git checkout master
 $ git merge upstream/master
 $ git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;-branch&#34;&gt;刪除 branch&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;刪除-branch&#34;&gt;刪除 branch&lt;/h2&gt;
 &lt;p&gt;GitHub 上在被 merge 的 PR 的界面會出現可以刪除 branch 的按鈕。
 &lt;img src=&#34;https://drive.google.com/open?id=1MM_kFgO6PWBnPRPp9Ry3BgX4Lf6j2U3i&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;p&gt;刪除完成後會出現提示，貌似還可以復原呢。這個步驟後你帳號遠端上的那個 branch 就不見了。
@@ -1262,7 +1307,7 @@ $ git remote prune origin
 &lt;img src=&#34;https://drive.google.com/open?id=1MdDsIHfyFUX9hAmorRbWYmg8tv0HYtO0&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;p&gt;刪除本地分支後就大功告成&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git branch -d new_feature
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading-1&#34;&gt;參考&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.fizerkhan.com/blog/posts/Clean-up-your-local-branches-after-merge-and-delete-in-GitHub.html&#34;&gt;Clean up your local branches after merge and delete in GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -1278,7 +1323,7 @@ $ git remote prune origin
       
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;最近算是真的在用多人合作的 git 了，以前大多只有自己在 add, commit, push。不過到多人的合作下就講求流程，這裡以 GitHub flow 為主要的流程做討論以及順便記錄一些會用到的指令。&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;其實是看了 &lt;a href=&#34;https://guides.github.com/introduction/flow/&#34;&gt;Understanding the GitHub flow&lt;/a&gt; 之後還不是相當懂，跟同學(大神)討論了一下算是有釐清一些我的懷疑吧。&lt;/p&gt;
 &lt;p&gt;p.s. 這裡有翻譯版：&lt;a href=&#34;https://medium.com/@trylovetom/%E8%AE%93%E6%88%91%E5%80%91%E4%BE%86%E4%BA%86%E8%A7%A3-github-flow-%E5%90%A7-4144caf1f1bf&#34;&gt;讓我們來了解 GitHub Flow 吧！&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&amp;lt;注意&amp;gt; 因為目前專案還不算大型，所以目前遇到的狀況算是比較簡易的。
@@ -1301,8 +1346,8 @@ $ git remote prune origin
 &lt;p&gt;Branch 在 git 中花費相當少，因為它就只是一個標籤，所以應該盡量使用它。GitHub flow 中保證 master 上的每一個版本都是可佈署的，因此在此流程中不建議直接在 master 上加 commit 而是在 master 上開一個 branch 出來。&lt;/p&gt;
 &lt;p&gt;&amp;lt;注意&amp;gt; 一定要從 master 開 branch
 但是又有一個特例：就是當別人還沒 merge 我的 PR 可是我接下來的開發又需要有這個 PR 的內容的時候。網路上我找到有人問這個問題 &lt;a href=&#34;https://softwareengineering.stackexchange.com/questions/310427/in-github-flow-is-it-ok-to-base-feature-branch-on-another-feature-branch&#34;&gt;傳送門&lt;/a&gt;，好像就只能在 branch 分出另一個 branch 來先暫時用。&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;流程&lt;/h1&gt;
-&lt;h2 id=&#34;heading-2&#34;&gt;初始化&lt;/h2&gt;
+&lt;h1 id=&#34;流程&#34;&gt;流程&lt;/h1&gt;
+&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Fork 主要專案到自己的 GitHub 帳號&lt;/li&gt;
 &lt;li&gt;Clone 自己 GitHub 中的專案 (fork 過來的)&lt;/li&gt;
@@ -1312,7 +1357,7 @@ $ git remote prune origin
 &lt;li&gt;設定 upstream 來源&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git remote add upstream &amp;lt;主要專案的 url&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-3&#34;&gt;開發中&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;開發中&#34;&gt;開發中&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;前往 master 分支 (一開始就在 master 可以不用)&lt;/li&gt;
 &lt;/ol&gt;
@@ -1346,7 +1391,7 @@ $ git push origin new_feature
 &lt;li&gt;發 PR
 開啟 GitHub 界面，按下 Create pull request 的綠色按鈕，注意方向，輸入標題、解說文字、新增 reviewer 後按下 Create。這樣就大公告成了。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;heading-4&#34;&gt;參考資料&lt;/h1&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@yengttt/%E9%96%8B%E7%99%BC%E7%94%A8%E5%88%B0%E7%9A%84git%E6%B5%81%E7%A8%8B-c9082b914974&#34;&gt;這次專案用到的Git流程&lt;/a&gt;：本篇主要流程來自這裡，更詳盡請點擊參考。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://poychang.github.io/guide-to-use-github-flow/&#34;&gt;如何使用 GitHub Flow 來參與開源專案&lt;/a&gt;&lt;/li&gt;
@@ -1366,12 +1411,12 @@ $ git push origin new_feature
 &lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git format-patch --relative &amp;lt;SHA&amp;gt; ./ -o /tmp/patches
 $ git am /tmp/patches/*.patch
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;git 有一個好用的工具可以針對 repo 上面的 commit 產生補丁檔 (patch)。詳細用法可以去查看官方說明文件 &lt;a href=&#34;https://git-scm.com/docs/git-format-patch&#34;&gt;git format-patch&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;這裡主要記錄一個使用情境：要把專案A 下的子專案a 的修改記錄做成 patch 給專案B 使用，注意，專案a 與專案B 是同一個專案。&lt;/p&gt;
 &lt;p&gt;會有這樣需求主要是因為 B 是開源專案，然後我們拿來修改後變成 A 的子專案。當然最好的方式是用 fork，然後利用 submodule 管理，不過因為只有一個 repo 可以使用，所以就採用這個作法。&lt;/p&gt;
 &lt;p&gt;限制：內部檔案名稱要相同&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;範例檔案架構&lt;/h1&gt;
+&lt;h1 id=&#34;範例檔案架構&#34;&gt;範例檔案架構&lt;/h1&gt;
 &lt;p&gt;接下來利用簡單的範例來模擬。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;repo A&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;A
@@ -1401,14 +1446,14 @@ $ git am /tmp/patches/*.patch
 * b551578 - Modify file_1
 * a257187 - Add sth in A
 * a1f4b9e - init
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-patch&#34;&gt;產生 patch&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;產生-patch&#34;&gt;產生 patch&lt;/h1&gt;
 &lt;p&gt;開始產生 patch 囉，首先 &lt;code&gt;cd&lt;/code&gt; 到子資料夾，接著打入下方指令，&lt;code&gt;a1f4b9e&lt;/code&gt; 是起始 commit，如果這個子專案是從中間才開始追蹤的話也可以從中間的 commit 開始。可以看到它只會針對 a 中有修改的部份才產生 patch 檔。&lt;code&gt;-o&lt;/code&gt; 是指定輸出的路徑，完全可以依照自己喜好修改。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cd A/a/
 $ git format-patch --relative a1f4b9e ./ -o /tmp/patches
 /tmp/patches/0001-Modify-file_1.patch
 /tmp/patches/0002-Modify-file_1-and-sth_in_A.txt.patch
 /tmp/patches/0003-Add-file_2-in-a.patch
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-patch-1&#34;&gt;套用 patch&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;套用-patch&#34;&gt;套用 patch&lt;/h1&gt;
 &lt;p&gt;套用 patch 到專案B&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bach&#34; data-lang=&#34;bach&#34;&gt;$ cd B/
 $ git am /tmp/patches/*.patch
@@ -1491,7 +1536,7 @@ NC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;
 &lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;BEGIN {FS = &amp;#34;:.*?## &amp;#34;}; \
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;		{printf &amp;#34;$(BLUE)  %-18s$(NC) %s\n&amp;#34;, $$1, $$2}&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1RTn1OcTBserVT9XOFhDRSFA2f3Lx1R-G&#34; alt=&#34;google-有顏色版本&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;heading&#34;&gt;參考資料&lt;/h3&gt;
+&lt;h3 id=&#34;參考資料&#34;&gt;參考資料&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://nedbatchelder.com/blog/201804/makefile_help_target.html&#34;&gt;Makefile help target&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -1508,20 +1553,20 @@ NC &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;
       <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
 &lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br&gt;
 就請多見諒＠＠&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;從 Blogger 轉出來的原因可以去關於的頁面看看，我就不再贅述，此篇主要也不會手把手的教學如何用 Hugo 從頭到尾架設一個網頁，因為網路上有相當多這類的教學，我主要是記錄一些比較特別地方。接著跟我唸三遍：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;前端坑好深，前端坑好深，前端坑好深&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;安裝&lt;/h1&gt;
+&lt;h1 id=&#34;安裝&#34;&gt;安裝&lt;/h1&gt;
 &lt;p&gt;說不教好像也有點無情，不過在 GitHub 架 Hugo 真的太過簡單了，步驟真的算少，所以我就推給其他文章吧(可以先看完整篇再開始)：&lt;a href=&#34;https://medium.com/@chs_wei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&#34;&gt;在 GitHub 部署 Hugo 靜態網站&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;---&#34;&gt;安裝 - 注意事項&lt;/h1&gt;
+&lt;h1 id=&#34;安裝---注意事項&#34;&gt;安裝 - 注意事項&lt;/h1&gt;
 &lt;p&gt;Ubuntu 請用 &lt;code&gt;snap&lt;/code&gt; 來安裝比較新的版本，用 &lt;code&gt;apt&lt;/code&gt; 會發現一堆主題不能用因為版本過舊。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo snap install hugo
 $ hugo version
 Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;結果注意事項就把 Hugo 全部安裝完成了＠＠，部屬在 GitHub 就跟大部分用法相同。&lt;/p&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;部落格架構配置&lt;/h1&gt;
+&lt;h1 id=&#34;部落格架構配置&#34;&gt;部落格架構配置&lt;/h1&gt;
 &lt;p&gt;因為 Hugo 會針對主題和文章經過 &lt;code&gt;hugo&lt;/code&gt; 指令去產生一個完整的網站並預設放在 &lt;code&gt;public/&lt;/code&gt; 資料夾。所以一般會把寫文章的地方跟網站分成兩個 repo，也就是把 &lt;code&gt;public/&lt;/code&gt; push 到 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，寫文章的就創建另一個 &lt;code&gt;blog-post&lt;/code&gt; 之類的 repo。這個作法可以使得網站不會被污染，也就是不會有奇怪的檔案，repo 也不會好像各種語言都有。&lt;/p&gt;
 &lt;p&gt;但是，一般上面這種是會把主題的檔案都複製到你寫文章的 repo 裡這樣就可以自訂一些前端設計。&lt;/p&gt;
 &lt;p&gt;我覺得這樣還不夠乾淨！因此我的方式是使用三個 repo：&lt;/p&gt;
@@ -1557,29 +1602,29 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 │       │   └── js/
 │       └── theme.toml
 └── public/ &amp;lt;---------------------- repo 3: 發布網站
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading-3&#34;&gt;這樣安排的缺點&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;這樣安排的缺點&#34;&gt;這樣安排的缺點&lt;/h2&gt;
 &lt;p&gt;這麼多 repo 就是一個蠻大的缺點，不過若是非常在意的話可以利用 branch 來讓三個 repo 合併。&lt;br&gt;
 但是這個缺點有一個優點 (?)，就是可以刷 GitHub 的 contributions 啊！每次寫文章改一堆東西就會綠一片OuO&lt;/p&gt;
-&lt;h2 id=&#34;heading-4&#34;&gt;其他&lt;/h2&gt;
+&lt;h2 id=&#34;其他&#34;&gt;其他&lt;/h2&gt;
 &lt;p&gt;當然也可以利用 GitHub 和其他工具達到持續集成、部署，參考：&lt;a href=&#34;https://axdlog.com/zh/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/&#34;&gt;利用Travis CI和Hugo將Blog自動部署到Github Pages&lt;/a&gt;。不過我是有點點懶惰，所以我就用 &lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/deploy.sh&#34;&gt;script&lt;/a&gt; 來部屬。&lt;/p&gt;
 &lt;p&gt;還有 &lt;code&gt;blog-post&lt;/code&gt; repo 可以用 &lt;code&gt;.gitattributes&lt;/code&gt; 來讓 GitHub 把 markdown 當作一個語言來計算，&lt;a href=&#34;https://github.com/aben20807/blog-post/blob/master/.gitattributes&#34;&gt;傳送門&lt;/a&gt;。
 &lt;img src=&#34;https://drive.google.com/open?id=1L-bAODhj57C7wFIBaWTgZuY0Sp0bEQFJ&#34; alt=&#34;google-結果展示&#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading-5&#34;&gt;圖片&lt;/h1&gt;
+&lt;h1 id=&#34;圖片&#34;&gt;圖片&lt;/h1&gt;
 &lt;p&gt;通常架設在 GitHub 的靜態網站都會直接把圖片也傳到 repo 中，雖然說這樣會比較快而且方便，但是我不建議用 git 去追蹤圖片，到最後會非常肥大。所以我一開始就有想說用 google 雲端當作一個圖床 (Flickr 1TB 回來啊QuQ)，反正有學校帳號算是有無限空間吧 (還是當學生的小福利＠＠)，再加上 google 圖片可以無限上傳，我手機拍照的圖片都會自動上傳了，然後也可以跟雲端連結，也就是說在 google 雲端透過檔案存取到 google 圖片的檔案。不過因為它的 api 還不是說很好用，就是雲端右鍵拿到的連結是不能直接嵌入網頁的，所以要手動複製 id，我覺得頗麻煩就乾脆寫一個可以偵測是否在 markdown 使用 google 雲端的圖片，然後把它轉成對應的 url 同時提供點擊就可以直接連過去，這樣就可以放大檢視了。&lt;/p&gt;
 &lt;p&gt;作法就是我的文章若要用到 google 雲端的圖片就要用以下語法：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;google-標題&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;從雲端裡面右鍵拿到的分享連結&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;沒意外這篇文章內文都是用這個方式加圖片的，唯一缺點就是明顯慢很多＠＠，雖然慢會影響 SEO，不過算了，就會看的人就會來看吧。說到這個，流量很明顯跟 Blogger 時期差很多＠＠，實做&lt;a href=&#34;https://github.com/aben20807/hugOuO/blob/master/layouts/partials/custom-content.html#L5-L23&#34;&gt;傳送門&lt;/a&gt;。&lt;/p&gt;
-&lt;h1 id=&#34;heading-6&#34;&gt;文章&lt;/h1&gt;
+&lt;h1 id=&#34;文章&#34;&gt;文章&lt;/h1&gt;
 &lt;p&gt;對於文章，我建議可以用日期當作檔名的前綴，以便排序。我的主題就會自動切割日期。Hugo 也有 permalinks 功能，就是把日期當作網站的路徑，不過我懶得用了＠＠&lt;/p&gt;
-&lt;h1 id=&#34;heading-7&#34;&gt;優點啦&lt;/h1&gt;
+&lt;h1 id=&#34;優點啦&#34;&gt;優點啦&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;單一執行檔，只需要安裝 hugo，其他什麼 ruby, python, node 都不用。&lt;/li&gt;
 &lt;li&gt;建制快速，號稱目前地表最快，尤其當網站一多，目前有找到跟 Jekyll 的比較&lt;a href=&#34;https://forestry.io/blog/hugo-vs-jekyll-benchmark/&#34;&gt;傳送門&lt;/a&gt;，跟 Hexo 的可能還要找一下。&lt;/li&gt;
 &lt;li&gt;網站內容乾淨，也就是上面的缺點啦，我是覺得這是優點 OuO，分多個 repo 不是很好嗎。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-8&#34;&gt;有趣的功能&lt;/h1&gt;
+&lt;h1 id=&#34;有趣的功能&#34;&gt;有趣的功能&lt;/h1&gt;
 &lt;p&gt;下面這些功能其實不限於 Hugo，只要有想要其實都可以把它加到自己的網站，甚至是從頭自己刻的也可。不要忘了開頭念三次的東西 OuO&lt;/p&gt;
-&lt;h2 id=&#34;1-&#34;&gt;1. 搜尋&lt;/h2&gt;
+&lt;h2 id=&#34;1-搜尋&#34;&gt;1. 搜尋&lt;/h2&gt;
 &lt;p&gt;由於之前 Blogger 算是內建搜尋的，所以這裡算是研究頗久，原本要使用一些已經做成套件的切字工具，但是中文字真的太難搞定了，所以我乾脆直接用 google 提供的搜尋：Google Custom Search。一樣，這裡就不一一教學，請移駕：&lt;a href=&#34;https://blog.yowko.com/google-search-in-hugo/&#34;&gt;將 Google自訂搜尋引擎 (Google Custom Search) 搭配 OpenSearch 加至 Hugo 網站中&lt;/a&gt;。真的要參考實做的話可以來這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/6f6b62898791322876091d4db98d580b8a7accdc#diff-44f0b83d58ef03d7cee156de462be50c&#34;&gt;commit&lt;/a&gt; 看看。對了，設定完後要等個幾天才會可以搜尋，我那時候以為我哪裡設定錯誤，結果等個幾天就可以用了。結果可以到這個&lt;a href=&#34;https://aben20807.github.io/search/&#34;&gt;頁面&lt;/a&gt;查看。
 &lt;img src=&#34;https://drive.google.com/open?id=1YD4461mDTtn7MHssUOQxorRAiqkhRiVh&#34; alt=&#34;google-搜尋範例&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;2-toc-table-of-content&#34;&gt;2. TOC (Table Of Content)&lt;/h2&gt;
@@ -1592,7 +1637,7 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 &lt;p&gt;讓右邊的 toc 自動標記現在所在的標題位置，我是從 &lt;a href=&#34;https://stackoverflow.com/questions/30348314/how-to-use-scrollspy-without-using-bootstrap/49257431#49257431&#34;&gt;how to use scrollspy without using bootstrap 的其中一個回答&lt;/a&gt; 改成這個 &lt;a href=&#34;https://github.com/aben20807/blog-post/commit/94b0b7344de07858b4ed346bc76b30caafa71220#comments&#34;&gt;commit&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2.3.4.5. 合起來差不多就是這樣：
 &lt;img src=&#34;https://drive.google.com/open?id=1Ent_uFFd1IuKhGna9hZ2uEBZ1cjoHw63&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;6--ouo&#34;&gt;6. 自動換標題 OuO&lt;/h2&gt;
+&lt;h2 id=&#34;6-自動換標題-ouo&#34;&gt;6. 自動換標題 OuO&lt;/h2&gt;
 &lt;p&gt;這算是一個有趣但是沒啥實用性的功能，我是在 &lt;a href=&#34;https://diygod.me/&#34;&gt;https://diygod.me/&lt;/a&gt; 看到的，當你暫時離開去其他分頁時，它的標題就會變換。建議不要在手機上用這個功能。參考：&lt;a href=&#34;https://blog.youdivi.com/tutorials/change-browser-tab-title-tab-not-active/&#34;&gt;CHANGE BROWSER TAB TITLE WHEN TAB NOT ACTIVE&lt;/a&gt;，&lt;a href=&#34;https://github.com/aben20807/blog-post/commit/4a468cb27289453f1a53ccb05db50343877438d8#diff-0aa74fe7c8cd2a2b79dab67ece16cb02&#34;&gt;commit&lt;/a&gt;，如何排擠手機：&lt;a href=&#34;https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery/3540295#3540295&#34;&gt;What is the best way to detect a mobile device in jQuery?&lt;/a&gt;
 &lt;img src=&#34;https://drive.google.com/open?id=1AF_3cXaG2gWU1VM5ybrrQDO2qXtEusGH&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;7-e-mail-subscribe-mailchimphttpsmailchimpcom&#34;&gt;7. E-mail subscribe (&lt;a href=&#34;https://mailchimp.com/&#34;&gt;mailchimp&lt;/a&gt;)&lt;/h2&gt;
@@ -1603,7 +1648,7 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 &lt;img src=&#34;https://drive.google.com/open?id=1XoxtAg5qZT_sDIrXc8HITfE5QBKN0nXF&#34; alt=&#34;google-左：Blogger，右：這個網站QuQ&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;9-hued&#34;&gt;9. hued&lt;/h2&gt;
 &lt;p&gt;因為每次編輯時都要用很長的路徑 &lt;code&gt;content/posts/xxxx.md&lt;/code&gt;，頗煩躁，所以就寫了一個把指令包起來的 script，安裝方式可以看 &lt;a href=&#34;https://github.com/aben20807/blog-post#hued&#34;&gt;README&lt;/a&gt;，還有補全喔，雖然應該是只有 oh-my-bash 可用。&lt;/p&gt;
-&lt;h2 id=&#34;10-disqus-&#34;&gt;10. Disqus 評論系統&lt;/h2&gt;
+&lt;h2 id=&#34;10-disqus-評論系統&#34;&gt;10. Disqus 評論系統&lt;/h2&gt;
 &lt;p&gt;設定方式跟 google analytics 一樣簡單，簡單到我都忘了要設定&amp;hellip;.設定 short name 即可。&lt;/p&gt;</description>
     </item>
     
@@ -1620,23 +1665,23 @@ Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-01T13:33:06Z
 本篇記錄一下安裝插件的過程&lt;br&gt;
 (雖然我這篇還是用 vim 打的&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;這個插件的名稱是 &lt;code&gt;rainbow-delimiters&lt;/code&gt;，顧名思義就是讓對應的括號有相同的顏色，這在一堆括號的語言 lisp 中可以對初學者較為友善。&lt;/p&gt;
-&lt;h1 id=&#34;emacs-&#34;&gt;emacs 安裝&lt;/h1&gt;
+&lt;h1 id=&#34;emacs-安裝&#34;&gt;emacs 安裝&lt;/h1&gt;
 &lt;p&gt;emacs 的安裝方式就還是提一下，不然我應該記不起來@@&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo add-apt-repository ppa:ubuntu-elisp/ppa
 $ sudo apt-get update
 $ sudo apt-get install emacs-snapshot emacs-snapshot-el
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading&#34;&gt;超基本按鍵&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;超基本按鍵&#34;&gt;超基本按鍵&lt;/h1&gt;
 &lt;p&gt;我是超新手，所以只暫時記錄最重要的@@&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;ctrl-x ctrl-s&lt;/code&gt;：儲存&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ctrl-x ctrl-c&lt;/code&gt;：離開&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;新增設定檔&lt;/h1&gt;
+&lt;h1 id=&#34;新增設定檔&#34;&gt;新增設定檔&lt;/h1&gt;
 &lt;p&gt;首先需要新增一個設定檔，就像 vim 中的 &lt;code&gt;.vimrc&lt;/code&gt; 一樣，而為了方便管理我使用 &lt;code&gt;~/.emacs.d/init.el&lt;/code&gt;，我們就直接用 emacs 編輯吧～&lt;/p&gt;
 &lt;p&gt;Note. &lt;code&gt;-nw&lt;/code&gt; 可以用非 GUI 的方式開啟 emacs&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ mkdir ~/.emacs.d/
 $ emacs -nw ~/.emacs.d/init.el
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-melpahttpsmelpaorg-&#34;&gt;支援 &lt;a href=&#34;https://melpa.org/#/&#34;&gt;MELPA&lt;/a&gt; 插件庫&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;支援-melpahttpsmelpaorg-插件庫&#34;&gt;支援 &lt;a href=&#34;https://melpa.org/#/&#34;&gt;MELPA&lt;/a&gt; 插件庫&lt;/h1&gt;
 &lt;p&gt;打開之後貼上&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package&lt;/span&gt;)
 (&lt;span style=&#34;color:#66d9ef&#34;&gt;let*&lt;/span&gt; ((no-ssl (and (memq system-type &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(windows-nt ms-dos))
@@ -1649,7 +1694,7 @@ $ emacs -nw ~/.emacs.d/init.el
     &lt;span style=&#34;color:#75715e&#34;&gt;;; For important compatibility libraries like cl-lib                                                                           &lt;/span&gt;
     (add-to-list &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;package-archives&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gnu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; (concat proto &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;://elpa.gnu.org/packages/&amp;#34;&lt;/span&gt;)))))
 (package-initialize)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-rainbow-delimiters-&#34;&gt;新增 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 插件&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;新增-rainbow-delimiters-插件&#34;&gt;新增 &lt;code&gt;rainbow-delimiters&lt;/code&gt; 插件&lt;/h1&gt;
 &lt;p&gt;退出 (上面有記錄怎麼儲存跟離開) 後重新開啟 emacs&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ emacs -nw
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按下 &lt;code&gt;alt-x&lt;/code&gt; 後輸入 &lt;code&gt;package-list-packages&lt;/code&gt; 接著按下 &lt;code&gt;Enter&lt;/code&gt;
@@ -1665,7 +1710,7 @@ $ emacs -nw ~/.emacs.d/init.el
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters&lt;/span&gt;)
 (add-hook &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;prog-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rainbow-delimiters-mode&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;改完之後會發現有很淺的變色了&lt;/p&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;自訂顏色&lt;/h1&gt;
+&lt;h1 id=&#34;自訂顏色&#34;&gt;自訂顏色&lt;/h1&gt;
 &lt;p&gt;結果就如封面所示。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;(custom-set-variables
  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(package-selected-packages &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters)))
@@ -1679,7 +1724,7 @@ $ emacs -nw ~/.emacs.d/init.el
  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-7-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;spring green&amp;#34;&lt;/span&gt;))))
  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt;(rainbow-delimiters-depth-8-face ((&lt;span style=&#34;color:#66d9ef&#34;&gt;t&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;:foreground&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sienna1&amp;#34;&lt;/span&gt;))))
 )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading-3&#34;&gt;參考資料&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://5xruby.tw/posts/emacs-part1/&#34;&gt;Emacs 入坑引導 - 打造自己的 Ruby IDE - Part 1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.emacswiki.org/emacs/RainbowDelimiters&#34;&gt;RainbowDelimiters&lt;/a&gt;&lt;/li&gt;
@@ -1697,7 +1742,7 @@ $ emacs -nw ~/.emacs.d/init.el
       
       <description>&lt;p&gt;所謂的 dash 就有點像是在 windows 10 點擊「開始」出現的很多 app 的畫面。而在 ubuntu 中有些程式的安裝方式是從網路上下載壓縮檔後解壓縮，一般要啟動的話就需要先去打開那個資料夾再點擊，有點麻煩，所以就找了一個最簡單的方式將要用的程式加到 dash 中。&lt;/p&gt;
 &lt;p&gt;測試系統：Ubuntu 18.04&lt;/p&gt;
-&lt;h1 id=&#34;-gnome-desktop-item-edit&#34;&gt;使用 gnome-desktop-item-edit&lt;/h1&gt;
+&lt;h1 id=&#34;使用-gnome-desktop-item-edit&#34;&gt;使用 gnome-desktop-item-edit&lt;/h1&gt;
 &lt;p&gt;首先安裝 &lt;code&gt;gnome-desktop-item-edit&lt;/code&gt; 這個工具&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo apt install --no-install-recommends gnome-panel
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接著新增一個應用程式&lt;/p&gt;
@@ -1708,11 +1753,11 @@ $ emacs -nw ~/.emacs.d/init.el
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1dRR1G6VrP2oid0S9QBvTvXVMeFHzGF8r&#34; alt=&#34;google-最下排左邊數來第二個&#34;&gt;&lt;/p&gt;
 &lt;p&gt;圖標是預設的，若需要要修改就編輯一下檔案，注意檔名是剛剛取的名稱加上 .desktop 的副檔名&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo vim /usr/share/applications/VisualVM.desktop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;-icon-&#34;&gt;加上 icon 路徑&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;加上-icon-路徑&#34;&gt;加上 icon 路徑&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1rAWhlWkLTVIJ8JhS_o-o-gZW1grBVbQU&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
 &lt;p&gt;儲存後就可以看到結果了&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=1P1k41x1OtC9bbsphoYVyNTBoA14xDTKf&#34; alt=&#34;google- &#34;&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;參考&lt;/h1&gt;
+&lt;h1 id=&#34;參考&#34;&gt;參考&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://linuxconfig.org/how-to-create-desktop-shortcut-launcher-on-ubuntu-18-04-bionic-beaver-linux#h6-3-desktop-shortcut-creation-with-gnome-desktop-item-edit&#34;&gt;Desktop Shortcut creation with gnome-desktop-item-edit&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -1747,19 +1792,19 @@ $ emacs -nw ~/.emacs.d/init.el
 &lt;p&gt;四者之中，恥尤為要&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;關於標題&lt;/h1&gt;
+&lt;h1 id=&#34;關於標題&#34;&gt;關於標題&lt;/h1&gt;
 &lt;p&gt;(有時候英文標題就懶的改了，不然就是改了有點怪，想這次的，所以我就不改囉＠＠&lt;/p&gt;
 &lt;p&gt;說到英文，「恥」在英文翻譯是 shame，不過在四維的英文中其對應的是 honor。根據不專業的討論，shame 是貶義，而英文卻傾向用褒義表達，更進一步的去解釋可以想成「恥」是讓我們了解什麼是不榮耀的事，大概是這樣。&lt;/p&gt;
 &lt;p&gt;(圖片有點震撼我知道 OuO&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;正題&lt;/h1&gt;
+&lt;h1 id=&#34;正題&#34;&gt;正題&lt;/h1&gt;
 &lt;p&gt;為何會突然講這個主題呢？其實很多事情都是先學會，然後在之後才會去遇到，甚至體會到一開始接觸到時沒有獲得的感觸。這次談的這個主題其實已經在腦海中想過頗多次，但就如同上述，是我在高中學到這段課文後過了很久才漸漸有看法。或許到大學這段期間還不算久，我想會有更多的東西可能是我到老還無法了解的吧。&lt;/p&gt;
 &lt;p&gt;總結那篇課文，其認為人會違反一些道德倫理，是因為無恥所導致。&lt;/p&gt;
 &lt;p&gt;結合到日常生活中，最微小的可以從那些不遵守交通規則的人身上看出，他們將這些視為理所當然，例如在台南闖紅燈是再稀鬆平常不過的事了，在那些人眼中我看不到一絲的羞恥感。這或許也是現行法律所無法顧慮的吧，之前上課總說法律是道德的最低標準，這也是為何重刑不管用，酒駕的還是會酒駕，因為罰錢根本是小事，內心的道德感一點也沒有覺得自己做錯。我覺得可能要更善加利用輿論壓力才能有效降低，例如酒駕就會有標籤，可能求職時就需要出示之類的，但這都只是外部的約束，主要還是要自己感覺到「恥」。&lt;/p&gt;
 &lt;p&gt;除了這些，更有人會合理化自己的行為，認為自己沒有影響別人什麼的，其實就需要去思考那為何需要訂定交通規則。&lt;/p&gt;
 &lt;p&gt;另外，亂丟垃圾也是，真心不懂為何有人就是會把垃圾留在離垃圾桶不到五步距離的飲水機上。總之族繁不及備載，這些事一直都會發生。&lt;/p&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;結論&lt;/h1&gt;
+&lt;h1 id=&#34;結論&#34;&gt;結論&lt;/h1&gt;
 &lt;p&gt;好啦，其實也沒有要戰什麼，其實是想表達自己看到的現象彷彿跟以前學到的有些許映射。總之呢，希望世界和平，做人有多一點點羞恥心去用不同的角度去看待事情，這樣才能打造更和諧的社會。&lt;/p&gt;
-&lt;h1 id=&#34;heading-3&#34;&gt;後記&lt;/h1&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;其實我是覺得我可能過於看重這件事了，所以會變得比較怕去麻煩別人，當然這有好有壞，我是不太建議像我這樣的個性，因為時常要跟自己打架 XDD。人活著也不是要一直去注意他人的眼光，去找一個適合自己的光譜位置，然後貫徹自己的想法吧。&lt;/p&gt;</description>
     </item>
     
@@ -1776,7 +1821,7 @@ $ emacs -nw ~/.emacs.d/init.el
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
     ./a.out &amp;lt; input.txt &amp;gt; output.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這樣只需要用 &lt;code&gt;$ make test&lt;/code&gt; 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p&gt;
-&lt;h1 id=&#34;heading&#34;&gt;舊方法&lt;/h1&gt;
+&lt;h1 id=&#34;舊方法&#34;&gt;舊方法&lt;/h1&gt;
 &lt;p&gt;不過若是有很多種輸入測資的話會有點麻煩，當然還是可以寫成這樣&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;test1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
     ./a.out &amp;lt; input1.txt &amp;gt; output1.txt
@@ -1792,7 +1837,7 @@ $ emacs -nw ~/.emacs.d/init.el
     ./a.out &amp;lt; input2.txt &amp;gt; output2.txt
     ./a.out &amp;lt; input3.txt &amp;gt; output3.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;這樣寫的缺點就是每次測資增加的時候舊需要修改 Makefile&lt;/p&gt;
-&lt;h1 id=&#34;makefile-&#34;&gt;Makefile 內建函式&lt;/h1&gt;
+&lt;h1 id=&#34;makefile-內建函式&#34;&gt;Makefile 內建函式&lt;/h1&gt;
 &lt;p&gt;不過其實有更好的寫法，利用 makefile 內建的函式&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;INPUT_DIR &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; input/linux/
 INPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;wildcard &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;INPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;*.txt&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
@@ -1804,8 +1849,8 @@ OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=
 &lt;li&gt;&lt;code&gt;addprefix&lt;/code&gt;: 加上前綴 (修改輸出路徑)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;這樣的優點就是只要 input/linux/ 中有多的 .txt 檔就會自動加入測試，不需要修改 Makefile&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;完整範例&lt;/h1&gt;
-&lt;h2 id=&#34;heading-2&#34;&gt;檔案們&lt;/h2&gt;
+&lt;h1 id=&#34;完整範例&#34;&gt;完整範例&lt;/h1&gt;
+&lt;h2 id=&#34;檔案們&#34;&gt;檔案們&lt;/h2&gt;
 &lt;h3 id=&#34;tc&#34;&gt;&lt;code&gt;t.c&lt;/code&gt;:&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
@@ -1841,7 +1886,7 @@ OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=
 
 &lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
     rm -rf &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;OUTPUT_DIR&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; a.out
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;heading-3&#34;&gt;檔案架構&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;檔案架構&#34;&gt;檔案架構&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;$ tree .
 .
 ├── input
@@ -1852,8 +1897,8 @@ OUTPUTS &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=
 ├── Makefile
 ├── output
 └── t.c
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;heading-4&#34;&gt;使用&lt;/h2&gt;
-&lt;h3 id=&#34;--make-test&#34;&gt;指令同為 &lt;code&gt;$ make test&lt;/code&gt;&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;h3 id=&#34;指令同為--make-test&#34;&gt;指令同為 &lt;code&gt;$ make test&lt;/code&gt;&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ make test
 gcc t.c
 ./a.out &amp;lt; input/linux/test2.txt &amp;gt; output/linux/test2.txt
@@ -1865,7 +1910,7 @@ gcc t.c
 ./a.out &amp;lt; input/linux/test1.txt &amp;gt; output/linux/test1.txt
 &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
 &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;heading-5&#34;&gt;結果檔案架構&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;結果檔案架構&#34;&gt;結果檔案架構&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;$ tree .
 .
 ├── a.out
@@ -1881,7 +1926,7 @@ gcc t.c
 │       ├── test2.txt
 │       └── test3.txt
 └── t.c
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;heading-6&#34;&gt;後記&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;上面的簡單例子中可能看不出 &lt;code&gt;$(INPUTS)&lt;/code&gt; 跟 &lt;code&gt;$(OUTPUTS)&lt;/code&gt; 的用途，不過在相依多的話可以直接代表全部的檔案，但若是需要做名稱配對的話還是需要 &lt;code&gt;%&lt;/code&gt; 出馬，就像 &lt;code&gt;$(OUTPUT_DIR)%.txt: $(INPUT_DIR)%.txt&lt;/code&gt; 來表示輸入輸出的檔名要一致。&lt;/p&gt;</description>
     </item>
     
@@ -1914,7 +1959,7 @@ gcc t.c
       
       
       <description>&lt;p&gt;記錄一下一些特性和使用方式&lt;/p&gt;
-&lt;h1 id=&#34;-heading&#34;&gt;標題 (heading)&lt;/h1&gt;
+&lt;h1 id=&#34;標題-heading&#34;&gt;標題 (heading)&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;# h1
 ## h2
 ### h3
@@ -1925,13 +1970,13 @@ gcc t.c
 &lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;h1&#34;&gt;h1&lt;/h1&gt;
 &lt;h2 id=&#34;h2&#34;&gt;h2&lt;/h2&gt;
 &lt;h3 id=&#34;h3&#34;&gt;h3&lt;/h3&gt;
-&lt;h4 id=&#34;h4--emoji-&#34;&gt;h4 支援 emoji 😄&lt;/h4&gt;
-&lt;h5 id=&#34;h5-&#34;&gt;h5 支援中文~&lt;/h5&gt;
+&lt;h4 id=&#34;h4-支援-emoji-&#34;&gt;h4 支援 emoji 😄&lt;/h4&gt;
+&lt;h5 id=&#34;h5-支援中文&#34;&gt;h5 支援中文~&lt;/h5&gt;
 &lt;h6 id=&#34;h6&#34;&gt;h6&lt;/h6&gt;
 &lt;p&gt;####### h7 最多只有到 6 級&lt;/p&gt;
 &lt;p&gt;右邊會有浮動 TOC (table of contents)，可點擊！&lt;br&gt;
 只會顯示 h1 ~ h3 過長會變成 &amp;hellip;&lt;/p&gt;
-&lt;h3 id=&#34;test-1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&#34;&gt;test中文 1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&lt;/h3&gt;
+&lt;h3 id=&#34;test中文-1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&#34;&gt;test中文 1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&lt;/h3&gt;
 &lt;h1 id=&#34;code-section&#34;&gt;Code section&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;()
@@ -1939,7 +1984,7 @@ gcc t.c
     &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;heading&#34;&gt;強調字型&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;強調字型&#34;&gt;強調字型&lt;/h1&gt;
 &lt;p&gt;可參考：https://www.markdownguide.org/basic-syntax/#emphasis&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;__粗體__  
 **粗體**  
@@ -1951,10 +1996,10 @@ __*粗斜體*__
 &lt;em&gt;斜體&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;斜體&lt;/em&gt;&lt;br&gt;
 &lt;strong&gt;&lt;em&gt;粗斜體&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h1 id=&#34;heading-1&#34;&gt;橫線&lt;/h1&gt;
+&lt;h1 id=&#34;橫線&#34;&gt;橫線&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;---
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h1 id=&#34;-bullet&#34;&gt;項目 (Bullet)&lt;/h1&gt;
+&lt;h1 id=&#34;項目-bullet&#34;&gt;項目 (Bullet)&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;+ a
   + 1
   + 2
@@ -1975,14 +2020,14 @@ __*粗斜體*__
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;heading-2&#34;&gt;引用&lt;/h1&gt;
+&lt;h1 id=&#34;引用&#34;&gt;引用&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;&amp;gt; The more I learn, the more I realize how much I don&#39;t know.  
 &amp;gt; --- Albert Einstein
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;The more I learn, the more I realize how much I don&#39;t know.&lt;br&gt;
+&lt;p&gt;The more I learn, the more I realize how much I don&amp;rsquo;t know.&lt;br&gt;
 &amp;mdash; Albert Einstein&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;heading-3&#34;&gt;插入圖片&lt;/h1&gt;
+&lt;h1 id=&#34;插入圖片&#34;&gt;插入圖片&lt;/h1&gt;
 &lt;p&gt;目前並不打算直接上傳到 github，所以找了一些方式&lt;br&gt;
 一般圖片&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;![&lt;span style=&#34;color:#f92672&#34;&gt;alt&lt;/span&gt;](&lt;span style=&#34;color:#a6e22e&#34;&gt;https://drive.google.com/uc?export=view&amp;amp;id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/span&gt;)

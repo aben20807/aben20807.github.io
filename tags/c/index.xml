@@ -8,10 +8,20 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Mon, 18 Nov 2019 11:36:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2020 11:14:20 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>20200202</title>
+      <link>https://aben20807.github.io/posts/20200202-20200202/</link>
+      <pubDate>Sun, 02 Feb 2020 11:14:20 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20200202-20200202/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=12Y9AlAEvGKF87LKqiDW_5waH4inUmwQN --&gt;
+&lt;p&gt;Palindrome!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Programming Sense (2)</title>

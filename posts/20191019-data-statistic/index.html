@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.61.0" />
+  <meta name="generator" content="Hugo 0.63.2" />
 
   
 <meta name="og:title"
@@ -201,7 +201,7 @@ if (!doNotTrack) {
 <li>合併 10,000 筆資料到一個檔案方便複製</li>
 <li>用 Google Spreadsheet 來平均並製作圖表</li>
 </ol>
-<h2 id="1-" class="article-heading">1. 合併<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#1-"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="1-合併" class="article-heading">1. 合併<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#1-合併"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>檔案架構大致如下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">├── mae_0000.txt
 ├── mae_0001.txt
@@ -322,7 +322,7 @@ $ ./transpose.sh all.txt &gt; all_tr.txt
     </figcaption>
   </figure>
 </p>
-<h2 id="-google-spreadsheep" class="article-heading">使用 Google Spreadsheep<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-google-spreadsheep"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="使用-google-spreadsheep" class="article-heading">使用 Google Spreadsheep<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#使用-google-spreadsheep"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>這裡可能比較沒啥，就是貼上去，這裡我覺得不要用 vim 開啟，找個方便複製的 (例如：VSCode)</p>
 <p>用 Ctrl-v 貼上 Spreadsheet 時可能會花一點時間</p>
 <p>不過發現它把所有的 column 合在一起了</p>
@@ -424,7 +424,7 @@ $ ./transpose.sh all.txt &gt; all_tr.txt
   </figure>
 </p>
 <p>平均跟圖表部份就按照一般試算表的使用方式，就不記錄了。</p>
-<h2 id="heading" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="參考" class="article-heading">參考<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#參考"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <ul>
 <li><a href="https://stackoverflow.com/a/1729980/6734174" target="_blank">An efficient way to transpose a file in Bash</a></li>
 <li><a href="https://unix.stackexchange.com/a/205646" target="_blank">Combining large amount of files</a></li>
@@ -468,12 +468,12 @@ $ ./transpose.sh all.txt &gt; all_tr.txt
   
   <footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto"
     role="contentinfo">
-    <p class="w-50 fr tr">
+    <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
       <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
     </p>
-    <p class="w-50 near-white">
-      &copy; 2019 Huang Po-Hsuan
+    <p class="w-50 near-white" style="font-size:0.875rem !important;">
+      &copy; 2019-2020 Huang Po-Hsuan
     </p>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

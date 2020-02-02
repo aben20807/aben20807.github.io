@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.61.0" />
+  <meta name="generator" content="Hugo 0.63.2" />
 
   
 <meta name="og:title"
@@ -195,22 +195,22 @@ if (!doNotTrack) {
 
 <!-- https://drive.google.com/uc?export=view&id= -->
 <p>記錄一下 hugo 的改變 QuQ</p>
-<h1 id="heading" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>因為實在改的有點多東西，直接在 FB 發(抱)文(怨)又有點沒架構，所以乾脆來個小整理。另外這也不是全部，主要是我有遇到的 QuQ</p>
 <p>這裡主要是從 0.59 到 0.60 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref smoothScroll" role="doc-noteref">1</a></sup> 的一些記錄。</p>
-<h1 id="heading-1" class="article-heading">不同之處<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+<h1 id="不同之處" class="article-heading">不同之處<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#不同之處"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <h2 id="parser" class="article-heading">Parser<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#parser"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>最大不同就是 markdown parser 從原本的 <a href="https://github.com/russross/blackfriday" target="_blank">Blackfriday</a> 換成使用 <a href="https://github.com/yuin/goldmark/" target="_blank">Goldmark</a> 為預設了。所以有一堆是用 regex 改的內容全都要再改規則＠＠，例如 <code>&lt;img xxx /&gt;</code> 這類的 self-closing tags <sup id="fnref:2"><a href="#fn:2" class="footnote-ref smoothScroll" role="doc-noteref">2</a></sup> 把最後的 <code>/</code> 去掉了變成 <code>&lt;img xxx&gt;</code>，所以剛剛是看不到圖片的。我已經改成讓 <code>/</code> 可有可無了&hellip;</p>
 <h2 id="footnote" class="article-heading">Footnote<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#footnote"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>Footnote 的部份被大改了，產生的 html 跟原本的不太一樣，然後 0.60.1 好像有一些修改 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref smoothScroll" role="doc-noteref">3</a></sup> ，所以可能還要再等等 QuQ，目前 snap 最新還在 0.60.0 所以還不能返回 (<code>footnoteAnchorPrefix</code>, <code>footnoteReturnLinkContents</code> 也還沒看到實作<sup id="fnref:4"><a href="#fn:4" class="footnote-ref smoothScroll" role="doc-noteref">4</a></sup>)。之後還要加入 smooth scroll 讓捲動有動畫而不是直接跳 (這邊我也是用 regex)。</p>
-<h2 id="-markdown--html" class="article-heading">預設不可以在 markdown 中使用 html<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#-markdown--html"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="預設不可以在-markdown-中使用-html" class="article-heading">預設不可以在 markdown 中使用 html<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#預設不可以在-markdown-中使用-html"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>如果有加一些非 markdown 語法的 html 的話預設會變成 <code>&lt;!-- raw HTML omitted --&gt;</code>
 (例如從 google 雲端嵌入 pdf 檔案之類的)，如果想要修改這個預設 <sup id="fnref:5"><a href="#fn:5" class="footnote-ref smoothScroll" role="doc-noteref">5</a></sup> 的話可以在 config.tmol 裡面加入</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">markup</span>]
 [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>]
 [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">goldmark</span>.<span style="color:#a6e22e">renderer</span>]
 <span style="color:#a6e22e">unsafe</span> = <span style="color:#66d9ef">true</span>
-</code></pre></div><h1 id="heading-2" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#heading-2"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
+</code></pre></div><h1 id="後記" class="article-heading">後記<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#後記"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>J 個改變的速度其實有點小惱人，每次都想棄用 snap，但換個想法，這是走在世界的尖端啊 (x</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -269,12 +269,12 @@ if (!doNotTrack) {
     <span class="font-weight-bold mb-2">- CATALOG - </span>
   </li>
   <div id="toc-scroll" class="noselect hide-scrollbar"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading">
+        <a class="toc-link smoothScroll" href="#%e5%89%8d%e8%a8%80">
           前言
         </a>
       </li>
       </ul><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-1">
+        <a class="toc-link smoothScroll" href="#%e4%b8%8d%e5%90%8c%e4%b9%8b%e8%99%95">
           不同之處
         </a>
       </li>
@@ -289,12 +289,12 @@ if (!doNotTrack) {
         </a>
       </li>
       </ul></ul><ul class="toc"><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#-markdown--html">
+        <a class="toc-link smoothScroll" href="#%e9%a0%90%e8%a8%ad%e4%b8%8d%e5%8f%af%e4%bb%a5%e5%9c%a8-markdown-%e4%b8%ad%e4%bd%bf%e7%94%a8-html">
           預設不可以在 markdown 中使用 html
         </a>
       </li>
       </ul></ul><ul class="toc"><li class="toc-item">
-        <a class="toc-link smoothScroll" href="#heading-2">
+        <a class="toc-link smoothScroll" href="#%e5%be%8c%e8%a8%98">
           後記
         </a>
       </li>
@@ -337,12 +337,12 @@ if (!doNotTrack) {
   
   <footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto"
     role="contentinfo">
-    <p class="w-50 fr tr">
+    <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
       <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
     </p>
-    <p class="w-50 near-white">
-      &copy; 2019 Huang Po-Hsuan
+    <p class="w-50 near-white" style="font-size:0.875rem !important;">
+      &copy; 2019-2020 Huang Po-Hsuan
     </p>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
