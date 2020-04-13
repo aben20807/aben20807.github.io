@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.63.2" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
 <meta name="og:title"
@@ -212,7 +212,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make">INPUT_DIR <span style="color:#f92672">=</span> input/linux/
 INPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>INPUT_DIR<span style="color:#66d9ef">)</span>*.txt<span style="color:#66d9ef">)</span>
 OUTPUT_DIR <span style="color:#f92672">=</span> output/linux/
-OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span>,<span style="color:#66d9ef">$(</span>notdir <span style="color:#66d9ef">$(</span>INPUTS<span style="color:#66d9ef">)</span><span style="color:#66d9ef">)</span><span style="color:#66d9ef">)</span>
+OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span>,<span style="color:#66d9ef">$(</span>notdir <span style="color:#66d9ef">$(</span>INPUTS<span style="color:#66d9ef">)))</span>
 </code></pre></div><ul>
 <li><code>wildcard</code>: 獲取輸入檔案列表</li>
 <li><code>notdir</code>: 獲得檔案名稱 (去掉前面路徑)</li>
@@ -222,12 +222,12 @@ OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</spa
 <h1 id="完整範例" class="article-heading">完整範例<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#完整範例"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <h2 id="檔案們" class="article-heading">檔案們<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#檔案們"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <h3 id="tc" class="article-heading"><code>t.c</code>:<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#tc"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
     <span style="color:#66d9ef">int</span> a, b;
-    scanf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d%d</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">&amp;</span>a, <span style="color:#f92672">&amp;</span>b);
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a <span style="color:#f92672">+</span> b);
+    scanf(<span style="color:#e6db74">&#34;%d%d&#34;</span>, <span style="color:#f92672">&amp;</span>a, <span style="color:#f92672">&amp;</span>b);
+    printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, a <span style="color:#f92672">+</span> b);
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><h3 id="makefile" class="article-heading"><code>Makefile</code>:<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#makefile"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
@@ -237,7 +237,7 @@ EXEC <span style="color:#f92672">=</span> a.out
 INPUT_DIR <span style="color:#f92672">=</span> input/linux/
 INPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>INPUT_DIR<span style="color:#66d9ef">)</span>*.txt<span style="color:#66d9ef">)</span>
 OUTPUT_DIR <span style="color:#f92672">=</span> output/linux/
-OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span>,<span style="color:#66d9ef">$(</span>notdir <span style="color:#66d9ef">$(</span>INPUTS<span style="color:#66d9ef">)</span><span style="color:#66d9ef">)</span><span style="color:#66d9ef">)</span>
+OUTPUTS <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>addprefix <span style="color:#66d9ef">$(</span>OUTPUT_DIR<span style="color:#66d9ef">)</span>,<span style="color:#66d9ef">$(</span>notdir <span style="color:#66d9ef">$(</span>INPUTS<span style="color:#66d9ef">)))</span>
 <span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> all, test, mk_parent_dir
 
 <span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>EXEC<span style="color:#66d9ef">)</span>

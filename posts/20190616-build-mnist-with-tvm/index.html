@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.63.2" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
 <meta name="og:title"
@@ -221,19 +221,19 @@ if (!doNotTrack) {
 <p>注意要下載或複製那個程式碼，<code>cnn.h5</code> 跟 <code>test3.png</code> 一樣要放對位置。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.misc <span style="color:#f92672">import</span> imread, imresize
 <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test3.png</span><span style="color:#e6db74">&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#39;</span>)
+x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74">&#39;test3.png&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;L&#39;</span>)
 <span style="color:#75715e"># Compute a bit-wise inversion so black becomes white and vice versa</span>
 x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>invert(x)
 <span style="color:#75715e"># Make it the right size</span>
 x <span style="color:#f92672">=</span> imresize(x,(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>))
 <span style="color:#75715e"># Convert to a 4D tensor to feed into our model</span>
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
-x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># Perform the prediction</span>
 <span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> load_model
-model <span style="color:#f92672">=</span> load_model(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">cnn.h5</span><span style="color:#e6db74">&#39;</span>)
+model <span style="color:#f92672">=</span> load_model(<span style="color:#e6db74">&#39;cnn.h5&#39;</span>)
 out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x)
 <span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(out))
 </code></pre></div><p>很好，可以執行～</p>
@@ -248,44 +248,44 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 <span style="color:#f92672">import</span> keras
 <span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> load_model
 
-x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test3.png</span><span style="color:#e6db74">&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#39;</span>)
+x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74">&#39;test3.png&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;L&#39;</span>)
 <span style="color:#75715e"># Compute a bit-wise inversion so black becomes white and vice versa</span>
 x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>invert(x)
 <span style="color:#75715e"># Make it the right size</span>
 x <span style="color:#f92672">=</span> imresize(x,(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>))
 <span style="color:#75715e"># Convert to a 4D tensor to feed into our model</span>
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
-x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># Load model from pre-trained file</span>
-model <span style="color:#f92672">=</span> load_model(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">cnn.h5</span><span style="color:#e6db74">&#39;</span>)
+model <span style="color:#f92672">=</span> load_model(<span style="color:#e6db74">&#39;cnn.h5&#39;</span>)
 
 <span style="color:#75715e"># Compile with tvm</span>
-shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">input_1</span><span style="color:#e6db74">&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
+shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;input_1&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
 func, params <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>frontend<span style="color:#f92672">.</span>from_keras(model, shape_dict)
-target <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">llvm</span><span style="color:#e6db74">&#34;</span>
+target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;llvm&#34;</span>
 ctx <span style="color:#f92672">=</span> tvm<span style="color:#f92672">.</span>cpu(<span style="color:#ae81ff">0</span>)
 <span style="color:#66d9ef">with</span> relay<span style="color:#f92672">.</span>build_config(opt_level<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
-    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">graph</span><span style="color:#e6db74">&#39;</span>, func, ctx, target)
+    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74">&#39;graph&#39;</span>, func, ctx, target)
 
 <span style="color:#75715e"># Perform the prediction</span>
-dtype <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>
-tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">*</span><span style="color:#f92672">*</span>params)
+dtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;float32&#39;</span>
+tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">**</span>params)
 <span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(tvm_out<span style="color:#f92672">.</span>asnumpy()[<span style="color:#ae81ff">0</span>]))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict_tvm.py
 In <span style="color:#e6db74">`</span>main<span style="color:#e6db74">`</span>: 
 v0.0.1
-fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>32, 1, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_2: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>32,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_3: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>64, 32, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_4: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>64,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_5: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>128, 9216<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_6: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>128,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_7: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>10, 128<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_8: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>10,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-  %0 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1, channels<span style="color:#f92672">=</span>32, kernel_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>3, 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span style="color:#f92672">[(</span>32, 1, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_2: Tensor<span style="color:#f92672">[(</span>32,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_3: Tensor<span style="color:#f92672">[(</span>64, 32, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_4: Tensor<span style="color:#f92672">[(</span>64,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_5: Tensor<span style="color:#f92672">[(</span>128, 9216<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_6: Tensor<span style="color:#f92672">[(</span>128,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_7: Tensor<span style="color:#f92672">[(</span>10, 128<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_8: Tensor<span style="color:#f92672">[(</span>10,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+  %0 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1, channels<span style="color:#f92672">=</span>32, kernel_size<span style="color:#f92672">=[</span>3, 3<span style="color:#f92672">])</span>
   %1 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%0, %v_param_2<span style="color:#f92672">)</span>
   %2 <span style="color:#f92672">=</span> nn.relu<span style="color:#f92672">(</span>%1<span style="color:#f92672">)</span>
-  %3 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%2, %v_param_3, channels<span style="color:#f92672">=</span>64, kernel_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>3, 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  %3 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%2, %v_param_3, channels<span style="color:#f92672">=</span>64, kernel_size<span style="color:#f92672">=[</span>3, 3<span style="color:#f92672">])</span>
   %4 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%3, %v_param_4<span style="color:#f92672">)</span>
   %5 <span style="color:#f92672">=</span> nn.relu<span style="color:#f92672">(</span>%4<span style="color:#f92672">)</span>
-  %6 <span style="color:#f92672">=</span> nn.max_pool2d<span style="color:#f92672">(</span>%5, pool_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>2, 2<span style="color:#f92672">]</span>, strides<span style="color:#f92672">=</span><span style="color:#f92672">[</span>2, 2<span style="color:#f92672">]</span><span style="color:#f92672">)</span>an internal invariant was violated <span style="color:#66d9ef">while</span> typechecking your program <span style="color:#f92672">[</span>22:05:21<span style="color:#f92672">]</span> tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !<span style="color:#f92672">=</span> nullptr: 
+  %6 <span style="color:#f92672">=</span> nn.max_pool2d<span style="color:#f92672">(</span>%5, pool_size<span style="color:#f92672">=[</span>2, 2<span style="color:#f92672">]</span>, strides<span style="color:#f92672">=[</span>2, 2<span style="color:#f92672">])</span>an internal invariant was violated <span style="color:#66d9ef">while</span> typechecking your program <span style="color:#f92672">[</span>22:05:21<span style="color:#f92672">]</span> tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !<span style="color:#f92672">=</span> nullptr: 
 ; 
-  %7 <span style="color:#f92672">=</span> transpose<span style="color:#f92672">(</span>%6, axes<span style="color:#f92672">=</span><span style="color:#f92672">[</span>0, 2, 3, 1<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  %7 <span style="color:#f92672">=</span> transpose<span style="color:#f92672">(</span>%6, axes<span style="color:#f92672">=[</span>0, 2, 3, 1<span style="color:#f92672">])</span>
   %8 <span style="color:#f92672">=</span> nn.batch_flatten<span style="color:#f92672">(</span>%7<span style="color:#f92672">)</span>
   %9 <span style="color:#f92672">=</span> nn.dense<span style="color:#f92672">(</span>%8, %v_param_5, units<span style="color:#f92672">=</span>128<span style="color:#f92672">)</span>
   %10 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%9, %v_param_6<span style="color:#f92672">)</span>
@@ -318,13 +318,13 @@ x_train <span style="color:#f92672">=</span> x_train<span style="color:#f92672">
 x_test <span style="color:#f92672">=</span> x_test<span style="color:#f92672">.</span>reshape(x_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], img_rows, img_cols, <span style="color:#ae81ff">1</span>)
 input_shape <span style="color:#f92672">=</span> (img_rows, img_cols, <span style="color:#ae81ff">1</span>)
 
-x_train <span style="color:#f92672">=</span> x_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x_test <span style="color:#f92672">=</span> x_test<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x_train <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
-x_test <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">x_train shape:</span><span style="color:#e6db74">&#39;</span>, x_train<span style="color:#f92672">.</span>shape)
-<span style="color:#66d9ef">print</span>(x_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">train samples</span><span style="color:#e6db74">&#39;</span>)
-<span style="color:#66d9ef">print</span>(x_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test samples</span><span style="color:#e6db74">&#39;</span>)
+x_train <span style="color:#f92672">=</span> x_train<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x_test <span style="color:#f92672">=</span> x_test<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x_train <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
+x_test <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;x_train shape:&#39;</span>, x_train<span style="color:#f92672">.</span>shape)
+<span style="color:#66d9ef">print</span>(x_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#39;train samples&#39;</span>)
+<span style="color:#66d9ef">print</span>(x_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#39;test samples&#39;</span>)
 
 <span style="color:#75715e"># convert class vectors to binary class matrices</span>
 y_train <span style="color:#f92672">=</span> keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>to_categorical(y_train, num_classes)
@@ -332,19 +332,19 @@ y_test <span style="color:#f92672">=</span> keras<span style="color:#f92672">.</
 
 model <span style="color:#f92672">=</span> Sequential()
 model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>),
-                 activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>,
+                 activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>,
                  input_shape<span style="color:#f92672">=</span>input_shape))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
 model<span style="color:#f92672">.</span>add(Flatten())
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
-model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">softmax</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 model<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>categorical_crossentropy,
               optimizer<span style="color:#f92672">=</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adadelta(),
-              metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">accuracy</span><span style="color:#e6db74">&#39;</span>])
+              metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
 
 model<span style="color:#f92672">.</span>fit(x_train, y_train,
           batch_size<span style="color:#f92672">=</span>batch_size,
@@ -352,9 +352,9 @@ model<span style="color:#f92672">.</span>fit(x_train, y_train,
           verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
           validation_data<span style="color:#f92672">=</span>(x_test, y_test))
 score <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>evaluate(x_test, y_test, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Test loss:</span><span style="color:#e6db74">&#39;</span>, score[<span style="color:#ae81ff">0</span>])
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">Test accuracy:</span><span style="color:#e6db74">&#39;</span>, score[<span style="color:#ae81ff">1</span>])
-model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mnist_weights.h5</span><span style="color:#e6db74">&#39;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Test loss:&#39;</span>, score[<span style="color:#ae81ff">0</span>])
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Test accuracy:&#39;</span>, score[<span style="color:#ae81ff">1</span>])
+model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 </code></pre></div><p>跑了頗久，不過跟其應該比 ImageNet 快很多了。結果如下圖。
 
   <figure class="gphoto-media center">
@@ -390,54 +390,54 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
 <span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Conv2D, MaxPooling2D
 num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 
-x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test3.png</span><span style="color:#e6db74">&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#39;</span>)
+x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74">&#39;test3.png&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;L&#39;</span>)
 <span style="color:#75715e"># Compute a bit-wise inversion so black becomes white and vice versa</span>
 x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>invert(x)
 <span style="color:#75715e"># Make it the right size</span>
 x <span style="color:#f92672">=</span> imresize(x,(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>))
 <span style="color:#75715e"># Convert to a 4D tensor to feed into our model</span>
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
-x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
 model<span style="color:#f92672">.</span>add(Flatten())
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
-model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">softmax</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mnist_weights.h5</span><span style="color:#e6db74">&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
-shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">input_1</span><span style="color:#e6db74">&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
+shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;input_1&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
 func, params <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>frontend<span style="color:#f92672">.</span>from_keras(model, shape_dict)
-target <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">llvm</span><span style="color:#e6db74">&#34;</span>
+target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;llvm&#34;</span>
 ctx <span style="color:#f92672">=</span> tvm<span style="color:#f92672">.</span>cpu(<span style="color:#ae81ff">0</span>)
 <span style="color:#66d9ef">with</span> relay<span style="color:#f92672">.</span>build_config(opt_level<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
-    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">graph</span><span style="color:#e6db74">&#39;</span>, func, ctx, target)
+    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74">&#39;graph&#39;</span>, func, ctx, target)
 
 <span style="color:#75715e"># Perform the prediction</span>
-dtype <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>
-tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">*</span><span style="color:#f92672">*</span>params)
+dtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;float32&#39;</span>
+tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">**</span>params)
 <span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(tvm_out<span style="color:#f92672">.</span>asnumpy()[<span style="color:#ae81ff">0</span>]))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict_tvm.py
 In <span style="color:#e6db74">`</span>main<span style="color:#e6db74">`</span>: 
 v0.0.1
-fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>32, 1, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_2: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>32,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_3: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>64, 32, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_4: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>64,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_5: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>128, 9216<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_6: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>128,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_7: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>10, 128<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_8: Tensor<span style="color:#f92672">[</span><span style="color:#f92672">(</span>10,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-  %0 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1, channels<span style="color:#f92672">=</span>32, kernel_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>3, 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span style="color:#f92672">[(</span>32, 1, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_2: Tensor<span style="color:#f92672">[(</span>32,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_3: Tensor<span style="color:#f92672">[(</span>64, 32, 3, 3<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_4: Tensor<span style="color:#f92672">[(</span>64,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_5: Tensor<span style="color:#f92672">[(</span>128, 9216<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_6: Tensor<span style="color:#f92672">[(</span>128,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_7: Tensor<span style="color:#f92672">[(</span>10, 128<span style="color:#f92672">)</span>, float32<span style="color:#f92672">]</span>, %v_param_8: Tensor<span style="color:#f92672">[(</span>10,<span style="color:#f92672">)</span>, float32<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+  %0 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1, channels<span style="color:#f92672">=</span>32, kernel_size<span style="color:#f92672">=[</span>3, 3<span style="color:#f92672">])</span>
   %1 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%0, %v_param_2<span style="color:#f92672">)</span>
   %2 <span style="color:#f92672">=</span> nn.relu<span style="color:#f92672">(</span>%1<span style="color:#f92672">)</span>
-  %3 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%2, %v_param_3, channels<span style="color:#f92672">=</span>64, kernel_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>3, 3<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  %3 <span style="color:#f92672">=</span> nn.conv2d<span style="color:#f92672">(</span>%2, %v_param_3, channels<span style="color:#f92672">=</span>64, kernel_size<span style="color:#f92672">=[</span>3, 3<span style="color:#f92672">])</span>
   %4 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%3, %v_param_4<span style="color:#f92672">)</span>
   %5 <span style="color:#f92672">=</span> nn.relu<span style="color:#f92672">(</span>%4<span style="color:#f92672">)</span>
-  %6 <span style="color:#f92672">=</span> nn.max_pool2d<span style="color:#f92672">(</span>%5, pool_size<span style="color:#f92672">=</span><span style="color:#f92672">[</span>2, 2<span style="color:#f92672">]</span>, strides<span style="color:#f92672">=</span><span style="color:#f92672">[</span>2, 2<span style="color:#f92672">]</span><span style="color:#f92672">)</span>an internal invariant was violated <span style="color:#66d9ef">while</span> typechecking your program <span style="color:#f92672">[</span>22:21:27<span style="color:#f92672">]</span> tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !<span style="color:#f92672">=</span> nullptr: 
+  %6 <span style="color:#f92672">=</span> nn.max_pool2d<span style="color:#f92672">(</span>%5, pool_size<span style="color:#f92672">=[</span>2, 2<span style="color:#f92672">]</span>, strides<span style="color:#f92672">=[</span>2, 2<span style="color:#f92672">])</span>an internal invariant was violated <span style="color:#66d9ef">while</span> typechecking your program <span style="color:#f92672">[</span>22:21:27<span style="color:#f92672">]</span> tvm/src/relay/op/nn/pooling.cc:73: Check failed: data !<span style="color:#f92672">=</span> nullptr: 
 ; 
-  %7 <span style="color:#f92672">=</span> transpose<span style="color:#f92672">(</span>%6, axes<span style="color:#f92672">=</span><span style="color:#f92672">[</span>0, 2, 3, 1<span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+  %7 <span style="color:#f92672">=</span> transpose<span style="color:#f92672">(</span>%6, axes<span style="color:#f92672">=[</span>0, 2, 3, 1<span style="color:#f92672">])</span>
   %8 <span style="color:#f92672">=</span> nn.batch_flatten<span style="color:#f92672">(</span>%7<span style="color:#f92672">)</span>
   %9 <span style="color:#f92672">=</span> nn.dense<span style="color:#f92672">(</span>%8, %v_param_5, units<span style="color:#f92672">=</span>128<span style="color:#f92672">)</span>
   %10 <span style="color:#f92672">=</span> nn.bias_add<span style="color:#f92672">(</span>%9, %v_param_6<span style="color:#f92672">)</span>
@@ -462,29 +462,29 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 <span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Conv2D, MaxPooling2D
 num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 
-x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test3.png</span><span style="color:#e6db74">&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#39;</span>)
+x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74">&#39;test3.png&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;L&#39;</span>)
 <span style="color:#75715e"># Compute a bit-wise inversion so black becomes white and vice versa</span>
 x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>invert(x)
 <span style="color:#75715e"># Make it the right size</span>
 x <span style="color:#f92672">=</span> imresize(x,(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>))
 <span style="color:#75715e"># Convert to a 4D tensor to feed into our model</span>
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
-x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
 model<span style="color:#f92672">.</span>add(Flatten())
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
-model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">softmax</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mnist_weights.h5</span><span style="color:#e6db74">&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
 <span style="color:#75715e"># Perform the prediction</span>
 out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x)
@@ -508,42 +508,42 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
 input_shape <span style="color:#f92672">=</span> (<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>)
 
-x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">test3.png</span><span style="color:#e6db74">&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#39;</span>)
+x <span style="color:#f92672">=</span> imread(<span style="color:#e6db74">&#39;test3.png&#39;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;L&#39;</span>)
 <span style="color:#75715e"># Compute a bit-wise inversion so black becomes white and vice versa</span>
 x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>invert(x)
 <span style="color:#75715e"># Make it the right size</span>
 x <span style="color:#f92672">=</span> imresize(x,(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>))
 <span style="color:#75715e"># Convert to a 4D tensor to feed into our model</span>
 x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">1</span>)
-x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>)
-x <span style="color:#f92672">/</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">255</span>
+x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+x <span style="color:#f92672">/=</span> <span style="color:#ae81ff">255</span>
 
 <span style="color:#75715e"># model = load_model(&#39;cnn.h5&#39;)</span>
 <span style="color:#75715e"># Construct a MNIST model</span>
 model <span style="color:#f92672">=</span> Sequential()
 model<span style="color:#f92672">.</span>add(InputLayer(input_shape<span style="color:#f92672">=</span>input_shape))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>, input_shape<span style="color:#f92672">=</span>input_shape))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">32</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>input_shape))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">64</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.25</span>))
 model<span style="color:#f92672">.</span>add(Flatten())
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">relu</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
-model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">softmax</span><span style="color:#e6db74">&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(num_classes, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
 <span style="color:#75715e"># Load the weights that we get from last program</span>
-model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">mnist_weights.h5</span><span style="color:#e6db74">&#39;</span>)
+model<span style="color:#f92672">.</span>load_weights(<span style="color:#e6db74">&#39;mnist_weights.h5&#39;</span>)
 
-shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">input_1</span><span style="color:#e6db74">&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
+shape_dict <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;input_1&#39;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)}
 func, params <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>frontend<span style="color:#f92672">.</span>from_keras(model, shape_dict)
-target <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">llvm</span><span style="color:#e6db74">&#34;</span>
+target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;llvm&#34;</span>
 ctx <span style="color:#f92672">=</span> tvm<span style="color:#f92672">.</span>cpu(<span style="color:#ae81ff">0</span>)
 <span style="color:#66d9ef">with</span> relay<span style="color:#f92672">.</span>build_config(opt_level<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
-    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">graph</span><span style="color:#e6db74">&#39;</span>, func, ctx, target)
+    executor <span style="color:#f92672">=</span> relay<span style="color:#f92672">.</span>build_module<span style="color:#f92672">.</span>create_executor(<span style="color:#e6db74">&#39;graph&#39;</span>, func, ctx, target)
 
 <span style="color:#75715e"># Pperform the prediction</span>
-dtype <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>
-tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">*</span><span style="color:#f92672">*</span>params)
+dtype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;float32&#39;</span>
+tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672">.</span>evaluate(func)(tvm<span style="color:#f92672">.</span>nd<span style="color:#f92672">.</span>array(x<span style="color:#f92672">.</span>astype(dtype)), <span style="color:#f92672">**</span>params)
 <span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>argmax(tvm_out<span style="color:#f92672">.</span>asnumpy()[<span style="color:#ae81ff">0</span>]))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 test_mnist.py
 <span style="color:#ae81ff">3</span>
@@ -576,7 +576,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>input)
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>output_shape)
     <span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>output)
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">---</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;---&#34;</span>)
 </code></pre></div>
       Last modified: Aug 9, 2019
       <div class="row">

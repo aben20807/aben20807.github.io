@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.63.2" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
 <meta name="og:title"
@@ -380,8 +380,8 @@ if (!doNotTrack) {
 <h4 id="加上空格們-1" class="article-heading">加上空格們<a class="headline-hash smoothScroll hover-show" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#加上空格們-1"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h4>
 <p>注意 <code>;</code> 前不要後要。<br>
 這裡用 <code>i++</code> 或 <code>++i</code> 其實基本上沒有效能差異 <sup id="fnref:5"><a href="#fn:5" class="footnote-ref smoothScroll" role="doc-noteref">5</a></sup>，編譯器會幫你最佳化，我更喜歡 <code>i++</code> 因為要改成 <code>i+=2</code> 之類的比較方便，另外也是有 <code>i-=-1</code> <sup id="fnref:6"><a href="#fn:6" class="footnote-ref smoothScroll" role="doc-noteref">6</a></sup> 這種邪教&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> some_number; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
-  printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">OuO</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> some_number; i<span style="color:#f92672">++</span>) {
+  printf(<span style="color:#e6db74">&#34;OuO</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 }
 </code></pre></div><h3 id="pointer-變數宣告" class="article-heading">Pointer 變數宣告<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#pointer-變數宣告"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p><code>int*x;</code>、<code>int *x;</code>、<code>int* x</code>、<code>int * x</code> 都是可編譯的寫法，在 C 中 <code>int *x;</code> 更為常用。C++ 中反而是 <code>int* x;</code> <sup id="fnref:7"><a href="#fn:7" class="footnote-ref smoothScroll" role="doc-noteref">7</a></sup>。</p>
@@ -402,7 +402,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// 每個變數宣告時搭配初始化
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 <span style="color:#75715e">// 陣列初始化以下都可以
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> que[<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">\0</span><span style="color:#e6db74">&#39;</span>};
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> que[<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;\0&#39;</span>};
 <span style="color:#66d9ef">char</span> que[<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>};
 <span style="color:#66d9ef">char</span> que[<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {};
 </code></pre></div><h2 id="註解-comment" class="article-heading">註解 (Comment)<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#註解-comment"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
@@ -415,16 +415,16 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <h3 id="在函式宣告時點出副作用" class="article-heading">在函式宣告時點出副作用<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#在函式宣告時點出副作用"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>但是在開發過程需要適時隔離變化，C 語言提供了 <code>const</code> 修飾字來標示該參數在函式中不會被修改。以下範例中的 <code>rear</code> 和 <code>orig</code>  不會被修改到內容，所以可以利用 <code>const</code> 來提醒函式呼叫者該參數不會被改動，反之 <code>front</code> 就有機會被改動。詳細的排列組合可以參考 <sup id="fnref:10"><a href="#fn:10" class="footnote-ref smoothScroll" role="doc-noteref">10</a></sup>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deque</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>orig, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>front, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>rear) {
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>front <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#f92672">*</span>rear) {
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Empty</span><span style="color:#e6db74">&#34;</span>);
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>front <span style="color:#f92672">==</span> <span style="color:#f92672">*</span>rear) {
+    printf(<span style="color:#e6db74">&#34;Empty&#34;</span>);
   } <span style="color:#66d9ef">else</span> {
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, orig[<span style="color:#f92672">*</span>front]);
+    printf(<span style="color:#e6db74">&#34;%c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, orig[<span style="color:#f92672">*</span>front]);
     <span style="color:#f92672">*</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>front <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
   }
 }
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// rear, orig 皆是指向一個唯讀參數 (read-only parameter)
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 的唯讀指標 (read-only location)
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 若嘗試在函式中修改 `rear` 或 `*rear` 就會得到編譯錯誤
+</span><span style="color:#75715e">// 的唯讀指標 (read-only location)
+</span><span style="color:#75715e">// 若嘗試在函式中修改 `rear` 或 `*rear` 就會得到編譯錯誤
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deque</span>(
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> orig,
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>front,
@@ -433,31 +433,31 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <p>這裡要先宣導一個觀念就是 C 語言只有 Pass By Value，也就是只會複製傳入變數的數值，傳入指標也是一樣，我們只是傳入了指標這個數值，而透過這個指標的取值 (dereference) 可以改動對應的記憶體位置 C99 §6.5.2.2.4 <sup id="fnref:8"><a href="#fn:8" class="footnote-ref smoothScroll" role="doc-noteref">8</a></sup>。而因為 C 的函式回傳值只限一個，所以大部分會使用修改參數的方式來回傳數值，而真正的回傳值就用來表示函式是否正確執行，否則就回傳對應的錯誤碼。</p>
 <p>上面那樣改起來好像太奇葩，更好的解決方式是要先思考，把將要在函式內部更動變數在傳入其指標，其餘的只須把數值傳進去即可。當然若是傳入陣列就還是需要指標就像 <code>orig</code>。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// 因為最後一個參數不會變動而且只需要其數值
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 所以直接以常數傳入，當然函式內部就不需要取值了
+</span><span style="color:#75715e">// 所以直接以常數傳入，當然函式內部就不需要取值了
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deque</span>(
     <span style="color:#66d9ef">char</span> <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> orig,
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>front,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> rear_value) {
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>front <span style="color:#f92672">=</span><span style="color:#f92672">=</span> rear_value) {
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Empty</span><span style="color:#e6db74">&#34;</span>);
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>front <span style="color:#f92672">==</span> rear_value) {
+    printf(<span style="color:#e6db74">&#34;Empty&#34;</span>);
   } <span style="color:#66d9ef">else</span> {
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, orig[<span style="color:#f92672">*</span>front]);
+    printf(<span style="color:#e6db74">&#34;%c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, orig[<span style="color:#f92672">*</span>front]);
     <span style="color:#f92672">*</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>front <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
   }
 }
 </code></pre></div><h2 id="多檔案" class="article-heading">多檔案<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#多檔案"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <h3 id="避免重複-include" class="article-heading">避免重複 include<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#避免重複-include"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>專案擴張下，必然會用到多檔案，這時候就會拆成很多的 <code>.h</code>, <code>.c</code> 檔，<code>.h</code> 用來作為界面的溝通，這時候一定要使用 macro (<a href="https://en.wikipedia.org/wiki/Include_guard" target="_blank">Include guard</a>) 防止重複 include。以下為檔名為 <code>file.h</code> 的內容範例：<code>FILE_H</code>, <code>_FILE_H</code>, <code>__FILE_H__</code> 都有人用，但一般以第一種為主即可。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">ifndef FILE_H</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">define FILE_H</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef FILE_H
+</span><span style="color:#75715e">#define FILE_H
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">/* ... Declarations etc here ... */</span>
 
-<span style="color:#75715e">#</span><span style="color:#75715e">endif </span><span style="color:#75715e">/* FILE_H */</span><span style="color:#75715e">
+<span style="color:#75715e">#endif </span><span style="color:#75715e">/* FILE_H */</span><span style="color:#75715e">
 </span></code></pre></div><h3 id="用-static-修飾內部函數" class="article-heading">用 <code>static</code> 修飾內部函數<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#用-static-修飾內部函數"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
 <p>如果在多檔案下函數並不是要開放給其他檔案呼叫時，請加上 <code>static</code> 來保證只有當前檔案內部可以看到那個函數。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">my_local_function</span>() {
-  printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">OuO</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+  printf(<span style="color:#e6db74">&#34;OuO</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 }
 </code></pre></div><h2 id="避免使用危險的函式們" class="article-heading">避免使用危險的函式們<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#避免使用危險的函式們"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>C 語言給予使用者相當大的彈性但用起來需要知道自己在做什麼，否則會有許多安全性漏洞，有一些函式很容易造成誤用，連資深工程師也常用錯，因此蠻多專案直接把不安全的函式禁用，例如 Git <sup id="fnref:11"><a href="#fn:11" class="footnote-ref smoothScroll" role="doc-noteref">11</a></sup>，Intel 的 safestringlib 也有一個完整列表 <sup id="fnref:12"><a href="#fn:12" class="footnote-ref smoothScroll" role="doc-noteref">12</a></sup>。以下給出一些較常見的。</p>

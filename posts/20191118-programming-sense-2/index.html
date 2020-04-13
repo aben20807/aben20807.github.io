@@ -11,7 +11,7 @@
   <link rel="shortcut icon" type="image/png" href="https://aben20807.github.io/apple-touch-icon-precomposed.png">
   
   
-  <meta name="generator" content="Hugo 0.63.2" />
+  <meta name="generator" content="Hugo 0.69.0" />
 
   
 <meta name="og:title"
@@ -221,18 +221,18 @@ if (!doNotTrack) {
 <span style="color:#75715e">// 初始化
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span><span style="color:#a6e22e">init_queue</span>() {
   <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>ret <span style="color:#f92672">=</span> calloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Queue), <span style="color:#ae81ff">1</span>);
-  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>rear <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>enque <span style="color:#f92672">=</span> enque; <span style="color:#75715e">// 須另外定義 enque 函式
-</span><span style="color:#75715e"></span>  ret<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>deque <span style="color:#f92672">=</span> deque; <span style="color:#75715e">// 須另外定義 deque 函式
+  ret<span style="color:#f92672">-&gt;</span>front <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-&gt;</span>rear <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+  ret<span style="color:#f92672">-&gt;</span>enque <span style="color:#f92672">=</span> enque; <span style="color:#75715e">// 須另外定義 enque 函式
+</span><span style="color:#75715e"></span>  ret<span style="color:#f92672">-&gt;</span>deque <span style="color:#f92672">=</span> deque; <span style="color:#75715e">// 須另外定義 deque 函式
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> ret;
 }
 
 <span style="color:#75715e">// 使用
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
   <span style="color:#66d9ef">struct</span> Queue <span style="color:#f92672">*</span>q <span style="color:#f92672">=</span> init_queue();
-  q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>enque(q, <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>);
-  q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>deque(q);
+  q<span style="color:#f92672">-&gt;</span>enque(q, <span style="color:#e6db74">&#39;A&#39;</span>);
+  q<span style="color:#f92672">-&gt;</span>deque(q);
   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><h1 id="寫程式的過程" class="article-heading">寫程式的過程<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#寫程式的過程"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
@@ -268,14 +268,14 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_group_id</span>(
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person) {
-  <span style="color:#66d9ef">return</span> people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>];
+  <span style="color:#66d9ef">return</span> people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>];
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">set_group_id</span>(
     <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> people_group_ids,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> person,
     <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> group_id) {
-  people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">A</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> group_id;
+  people_group_ids[person <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;A&#39;</span>] <span style="color:#f92672">=</span> group_id;
 }
 </code></pre></div><p>插隊的話只需要從 queue 的頭找 <code>group_id</code> 相同的人即可。</p>
 <h3 id="事前設計" class="article-heading">事前設計<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#事前設計"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h3>
@@ -299,10 +299,10 @@ if (!doNotTrack) {
 <h2 id="printf-好夥伴" class="article-heading"><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#printf-好夥伴"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref smoothScroll" role="doc-noteref">3</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print_queue</span>(<span style="color:#66d9ef">struct</span> Queue <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> q) {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>) {
-    printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%c </span><span style="color:#e6db74">&#34;</span>, q<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>que[i]);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">++</span>) {
+    printf(<span style="color:#e6db74">&#34;%c &#34;</span>, q<span style="color:#f92672">-&gt;</span>que[i]);
   }
-  printf(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+  printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
 }
 </code></pre></div><h2 id="gdb" class="article-heading">GDB<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>GDB (<a href="https://www.gnu.org/software/gdb/" target="_blank">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href="https://github.com/cyrus-and/gdb-dashboard" target="_blank">GDB dashboard</a> 可以參考 <sup id="fnref:4"><a href="#fn:4" class="footnote-ref smoothScroll" role="doc-noteref">4</a></sup>。</p>
