@@ -8,10 +8,46 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Mon, 13 Apr 2020 21:06:45 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 16:20:49 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C</title>
+      <link>https://aben20807.github.io/tags/c/</link>
+      <pubDate>Mon, 20 Apr 2020 16:20:49 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>copy</title>
+      <link>https://aben20807.github.io/tags/copy/</link>
+      <pubDate>Mon, 20 Apr 2020 16:20:49 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/copy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filemode</title>
+      <link>https://aben20807.github.io/tags/filemode/</link>
+      <pubDate>Mon, 20 Apr 2020 16:20:49 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/filemode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://aben20807.github.io/tags/python/</link>
+      <pubDate>Mon, 20 Apr 2020 16:20:49 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>明日方舟</title>
@@ -28,15 +64,6 @@
       <pubDate>Mon, 13 Apr 2020 21:06:45 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/%E9%9B%9C%E8%A8%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://aben20807.github.io/tags/c/</link>
-      <pubDate>Sun, 02 Feb 2020 11:14:20 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/c/</guid>
       <description></description>
     </item>
     
@@ -100,15 +127,6 @@
       <pubDate>Tue, 22 Oct 2019 20:27:13 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/tags/numpy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://aben20807.github.io/tags/python/</link>
-      <pubDate>Tue, 22 Oct 2019 20:27:13 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/tags/python/</guid>
       <description></description>
     </item>
     

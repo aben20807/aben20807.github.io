@@ -8,10 +8,19 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Mon, 13 Apr 2020 21:06:45 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 16:20:49 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Shutil</title>
+      <link>https://aben20807.github.io/posts/20200420-shutil/</link>
+      <pubDate>Mon, 20 Apr 2020 16:20:49 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20200420-shutil/</guid>
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;</description>
+    </item>
     
     <item>
       <title>雜記</title>
