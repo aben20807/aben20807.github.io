@@ -25,7 +25,7 @@
 new mode &lt;span style=&#34;color:#ae81ff&#34;&gt;100755&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;原本我是用 subprocess 在比對之前執行 &lt;code&gt;chmod&lt;/code&gt;，效果跟我想的是一樣的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;chmod &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;reference&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;answer_filepath output_filepath
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是在解決另外一個複製的問題時，意外找到 &lt;a href=&#34;https://docs.python.org/3/library/shutil.html#module-shutil&#34;&gt;shutil&lt;/a&gt;，這個工具提供一些檔案複製的函式，其中就有複製檔案權限的，因此我後來改用這個了。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是在解決另外一個複製的問題時，意外找到 &lt;a href=&#34;https://docs.python.org/3/library/shutil.html#module-shutil&#34;&gt;shutil&lt;/a&gt;，這個工具提供一些檔案複製的函式，其中就有複製檔案權限的，而且竟然是 build-in module，因此我後來改用這個了。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;copymode(answer_filepath, output_filepath)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;感覺雖然自己已經算是很會找現有的工具了，但是還是很多東西沒看過呢 OuO&lt;/p&gt;</description>
     </item>

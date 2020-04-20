@@ -198,7 +198,7 @@ if (!doNotTrack) {
 new mode <span style="color:#ae81ff">100755</span>
 </code></pre></div><p>原本我是用 subprocess 在比對之前執行 <code>chmod</code>，效果跟我想的是一樣的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">chmod <span style="color:#f92672">--</span>reference<span style="color:#f92672">=</span>answer_filepath output_filepath
-</code></pre></div><p>但是在解決另外一個複製的問題時，意外找到 <a href="https://docs.python.org/3/library/shutil.html#module-shutil" target="_blank">shutil</a>，這個工具提供一些檔案複製的函式，其中就有複製檔案權限的，因此我後來改用這個了。</p>
+</code></pre></div><p>但是在解決另外一個複製的問題時，意外找到 <a href="https://docs.python.org/3/library/shutil.html#module-shutil" target="_blank">shutil</a>，這個工具提供一些檔案複製的函式，其中就有複製檔案權限的，而且竟然是 build-in module，因此我後來改用這個了。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">copymode(answer_filepath, output_filepath)
 </code></pre></div><p>感覺雖然自己已經算是很會找現有的工具了，但是還是很多東西沒看過呢 OuO</p>
       Last modified: Apr 20, 2020
