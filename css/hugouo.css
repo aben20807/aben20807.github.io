@@ -419,10 +419,13 @@ a.footnote-backref:after {
   -webkit-appearance: none;
 }
 ::-webkit-scrollbar:vertical {
-  width: 5px;
+  width: 7px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 7px;
 }
 
-::-webkit-scrollbar:horizontal {
+body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
   height: 0px;
 }
 ::-webkit-scrollbar-track {

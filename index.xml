@@ -12,6 +12,106 @@
     
     
     <item>
+      <title>C&#43;&#43; Get Pretty Type Name</title>
+      <link>https://aben20807.github.io/posts/20200710-cpp-get-pretty-type-name/</link>
+      <pubDate>Fri, 10 Jul 2020 13:36:58 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/posts/20200710-cpp-get-pretty-type-name/</guid>
+      
+      
+      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
+&lt;p&gt;最近狂看 C++ 的東西，明明這麼複雜，可是真香 OuO&lt;/p&gt;
+&lt;h1 id=&#34;tldr&#34;&gt;tl;dr&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;typeinfo&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;cxxabi.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string get_type_name(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; T variable) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(variable).name();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; demangled_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; abi&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;__cxa_demangle(name, NULL, NULL, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;status);
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string ret{name};
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (status &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
+        ret &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string(demangled_name);
+        free(demangled_name);
+    }
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ret;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;typeid-operator&#34;&gt;typeid operator&lt;/h1&gt;
+&lt;p&gt;在 &lt;code&gt;typeinfo&lt;/code&gt; 中有提供 &lt;code&gt;typeid()&lt;/code&gt; 可以取得 type 或是 expression (variable) 的名字 &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;typeinfo&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt; () {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;).name() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(a).name() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(fontScale:14,j:1,lang:c%2B%2B,selection:(endColumn:2,endLineNumber:8,positionColumn:1,positionLineNumber:1,selectionStartColumn:2,selectionStartLineNumber:8,startColumn:1,startLineNumber:1),source:&#39;%23include+%3Ciostream%3E%0A%23include+%3Ctypeinfo%3E%0A%0Aint+main+()+%7B%0A++++int+a%3B%0A++++std::cout+%3C%3C+typeid(int).name()+%3C%3C+!&#39;%5Cn!&#39;%3B%0A++++std::cout+%3C%3C+typeid(a).name()+%3C%3C+!&#39;%5Cn!&#39;%3B%0A%7D&#39;),l:&#39;5&#39;,n:&#39;0&#39;,o:&#39;C%2B%2B+source+%231&#39;,t:&#39;0&#39;)),k:50,l:&#39;4&#39;,n:&#39;0&#39;,o:&#39;&#39;,s:0,t:&#39;0&#39;),(g:!((g:!((h:compiler,i:(compiler:g83,filters:(b:&#39;0&#39;,binary:&#39;1&#39;,commentOnly:&#39;0&#39;,demangle:&#39;0&#39;,directives:&#39;0&#39;,execute:&#39;0&#39;,intel:&#39;0&#39;,libraryCode:&#39;1&#39;,trim:&#39;1&#39;),fontScale:14,j:1,lang:c%2B%2B,libs:!(),options:&#39;-Ofast&#39;,selection:(endColumn:1,endLineNumber:1,positionColumn:1,positionLineNumber:1,selectionStartColumn:1,selectionStartLineNumber:1,startColumn:1,startLineNumber:1),source:1),l:&#39;5&#39;,n:&#39;0&#39;,o:&#39;x86-64+gcc+8.3+(Editor+%231,+Compiler+%231)+C%2B%2B&#39;,t:&#39;0&#39;)),k:50,l:&#39;4&#39;,m:78.34710743801652,n:&#39;0&#39;,o:&#39;&#39;,s:0,t:&#39;0&#39;),(g:!((h:output,i:(compiler:1,editor:1,fontScale:14,wrap:&#39;1&#39;),l:&#39;5&#39;,n:&#39;0&#39;,o:&#39;%231+with+x86-64+gcc+8.3&#39;,t:&#39;0&#39;)),header:(),l:&#39;4&#39;,m:21.65289256198347,n:&#39;0&#39;,o:&#39;&#39;,s:0,t:&#39;0&#39;)),k:50,l:&#39;3&#39;,n:&#39;0&#39;,o:&#39;&#39;,t:&#39;0&#39;)),l:&#39;2&#39;,n:&#39;0&#39;,o:&#39;&#39;,t:&#39;0&#39;)),version:4&#34;&gt;[run]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;不過像是 int 只能顯示 i，其他複雜的顯示也不直觀，主要是因為 C++ 會對於型別做修飾 (Name mangling &lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;)，這也是為何 C++ 能夠支援 function overloading，因為編譯過程中型別都會轉成獨一無二的表達方式所以不會造成衝突。&lt;/p&gt;
+&lt;h1 id=&#34;demangle&#34;&gt;Demangle&lt;/h1&gt;
+&lt;p&gt;在 &lt;code&gt;&amp;lt;cxxabi.h&amp;gt;&lt;/code&gt; 中有提供方法可以讓經過 mangle 的型別轉回可讀性較高的字串。以下範例與上述提到的方法進行比較。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;typeinfo&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;cxxabi.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string get_type_name(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; T variable) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(variable).name();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; status &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; demangled_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; abi&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;__cxa_demangle(name, NULL, NULL, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;status);
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string ret{name};
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (status &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
+        ret &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string(demangled_name);
+        free(demangled_name);
+    }
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; ret;
+}
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;namespace&lt;/span&gt; OuO&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;QuQ {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt; { };
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; size&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Bar&lt;/span&gt; { };
+}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; Foo &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; OuO&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;QuQ&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;Foo;
+
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt; () {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(a).name() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; get_type_name(a) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+
+    Foo b;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(b).name() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; get_type_name(b) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+
+    OuO&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;QuQ&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;Bar&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; c;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;typeid&lt;/span&gt;(c).name() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; get_type_name(c) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAM1QDsCBlZAQwBtMQBGAFlICsupVs1qhkAUgBMAISnTSAZ0ztkBPHUqZa6AMKpWAVwC2tQVvQAZPLUwA5YwCNMxEAGYA7KQAOqBYXW0eoYmgj5%2BanRWNvZGTi4eisqYqgEMBMzEBEHGppyJKhG0aRkEUXaOzm6eCumZ2SF5NSVlMXFVAJSKqAbEyBwA5FKu1siGWADU4q466jXEmMxGU9jiAAwAgkMjY5iT03PWwMtrm5LDtKMGE1M6BACeXpjWNMcbWxc7ezrIAB4/zA48AA6BCvTZvDYETBGLzCKE3e6PWiLXYAFTBaFoNXGNXQIBAB1E42AmAIAH1EZgycijJgIJjsajxgA3DJ4AHsdqTdyyDbjfnjBkEQUIDIAKkFdGxNN2UwAIuNKXh0BBWcR2Q5OUCZRB2lNeesBeNrMKmgQDAo9gqALTcfUnI3IUXECVC8ZYIwiYDsdDUlFW8YAiggMlk37MMker3sCAy0jjWwAVQsFnjSZT8akADYzRa9a4DUbcfjCcBxvMCOIeTKq3L7XyBXgqOMILnLfL5eNVlyq4WjQKKwHiwSCOrRBAo6IfX7afm%2B/3xlR5nTJ97ML6ZXOHQLa9v%2BRWerRy6T65t3HWIesZQovMw%2BuMAPIGB/4gCKBlf3PnONHBlU4wAMVQVAv25OsCxOPdFWhWFmChL4DCxPBgBsdBjXoHE8AAL0wMEi1/f9pAyUDdwgt5zxOC1DkA4CAyfF8QHfV98SA1BT0gjYTXGT1rBbHseSgrjmFPfC8RQbphRuG5FQeJ4VWYdptRRXUvmksBBgAVh0Wh1JEgVhzQAxJOmaSSXJSkZzpBTVOmcZdK0nTBjI8FDQFVjxgcPT%2BQMiSbJ0GTHmVCAHEUnUexM2z7O03TnNE/FDOMnRTNJClZMs4LwqSyLNOipyDSg%2Bi3w/fEiOIG4AE5yuWQUvJ/MSEr8gK5PpULlMytScsc2qfKMxqzNSx50uQdrsvEByYvyht91JQ8u3Y89%2Bk6VgQH6DT%2BlIUx%2BlWdbUBWpKZDkHFul6WUzk4daCBW7b2k6ABrEANNWIQVu4dbNu20hdv6daFBAJ7Lq2xbSDgWAYEQcSYTwdgyAoelUEh6GQGAAAOVxSCoKGoWIX7gqu9bAWRYg7hW87SDQIxaXoB9aFYYnAdIVd2Dxhm8HmFJmUwX76cwH5kiMgYPpNZRmdYPAHGIDI7j0LASYu9UjFlzoaHoJg2A4Hh%2BEEYRRBQOQ5CEMXfsgTpUC8QouetXF5QkA6ZE4dxxmtB9XB%2BpIUg0CBzHqXJSHMFoKhcPIwn8OhvdCXwQ9of3YkqRo3cKYo6n0HJBCUApUlqUprHKGPA8UTOw8aTPo7aThOgUY6%2Bi4JaVrWjbma%2Bn5kaza0s24YlkGQcZkaBVwW1wQgSEmM74z0BHnGH1wy/GfbZBkC68Zu0h7se57%2Ble0gFazHv3CzVZXFcVYNPcZGNM4SReHenaVp%2Bv7SAB67gbBiAkAkrwjPIShya8KHY99/AiB52VowFgTMNYAHcJZeEVmvOuV9PorSGJwcY4DCAIHGE3FubcO5dx7i7e%2Bi9OgIAWFgFwuo14bwVlPIEZxypZizOVbgkgeDI13kfeu9Mvq33%2BoQ5eD0nrLX6Pg%2BBXCCGAyXoIyQb0G43zEddToHNsYBBANwIAA%3D&#34;&gt;[run]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以從結果看到後者可讀性較高&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3cFVFsP6QcLV2K8_d7pOf3SfR4bWEjy5oM8KqVHXHST8h7ysiSwCAJd4-oZOfWB_v54ekhXZ5OSM36lAtLS0EhN-YoDXIkuRVkDPU6sH41P5jrtNhPYsvgnIeg55ZGXouiUQe-vblaoFGLo40Y315J0=w1708-h1112-no&#34; alt=&#34;封面照片 - 執行結果&#34;&gt;&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.cppreference.com/w/cpp/language/typeid&#34;&gt;typeid operator&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Name_mangling&#34;&gt;Name mangling&lt;/a&gt; &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;</description>
+    </item>
+    
+    <item>
       <title>雜記</title>
       <link>https://aben20807.github.io/posts/20200508-miscellaneous0508/</link>
       <pubDate>Fri, 08 May 2020 23:06:11 +0800</pubDate>
