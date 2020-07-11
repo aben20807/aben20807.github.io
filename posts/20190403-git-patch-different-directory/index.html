@@ -86,9 +86,9 @@ if (!doNotTrack) {
           <a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
           <a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
           <a class="link f5 ml2 dim near-white" href="/about">關於</a>
-          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank" rel="noreferrer noopener"><i class="fab fa-github-square"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank" rel="noreferrer noopener"><i class="fab fa-linkedin"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank" rel="noreferrer noopener"><i class="fab fa-youtube-square"></i></a>
           <a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml"
             title="RSS Feed"></a>
           <a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/"
@@ -192,7 +192,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git format-patch --relative &lt;SHA&gt; ./ -o /tmp/patches
 $ git am /tmp/patches/*.patch
 </code></pre></div><h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<p>git 有一個好用的工具可以針對 repo 上面的 commit 產生補丁檔 (patch)。詳細用法可以去查看官方說明文件 <a href="https://git-scm.com/docs/git-format-patch" target="_blank">git format-patch</a>。</p>
+<p>git 有一個好用的工具可以針對 repo 上面的 commit 產生補丁檔 (patch)。詳細用法可以去查看官方說明文件 <a href="https://git-scm.com/docs/git-format-patch" target="_blank" rel="noreferrer noopener">git format-patch</a>。</p>
 <p>這裡主要記錄一個使用情境：要把專案A 下的子專案a 的修改記錄做成 patch 給專案B 使用，注意，專案a 與專案B 是同一個專案。</p>
 <p>會有這樣需求主要是因為 B 是開源專案，然後我們拿來修改後變成 A 的子專案。當然最好的方式是用 fork，然後利用 submodule 管理，不過因為只有一個 repo 可以使用，所以就採用這個作法。</p>
 <p>限制：內部檔案名稱要相同</p>
@@ -291,7 +291,7 @@ Applying: Add file_2 in a
     role="contentinfo">
     <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
-      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
+      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank" rel="noreferrer noopener">hugOuO</a>
     </p>
     <p class="w-50 near-white" style="font-size:0.875rem !important;">
       &copy; 2019-2020 Huang Po-Hsuan

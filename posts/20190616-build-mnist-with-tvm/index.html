@@ -86,9 +86,9 @@ if (!doNotTrack) {
           <a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
           <a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
           <a class="link f5 ml2 dim near-white" href="/about">關於</a>
-          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank"><i class="fab fa-github-square"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank"><i class="fab fa-youtube-square"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank" rel="noreferrer noopener"><i class="fab fa-github-square"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank" rel="noreferrer noopener"><i class="fab fa-linkedin"></i></a>
+          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank" rel="noreferrer noopener"><i class="fab fa-youtube-square"></i></a>
           <a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml"
             title="RSS Feed"></a>
           <a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/"
@@ -203,12 +203,12 @@ if (!doNotTrack) {
 <p>這篇主要在造輪子，主要原因就是幾乎找不到這類輪子了，而剛好自己需要，又卡了很久才完成，不如記錄一下 OuO</p>
 <h1 id="前言" class="article-heading">前言<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#前言"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>最近在做 TVM 相關的事，它支援頗多前端，基於方便我就隨便挑一個 Keras 了 (先說我不會 AI @@<br>
-然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
+然後因為現在頗多都在做 ImageNet 或更之後的應用，MNIST 的資料反而偏少，尤其是幾乎找不到訓練好的模型，說幾乎是因為還真的被我找到，傳送門：<a href="https://github.com/EN10/KerasMNIST" target="_blank" rel="noreferrer noopener">EN10/KerasMNIST</a>，如果只是要用 Keras 來操作 MNIST 的話可以用這個連結，我已經確認過是可以直接執行XDD</p>
 <hr>
 <p>2019.06.17 更新：扯，原來官網就有&hellip;.https://keras.io/examples/mnist_cnn/<br>
 然後我發現我整篇都把 MNIST 打成 MINST&hellip;.</p>
 <hr>
-<p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 看看吧。</p>
+<p>話說原本以為模型被存成檔案的話只有權重，結果是有兩種，也可以跟整個模型存在一起，詳情就去 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank" rel="noreferrer noopener">How can I save a Keras model?</a> 看看吧。</p>
 <p>所以上面那個做 MNIST 的是把整個模型存起來，這主要不是我要的＠＠，不過還是先用看看。</p>
 <p>P.S. 一些相依性檔案例如 Keras, Tensorflow, TVM 的安裝就不一一記錄囉 OuO</p>
 <h1 id="環境" class="article-heading">環境<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#環境"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
@@ -296,7 +296,7 @@ fn <span style="color:#f92672">(</span>%conv2d_1_input, %v_param_1: Tensor<span 
 <span style="color:#f92672">}</span>
 </code></pre></div><p>扯，竟然不行＠＠，而且完全不知道錯哪，找了一些資料說是 shape 錯了，我試了各種排列組合也都不行&hellip;.</p>
 <h2 id="只存-mnist-的權重" class="article-heading">只存 MNIST 的權重<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#只存-mnist-的權重"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-<p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
+<p>只好使用上面提到 Keras 官網 <a href="https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model" target="_blank" rel="noreferrer noopener">How can I save a Keras model?</a> 的方式只存權重出來，這裡我們只需要改最後一行，<code>save</code> 改成 <code>save_weights</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> keras
 <span style="color:#f92672">from</span> keras.datasets <span style="color:#f92672">import</span> mnist
 <span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
@@ -369,7 +369,7 @@ model<span style="color:#f92672">.</span>save_weights(<span style="color:#e6db74
         <p style="margin: .7rem 0 0;">train a MNIST model with Keras</p>
         <!-- hide the link -->
         <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+          <a href="https://drive.google.com/open?id=1qSdoAYPCxNk5tlI0ELivCieDWCQO9IOV" target="_blank" rel="noreferrer noopener" style="opacity: 1.0; text-decoration: none;" >OuO</a>
         </font>
       </center>
     </figcaption>
@@ -493,7 +493,7 @@ out <span style="color:#f92672">=</span> model<span style="color:#f92672">.</spa
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 cnnPredict.py
 <span style="color:#ae81ff">3</span>
 </code></pre></div><h2 id="突破加個輸入層" class="article-heading">突破，加個輸入層？<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#突破加個輸入層"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
-<p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
+<p>在找解決方式的過程中突然看到<a href="https://stackoverflow.com/a/49600827/6734174" target="_blank" rel="noreferrer noopener">這裡</a>提到有 <code>InputLayer</code>，不如加看看。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> nnvm
 <span style="color:#f92672">import</span> tvm
 <span style="color:#f92672">import</span> tvm.relay <span style="color:#f92672">as</span> relay
@@ -549,7 +549,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
 <span style="color:#ae81ff">3</span>
 </code></pre></div><p>扯，竟然過了 QuQ</p>
 <h1 id="其他" class="article-heading">其他<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#其他"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<h2 id="lutzroedernetronhttpsgithubcomlutzroedernetron" class="article-heading"><a href="https://github.com/lutzroeder/netron" target="_blank"><code>lutzroeder/netron</code></a><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#lutzroedernetronhttpsgithubcomlutzroedernetron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
+<h2 id="lutzroedernetronhttpsgithubcomlutzroedernetron" class="article-heading"><a href="https://github.com/lutzroeder/netron" target="_blank" rel="noreferrer noopener"><code>lutzroeder/netron</code></a><a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#lutzroedernetronhttpsgithubcomlutzroedernetron"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <p>發現了一個視覺化工具可以看模型。
 
   <figure class="gphoto-media center">
@@ -564,7 +564,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
         <p style="margin: .7rem 0 0;">NETRON</p>
         <!-- hide the link -->
         <font class="douyin hover-show">
-          <a href="https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" target="_blank" style="opacity: 1.0; text-decoration: none;" >OuO</a>
+          <a href="https://drive.google.com/open?id=18rjO-BiQTXRsSDAtisBkyEEhkO2sIBoP" target="_blank" rel="noreferrer noopener" style="opacity: 1.0; text-decoration: none;" >OuO</a>
         </font>
       </center>
     </figcaption>
@@ -715,7 +715,7 @@ tvm_out <span style="color:#f92672">=</span> executor<span style="color:#f92672"
     role="contentinfo">
     <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
-      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank">hugOuO</a>
+      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank" rel="noreferrer noopener">hugOuO</a>
     </p>
     <p class="w-50 near-white" style="font-size:0.875rem !important;">
       &copy; 2019-2020 Huang Po-Hsuan
