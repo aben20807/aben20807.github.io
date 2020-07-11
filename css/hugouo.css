@@ -204,6 +204,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.no-underline-on-hover:hover {
+  text-decoration: none;
+}
+
 .toc-nav li,
 .toc-nav ul {
   list-style: none;
@@ -256,6 +260,7 @@ a:hover {
   color: #f4f4f4;
   font-weight: 700;
   opacity: 0.7;
+  text-decoration: none;
 }
 
 main {

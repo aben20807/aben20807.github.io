@@ -83,17 +83,17 @@ if (!doNotTrack) {
           <img src="https://aben20807.github.io/img/logo.jpg" class="w2 h2 br-100" alt="記錄用" />
         </a>
         <div class="fr h2 pv2 tr">
-          <a class="link f5 ml2 dim near-white" href="/categories/">分類</a>
-          <a class="link f5 ml2 dim near-white" href="/tags/">標籤</a>
-          <a class="link f5 ml2 dim near-white" href="/about">關於</a>
-          <a class="link f5 ml2 dim near-white" href="https://github.com/aben20807/blog-post" target="_blank" rel="noreferrer noopener"><i class="fab fa-github-square"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank" rel="noreferrer noopener"><i class="fab fa-linkedin"></i></a>
-          <a class="link f5 ml2 dim near-white" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank" rel="noreferrer noopener"><i class="fab fa-youtube-square"></i></a>
-          <a class="link f5 ml2 dim near-white fas fa-rss-square" href="https://aben20807.github.io/index.xml"
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="/categories/">分類</a>
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="/tags/">標籤</a>
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="/about">關於</a>
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="https://github.com/aben20807/blog-post" target="_blank" rel="noreferrer noopener"><i class="fab fa-github-square"></i></a>
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="https://www.linkedin.com/in/po-hsuan-huang-6587b6117/" target="_blank" rel="noreferrer noopener"><i class="fab fa-linkedin"></i></a>
+          <a class="link f5 ml2 dim near-white no-underline-on-hover" href="https://www.youtube.com/channel/UCEiQdnpoVJcaca7jWlPjEdw" target="_blank" rel="noreferrer noopener"><i class="fab fa-youtube-square"></i></a>
+          <a class="link f5 ml2 dim near-white fas fa-rss-square no-underline-on-hover" href="https://aben20807.github.io/index.xml"
             title="RSS Feed"></a>
-          <a class="link f5 ml2 dim near-white fas fa-envelope" href="https://aben20807.github.io/subscription/"
+          <a class="link f5 ml2 dim near-white fas fa-envelope no-underline-on-hover" href="https://aben20807.github.io/subscription/"
             role="subscription" title="Subscription"></a>
-          <a class="link f5 ml2 dim near-white fas fa-search" href="https://aben20807.github.io/search/" role="search"
+          <a class="link f5 ml2 dim near-white fas fa-search no-underline-on-hover" href="https://aben20807.github.io/search/" role="search"
             title="Search"></a>
         </div>
       </nav>
@@ -139,14 +139,15 @@ if (!doNotTrack) {
   <li class="pr-0"><a href="https://aben20807.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-    <li><a href="https://aben20807.github.io/tags/c&#43;&#43;" role="button">c&#43;&#43; </a></li>
+    <li><a href="https://aben20807.github.io/tags/c&#43;&#43;" role="button" class="no-underline no-underline-on-hover">c&#43;&#43; </a></li>
     
     
-    <li><a href="https://aben20807.github.io/tags/%E5%8F%AF%E8%AE%80%E6%80%A7" role="button">可讀性 </a></li>
+    <li><a href="https://aben20807.github.io/tags/%E5%8F%AF%E8%AE%80%E6%80%A7" role="button" class="no-underline no-underline-on-hover">可讀性 </a></li>
     
     
   </div>
 </div>
+
           </div>
           
         </div>
@@ -208,7 +209,7 @@ if (!doNotTrack) {
     <span style="color:#66d9ef">return</span> ret;
 }
 </code></pre></div><h1 id="typeid-operator" class="article-heading">typeid operator<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#typeid-operator"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
-<p>在 <code>typeinfo</code> 中有提供 <code>typeid()</code> 可以取得 type 或是 expression (variable) 的名字 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref smoothScroll" role="doc-noteref">1</a></sup></p>
+<p>在 <code>typeinfo</code> 中有提供 <code>typeid()</code> 可以取得 type 或是 expression (variable) 的名字 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref smoothScroll no-underline-on-hover" role="doc-noteref">1</a></sup></p>
 <h2 id="example" class="article-heading">Example<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#example"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;typeinfo&gt;</span><span style="color:#75715e">
@@ -219,7 +220,7 @@ if (!doNotTrack) {
     std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">typeid</span>(a).name() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 }
 </code></pre></div><p><a href="https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(fontScale:14,j:1,lang:c%2B%2B,selection:(endColumn:2,endLineNumber:8,positionColumn:1,positionLineNumber:1,selectionStartColumn:2,selectionStartLineNumber:8,startColumn:1,startLineNumber:1),source:'%23include+%3Ciostream%3E%0A%23include+%3Ctypeinfo%3E%0A%0Aint+main+()+%7B%0A++++int+a%3B%0A++++std::cout+%3C%3C+typeid(int).name()+%3C%3C+!'%5Cn!'%3B%0A++++std::cout+%3C%3C+typeid(a).name()+%3C%3C+!'%5Cn!'%3B%0A%7D'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:50,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((g:!((h:compiler,i:(compiler:g83,filters:(b:'0',binary:'1',commentOnly:'0',demangle:'0',directives:'0',execute:'0',intel:'0',libraryCode:'1',trim:'1'),fontScale:14,j:1,lang:c%2B%2B,libs:!(),options:'-Ofast',selection:(endColumn:1,endLineNumber:1,positionColumn:1,positionLineNumber:1,selectionStartColumn:1,selectionStartLineNumber:1,startColumn:1,startLineNumber:1),source:1),l:'5',n:'0',o:'x86-64+gcc+8.3+(Editor+%231,+Compiler+%231)+C%2B%2B',t:'0')),k:50,l:'4',m:78.34710743801652,n:'0',o:'',s:0,t:'0'),(g:!((h:output,i:(compiler:1,editor:1,fontScale:14,wrap:'1'),l:'5',n:'0',o:'%231+with+x86-64+gcc+8.3',t:'0')),header:(),l:'4',m:21.65289256198347,n:'0',o:'',s:0,t:'0')),k:50,l:'3',n:'0',o:'',t:'0')),l:'2',n:'0',o:'',t:'0')),version:4" target="_blank" rel="noreferrer noopener">[run]</a></p>
-<p>不過像是 int 只能顯示 i，其他複雜的顯示也不直觀，主要是因為 C++ 會對於型別做修飾 (Name mangling <sup id="fnref:2"><a href="#fn:2" class="footnote-ref smoothScroll" role="doc-noteref">2</a></sup>)，這也是為何 C++ 能夠支援 function overloading，因為編譯過程中型別都會轉成獨一無二的表達方式所以不會造成衝突。</p>
+<p>不過像是 int 只能顯示 i，其他複雜的顯示也不直觀，主要是因為 C++ 會對於型別做修飾 (Name mangling <sup id="fnref:2"><a href="#fn:2" class="footnote-ref smoothScroll no-underline-on-hover" role="doc-noteref">2</a></sup>)，這也是為何 C++ 能夠支援 function overloading，因為編譯過程中型別都會轉成獨一無二的表達方式所以不會造成衝突。</p>
 <h1 id="demangle" class="article-heading">Demangle<a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#demangle"><span class="iconify" data-icon="octicon-link" data-inline="false"></span></a> </h1>
 <p>在 <code>&lt;cxxabi.h&gt;</code> 中有提供方法可以讓經過 mangle 的型別轉回可讀性較高的字串。以下範例與上述提到的方法進行比較。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
@@ -309,10 +310,10 @@ if (!doNotTrack) {
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><a href="https://en.cppreference.com/w/cpp/language/typeid" target="_blank" rel="noreferrer noopener">typeid operator</a> <sup><a href="#fnref:1" class="smoothScroll footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></sup></p>
+<p><a href="https://en.cppreference.com/w/cpp/language/typeid" target="_blank" rel="noreferrer noopener">typeid operator</a> <sup><a href="#fnref:1" class="smoothScroll footnote-backref no-underline-on-hover" role="doc-backlink">&#x21a9;&#xfe0e;</a></sup></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><a href="https://en.wikipedia.org/wiki/Name_mangling" target="_blank" rel="noreferrer noopener">Name mangling</a> <sup><a href="#fnref:2" class="smoothScroll footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></sup></p>
+<p><a href="https://en.wikipedia.org/wiki/Name_mangling" target="_blank" rel="noreferrer noopener">Name mangling</a> <sup><a href="#fnref:2" class="smoothScroll footnote-backref no-underline-on-hover" role="doc-backlink">&#x21a9;&#xfe0e;</a></sup></p>
 </li>
 </ol>
 </section>
@@ -357,7 +358,7 @@ if (!doNotTrack) {
     role="contentinfo">
     <p class="w-50 fr tr" style="font-size:0.875rem !important;">
       Made with Hugo and
-      <a class="no-underline" href='https://github.com/aben20807/hugOuO' target="_blank" rel="noreferrer noopener">hugOuO</a>
+      <a class="no-underline no-underline-on-hover" href='https://github.com/aben20807/hugOuO' target="_blank" rel="noreferrer noopener">hugOuO</a>
     </p>
     <p class="w-50 near-white" style="font-size:0.875rem !important;">
       &copy; 2019-2020 Huang Po-Hsuan
