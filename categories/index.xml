@@ -8,10 +8,19 @@
     <language>zh-tw</language>
     <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
     <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Fri, 10 Jul 2020 13:36:58 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2020 17:17:26 +0800</lastBuildDate>
     
 	<atom:link href="https://aben20807.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>程式設計</title>
+      <link>https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
+      <pubDate>Sat, 15 Aug 2020 17:17:26 +0800</pubDate>
+      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
+      <guid>https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>程式語言</title>
@@ -28,15 +37,6 @@
       <pubDate>Fri, 08 May 2020 23:06:11 +0800</pubDate>
       <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
       <guid>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>程式設計</title>
-      <link>https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</link>
-      <pubDate>Sun, 02 Feb 2020 11:14:20 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/</guid>
       <description></description>
     </item>
     
