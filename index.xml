@@ -40,6 +40,7 @@
 &lt;/ul&gt;
 &lt;p&gt;可能缺點：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;一定要有網路才能記帳&lt;/li&gt;
 &lt;li&gt;複雜統計功能要花時間設計&lt;/li&gt;
 &lt;li&gt;某些表單沒有的可能就無法提供，例如，顯示表格，另外我發現手機無法上傳圖片 QuQ&lt;/li&gt;
 &lt;/ul&gt;
@@ -52,7 +53,7 @@
 &lt;p&gt;某些選項可能超常用，比方說消費記錄大部份都是現金，可以將它用作選項預設值，可以參考 &lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3c51lQNqFVCSqjAn2XVkDt0xZSs9PSqt2S623mTXkh-oTcmLdcNJd5Qh59cDiUALwe4EnGx1oO94vTn9O8AasjwZOfFwG8IkdblaSR4643XjYfozFOT5h1bJpxScbVyPMBXMlYAH0tlZd6irq7jWtyc=w692-h403-no&#34; alt=&#34;新版在右上角&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;如何使用表單&#34;&gt;如何使用表單&lt;/h2&gt;
-&lt;p&gt;一開始想法很簡單，就是建立記錄用的表單，然後將連結用書簽的型式存在手機桌面，這樣就可以直接點來記帳。&lt;/p&gt;
+&lt;p&gt;一開始想法很簡單，就是建立記錄用的表單，然後將連結用書籤的型式存在手機桌面，這樣就可以直接點來記帳。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3dBfRoc4yz-m2ciB1uy1WiY5NUFUdHZZ7Us8HWtZPVZviemG2keYD56E0Ujo-00380KveIxeQcQ2l5AqRjHYrVejcxQESoC6lR43QtZGwsSKjyX-m_0rdqzzg8hE0Y9NEUjzPRe7L4t3R4J5TTtrmwQ=w1272-h836-no&#34; alt=&#34; &#34;&gt;
 &lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3frXOytq3We7pyNsglA69vKcVR3mFoV0nQbihbk8mqR5ebdj-gxlvXPhxQ7oNByjdtlwTQ9Szj1TTxC4mWJ0ty7SLGr5LpJIJKMmpWzBGlyHuK-26TGR8A2rgkBn4nUv_ODDaC1FUCxQDjO51t8dUrE=w1272-h903-no&#34; alt=&#34;出現在桌面&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;app&#34;&gt;APP&lt;/h1&gt;
@@ -96,7 +97,7 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3c-baXvN_ippYf4tCbROQDqkwHjfknfbXDqdElVdxzrL59g3gnELs3BUf2Ep_xsxMGlpB9Hv7SCx8oWR5wzQ8ERxKR8UTf7qtScZWZwMu9pbp4PmYYVQavRyFq_JKcg6vFP5bARTyCiu73obddk6AJC=w401-h272-no&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;成品&#34;&gt;成品&lt;/h1&gt;
-&lt;p&gt;感覺我也不算是做一個記帳 App，反而像是將書籤或是網址合併變成一個 App，所以我就取這個名子找這個 icon。我也增加設定頁面可以設定的東西，包括按鈕的文字也可以換，所以也就不限於記帳了。&lt;/p&gt;
+&lt;p&gt;感覺我也不算是做一個記帳 App，反而像是將書籤或是網址合併變成一個 App，所我雖然取這個名子不過我還是找一個沒有跟錢相關的 icon。我也增加設定頁面可以設定的東西，包括按鈕的文字也可以換，所以也就不限於記帳了。&lt;/p&gt;
 &lt;p&gt;Icons made by &lt;a href=&#34;https://smashicons.com/&#34;&gt;Smashicons&lt;/a&gt; from &lt;a href=&#34;https://www.flaticon.com/&#34;&gt;www.flaticon.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3dCHkhaKSt4Pe-t7pRfxzxIkU9A_MWEyLR0svdl1wfinZR2ZWCTHdPAPFcmO0ZvBb8zNxEeMLkDC8hIWSV3dGmKY_CWAYZmojmgoma500tOE_9fMUyDH3nY0faL-9rCjL-91-TE52bD_NTjXlzn55CU=w660-h1319-no&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://lh3.googleusercontent.com/pw/ACtC-3er9oo-dAdEogzgXc41sHDxnVwKEkUQc0l36X0jxzWBpb92QlXhWG6E7__NLzf9SarSWnkUIMytNOhLRCXg5ur5F9_DcTGqRs6pYsgzE7htPymKKSPlUigLhhJbOe5KgmmHm2vRSf3gAodtYE0m83Dh=w660-h1319-no&#34; alt=&#34;主頁面&#34;&gt;&lt;/p&gt;
