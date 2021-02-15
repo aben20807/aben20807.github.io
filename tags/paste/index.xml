@@ -1,27 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>paste on 記錄用</title>
-    <link>https://aben20807.github.io/tags/paste/</link>
-    <description>Recent content in paste on 記錄用</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
-    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sat, 19 Oct 2019 11:20:13 +0800</lastBuildDate>
-    
-	<atom:link href="https://aben20807.github.io/tags/paste/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>資料整理</title>
-      <link>https://aben20807.github.io/posts/20191019-data-statistic/</link>
-      <pubDate>Sat, 19 Oct 2019 11:20:13 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20191019-data-statistic/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs --&gt;
-&lt;p&gt;剛好用到一些蠻有用的工具，記錄一下&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>paste on 記錄用</title><link>https://aben20807.github.io/tags/paste/</link><description>Recent content in paste on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><lastBuildDate>Sat, 19 Oct 2019 11:20:13 +0800</lastBuildDate><atom:link href="https://aben20807.github.io/tags/paste/index.xml" rel="self" type="application/rss+xml"/><item><title>資料整理</title><link>https://aben20807.github.io/posts/20191019-data-statistic/</link><pubDate>Sat, 19 Oct 2019 11:20:13 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20191019-data-statistic/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1NnbVE8x3tW3BDpNNNdohXiyM4jyVIgPs -->
+&lt;p>剛好用到一些蠻有用的工具，記錄一下&lt;/p></description></item></channel></rss>

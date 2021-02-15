@@ -1,89 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>日常 on 記錄用</title>
-    <link>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</link>
-    <description>Recent content in 日常 on 記錄用</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
-    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Fri, 08 May 2020 23:06:11 +0800</lastBuildDate>
-    
-	<atom:link href="https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>雜記</title>
-      <link>https://aben20807.github.io/posts/20200508-miscellaneous0508/</link>
-      <pubDate>Fri, 08 May 2020 23:06:11 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20200508-miscellaneous0508/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;考完囉，還有好多事@@&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>雜記</title>
-      <link>https://aben20807.github.io/posts/20200505-miscellaneous0505/</link>
-      <pubDate>Tue, 05 May 2020 21:33:50 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20200505-miscellaneous0505/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;要考試了好不想寫考古 (x&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>雜記</title>
-      <link>https://aben20807.github.io/posts/20200413-miscellaneous/</link>
-      <pubDate>Mon, 13 Apr 2020 21:06:45 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20200413-miscellaneous/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;明明事情很多，卻無所事事游手好閒。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>我的學習方式</title>
-      <link>https://aben20807.github.io/posts/20190911-how-i-learn-in-university/</link>
-      <pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190911-how-i-learn-in-university/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=https://drive.google.com/open?id=11dfe_7DVpwD2njTDBgIu23p1B4c_M7-d --&gt;
-&lt;p&gt;大學畢業後突然有感，感覺需要記錄一下。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>別把人家的好心視為理所當然</title>
-      <link>https://aben20807.github.io/posts/20190804-tiny-action/</link>
-      <pubDate>Sun, 04 Aug 2019 11:08:11 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190804-tiny-action/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;其實原本 6 月中就要寫了，結果因為沒拍到照片所以就先延後 (明明是自己懶惰&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Talk About Shame</title>
-      <link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link>
-      <pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid>
-      <description>&lt;p&gt;顧炎武的＜廉恥＞中提到&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;四者之中，恥尤為要&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Happy New Year</title>
-      <link>https://aben20807.github.io/posts/20190204-happy-new-year/</link>
-      <pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid>
-      <description>&lt;p&gt;今天除夕，首先祝各位新年快樂~&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日常 on 記錄用</title><link>https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/</link><description>Recent content in 日常 on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><lastBuildDate>Fri, 08 May 2020 23:06:11 +0800</lastBuildDate><atom:link href="https://aben20807.github.io/categories/%E6%97%A5%E5%B8%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>雜記</title><link>https://aben20807.github.io/posts/20200508-miscellaneous0508/</link><pubDate>Fri, 08 May 2020 23:06:11 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20200508-miscellaneous0508/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>考完囉，還有好多事@@&lt;/p></description></item><item><title>雜記</title><link>https://aben20807.github.io/posts/20200505-miscellaneous0505/</link><pubDate>Tue, 05 May 2020 21:33:50 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20200505-miscellaneous0505/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>要考試了好不想寫考古 (x&lt;/p></description></item><item><title>雜記</title><link>https://aben20807.github.io/posts/20200413-miscellaneous/</link><pubDate>Mon, 13 Apr 2020 21:06:45 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20200413-miscellaneous/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>明明事情很多，卻無所事事游手好閒。&lt;/p></description></item><item><title>我的學習方式</title><link>https://aben20807.github.io/posts/20190911-how-i-learn-in-university/</link><pubDate>Wed, 11 Sep 2019 22:18:43 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190911-how-i-learn-in-university/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=https://drive.google.com/open?id=11dfe_7DVpwD2njTDBgIu23p1B4c_M7-d -->
+&lt;p>大學畢業後突然有感，感覺需要記錄一下。&lt;/p></description></item><item><title>別把人家的好心視為理所當然</title><link>https://aben20807.github.io/posts/20190804-tiny-action/</link><pubDate>Sun, 04 Aug 2019 11:08:11 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190804-tiny-action/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>其實原本 6 月中就要寫了，結果因為沒拍到照片所以就先延後 (明明是自己懶惰&lt;/p></description></item><item><title>Talk About Shame</title><link>https://aben20807.github.io/posts/20190225-talk-about-shame/</link><pubDate>Mon, 25 Feb 2019 21:40:00 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190225-talk-about-shame/</guid><description>&lt;p>顧炎武的＜廉恥＞中提到&lt;/p>
+&lt;blockquote>
+&lt;p>四者之中，恥尤為要&lt;/p>
+&lt;/blockquote>
+&lt;p>其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p></description></item><item><title>Happy New Year</title><link>https://aben20807.github.io/posts/20190204-happy-new-year/</link><pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid><description>&lt;p>今天除夕，首先祝各位新年快樂~&lt;/p></description></item></channel></rss>

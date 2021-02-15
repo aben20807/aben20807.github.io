@@ -1,48 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>hugo on 記錄用</title>
-    <link>https://aben20807.github.io/tags/hugo/</link>
-    <description>Recent content in hugo on 記錄用</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor>
-    <webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster>
-    <lastBuildDate>Sun, 01 Dec 2019 17:26:34 +0800</lastBuildDate>
-    
-	<atom:link href="https://aben20807.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Hugo v0.60</title>
-      <link>https://aben20807.github.io/posts/20191201-hugo-0-60/</link>
-      <pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20191201-hugo-0-60/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;記錄一下 hugo 的改變 QuQ&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Regex101</title>
-      <link>https://aben20807.github.io/posts/20190815-regexp/</link>
-      <pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190815-regexp/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP --&gt;
-&lt;p&gt;我現在才知道這個是不是偏爛啊&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>First Met Hugo</title>
-      <link>https://aben20807.github.io/posts/20190321-first-met-hugo/</link>
-      <pubDate>Thu, 21 Mar 2019 22:20:12 +0800</pubDate>
-      <author>aben20807@gmail.com (Huang Po-Hsuan)</author>
-      <guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid>
-      <description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= --&gt;
-&lt;p&gt;正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br&gt;
-就請多見諒＠＠&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo on 記錄用</title><link>https://aben20807.github.io/tags/hugo/</link><description>Recent content in hugo on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><lastBuildDate>Mon, 15 Feb 2021 10:56:01 +0800</lastBuildDate><atom:link href="https://aben20807.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo on WSL2 (Ubuntu18.04)</title><link>https://aben20807.github.io/posts/20210215-hugo-on-wsl2/</link><pubDate>Mon, 15 Feb 2021 10:56:01 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210215-hugo-on-wsl2/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>漸漸變成老闆的樣子 (?)&lt;/p></description></item><item><title>Hugo v0.60</title><link>https://aben20807.github.io/posts/20191201-hugo-0-60/</link><pubDate>Sun, 01 Dec 2019 17:26:34 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20191201-hugo-0-60/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>記錄一下 hugo 的改變 QuQ&lt;/p></description></item><item><title>Regex101</title><link>https://aben20807.github.io/posts/20190815-regexp/</link><pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190815-regexp/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP -->
+&lt;p>我現在才知道這個是不是偏爛啊&lt;/p></description></item><item><title>First Met Hugo</title><link>https://aben20807.github.io/posts/20190321-first-met-hugo/</link><pubDate>Thu, 21 Mar 2019 22:20:12 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190321-first-met-hugo/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>正常轉換跑道時都會有一篇推坑文，不過我這篇算比較晚了，也不是為了摸久一點，就感覺好像一直沒啥時間寫文章。&lt;br>
+就請多見諒＠＠&lt;/p></description></item></channel></rss>
