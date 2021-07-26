@@ -86,7 +86,9 @@ h6.article-heading:before {
 body,
 p,
 ul,
-li {
+li,
+summary,
+details {
   font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
@@ -129,6 +131,8 @@ h6:hover .hover-show {
   opacity: 1;
 }
 pre {
+  font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
+  border-style: hidden;
   font-size: 16px !important;
   max-width: 100%;
   height: auto;
@@ -267,10 +271,12 @@ main {
   min-height: 80vh;
 }
 
+summary,
 .goto {
   cursor: pointer;
 }
 
+summary:hover,
 .goto:hover {
   color: #428bca;
 }
@@ -459,4 +465,35 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                           supported by Chrome, Opera and Firefox */
+}
+
+/* https://codepen.io/DobsonDev/pen/GgRJwv */
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  font-size: 16px !important;
+  font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
+    BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
+    ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+  word-break: break-word;
+}
+.info-msg {
+  color: #059;
+  background-color: #BEF;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
 }

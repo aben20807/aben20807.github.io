@@ -1,4 +1,989 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Google Sheet Grouping</title><link>https://aben20807.github.io/posts/20210529-google-sheet-grouping/</link><pubDate>Sat, 29 May 2021 11:16:15 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210529-google-sheet-grouping/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Build a Simple Compiler Ep3</title><link>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/</link><pubDate>Thu, 22 Jul 2021 20:17:52 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>指令生成 (Codegen)&lt;/p>
+&lt;ul>
+&lt;li>Series: &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/">[ep0]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/">[ep1]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/">[ep2]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/">[ep3]&lt;/a>&lt;/li>
+&lt;li>Source code: &lt;a href="https://github.com/aben20807/learn_compiler">aben20807/learn_compiler&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="指令生成-codegen">指令生成 (Codegen)&lt;/h1>
+&lt;p>&lt;del>由於是簡化版的編譯器&lt;/del>，我們不產生中間的表達式 (Intermediate representation, IR) &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>，也不會有 Abstract syntax tree (AST) &lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>，而是直接利用上一篇的螢幕輸出改成對應的 Java bytecode 指令 &lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>。有興趣的可以去參考完整列表 &lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup> 看有支援什麼神奇功能。會寫 Java 的也可以參考如何使用反組譯的方式 &lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup> 找出對應的 bytecode 來觀察行為。&lt;/p>
+&lt;h1 id="jasmin">Jasmin&lt;/h1>
+&lt;p>Jasmin &lt;sup id="fnref:6">&lt;a href="#fn:6" class="footnote-ref" role="doc-noteref">6&lt;/a>&lt;/sup> 為一 JVM 的組譯器，其會將可讀指令形式的 bytecode 轉換成 .class 的形式 (可執行的 bytecode)。&lt;/p>
+&lt;h2 id="j-檔格式">&lt;code>.j&lt;/code> 檔格式&lt;/h2>
+&lt;ul>
+&lt;li>開頭及結尾如下，只需要在一開始開檔時就寫入開頭，等到全部指令產生完畢，離開前再寫入結尾即可。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-asm" data-lang="asm">&lt;span style="color:#a6e22e">.source&lt;/span> &lt;span style="color:#66d9ef">bytecode.j&lt;/span>
+&lt;span style="color:#a6e22e">.class&lt;/span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">Main&lt;/span>
+&lt;span style="color:#a6e22e">.super&lt;/span> &lt;span style="color:#66d9ef">java&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#66d9ef">lang&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#66d9ef">Object&lt;/span>
+&lt;span style="color:#a6e22e">.method&lt;/span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">main&lt;/span>([&lt;span style="color:#66d9ef">Ljava&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#66d9ef">lang&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#66d9ef">String&lt;/span>&lt;span style="color:#75715e">;)V
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">.limit&lt;/span> &lt;span style="color:#66d9ef">stack&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>
+&lt;span style="color:#a6e22e">.limit&lt;/span> &lt;span style="color:#66d9ef">locals&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>
+&lt;span style="color:#75715e">; generated instructions
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#a6e22e">return&lt;/span>
+&lt;span style="color:#a6e22e">.end&lt;/span> &lt;span style="color:#66d9ef">method&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="完整程式碼">完整程式碼&lt;/h1>
+&lt;p>仔細看的話就會發現跟 ep2 的程式碼幾乎差不多，只有加了寫檔把對應操作的指令寫入 bytecode.j。&lt;/p>
+&lt;div class="alert error-msg">
+&lt;i class="fa fa-times-circle">&lt;/i>
+下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
+&lt;/div>
+&lt;ul>
+&lt;li>&lt;code>mycompiler.y&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">/* Definition section */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>{
+&lt;span style="color:#75715e">//Extern variables that communicate with lex
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;#34;common.h&amp;#34; &lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// #define YYDEBUG 1
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// int yydebug = 1;
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">extern&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> yylineno;
+&lt;span style="color:#66d9ef">extern&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">yylex&lt;/span>();
+&lt;span style="color:#66d9ef">extern&lt;/span> FILE &lt;span style="color:#f92672">*&lt;/span>yyin;
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">yyerror&lt;/span> (&lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#f92672">*&lt;/span>s)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;error:%d: %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yylineno, s);
+}
+&lt;span style="color:#75715e">#define codegen(...) \
+&lt;/span>&lt;span style="color:#75715e"> do { \
+&lt;/span>&lt;span style="color:#75715e"> for (int i = 0; i &amp;lt; indent_cnt; i++) { \
+&lt;/span>&lt;span style="color:#75715e"> fprintf(fout, &amp;#34;\t&amp;#34;); \
+&lt;/span>&lt;span style="color:#75715e"> } \
+&lt;/span>&lt;span style="color:#75715e"> fprintf(fout, __VA_ARGS__); \
+&lt;/span>&lt;span style="color:#75715e"> } while (0)
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">/* Symbol table function */&lt;/span>
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">create_symbol&lt;/span>(&lt;span style="color:#75715e">/* ... */&lt;/span>);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">insert_symbol&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">lookup_symbol&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">dump_symbol&lt;/span>();
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">get_op_name&lt;/span>(op_t op) {
+&lt;span style="color:#66d9ef">switch&lt;/span> (op) {
+&lt;span style="color:#66d9ef">case&lt;/span> OP_ADD:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ADD&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_SUB:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SUB&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_MUL:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;MUL&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_DIV:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;DIV&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unknown&amp;#34;&lt;/span>;
+}
+}
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">get_op_instruction&lt;/span>(op_t op) {
+&lt;span style="color:#66d9ef">switch&lt;/span> (op) {
+&lt;span style="color:#66d9ef">case&lt;/span> OP_ADD:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;iadd&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_SUB:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;isub&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_MUL:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;imul&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_DIV:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;idiv&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unknown&amp;#34;&lt;/span>;
+}
+}
+&lt;span style="color:#75715e">/* Global variables */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> example_symbol_cnt &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#75715e">#define MAX_SYMBOL_NUM 10
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>example_symbol[MAX_SYMBOL_NUM] &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;span style="color:#66d9ef">int&lt;/span> indent_cnt &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#75715e">// control the number of ident in bytecode
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> FILE&lt;span style="color:#f92672">*&lt;/span> fout &lt;span style="color:#f92672">=&lt;/span> NULL;
+&lt;span style="color:#f92672">%&lt;/span>}
+&lt;span style="color:#f92672">%&lt;/span>error&lt;span style="color:#f92672">-&lt;/span>verbose
+&lt;span style="color:#75715e">/* Use variable or self-defined structure to represent
+&lt;/span>&lt;span style="color:#75715e"> * nonterminal and token type
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#66d9ef">union&lt;/span> {
+&lt;span style="color:#66d9ef">int&lt;/span> val;
+&lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>id_name;
+op_t op;
+}
+&lt;span style="color:#75715e">/* Token without return */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>token DECL PRINT NEWLINE
+&lt;span style="color:#75715e">/* Token with return, which need to sepcify type */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>token &lt;span style="color:#f92672">&amp;lt;&lt;/span>val&lt;span style="color:#f92672">&amp;gt;&lt;/span> NUMLIT
+&lt;span style="color:#f92672">%&lt;/span>token &lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span> IDENT
+&lt;span style="color:#75715e">/* Nonterminal with return, which need to sepcify type */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>type &lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span> AddOp MulOp
+&lt;span style="color:#75715e">/* Yacc will start at this nonterminal */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>start Program
+&lt;span style="color:#75715e">/* Grammar section */&lt;/span>
+&lt;span style="color:#f92672">%%&lt;/span>
+Program
+: StatementList
+;
+StatementList
+: Statement StatementList
+&lt;span style="color:#f92672">|&lt;/span>
+;
+Statement
+: DeclStmt
+&lt;span style="color:#f92672">|&lt;/span> PrintStmt
+;
+DeclStmt
+: DECL IDENT &lt;span style="color:#e6db74">&amp;#39;=&amp;#39;&lt;/span> Expression NEWLINE {
+&lt;span style="color:#66d9ef">int&lt;/span> ref &lt;span style="color:#f92672">=&lt;/span> insert_symbol(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>);
+printf(&lt;span style="color:#e6db74">&amp;#34;IDENT %s, ref: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>, ref);
+printf(&lt;span style="color:#e6db74">&amp;#34;STORE&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+free(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;istore %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, ref);
+}
+;
+PrintStmt
+: PRINT Expression NEWLINE {
+printf(&lt;span style="color:#e6db74">&amp;#34;PRINT&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;getstatic java/lang/System/out Ljava/io/PrintStream;&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;swap&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;invokevirtual java/io/PrintStream/print(I)V&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+}
+;
+Expression
+: AddExpr
+;
+AddExpr
+: AddExpr AddOp MulExpr {
+printf(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_name(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+codegen(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_instruction(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+}
+&lt;span style="color:#f92672">|&lt;/span> MulExpr
+;
+AddOp
+: &lt;span style="color:#e6db74">&amp;#39;+&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_ADD;
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;-&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_SUB;
+}
+;
+MulExpr
+: MulExpr MulOp Operand {
+printf(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_name(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+codegen(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_instruction(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+}
+&lt;span style="color:#f92672">|&lt;/span> Operand
+;
+MulOp
+: &lt;span style="color:#e6db74">&amp;#39;*&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_MUL;
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_DIV;
+}
+;
+Operand
+: NUMLIT {
+printf(&lt;span style="color:#e6db74">&amp;#34;NUMLIT %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>val&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;ldc %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>val&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+}
+&lt;span style="color:#f92672">|&lt;/span> IDENT {
+&lt;span style="color:#66d9ef">int&lt;/span> ref &lt;span style="color:#f92672">=&lt;/span> lookup_symbol(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+printf(&lt;span style="color:#e6db74">&amp;#34;IDENT %s, ref: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, ref);
+printf(&lt;span style="color:#e6db74">&amp;#34;LOAD&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+free(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;iload %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, ref);
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;(&amp;#39;&lt;/span> Expression &lt;span style="color:#e6db74">&amp;#39;)&amp;#39;&lt;/span>
+;
+&lt;span style="color:#f92672">%%&lt;/span>
+&lt;span style="color:#75715e">/* C code section */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> main(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>argv[])
+{
+&lt;span style="color:#66d9ef">if&lt;/span> (argc &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>) {
+yyin &lt;span style="color:#f92672">=&lt;/span> fopen(argv[&lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#e6db74">&amp;#34;r&amp;#34;&lt;/span>);
+} &lt;span style="color:#66d9ef">else&lt;/span> {
+yyin &lt;span style="color:#f92672">=&lt;/span> stdin;
+}
+&lt;span style="color:#75715e">/* Codegen output init */&lt;/span>
+&lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>bytecode_filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;bytecode.j&amp;#34;&lt;/span>;
+fout &lt;span style="color:#f92672">=&lt;/span> fopen(bytecode_filename, &lt;span style="color:#e6db74">&amp;#34;w&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.source bytecode.j&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.class public Main&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.super java/lang/Object&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.method public static main([Ljava/lang/String;)V&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.limit stack 10&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+codegen(&lt;span style="color:#e6db74">&amp;#34;.limit locals 10&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+indent_cnt&lt;span style="color:#f92672">++&lt;/span>;
+create_symbol();
+yyparse();
+dump_symbol();
+&lt;span style="color:#75715e">/* Codegen end */&lt;/span>
+codegen(&lt;span style="color:#e6db74">&amp;#34;return&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+indent_cnt&lt;span style="color:#f92672">--&lt;/span>;
+codegen(&lt;span style="color:#e6db74">&amp;#34;.end method&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+fclose(fout);
+fclose(yyin);
+printf(&lt;span style="color:#e6db74">&amp;#34;Total lines: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yylineno);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> create_symbol()
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Create symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#75715e">// do nothing...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> insert_symbol(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Insert {%s} into symbol table; assign it as ref {%d}&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>,
+id_name, example_symbol_cnt);
+example_symbol[example_symbol_cnt] &lt;span style="color:#f92672">=&lt;/span> strdup(id_name);
+example_symbol_cnt&lt;span style="color:#f92672">++&lt;/span>;
+&lt;span style="color:#66d9ef">return&lt;/span> example_symbol_cnt &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> lookup_symbol(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Lookup in symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> example_symbol_cnt; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;span style="color:#66d9ef">if&lt;/span> (strcmp(id_name, example_symbol[i]) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;span style="color:#66d9ef">return&lt;/span> i;
+}
+}
+printf(&lt;span style="color:#e6db74">&amp;#34;{%s} not found in symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, id_name);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> dump_symbol()
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Dump symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> example_symbol_cnt; i&lt;span style="color:#f92672">++&lt;/span>) {
+free(example_symbol[i]);
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="測試範例">測試範例&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>input/in01.lc&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>decl x = 1 + 4
+decl y = 2
+decl num = x + y * (3 + 5)
+print num
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Result (其他檔案，如 Makefile 請參考 Source code):&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>$ make
+$ ./mycompiler &amp;lt; input/in01.lc
+$ java -jar jasmin.jar -g bytecode.j
+Generated: Main.class
+$ java Main
+21
+&lt;/code>&lt;/pre>&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Intermediate_representation">https://en.wikipedia.org/wiki/Intermediate_representation&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">https://en.wikipedia.org/wiki/Abstract_syntax_tree&lt;/a> &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Java_bytecode">https://en.wikipedia.org/wiki/Java_bytecode&lt;/a> &lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings">Java bytecode instruction listings&lt;/a> &lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:5" role="doc-endnote">
+&lt;p>&lt;a href="https://github.com/aben20807/blog-post/issues/105">https://github.com/aben20807/blog-post/issues/105&lt;/a> &lt;a href="#fnref:5" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:6" role="doc-endnote">
+&lt;p>&lt;a href="http://jasmin.sourceforge.net/guide.html">http://jasmin.sourceforge.net/guide.html&lt;/a> &lt;a href="#fnref:6" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Build a Simple Compiler Ep2</title><link>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/</link><pubDate>Thu, 22 Jul 2021 19:17:52 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>語法剖析器 (Parser)&lt;/p>
+&lt;ul>
+&lt;li>Series: &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/">[ep0]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/">[ep1]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/">[ep2]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/">[ep3]&lt;/a>&lt;/li>
+&lt;li>Source code: &lt;a href="https://github.com/aben20807/learn_compiler">aben20807/learn_compiler&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="info-msg">
+&lt;i class="fa fa-info-circle">&lt;/i>
+從文章長度跟作業繳交期限就可以知道 parser 的難度遠大於 scanner，所以請提早動手開始，&lt;del>雖然不斷宣導下還是一定有人會不信邪前一個禮拜才開始&lt;/del>。
+&lt;/div>
+&lt;h1 id="語法剖析器-parser">語法剖析器 (Parser)&lt;/h1>
+&lt;p>與詞法分析器 (Scanner) 相同，這裡我們仰賴語法剖析器產生器來建構符合我們定義文法的語法剖析器。&lt;/p>
+&lt;p>由於我們再來會使用到的 JVM 功能是屬於 stack-based 的 virtual machine &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>，所以在語法剖析時就要預先考慮產生對應的指令順序。&lt;/p>
+&lt;h2 id="bison-yacc-三大區塊">bison (yacc) 三大區塊&lt;/h2>
+&lt;p>這裡其實與上一篇幾乎相同 (用 &lt;code>%%&lt;/code> 切了三個區塊出來)，只是中間區塊從 Rules section 換成 Grammar section，用來定義文法。&lt;/p>
+&lt;p>寫法如下，其實跟課本學到的文法表示差不多只是換個符號表示。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">Parent
+: Child1 Child2 Child3
+&lt;span style="color:#f92672">|&lt;/span> Child4
+;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="action">Action&lt;/h2>
+&lt;p>Action &lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup> 可以在 parse 過程中插入某些定義的動作，如下方程式範例中大括號部分。可以看到並不限於在最後方加上，也可以在 child 間加上 action。所以在建構不同層的 symbol table 時可以利用這個特性。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">Parent
+: Child1 {
+printf(&lt;span style="color:#e6db74">&amp;#34;after reducing Child1; before reducing Parent&amp;#34;&lt;/span>);
+} Child2 Child3 {
+printf(&lt;span style="color:#e6db74">&amp;#34;reduce Parent!&amp;#34;&lt;/span>);
+}
+&lt;span style="color:#f92672">|&lt;/span> Child4 {
+printf(&lt;span style="color:#e6db74">&amp;#34;reduce Parent from Child4&amp;#34;&lt;/span>);
+}
+;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="利用-semantic-value-將下方資訊向上傳遞">利用 Semantic value 將下方資訊向上傳遞&lt;/h2>
+&lt;p>為了向上傳遞資訊，bison (yacc) 提供了這項功能，讓下方的 action 可以用 &lt;code>$$&lt;/code> 來作為回傳值，而上方的 action 可以用 &lt;code>$1&lt;/code>, &lt;code>$2&lt;/code> 來存取對應來自下方的回傳值。要使用這項功能需要注意需要在 Definition section 宣告相關的型別 (包含 &lt;code>%union&lt;/code>, &lt;code>%token&lt;/code>, &lt;code>%type&lt;/code>) &lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup>&lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>。另外，數字所表示的位子需要把 action 也計算進去，如下方範例第一個 rule &lt;code>$1&lt;/code> 來自 &lt;code>Child1&lt;/code>; &lt;code>$2&lt;/code> 來自 &lt;code>Child1&lt;/code> 的 action, &lt;code>$3&lt;/code> 來自 &lt;code>Child2&lt;/code>, &lt;code>$4&lt;/code> 來自 &lt;code>Child3&lt;/code>。換 rule 則再從 1 開始，如 &lt;code>$1&lt;/code> 來自 &lt;code>Child4&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">Parent
+: Child1 {
+printf(&lt;span style="color:#e6db74">&amp;#34;after reducing Child1; before reducing Parent&amp;#34;&lt;/span>);
+} Child2 Child3 {
+&lt;span style="color:#960050;background-color:#1e0010">$$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">123&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span>;
+printf(&lt;span style="color:#e6db74">&amp;#34;reduce Parent!&amp;#34;&lt;/span>);
+}
+&lt;span style="color:#f92672">|&lt;/span> Child4 {
+&lt;span style="color:#960050;background-color:#1e0010">$$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+printf(&lt;span style="color:#e6db74">&amp;#34;reduce Parent from Child4&amp;#34;&lt;/span>);
+}
+;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="symbol-table">Symbol table&lt;/h1>
+&lt;p>由於硬體 (或是虛擬機器) 是看不懂你程式所寫的 &lt;code>x&lt;/code>, &lt;code>y&lt;/code> 變數，所以編譯器需要給這些變數一個位址 (address) 或是參考 (reference) 來代表不同的變數 (因為 JVM 常用參考來說明，所以這裡以後者來表示這個專有名詞)，因此 symbol table 最大用意就在生成 &amp;ldquo;變數&amp;rdquo; 與 &amp;ldquo;參考&amp;rdquo; 的一對一對應表，當有 scope 的概念時必須考慮變數是否在外層已經被定義並且從中獲取對應的參考，再來就是作業會遇到的內容就不多加贅述，不過可以提示: 是要利用 linked list 來實作 (沒意外大二資料結構就教過)。&lt;/p>
+&lt;h1 id="stack-based">Stack-based&lt;/h1>
+&lt;h2 id="運算範例">運算範例&lt;/h2>
+&lt;p>利用 Stack-based 的運算可以大幅減少硬體的相依性，也因為 JVM 採用這個運算模式，所以我們產生的指令需要符合可執行的順序。下圖簡單示範一個加法的運作流程，左方為對應的虛擬指令，①: 第 1,2 行會把 x 變數存放的值放入 stack；②: y 也放入後遇到第 5 行的加法運算，因此將 stack 中兩個值 pop 出來進行加法運算；③: 最後將運算結果放回。&lt;/p>
+&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVeUXwOtg_rkDa19Jd4yQ7AT2_7Ijf_6iQhaDiplgQf4-ZrvVvvl50lP0o2d3aime409KsaCtxmeyr4VN5_jZNaiFm0fBwazef5yNccep0_4hCuYok2BtO8qH9eMgOF_za2GpGjZONQGY-C6f40kMuFhQ=w611-h332-no" alt="Stack 版本的運算">&lt;/p>
+&lt;p>&lt;strong>進階版本&lt;/strong> &lt;code>decl num = x + y * (3 + 5)&lt;/code> 應該要產生如下的指令順序，則在 JVM 執行流程會是: 第一個遇到的運算是 &lt;code>ADD&lt;/code>，所以 &lt;code>3&lt;/code>、&lt;code>5&lt;/code> 做完後放回 &lt;code>8&lt;/code>，再來是 &lt;code>MUL&lt;/code>，就是剛剛放回的 &lt;code>8&lt;/code> 與 &lt;code>y&lt;/code>，依此類推，最後才將結果存到 &lt;code>num&lt;/code> 中&lt;/p>
+&lt;pre>&lt;code>IDENT x, ref: 0
+LOAD
+IDENT y, ref: 1
+LOAD
+NUMLIT 3
+NUMLIT 5
+ADD
+MUL
+ADD
+IDENT num, ref: 2
+STORE
+&lt;/code>&lt;/pre>&lt;h2 id="轉成-stack-based-順序">轉成 stack-based 順序&lt;/h2>
+&lt;p>這裡就不包含詳細的從頭教學，這裡示範怎麼透過 action 來將原先的順序轉換成 stack-baced 順序。根據輸入的字串 &lt;code>x * 2&lt;/code>，parser 會以同樣的順序跑過，符合可以 reduce 時才會向上合併，例如，&lt;code>MulExpr&lt;/code> (從 &lt;code>IDENT&lt;/code> ① 來), &lt;code>MulOp&lt;/code>, &lt;code>Operand&lt;/code> (從 &lt;code>NUMLIT&lt;/code> ② 來) 都走過就會 reduce 成 &lt;code>MulExpr&lt;/code> 接著執行它的 action ③。為了在 ③ 才印出運算子，這裡我們需要在 ③ 時知道下方上來的運算子是哪一個，因此利用上面提到的 &lt;a href="#%E5%88%A9%E7%94%A8-semantic-value-%E5%B0%87%E4%B8%8B%E6%96%B9%E8%B3%87%E8%A8%8A%E5%90%91%E4%B8%8A%E5%82%B3%E9%81%9E">Semantic value&lt;/a> 來傳遞 (注意 &lt;code>%union&lt;/code> 中有 &lt;code>op&lt;/code> 這個欄位，中間使用到 &lt;code>\$&amp;lt;op&amp;gt;\$&lt;/code> 代表指定的回傳型別) 讓 ③ 的 &lt;code>\$2&lt;/code> 獲得運算子資訊。所以就會達到先印出 &lt;code>x&lt;/code> 的參考及數字 &lt;code>2&lt;/code> 後再印出運算子類型。&lt;/p>
+&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLW6ZMC2XfsnZg8jHI64e3dKCSezHqXX3QGtvRlmC9ZN2z8isdz0fU7BpkalJRei9VrdiOMPcYX1J_cacpu3iiXN3EZaQPNdEoc72iKKLKHpykzNxfMX7wjvUHBtGh18vRx389qK2SxuOU-028GIcUStCw=w1371-h821-no" alt="action 被執行的步驟">&lt;/p>
+&lt;h1 id="程式碼除錯">程式碼除錯&lt;/h1>
+&lt;p>有時候想要確認 shift、reduce 的中間過程可以加入下方兩行程式，不過就需要自行簡化輸入的程式不然會資訊量過多難以觀察。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">#define YYDEBUG 1
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> yydebug &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="測試範例">測試範例&lt;/h2>
+&lt;pre>&lt;code>decl x = 2
+&lt;/code>&lt;/pre>
+&lt;details>
+&lt;summary>&lt;span>輸出內容太多請點擊查看 &lt;/span>&lt;/summary>
+&lt;pre>&lt;code>$ ./mycompiler &amp;lt; input/in02.cl
+&amp;gt; Create symbol table
+Starting parse
+Entering state 0
+Reading a token: Next token is token DECL ()
+Shifting token DECL ()
+Entering state 1
+Reading a token: Next token is token IDENT ()
+Shifting token IDENT ()
+Entering state 8
+Reading a token: Next token is token '=' ()
+Shifting token '=' ()
+Entering state 18
+Reading a token: Next token is token NUMLIT ()
+Shifting token NUMLIT ()
+Entering state 9
+Reducing stack by rule 17 (line 166):
+$1 = token NUMLIT ()
+NUMLIT 2
+-&amp;gt; $$ = nterm Operand ()
+Stack now 0 1 8 18
+Entering state 15
+Reducing stack by rule 14 (line 153):
+$1 = nterm Operand ()
+-&amp;gt; $$ = nterm MulExpr ()
+Stack now 0 1 8 18
+Entering state 14
+Reading a token: Next token is token NEWLINE ()
+Reducing stack by rule 10 (line 136):
+$1 = nterm MulExpr ()
+-&amp;gt; $$ = nterm AddExpr ()
+Stack now 0 1 8 18
+Entering state 13
+Next token is token NEWLINE ()
+Reducing stack by rule 8 (line 128):
+$1 = nterm AddExpr ()
+-&amp;gt; $$ = nterm Expression ()
+Stack now 0 1 8 18
+Entering state 27
+Next token is token NEWLINE ()
+Shifting token NEWLINE ()
+Entering state 31
+Reducing stack by rule 6 (line 109):
+$1 = token DECL ()
+$2 = token IDENT ()
+$3 = token '=' ()
+$4 = nterm Expression ()
+$5 = token NEWLINE ()
+&amp;gt; Insert {x} into symbol table; assign it as ref {0}
+IDENT x, ref: 0
+STORE
+-&amp;gt; $$ = nterm DeclStmt ()
+Stack now 0
+Entering state 6
+Reducing stack by rule 4 (line 104):
+$1 = nterm DeclStmt ()
+-&amp;gt; $$ = nterm Statement ()
+Stack now 0
+Entering state 5
+Reading a token: Now at end of input.
+Reducing stack by rule 3 (line 100):
+-&amp;gt; $$ = nterm StatementList ()
+Stack now 0 5
+Entering state 17
+Reducing stack by rule 2 (line 99):
+$1 = nterm Statement ()
+$2 = nterm StatementList ()
+-&amp;gt; $$ = nterm StatementList ()
+Stack now 0
+Entering state 4
+Reducing stack by rule 1 (line 95):
+$1 = nterm StatementList ()
+-&amp;gt; $$ = nterm Program ()
+Stack now 0
+Entering state 3
+Now at end of input.
+Shifting token $end ()
+Entering state 16
+Stack now 0 3 16
+Cleanup: popping token $end ()
+Cleanup: popping nterm Program ()
+&amp;gt; Dump symbol table
+Total lines: 2
+&lt;/code>&lt;/pre>
+&lt;/details>
+&lt;h1 id="完整程式碼">完整程式碼&lt;/h1>
+&lt;div class="alert error-msg">
+&lt;i class="fa fa-times-circle">&lt;/i>
+下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
+&lt;/div>
+&lt;ul>
+&lt;li>&lt;code>mycompiler.y&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">/* Definition section */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>{
+&lt;span style="color:#75715e">// Extern variables that communicate with lex
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;#34;common.h&amp;#34; &lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// #define YYDEBUG 1
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// int yydebug = 1;
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">extern&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> yylineno;
+&lt;span style="color:#66d9ef">extern&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">yylex&lt;/span>();
+&lt;span style="color:#66d9ef">extern&lt;/span> FILE &lt;span style="color:#f92672">*&lt;/span>yyin;
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">yyerror&lt;/span> (&lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#f92672">*&lt;/span>s)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;error:%d: %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yylineno, s);
+}
+&lt;span style="color:#75715e">/* Symbol table function */&lt;/span>
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">create_symbol&lt;/span>(&lt;span style="color:#75715e">/* ... */&lt;/span>);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">insert_symbol&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">lookup_symbol&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name);
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">dump_symbol&lt;/span>();
+&lt;span style="color:#75715e">/* Global variables */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> example_symbol_cnt &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#75715e">#define MAX_SYMBOL_NUM 10
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>example_symbol[MAX_SYMBOL_NUM] &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">get_op_name&lt;/span>(op_t op) {
+&lt;span style="color:#66d9ef">switch&lt;/span> (op) {
+&lt;span style="color:#66d9ef">case&lt;/span> OP_ADD:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ADD&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_SUB:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SUB&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_MUL:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;MUL&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">case&lt;/span> OP_DIV:
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;DIV&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unknown&amp;#34;&lt;/span>;
+}
+}
+&lt;span style="color:#f92672">%&lt;/span>}
+&lt;span style="color:#f92672">%&lt;/span>error&lt;span style="color:#f92672">-&lt;/span>verbose
+&lt;span style="color:#75715e">/* Use variable or self-defined structure to represent
+&lt;/span>&lt;span style="color:#75715e"> * nonterminal and token type
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>&lt;span style="color:#66d9ef">union&lt;/span> {
+&lt;span style="color:#66d9ef">int&lt;/span> val;
+&lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>id_name;
+op_t op;
+}
+&lt;span style="color:#75715e">/* Token without return */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>token DECL PRINT NEWLINE
+&lt;span style="color:#75715e">/* Token with return, which need to sepcify type */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>token &lt;span style="color:#f92672">&amp;lt;&lt;/span>val&lt;span style="color:#f92672">&amp;gt;&lt;/span> NUMLIT
+&lt;span style="color:#f92672">%&lt;/span>token &lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span> IDENT
+&lt;span style="color:#75715e">/* Nonterminal with return, which need to sepcify type */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>type &lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span> AddOp MulOp
+&lt;span style="color:#75715e">/* Yacc will start at this nonterminal */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>start Program
+&lt;span style="color:#75715e">/* Grammar section */&lt;/span>
+&lt;span style="color:#f92672">%%&lt;/span>
+Program
+: StatementList
+;
+StatementList
+: Statement StatementList
+&lt;span style="color:#f92672">|&lt;/span>
+;
+Statement
+: DeclStmt
+&lt;span style="color:#f92672">|&lt;/span> PrintStmt
+;
+DeclStmt
+: DECL IDENT &lt;span style="color:#e6db74">&amp;#39;=&amp;#39;&lt;/span> Expression NEWLINE {
+&lt;span style="color:#66d9ef">int&lt;/span> ref &lt;span style="color:#f92672">=&lt;/span> insert_symbol(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>);
+printf(&lt;span style="color:#e6db74">&amp;#34;IDENT %s, ref: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>, ref);
+printf(&lt;span style="color:#e6db74">&amp;#34;STORE&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+free(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>);
+}
+;
+PrintStmt
+: PRINT Expression NEWLINE {
+printf(&lt;span style="color:#e6db74">&amp;#34;PRINT&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+}
+;
+Expression
+: AddExpr
+;
+AddExpr
+: AddExpr AddOp MulExpr {
+printf(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_name(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+}
+&lt;span style="color:#f92672">|&lt;/span> MulExpr
+;
+AddOp
+: &lt;span style="color:#e6db74">&amp;#39;+&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_ADD;
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;-&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_SUB;
+}
+;
+MulExpr
+: MulExpr MulOp Operand {
+printf(&lt;span style="color:#e6db74">&amp;#34;%s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, get_op_name(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>));
+}
+&lt;span style="color:#f92672">|&lt;/span> Operand
+;
+MulOp
+: &lt;span style="color:#e6db74">&amp;#39;*&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_MUL;
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span> {
+&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>op&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> OP_DIV;
+}
+;
+Operand
+: NUMLIT {
+printf(&lt;span style="color:#e6db74">&amp;#34;NUMLIT %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>val&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+}
+&lt;span style="color:#f92672">|&lt;/span> IDENT {
+&lt;span style="color:#66d9ef">int&lt;/span> ref &lt;span style="color:#f92672">=&lt;/span> lookup_symbol(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+printf(&lt;span style="color:#e6db74">&amp;#34;IDENT %s, ref: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, ref);
+printf(&lt;span style="color:#e6db74">&amp;#34;LOAD&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+free(&lt;span style="color:#960050;background-color:#1e0010">$&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>id_name&lt;span style="color:#f92672">&amp;gt;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+}
+&lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#e6db74">&amp;#39;(&amp;#39;&lt;/span> Expression &lt;span style="color:#e6db74">&amp;#39;)&amp;#39;&lt;/span>
+;
+&lt;span style="color:#f92672">%%&lt;/span>
+&lt;span style="color:#75715e">/* C code section */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> main(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>argv[])
+{
+&lt;span style="color:#66d9ef">if&lt;/span> (argc &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>) {
+yyin &lt;span style="color:#f92672">=&lt;/span> fopen(argv[&lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#e6db74">&amp;#34;r&amp;#34;&lt;/span>);
+} &lt;span style="color:#66d9ef">else&lt;/span> {
+yyin &lt;span style="color:#f92672">=&lt;/span> stdin;
+}
+create_symbol();
+yyparse();
+dump_symbol();
+fclose(yyin);
+printf(&lt;span style="color:#e6db74">&amp;#34;Total lines: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yylineno);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> create_symbol()
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Create symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#75715e">// do nothing...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> insert_symbol(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Insert {%s} into symbol table; assign it as ref {%d}&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>,
+id_name, example_symbol_cnt);
+example_symbol[example_symbol_cnt] &lt;span style="color:#f92672">=&lt;/span> strdup(id_name);
+example_symbol_cnt&lt;span style="color:#f92672">++&lt;/span>;
+&lt;span style="color:#66d9ef">return&lt;/span> example_symbol_cnt &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> lookup_symbol(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> id_name)
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Lookup in symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> example_symbol_cnt; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;span style="color:#66d9ef">if&lt;/span> (strcmp(id_name, example_symbol[i]) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;span style="color:#66d9ef">return&lt;/span> i;
+}
+}
+printf(&lt;span style="color:#e6db74">&amp;#34;{%s} not found in symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, id_name);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+}
+&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> dump_symbol()
+{
+printf(&lt;span style="color:#e6db74">&amp;#34;&amp;gt; Dump symbol table&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> example_symbol_cnt; i&lt;span style="color:#f92672">++&lt;/span>) {
+free(example_symbol[i]);
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="測試範例-1">測試範例&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>input/in01.lc&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>decl x = 1 + 4
+decl y = 2
+decl num = x + y * (3 + 5)
+print num
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Result (其他檔案，如 Makefile 請參考 Source code):&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>$ make
+$ ./myparser &amp;lt; input/in01.lc
+&amp;gt; Create symbol table
+NUMLIT 1
+NUMLIT 4
+ADD
+&amp;gt; Insert {x} into symbol table; assign it as ref {0}
+IDENT x, ref: 0
+STORE
+NUMLIT 2
+&amp;gt; Insert {y} into symbol table; assign it as ref {1}
+IDENT y, ref: 1
+STORE
+&amp;gt; Lookup in symbol table
+IDENT x, ref: 0
+LOAD
+&amp;gt; Lookup in symbol table
+IDENT y, ref: 1
+LOAD
+NUMLIT 3
+NUMLIT 5
+ADD
+MUL
+ADD
+&amp;gt; Insert {num} into symbol table; assign it as ref {2}
+IDENT num, ref: 2
+STORE
+&amp;gt; Lookup in symbol table
+IDENT num, ref: 2
+LOAD
+PRINT
+&amp;gt; Dump symbol table
+Total lines: 5
+&lt;/code>&lt;/pre>&lt;h1 id="references">References&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="https://thiagoh.github.io/bison/">Bison 3.0.4 Manual&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Stack_machine#Virtual_stack_machines">https://en.wikipedia.org/wiki/Stack_machine#Virtual_stack_machines&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://thiagoh.github.io/bison/#Actions">https://thiagoh.github.io/bison/#Actions&lt;/a> &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>&lt;a href="https://thiagoh.github.io/bison/#Action-Types">https://thiagoh.github.io/bison/#Action-Types&lt;/a> &lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>&lt;a href="https://thiagoh.github.io/bison/#Action-Features">https://thiagoh.github.io/bison/#Action-Features&lt;/a> &lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Build a Simple Compiler Ep1</title><link>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/</link><pubDate>Thu, 22 Jul 2021 18:17:52 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>詞法分析器 (Scanner)&lt;/p>
+&lt;ul>
+&lt;li>Series: &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/">[ep0]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/">[ep1]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/">[ep2]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/">[ep3]&lt;/a>&lt;/li>
+&lt;li>Source code: &lt;a href="https://github.com/aben20807/learn_compiler">aben20807/learn_compiler&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="詞法分析器-scanner">詞法分析器 (Scanner)&lt;/h1>
+&lt;p>這裡我們不需要像編譯系統的課本或課程中提到的演算法來用 C 語言寫一個詞法分析器，而是利用 flex (lex) 這個詞法分析器產生器，它讓使用者可以用一些高階的定義詞法分析的模式，接著自動產生對應的詞法分析器。&lt;/p>
+&lt;p>使用這類工具的原因如下:&lt;/p>
+&lt;ul>
+&lt;li>減少人工撰寫造成的錯誤&lt;/li>
+&lt;li>開發快速且方便除錯&lt;/li>
+&lt;li>&lt;del>修課學生不是每一個都對編譯器有興趣，但這是必修課&lt;/del>&lt;/li>
+&lt;/ul>
+&lt;p>然而實際上真實的複雜語言，如 C++、Rust、Go &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> &lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup> &lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup> 大多都是手寫來達到更高的設計彈性。&lt;/p>
+&lt;h1 id="flex-lex-三大區塊">flex (lex) 三大區塊&lt;/h1>
+&lt;p>用兩個 &lt;code>%%&lt;/code> 來作為區隔:&lt;/p>
+&lt;ul>
+&lt;li>Definition section: 又分作兩個小區塊 (可對照下方完整程式碼): %{ 定義標頭檔、全域變數 %}、正規表達式標籤、condition (&lt;code>%x&lt;/code>) &lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>、選項 (&lt;code>%option&lt;/code>) &lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>&lt;/li>
+&lt;li>Rules section: 定義判斷為 token 的規則。定義的順序會影響優先度所以要考慮是否會覆蓋其他規則，例如關鍵字應該要優先於變數名，否則像是 &lt;code>decl&lt;/code>, &lt;code>print&lt;/code> 會被判定為 ident。這同時也是為何 &lt;code>.&lt;/code> (匹配所有字元) 會放在最下面&lt;/li>
+&lt;li>C Code section: 定義 main 函式、其他函式&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>&amp;lt;&amp;lt; Definition section &amp;gt;&amp;gt;
+%%
+&amp;lt;&amp;lt; Rules section &amp;gt;&amp;gt;
+%%
+&amp;lt;&amp;lt; C Code section &amp;gt;&amp;gt;
+&lt;/code>&lt;/pre>&lt;h1 id="正規表達式">正規表達式&lt;/h1>
+&lt;p>這裡主要利用正規表達式 (Regular Expression, regex, regexp, RE) 來判斷一個輸入中有那些 token，例如 &lt;code>apple&lt;/code> 不是任何一個保留關鍵字，所以就是一般的變數名稱。由於本系列所採用的是簡化版的語言，變數只有大小寫字母組成，所以這裡就直接定義 &lt;code>ident&lt;/code> 個標籤負責對應 &lt;code>{letter}+&lt;/code> 其中 &lt;code>letter&lt;/code> 對應 a~z 或是 A~Z 其中一個字元。&lt;/p>
+&lt;h1 id="完整程式碼">完整程式碼&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>mycompiler.l&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">/* Definition section */&lt;/span>
+&lt;span style="color:#f92672">%&lt;/span>{
+&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">#define YY_NO_UNPUT
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">#define YY_NO_INPUT
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">%&lt;/span>}
+&lt;span style="color:#75715e">/* Define regular expression label */&lt;/span>
+letter [a&lt;span style="color:#f92672">-&lt;/span>zA&lt;span style="color:#f92672">-&lt;/span>Z]
+digit [&lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">9&lt;/span>]
+ident {letter}&lt;span style="color:#f92672">+&lt;/span>
+num_lit {digit}&lt;span style="color:#f92672">+&lt;/span>
+&lt;span style="color:#75715e">/* Rules section */&lt;/span>
+&lt;span style="color:#f92672">%%&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;+&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;ADD&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;-&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;SUB&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;MUL&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;/&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;DIV&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;(&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;LPAR&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;)&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;RPAR&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;=&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;ASSIGN&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">n&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;NEWLINE&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;decl&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;DECL&amp;#34;&lt;/span>); }
+&lt;span style="color:#e6db74">&amp;#34;print&amp;#34;&lt;/span> { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;PRINT&amp;#34;&lt;/span>); }
+{ident} { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;IDENT&amp;#34;&lt;/span>); }
+{num_lit} { printf(&lt;span style="color:#e6db74">&amp;#34;%-8s &lt;/span>&lt;span style="color:#ae81ff">\t&lt;/span>&lt;span style="color:#e6db74"> %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, yytext, &lt;span style="color:#e6db74">&amp;#34;NUMLIT&amp;#34;&lt;/span>); }
+&lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span>EOF&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> { yyterminate(); }
+. {;}
+&lt;span style="color:#f92672">%%&lt;/span>
+&lt;span style="color:#75715e">/* C Code section */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> yywrap(&lt;span style="color:#66d9ef">void&lt;/span>)
+{
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+}
+&lt;span style="color:#66d9ef">int&lt;/span> main(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>argv[])
+{
+&lt;span style="color:#66d9ef">if&lt;/span> (argc &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>) {
+yyin &lt;span style="color:#f92672">=&lt;/span> fopen(argv[&lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#e6db74">&amp;#34;r&amp;#34;&lt;/span>);
+} &lt;span style="color:#66d9ef">else&lt;/span> {
+yyin &lt;span style="color:#f92672">=&lt;/span> stdin;
+}
+yylex();
+printf(&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">Finish scanning.&amp;#34;&lt;/span>);
+fclose(yyin);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="測試範例">測試範例&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>input/in01.lc&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>decl x = 1 + 4
+decl y = 2
+decl num = x + y * (3 + 5)
+print num
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Result (其他檔案，如 Makefile 請參考 Source code):&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>$ make
+$ ls
+input/ lex.yy.c Makefile mycompiler.l myscanner*
+$ ./myscanner &amp;lt; input/in01.lc
+decl DECL
+x IDENT
+= ASSIGN
+1 NUMLIT
++ ADD
+4 NUMLIT
+\n NEWLINE
+decl DECL
+y IDENT
+= ASSIGN
+2 NUMLIT
+\n NEWLINE
+decl DECL
+num IDENT
+= ASSIGN
+x IDENT
++ ADD
+y IDENT
+* MUL
+( LPAR
+3 NUMLIT
++ ADD
+5 NUMLIT
+) RPAR
+\n NEWLINE
+print PRINT
+num IDENT
+\n NEWLINE
+Finish scanning.
+&lt;/code>&lt;/pre>&lt;h1 id="references">References&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="https://westes.github.io/flex/manual/">Lexical Analysis With Flex, for Flex 2.6.2&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.cs.virginia.edu/~cr4bd/flex-manual/index.html#Top">Lexical Analysis With Flex, for Flex 2.6.3&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/westes/flex">westes/flex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/39075510/option-noinput-nounput-what-are-they-for">YY_NO_UNPUT, YY_NO_INPUT&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/GNU_Bison#Use">https://en.wikipedia.org/wiki/GNU_Bison#Use&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://doc.rust-lang.org/nightly/nightly-rustc/src/rustc_lexer/lib.rs.html">https://doc.rust-lang.org/nightly/nightly-rustc/src/rustc_lexer/lib.rs.html&lt;/a> &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>&lt;a href="https://doc.rust-lang.org/nightly/nightly-rustc/src/rustc_parse/lib.rs.html">https://doc.rust-lang.org/nightly/nightly-rustc/src/rustc_parse/lib.rs.html&lt;/a> &lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>&lt;a href="https://www.cs.virginia.edu/~cr4bd/flex-manual/Start-Conditions.html">https://www.cs.virginia.edu/~cr4bd/flex-manual/Start-Conditions.html&lt;/a> &lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:5" role="doc-endnote">
+&lt;p>&lt;a href="https://www.cs.virginia.edu/~cr4bd/flex-manual/Scanner-Options.html#Scanner-Options">https://www.cs.virginia.edu/~cr4bd/flex-manual/Scanner-Options.html#Scanner-Options&lt;/a> &lt;a href="#fnref:5" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Build a Simple Compiler Ep0</title><link>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/</link><pubDate>Thu, 22 Jul 2021 17:17:52 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>說明及事前準備&lt;/p>
+&lt;ul>
+&lt;li>Series: &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-with-flex-bison-ep0/">[ep0]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/">[ep1]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/">[ep2]&lt;/a>, &lt;a href="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/">[ep3]&lt;/a>&lt;/li>
+&lt;li>Source code: &lt;a href="https://github.com/aben20807/learn_compiler">aben20807/learn_compiler&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>雖然好像很多相關資料了，但我覺得還是欠缺完整性，所以就寫了這個系列來補全。儘管還是有少數人無論如何都選擇直接抄襲同學這條路，但還是希望透過本系列能夠清楚完整的帶領完全沒概念的人走一遍，藉此降低這些行為。&lt;/p>
+&lt;p>雖然我算是蠻常使用本系列所介紹的這套工具了，不過可能還是會有錯誤的地方，還請各位不吝指教。&lt;/p>
+&lt;h1 id="本篇所建構的編譯器">本篇所建構的編譯器&lt;/h1>
+&lt;p>本系列內容為使用 flex/bison (lex/yacc) 建構一個簡易的編譯器，並使其產生的 jasmin 指令可在 JVM 執行。完整執行流程如下。我們會利用 flex 產生 scanner，利用 bison 產生 parser。&lt;/p>
+&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVfavnVca_5BLSfCjR9c4-qX2B3aClIeT0xi-dKP7OA3I6YQ6wpE7Xpesp1-TiV7scUERknJm54uRRowNcFRd1vm7irZP_97aKpwDJMTSH8d5B0bcyF6whs077_llSwlHZyCey4jSwH4XqjpQ8O2vJ5pQ=w551-h281-no" alt="流程，橘色區塊為本系列需要寫程式的部分">&lt;/p>
+&lt;h1 id="環境設定">環境設定&lt;/h1>
+&lt;h2 id="作業系統">作業系統&lt;/h2>
+&lt;ul>
+&lt;li>OS: Ubuntu 18.04 (我使用 WSL2)&lt;/li>
+&lt;/ul>
+&lt;h2 id="軟體安裝">軟體安裝&lt;/h2>
+&lt;ul>
+&lt;li>gcc: 7.5.0 (&lt;code>gcc -v&lt;/code>)&lt;/li>
+&lt;li>gnu make: 4.1 (&lt;code>make -v&lt;/code>)&lt;/li>
+&lt;li>flex: 2.6.4 (&lt;code>flex --version&lt;/code>)&lt;/li>
+&lt;li>bison: 3.0.4 (&lt;code>bison --version&lt;/code>)&lt;/li>
+&lt;li>java: openjdk 11.0.10 (&lt;code>java --version&lt;/code>)&lt;/li>
+&lt;li>安裝指令: &lt;code>$ sudo apt install gcc make flex bison default-jre&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h1 id="定義本次教學的語言">定義本次教學的語言&lt;/h1>
+&lt;p>主要特性: 包含賦值、基本四則運算、輸出。&lt;/p>
+&lt;h2 id="型別-type">型別 type&lt;/h2>
+&lt;ul>
+&lt;li>整數 (num_lit), e.g., &lt;code>1&lt;/code>, &lt;code>2&lt;/code>&lt;/li>
+&lt;li>變數 (ident), e.g., &lt;code>x&lt;/code>, &lt;code>y&lt;/code>, &lt;code>num&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="運算子-operator">運算子 operator&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>+&lt;/code>: 加&lt;/li>
+&lt;li>&lt;code>-&lt;/code>: 減&lt;/li>
+&lt;li>&lt;code>*&lt;/code>: 乘&lt;/li>
+&lt;li>&lt;code>/&lt;/code>: 除&lt;/li>
+&lt;li>&lt;code>=&lt;/code>: 宣告時賦值&lt;/li>
+&lt;/ul>
+&lt;h2 id="其他符號">其他符號&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>(&lt;/code> &lt;code>)&lt;/code>: 運算有最高優先度&lt;/li>
+&lt;li>&lt;code>\n&lt;/code> (newline): 換行作為結尾&lt;/li>
+&lt;/ul>
+&lt;h2 id="關鍵字-keyword">關鍵字 keyword&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>decl&lt;/code>&lt;/li>
+&lt;li>&lt;code>print&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="簡化的文法-grammar">簡化的文法 grammar&lt;/h2>
+&lt;ul>
+&lt;li>未標示運算子優先順序，但是符合先乘除後加減，括號優先度最高。&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>Statement -&amp;gt; DeclStmt
+| PrintStmt
+DeclStmt -&amp;gt; &amp;quot;decl&amp;quot; ident &amp;quot;=&amp;quot; Expression newline
+PrintStmt -&amp;gt; &amp;quot;print&amp;quot; Expression newline
+Expression -&amp;gt; Expression BinaryOp Expression
+| Operand
+Operand -&amp;gt; num_lit
+| ident
+| &amp;quot;(&amp;quot; Expression &amp;quot;)&amp;quot;
+BinaryOp -&amp;gt; &amp;quot;+&amp;quot; | &amp;quot;-&amp;quot; | &amp;quot;*&amp;quot; | &amp;quot;/&amp;quot;
+&lt;/code>&lt;/pre>&lt;h2 id="範例輸入">範例輸入&lt;/h2>
+&lt;pre>&lt;code>decl x = 1 + 4
+decl y = 2
+decl num = x + y * (3 + 5)
+print num
+&lt;/code>&lt;/pre>&lt;h1 id="qa-僅代表本人意見">Q&amp;amp;A (僅代表本人意見)&lt;/h1>
+&lt;details>
+&lt;summary>&lt;span>建議心理素質強健者再行觀看 &lt;/span>&lt;/summary>
+&lt;ul>
+&lt;li>&lt;strong>Q&lt;/strong> 為何編譯系統&lt;del>目前&lt;/del>為必修?&lt;/li>
+&lt;li>&lt;strong>A&lt;/strong> 這需要回顧一下整個資訊工程的範疇，一般這個科系會有一些硬體課程以及多數的軟體課程 (包含數學、理論)，編譯系統是連接兩大領域的科學，因此在這堂課會用到幾乎所有在大學的所學 (例如，程式設計、資料結構、演算法、作業系統、計算理論)，雖然沒有到使用硬體指令 (否則會太難，想學可以參考 Jserv 的課)，不過可以說是整個大學的總整理。&lt;/li>
+&lt;li>&lt;strong>Q&lt;/strong> 為何編譯系統這麼難?&lt;/li>
+&lt;li>&lt;strong>A&lt;/strong> 其實課程部分一點也不難，每年超過100分的大概都有 20 個已經超過修課人數的一成，要不及格只可能是上課都沒在聽、考試沒複習、作業有問題都沒有問幾乎每次都沒交。如果是編譯器領域的話的確是難，但相對的會的人就少。&lt;/li>
+&lt;li>&lt;strong>Q&lt;/strong> 為何作業沒有部份給分?&lt;/li>
+&lt;li>&lt;strong>A&lt;/strong> 試想你之後出社會，老闆要你開發產品而你只能寫出屍體，連執行都不行，這樣你覺得老闆要給你多少薪水。你總不能跟他說我寫了哪些功能只是不能跑，所以應該要部份給薪吧。&lt;/li>
+&lt;/ul>
+&lt;/details></description></item><item><title>Google Sheet Grouping</title><link>https://aben20807.github.io/posts/20210529-google-sheet-grouping/</link><pubDate>Sat, 29 May 2021 11:16:15 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210529-google-sheet-grouping/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
 &lt;p>Proficient programming language:&lt;/p>
 &lt;ul>
 &lt;li>Google sheet&lt;/li>
@@ -1063,7 +2048,7 @@ printf(&lt;span style="color:#e6db74">&amp;#34;%p&lt;/span>&lt;span style="color
 &lt;/ul></description></item><item><title>Regex101</title><link>https://aben20807.github.io/posts/20190815-regexp/</link><pubDate>Thu, 15 Aug 2019 22:16:38 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190815-regexp/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id=1vdxAJpMf506uqrdfXp6IPve3CYn-RXCP -->
 &lt;p>我現在才知道這個是不是偏爛啊&lt;/p>
 &lt;h1 id="前言">前言&lt;/h1>
-&lt;p>因為要調整網站的一些東西，所以需要寫一些正規表達式 (regular expression)，不過一直試都失敗，上網找資料才發現一個好網站。傳送門：https://regex101.com/&lt;/p>
+&lt;p>因為要調整網站的一些東西，所以需要寫一些正規表達式 (regular expression)，不過一直試都失敗，上網找資料才發現一個好網站。傳送門：&lt;a href="https://regex101.com/">https://regex101.com/&lt;/a>&lt;/p>
 &lt;p>&lt;img src="https://drive.google.com/open?id=1-H5FG7NzGBMSEqNv6iJ0z2QfY3hQoXW5" alt="google- ">&lt;/p>
 &lt;p>一開始看到連結還以為是什麼內容農場，結果不是XDD&lt;/p>
 &lt;h1 id="使用">使用&lt;/h1>
@@ -1075,10 +2060,8 @@ printf(&lt;span style="color:#e6db74">&amp;#34;%p&lt;/span>&lt;span style="color
 &lt;p>簡單範例：&lt;/p>
 &lt;pre>&lt;code>(&amp;lt;(h[1-9]) id=\&amp;quot;([^\&amp;quot;]+)\&amp;quot;(.+))(&amp;lt;/h[1-9]+&amp;gt;)
 &lt;/code>&lt;/pre>&lt;p>然後我是用這個來做取代來換成我想要的樣式，例如：&lt;/p>
-&lt;pre style='word-break: break-word; white-space:pre-line;'>
-replaceRE "(&lt;(h[1-9]) id=\"([^\"]+)\"(.+))(&lt;/h[1-9]+>)" `&lt;${2} id="${3}" class="article-heading"${4}&lt;a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#${3}">&lt;span class="iconify" data-icon="octicon-link" data-inline="false">&lt;/span>&lt;/a> ${5}`
-&lt;/pre>
-&lt;p>原本的標題就會變成
+&lt;pre>&lt;code>replaceRE &amp;quot;(&amp;lt;(h[1-9]) id=\&amp;quot;([^\&amp;quot;]+)\&amp;quot;(.+))(&amp;lt;/h[1-9]+&amp;gt;)&amp;quot; `&amp;lt;${2} id=&amp;quot;${3}&amp;quot; class=&amp;quot;article-heading&amp;quot;${4}&amp;lt;a class=&amp;quot;headline-hash smoothScroll hover-show scrollspy&amp;quot; style=&amp;quot;font-size: 0.75em; color: black; padding-left: 0.25em&amp;quot; href=&amp;quot;#${3}&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;iconify&amp;quot; data-icon=&amp;quot;octicon-link&amp;quot; data-inline=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt; ${5}`
+&lt;/code>&lt;/pre>&lt;p>原本的標題就會變成
 &lt;img src="https://drive.google.com/open?id=1yubxNXgTK8uZV07Bo52PzBUHN2Tjf8rY" alt="google- ">&lt;/p></description></item><item><title>別把人家的好心視為理所當然</title><link>https://aben20807.github.io/posts/20190804-tiny-action/</link><pubDate>Sun, 04 Aug 2019 11:08:11 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190804-tiny-action/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
 &lt;p>其實原本 6 月中就要寫了，結果因為沒拍到照片所以就先延後 (明明是自己懶惰&lt;/p>
 &lt;p>6 月中還蠻嚴重的就是香港反送中的事件開始，到現在 8 月了仍然有罷工及遊行，不過本篇不會討論這個事件。 雖說不討論但其實有些相關。記得當時許多人跟風換了頭貼濾鏡，但我認為有一些人只會盲從表現自己好像有在關注社會議題反而忽略身邊的事。 若真的去探討哪些人，其實並不限於換頭貼的人，也不是換頭貼就會這樣，換頭貼只是剛好是附近發生的大事。所以並不是想要嘴這些換頭貼的人喔。&lt;/p>
@@ -1966,14 +2949,36 @@ gcc t.c
 &lt;p>右邊會有浮動 TOC (table of contents)，可點擊！&lt;br>
 只會顯示 h1 ~ h3 過長會變成 &amp;hellip;&lt;/p>
 &lt;h3 id="test中文-1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj">test中文 1-12sdofjsojdfojasodjfosjofdsoifjaosjdofj&lt;/h3>
-&lt;h1 id="code-section">Code section&lt;/h1>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;h1 id="code-section-refhttpsgohugoiocontent-managementsyntax-highlightinghighlighting-in-code-fences">Code section &lt;a href="https://gohugo.io/content-management/syntax-highlighting/#highlighting-in-code-fences">ref&lt;/a>&lt;/h1>
+&lt;pre>
+```c {linenos=table,hl_lines=[2,"4-6"],linenostart=199}
+#include &lt;stdio.h>
+int main()
 {
-&lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
-&lt;span style="color:#66d9ef">return&lt;/span> a;
+int a = 0;
+return a;
 }
-&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="強調字型">強調字型&lt;/h1>
+```
+&lt;/pre>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">200
+&lt;/span>&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">201
+&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">202
+&lt;/span>&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">203
+&lt;/span>&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">204
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>()
+&lt;/span>{
+&lt;span style="display:block;width:100%;background-color:#3c3d38"> &lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38"> &lt;span style="color:#66d9ef">return&lt;/span> a;
+&lt;/span>&lt;span style="display:block;width:100%;background-color:#3c3d38">}
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="強調字型">強調字型&lt;/h1>
 &lt;p>可參考：https://www.markdownguide.org/basic-syntax/#emphasis&lt;/p>
 &lt;pre>&lt;code>__粗體__
 **粗體**
@@ -2044,7 +3049,54 @@ padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/jC3jnC1dsAg?start=500" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
 &lt;/iframe>
-&lt;/div></description></item><item><title>Happy New Year</title><link>https://aben20807.github.io/posts/20190204-happy-new-year/</link><pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid><description>&lt;p>今天除夕，首先祝各位新年快樂~&lt;/p>
+&lt;/div>
+&lt;h1 id="section-refhttpscodepeniodobsondevpenggrjwv">Section &lt;a href="https://codepen.io/DobsonDev/pen/GgRJwv">ref&lt;/a>&lt;/h1>
+&lt;pre>
+{{&amp;lt; alert info >}}
+**Beware !** is a text
+{{&amp;lt; /alert >}}
+{{&amp;lt; alert success >}}
+**Beware !** is a text
+{{&amp;lt; /alert >}}
+{{&amp;lt; alert warning >}}
+**Beware !** is a text
+{{&amp;lt; /alert >}}
+{{&amp;lt; alert danger >}}
+**Beware !** is a text
+{{&amp;lt; /alert >}}
+&lt;/pre>
+&lt;div class="info-msg">
+&lt;i class="fa fa-info-circle">&lt;/i>
+&lt;strong>Beware !&lt;/strong> is a text
+&lt;/div>
+&lt;div class="success-msg">
+&lt;i class="fa fa-check">&lt;/i>
+&lt;strong>Beware !&lt;/strong> is a text
+&lt;/div>
+&lt;div class="warning-msg">
+&lt;i class="fa fa-exclamation-triangle">&lt;/i>
+&lt;strong>Beware !&lt;/strong> is a text
+&lt;/div>
+&lt;div class="alert error-msg">
+&lt;i class="fa fa-times-circle">&lt;/i>
+&lt;strong>Beware !&lt;/strong> is a text
+&lt;/div>
+&lt;h1 id="details-summary-section">Details, summary section&lt;/h1>
+&lt;pre>
+{{&amp;lt; summary "Click~" >}}
+# OuO
+OuO
++ OuO
+{{&amp;lt; /summary >}}
+&lt;/pre>
+&lt;details>
+&lt;summary>&lt;span>Click~ &lt;/span>&lt;/summary>
+&lt;h1 id="ouo">OuO&lt;/h1>
+&lt;p>OuO&lt;/p>
+&lt;ul>
+&lt;li>OuO&lt;/li>
+&lt;/ul>
+&lt;/details></description></item><item><title>Happy New Year</title><link>https://aben20807.github.io/posts/20190204-happy-new-year/</link><pubDate>Mon, 04 Feb 2019 23:03:48 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190204-happy-new-year/</guid><description>&lt;p>今天除夕，首先祝各位新年快樂~&lt;/p>
 &lt;p>第一天用比較偏累，基本上把會用的東西都裝一裝了，例如：google analysitcs, disqus。likecoin 的部份我覺得可能還要找方法，不然拖慢許多載入速度。&lt;/p>
 &lt;p>總之，主因大致上可以推給 G+ 關閉吧，加上在 Blogger 那邊改主題頗累 (外加煩躁) 選擇 Hugo 主要是速度吧，號稱目前最快，原本考慮的 Jekyll 跟 Hexo 似乎在文章多的時候都會慢，所以就直上了(?)。&lt;/p>
 &lt;p>這裡會發的文會更偏向記錄，要說是日記也是可，不過我相信我自己絕對不可能日更，尤其是已經在研究所幹活了，可能這篇第一篇也是最後一篇也說不定。&lt;/p>

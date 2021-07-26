@@ -16,23 +16,23 @@ if (
 jQuery(document).ready(function ($) {
   if (isMobile) return;
   // Get page title
-  var pageTitle = $("title").text();
+  // var pageTitle = $("title").text();
 
-  var w = $(window);
-  var t = $("title");
-  // Change page title on blur
-  w.blur(function () {
-    t.text("QuQ");
-  });
+  // var w = $(window);
+  // var t = $("title");
+  // // Change page title on blur
+  // w.blur(function () {
+  //   t.text("QuQ");
+  // });
 
-  // Change page title back on focus
-  w.focus(function () {
-    t.text("OuO");
-    function original() {
-      t.text(pageTitle);
-    }
-    setTimeout(original, 1000);
-  });
+  // // Change page title back on focus
+  // w.focus(function () {
+  //   t.text("OuO");
+  //   function original() {
+  //     t.text(pageTitle);
+  //   }
+  //   setTimeout(original, 1000);
+  // });
 
   $.fn.overflown = function () {
     // detect element overflow ref: https://stackoverflow.com/questions/9333379/check-if-an-elements-content-is-overflowing#comment27010845_9541579
