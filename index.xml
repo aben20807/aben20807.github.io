@@ -1,4 +1,109 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 FileLocator 在資料夾中搜尋文件內容</title><link>https://aben20807.github.io/posts/20210806-search-text-in-multiple-files/</link><pubDate>Fri, 06 Aug 2021 15:20:27 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210806-search-text-in-multiple-files/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Use VSCode to Write LaTeX Paper</title><link>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</link><pubDate>Wed, 11 Aug 2021 13:50:05 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>為了測完整的安裝流程，我用 virtualbox 裝了一個乾淨的 windows 10。記錄到可以編譯 latex 的最簡化流程就好，所以本篇的終端機使用的是 powershell 而不是 WSL。在 Ubuntu 理論上也可以套用這個方法，不過安裝的套件就不同，例如: MikTex 就要換成 Tex Live &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
+&lt;p>本篇範例使用 ACM 釋出的模板&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>，因此 IEEE 或是學校畢業論文的模板可能會有所不同。&lt;/p>
+&lt;p>因為圖太多了，所以使用 &amp;ldquo;示意圖&amp;rdquo; 按鈕來隱藏圖片，想參考時打開即可。&lt;/p>
+&lt;h2 id="latex-cheat-sheet">LaTeX Cheat sheet&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.andy-roberts.net/writing/latex/formatting">Getting to Grips with LaTeX&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of LaTeX mathematical symbols&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.tablesgenerator.com/latex_tables#">Latex Tables Generator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="安裝套件">安裝套件&lt;/h1>
+&lt;p>安裝順序應該沒關係，本篇測試順序是 VSCode → MikTex → Perl。&lt;/p>
+&lt;h2 id="perl">Perl&lt;/h2>
+&lt;p>這裡直接安裝推薦的版本: &lt;a href="https://strawberryperl.com/">Strawberry Perl&lt;/a>，選 64-bit 版本。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLXs_PdqsqpM2mkMvhICdIe37zPtDQsvKfVtuWNfwjcUk2SnzbBnOkSrtPApkKZjIJonrr2POWGVmwTJLCj-BbRQA5z_ZakRrts1mL_9yUm4woKKtn6sO9ivljF58cjZaaZEaOmZ8-lhTREJW6uBRxV4BQ=w1600-h1200-no" alt="Strawberry Perl">
+&lt;/details>
+&lt;h2 id="miktex">MikTex&lt;/h2>
+&lt;p>這個是 Latex 編譯器包，安裝網址: &lt;a href="https://miktex.org/download">https://miktex.org/download&lt;/a>。&lt;/p>
+&lt;p>安裝完後會跳出提醒來安裝所有更新。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLUyFhHoqLOl0ud9GfH2YxuUAQGRPdyNVWIaO4NB9AhaxmKnLUdBhxyiW7750RNHiqIlYTj1IUAzfDFqPOy_XDyvvF3Lb4XW8hv5JOo2tm4L-UI6Q0tvlyaUe_G_SIobWkL8FLf_VFUHu70ZCP1kQE8aBQ=w1600-h1200-no" alt="安裝所有更新">
+&lt;/details>
+&lt;p>打開 powershell 輸入 &lt;code>latexmk.exe&lt;/code> 確認安裝正確。可能會先跳出一個視窗要安裝新套件，點選 install 即可。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLV2gfq28ff0fnfv74PB_m6DHG-hl9a4wgEfxOdrQ2idrQoNu52LWlBXMjtmngSETOVxsKiHrFO4YI0npZ5UMw_FRvyMkzYdd3AIIa3oBGazrXP1hJqwL2PYAGh4tOV9SS-iUhMq5zZZu-N8ofNGYn0W6w=w1600-h1200-no" alt="powershell">
+&lt;/details>
+&lt;h2 id="vscode">VSCode&lt;/h2>
+&lt;p>建議安裝時打開 &amp;ldquo;以 Code 開啟&amp;rdquo; 的功能。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLXlBw7vOU2XUjDrJR7KfMSu416nevszajoo2n9NAHIKO58wgb7xrkPdbewM3lvoXGzCZTZXAx7cGxIdlEDYWqXAv4TcdkvhjOCFKXt-aA8jpgvXWcovW56py_GJD2jvhNkNCV4KcZEAJxBOeRPdmdwmqg=w1600-h1200-no" alt="以 Code 開啟">
+&lt;/details>
+&lt;h3 id="外掛">外掛&lt;/h3>
+&lt;p>理論上必要的只有 latex-workshop，其他的選用。&lt;/p>
+&lt;ul>
+&lt;li>james-yu.latex-workshop&lt;/li>
+&lt;li>mhutchie.git-graph&lt;/li>
+&lt;li>coenraads.bracket-pair-colorizer&lt;/li>
+&lt;li>valentjn.vscode-ltex: 英文文法檢查，需要安裝 Java&lt;/li>
+&lt;li>vscode-icons-team.vscode-icons&lt;/li>
+&lt;/ul>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLUhazz8sW9uiCIu6fkCbTaBQXRJu2-a2Il_r6qWN_EjoWCqvqxHrP-DY_e7JQ8GITghx60BCYwzQ5eamEfv2ni1zbVps5rT2CV_y9CkRgEAuPwJCrZFv4j9g0VC7PO3IiAmeCo-gQyuNX04jEhRX76kIg=w1600-h1200-no" alt="vscode 外掛">
+&lt;/details>
+&lt;h3 id="針對-latex-文字顯示設定">針對 latex 文字顯示設定&lt;/h3>
+&lt;p>使用 &lt;code>Ctrl-Shift-P&lt;/code>，輸入 setting，打開 json 檔。可加入如下設定，這樣只會針對 latex 設定，而不會影響程式編輯。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;[latex]&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;editor.fontSize&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">18&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.fontFamily&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#39;Georgia&amp;#39;&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.lineNumbers&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;on&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.wordWrap&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;bounded&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.letterSpacing&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">0.1&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.lineHeight&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">38&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;editor.formatOnSave&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVyoAzzgE5xs4JLPpuXtcx8_CPKlIfKZmtu-an-S94W5TUdBtUJ_A904RSGZEK0G4JZMC9gD4C9GOO4tiZnXs-lU3qfuwiAcE303UhtyN7cunSkswmlUwiPsSLkrvnt1DribaWwWPFAFX_U-kP-I1sy8Q=w1600-h1200-no" alt="setting.json">
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLV1YqPWPVOaUPtlh4ZeC4j4SrbcJKeRRDDVnk9MT4627oJVYfFIxPVpmICFv8-EQg1lyCv76dN0cIA8HtSdbmyp6rgTQ6ESejTwpxXoiJSnY9oUqo0mwo43U-dS6U_quVyzinCgdVcj7yY7suNaXAL5HA=w1600-h1200-no" alt="latex setting">
+&lt;/details>
+&lt;h1 id="範例">範例&lt;/h1>
+&lt;p>這裡直接使用 git 來拉範例 (使用 ACM 模板)，因此會需要用到 git，可直接安裝 &lt;a href="https://gitforwindows.org/">git for windows&lt;/a>，或直接上 github 下載也可以。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVzP-_HMuTJhu1eGgAI1OJVBik9t1idYqKj9GdBjiBIuRgPaVohradkWO3RzPDmIpTVodYZ6_S2T9OJ64XYorCieaPqS3DCEmfw6LZkEPBEEbLyD3KRIWd_qeQmLjVYkMVCcbTqZakB5v29B8qR3ZMaCQ=w1600-h1200-no" alt="git for windows">
+&lt;/details>
+&lt;p>直接在 powershell 執行下面指令 (前方 &lt;code>&amp;gt;&lt;/code> 不需要複製)，就會看到 vscode 打開範例資料夾。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&amp;gt; git clone https&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span>//github.com/aben20807/paper-template.git
+&amp;gt; code .\paper-template\
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>點開 paper.tex 檔案後，左方會出現 TEX 的圖示，點開後執行編譯的 recipe (最長那個)。這時候會跳出安裝套件的視窗。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLWp9ZNMNj-yePUCWIj1AvQquVNlK6QYqXWTje1vL6U7JN8fC4OuqhFdhyIIgDlD4ydMI-x_Gvu2hqWEE49NDhQgIbmJoLqsM8VAkiz5Q5eaBCBCMSU-z1EX6KiJfcX-WomSZokxHHJNZhgnZrSUAE9kSg=w1600-h1200-no" alt="編譯">
+&lt;/details>
+&lt;p>如果不想要一個一個點的話可以從開始選單中找 &amp;ldquo;MiKTex Console&amp;rdquo;，在 setting 中把自動安裝套件改成 Always。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLXm4NBSLxHqiFM2ISIUKqJ-p8IFzCb9wQRMBwxU1VCrCUqRTNFpc8zwqWGonri1KFM0uQY7WNGgBMVwolb4dYcpMWBbFiSrjtOmaAKbM0ImvtpnmcpOoW8515RVAH9nRgZVWySfY0eBe_pzi16mM6mh0w=w1600-h1200-no" alt="MiKTex Console">
+&lt;/details>
+&lt;p>最後就成功把範例編譯完成&lt;/p>
+&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVawO6vCeLTqrKvREekjNGd0G-Ogq9g4OBBtJlNmtsNcA_C75WBFS5qPZgrVK97JjQO05GU9HPMIrLMQpINWsLKDDczZayHama0igM0yuOJqkbp7GXE9Lz3IihhuCRfivOfhvtI6jpUfcXWmkcz60BJLg=w1600-h1200-no" alt="完成">&lt;/p>
+&lt;h1 id="錯誤排除">錯誤排除&lt;/h1>
+&lt;ul>
+&lt;li>有時候 pdf viewer 在編譯後不會自動更新，這時候要先關閉那個分頁，再重新打開即可。&lt;/li>
+&lt;li>編譯失敗時會出現打開錯誤訊息的視窗，或是可以直接開啟 LaTeX Compiler 的 Output，如上圖 (完成) 下方視窗所示。&lt;/li>
+&lt;/ul>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>&lt;a href="https://linuxconfig.org/how-to-install-latex-on-ubuntu-18-04-bionic-beaver-linux">How to install LaTex on Ubuntu 18.04 Bionic Beaver Linux&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://www.acm.org/publications/taps/word-template-workflow#h-2.-the-workflow-and-templates">ACM Primary Article Templates AND Publication Workflow&lt;/a> &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>使用 FileLocator 在資料夾中搜尋文件內容</title><link>https://aben20807.github.io/posts/20210806-search-text-in-multiple-files/</link><pubDate>Fri, 06 Aug 2021 15:20:27 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210806-search-text-in-multiple-files/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
 &lt;p>知識實在不容易累積&lt;/p>
 &lt;p>這其實是我個人覺得，不知道其他人感覺?&lt;/p>
 &lt;p>為何不容易累積?&lt;/p>

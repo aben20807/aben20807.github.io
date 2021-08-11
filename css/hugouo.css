@@ -143,7 +143,8 @@ pre {
 #hdr {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
-p {
+p,
+summary {
   font-size: 19px !important;
   line-height: 1.653em;
   margin: 0 0 1.3em;
