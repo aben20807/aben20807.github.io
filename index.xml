@@ -1,4 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Use VSCode to Write LaTeX Paper</title><link>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</link><pubDate>Wed, 11 Aug 2021 13:50:05 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>記錄一下如何用 VSCode 寫 paper&lt;/p>
 &lt;h1 id="前言">前言&lt;/h1>
 &lt;p>為了測完整的安裝流程，我用 virtualbox 裝了一個乾淨的 windows 10。記錄到可以編譯 latex 的最簡化流程就好，所以本篇的終端機使用的是 powershell 而不是 WSL。在 Ubuntu 理論上也可以套用這個方法，不過安裝的套件就不同，例如: MikTex 就要換成 Tex Live &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
 &lt;p>本篇範例使用 ACM 釋出的模板&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>，因此 IEEE 或是學校畢業論文的模板可能會有所不同。&lt;/p>
@@ -3140,6 +3141,32 @@ __*粗斜體*__
 &lt;/ol>
 &lt;/li>
 &lt;/ul>
+&lt;h1 id="表格">表格&lt;/h1>
+&lt;pre>&lt;code>|A|B|C|
+|-|-|-|
+|a|b|c|
+|d|e|f|
+&lt;/code>&lt;/pre>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>A&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>C&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>a&lt;/td>
+&lt;td>b&lt;/td>
+&lt;td>c&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>d&lt;/td>
+&lt;td>e&lt;/td>
+&lt;td>f&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
 &lt;h1 id="引用">引用&lt;/h1>
 &lt;pre>&lt;code>&amp;gt; The more I learn, the more I realize how much I don't know.
 &amp;gt; --- Albert Einstein
@@ -3157,6 +3184,10 @@ __*粗斜體*__
 要改成上面的連結才行，所以我動了一些手腳，下面還會顯示標題說明，點擊即可在新分頁開啟可放大的圖片瀏覽器&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-markdown" data-lang="markdown">![&lt;span style="color:#f92672">google-title here&lt;/span>](&lt;span style="color:#a6e22e">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC&lt;/span>)
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" alt="google-title here">&lt;/p>
+&lt;h1 id="數學式">數學式&lt;/h1>
+&lt;p>要行內顯示的話在左右各使用一個 &lt;code>$&lt;/code> 包著, e.g., &lt;code>\$x + y = z\$&lt;/code>: $x + y = z$&lt;/p>
+&lt;p>使用 &lt;code>$$&lt;/code> 會置中顯示, e.g., &lt;code>\$\$a \times b = c\$\$&lt;/code>&lt;/p>
+&lt;p>$$a \times b = c$$&lt;/p>
 &lt;h1 id="youtube">YouTube&lt;/h1>
 &lt;pre>
 {{&amp;lt; youtube &amp;quot;&lt;span>https://www.youtube.com/watch?v=jC3jnC1dsAg&lt;/span>&amp;quot; &amp;gt;}}

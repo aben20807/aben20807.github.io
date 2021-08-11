@@ -207,9 +207,9 @@ body.feature-fignum table caption::before {
 .footnotes {
   font-size: 80%;
 }
-.math {
+/* .math {
   font-size: 1rem;
-}
+} */
 .about-the-author img {
   float: left;
   max-width: 100px;
