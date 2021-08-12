@@ -143,6 +143,17 @@ pre {
 #hdr {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
+/* details/summary animation https://stackoverflow.com/a/67814400 */
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+@keyframes sweep {
+  0%    {opacity: 0; transform: translateX(-10px)}
+  100%  {opacity: 1; transform: translateX(0)}
+}
+details {
+  margin-left: 5px;
+}
 p,
 summary {
   font-size: 19px !important;
@@ -151,6 +162,9 @@ summary {
 }
 p + ul {
   margin-top: -1.2em;
+}
+p + details {
+  margin-top: -1.0em;
 }
 ul {
   margin: 0 0 1.3em;

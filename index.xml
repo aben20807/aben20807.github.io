@@ -1,4 +1,242 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Use VSCode to Write LaTeX Paper</title><link>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</link><pubDate>Wed, 11 Aug 2021 13:50:05 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Matplotlib to Plot Academic Figures</title><link>https://aben20807.github.io/posts/20210812-use-matplotlib-to-plot-academic-figures/</link><pubDate>Thu, 12 Aug 2021 13:18:37 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210812-use-matplotlib-to-plot-academic-figures/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>輕鬆畫出有學術質感的圖表&lt;/p>
+&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>本篇示範一個用 matplotlib 畫一個基本的折線圖，在 ubuntu 跟 windows 10 都有試過，不過本篇以 windows 10 的指令為主。&lt;/p>
+&lt;p>雖然有想過寫成一個工具，使用者只要提供資料，就可以自動畫出圖。不過後來發現這個想法是不實際，因為每張圖幾乎都需要客製化，所以就改成提供一個模板，要做任何調整會比較方便。&lt;/p>
+&lt;h1 id="安裝套件">安裝套件&lt;/h1>
+&lt;h2 id="python39">Python3.9&lt;/h2>
+&lt;p>Windows 直接到官網下載即可，Ubuntu 需要使用 PPA&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
+&lt;details>
+&lt;summary>&lt;span>示意圖 &lt;/span>&lt;/summary>
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLXjOlfhfiQNgWI02_rZb4Wb574Fu4Wur9o6OKhoyNMjexMuCOxm0CCZcVHN_2J3unY1gLHsXw-brNYZcu-_ZTs391zX9dh568EJUTUZevMF626zka1_CuOirPByW0xVteY8pA5Wj3hcah8FtnX_cDPFsQ=w1705-h1291-no" alt="windows python3.9">
+&lt;/details>
+&lt;h3 id="安裝-virtualenv-並進入虛擬環境">安裝 virtualenv 並進入虛擬環境&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&amp;gt; pip install virtualenv
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>要進入虛擬環境時需要執行 active 的腳本，在 Ubuntu 就很方便執行 &lt;code>$ source venv/bin/activate&lt;/code>，但是 powershell 有權限問題，所以要先設定&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&amp;gt; mkdir matplotlib_test
+&amp;gt; cd matplotlib_test
+&amp;gt; virtualenv --python python3.9 venv
+&amp;gt; Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope &lt;span style="color:#66d9ef">Process&lt;/span> -Force
+&amp;gt; .\venv\Scripts\activate.ps1
+(venv)&amp;gt; pip list
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLV60iyL8ezSo7VKOvo5mleP9Ur5NEK2nNV2ABbdR9zMWJZGaaqMQYJLTaQNxPHcPQ56avYFMRh1-cZFBRqFOPDMJbhZ_lMI_UL4ZdddicANA6fAitgOUyzkxRt7ncqv9vVcZuKrkQuuXns2epiRY7NDvw=w624-h148-no" alt="pip list of a clear venv">&lt;/p>
+&lt;h3 id="matplotlib-and-scienceplots">Matplotlib and SciencePlots&lt;/h3>
+&lt;p>圖表樣式主要靠 SciencePlots&lt;sup id="fnref:3">&lt;a href="#fn:3" class="footnote-ref" role="doc-noteref">3&lt;/a>&lt;/sup> 來完成，所以我們只要專注使用 Matplotlib 來製作圖表即可。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">(venv)&amp;gt; pip install matplotlib==3.4.2
+(venv)&amp;gt; pip install SciencePlots==1.0.8
+(venv)&amp;gt; pip list &lt;span style="color:#75715e"># 詳細版本資訊參考用&lt;/span>
+Package Version
+--------------- -------
+cycler 0.10.0
+kiwisolver 1.3.1
+matplotlib 3.4.2
+numpy 1.21.1
+Pillow 8.3.1
+pip 21.2.3
+pyparsing 2.4.7
+python-dateutil 2.8.2
+SciencePlots 1.0.8
+setuptools 57.4.0
+six 1.16.0
+wheel 0.37.0
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="畫圖技巧">畫圖技巧&lt;/h1>
+&lt;p>強烈建議先去看一下這篇 &lt;a href="https://zhuanlan.zhihu.com/p/93423829">matplotlib：先搞明白plt. /ax./ fig再画&lt;/a>。我原先用 matplotlib 也是亂用，看過之後了解大概的區塊是哪個模組在控制。&lt;/p>
+&lt;p>下圖的各個部位的名稱可以大概記一下，這樣在搜尋時會比較方便。主要中心思想就是關於實際畫圖的都使用 &lt;code>ax&lt;/code>，只有在建立跟輸出時才用 &lt;code>plt&lt;/code>。下方會有範例。
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLV39YBiIYsdoJnTbBEfB23amAIXrpG65S-cq4ozucbJ13wlQNkKfsV7w0pWLeCnIDAYgVkj6tTpEv1tIPdm_v5S2Vv8n_Uvw1102twnZMG9OZhC2yxgNj6-c-hFpnRggyEL4nNPjpwzf5-fUcWH0ZUHBg=w385-h401-no" alt="Parts of a Figure"> &lt;sup id="fnref:4">&lt;a href="#fn:4" class="footnote-ref" role="doc-noteref">4&lt;/a>&lt;/sup>&lt;/p>
+&lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLX_WJxX_h8KTZjCPicenrC56Y2v4B4Trd6ft1DHJDG_YxycOsar94WCx073O9GWS7wSZZKH0QSSEQrWRAosK3zz16F73MvbT3J0O6ERQB0U2dCbhSis7RlQdWDSG95_TQmYua9DBi3kdTFpw4DmqwtHSA=s800-no" alt="components of a Matplotlib figure"> &lt;sup id="fnref:5">&lt;a href="#fn:5" class="footnote-ref" role="doc-noteref">5&lt;/a>&lt;/sup>&lt;/p>
+&lt;h1 id="實際範例">實際範例&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>data.csv&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-txt" data-lang="txt">n,A,B,C,D
+10,1,2,1,6
+100,3,3,6,6
+1000,2,9,1,6
+10000,3,7,7,6
+100000,3,10,8,6
+1000000,16,19,2,6
+10000000,125,86,41,6
+&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>plot.py&lt;/code>:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-python" data-lang="python">&lt;span style="color:#f92672">import&lt;/span> matplotlib.pyplot &lt;span style="color:#f92672">as&lt;/span> plt
+&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#f92672">as&lt;/span> np
+&lt;span style="color:#75715e"># Config&lt;/span>
+fin &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;data.csv&amp;#34;&lt;/span>
+fout &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;result.pdf&amp;#34;&lt;/span>
+x_str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;x label&amp;#34;&lt;/span>
+y_str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;y label&amp;#34;&lt;/span>
+title_str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Title&amp;#34;&lt;/span>
+col_names &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;n&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;C&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;D&amp;#39;&lt;/span>] &lt;span style="color:#75715e"># cannot contain any special char&lt;/span>
+col_label_names &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;A (a)&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B (b)&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;C&amp;#39;&lt;/span>]
+skip_cols &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;D&amp;#39;&lt;/span>]
+label_cols &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;C&amp;#39;&lt;/span>]
+add_dot_points &lt;span style="color:#f92672">=&lt;/span> [(&lt;span style="color:#ae81ff">10000&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B&amp;#39;&lt;/span>), (&lt;span style="color:#ae81ff">1000000&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>)]
+colors &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;red&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;black&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;green&amp;#39;&lt;/span>]
+&lt;span style="color:#75715e"># Read data&lt;/span>
+table &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>genfromtxt(fin, delimiter&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;,&amp;#39;&lt;/span>, skip_header&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, names&lt;span style="color:#f92672">=&lt;/span>col_names)
+&lt;span style="color:#66d9ef">print&lt;/span>(table)
+&lt;span style="color:#75715e"># Plot the figure&lt;/span>
+&lt;span style="color:#66d9ef">with&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>style&lt;span style="color:#f92672">.&lt;/span>context([&lt;span style="color:#e6db74">&amp;#39;science&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;ieee&amp;#39;&lt;/span>]):
+fig, ax &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplots()
+color_idx &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> i, col_name &lt;span style="color:#f92672">in&lt;/span> enumerate(col_names[&lt;span style="color:#ae81ff">1&lt;/span>:]):
+&lt;span style="color:#66d9ef">if&lt;/span> col_name &lt;span style="color:#f92672">in&lt;/span> skip_cols:
+&lt;span style="color:#66d9ef">continue&lt;/span>
+&lt;span style="color:#75715e"># Plot line&lt;/span>
+line &lt;span style="color:#f92672">=&lt;/span> ax&lt;span style="color:#f92672">.&lt;/span>plot(table[col_names[&lt;span style="color:#ae81ff">0&lt;/span>]], table[col_name], label&lt;span style="color:#f92672">=&lt;/span>col_label_names[i], color&lt;span style="color:#f92672">=&lt;/span>colors[color_idx])
+color_idx &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;span style="color:#75715e"># Plot data label&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> col_name &lt;span style="color:#f92672">in&lt;/span> label_cols:
+&lt;span style="color:#66d9ef">for&lt;/span> x, y &lt;span style="color:#f92672">in&lt;/span> zip(table[col_names[&lt;span style="color:#ae81ff">0&lt;/span>]], table[col_name]):
+ax&lt;span style="color:#f92672">.&lt;/span>annotate(f&lt;span style="color:#e6db74">&amp;#34;{y:.1f}&amp;#34;&lt;/span>, xy&lt;span style="color:#f92672">=&lt;/span>(x&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">0.0&lt;/span>&lt;span style="color:#f92672">*&lt;/span>x, y&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">0.2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>y), textcoords&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;data&amp;#39;&lt;/span>, fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span>, color&lt;span style="color:#f92672">=&lt;/span>line[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>get_color())
+&lt;span style="color:#75715e"># Plot special points&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> x, y &lt;span style="color:#f92672">in&lt;/span> zip(table[col_names[&lt;span style="color:#ae81ff">0&lt;/span>]], table[col_name]):
+&lt;span style="color:#66d9ef">if&lt;/span> (x, col_name) &lt;span style="color:#f92672">in&lt;/span> add_dot_points:
+ax&lt;span style="color:#f92672">.&lt;/span>plot(x, y, marker&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span>, markersize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span>, color&lt;span style="color:#f92672">=&lt;/span>line[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>get_color())
+ax&lt;span style="color:#f92672">.&lt;/span>legend(fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>) &lt;span style="color:#75715e"># according to col_label_names&lt;/span>
+&lt;span style="color:#75715e"># ax.set_title(title_str) # not used by default&lt;/span>
+&lt;span style="color:#75715e"># x, y label&lt;/span>
+ax&lt;span style="color:#f92672">.&lt;/span>set_xlabel(x_str, fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">6&lt;/span>)
+ax&lt;span style="color:#f92672">.&lt;/span>set_ylabel(y_str, fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">7&lt;/span>)
+&lt;span style="color:#75715e"># x, y tick&lt;/span>
+ax&lt;span style="color:#f92672">.&lt;/span>set_xscale(&lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>, base&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+ax&lt;span style="color:#f92672">.&lt;/span>set_yscale(&lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>)
+ax&lt;span style="color:#f92672">.&lt;/span>xaxis&lt;span style="color:#f92672">.&lt;/span>set_tick_params(labelsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>)
+ax&lt;span style="color:#f92672">.&lt;/span>yaxis&lt;span style="color:#f92672">.&lt;/span>set_tick_params(labelsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span>)
+ax&lt;span style="color:#f92672">.&lt;/span>yaxis&lt;span style="color:#f92672">.&lt;/span>tick_left()
+ax&lt;span style="color:#f92672">.&lt;/span>autoscale()
+plt&lt;span style="color:#f92672">.&lt;/span>tight_layout()
+&lt;span style="color:#75715e"># plt.show()&lt;/span>
+plt&lt;span style="color:#f92672">.&lt;/span>savefig(fout, bbox_inches&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;tight&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>程式碼解釋
+&lt;ul>
+&lt;li>[10], [11] 會有兩個 name 主要是因為讀取時的欄位名稱不能有特殊符號，所以在繪製時才綁定顯示名稱 [31]&lt;/li>
+&lt;li>[12] 某些資料要跳過但是檔案裡還是會有&lt;/li>
+&lt;li>[13] 哪些需要標出資料標籤的數值&lt;/li>
+&lt;li>[14] 哪些資料點需要特別用圓點標記&lt;/li>
+&lt;li>[37] &lt;code>f&amp;quot;{y:.1f}&amp;quot;&lt;/code> 可設定資料標籤輸出格式，例如: 取到小數點第一位。&lt;code>x-0.0*x, y-0.2*y&lt;/code> 後方有減去一個位移是用來避免線段與資料標籤重疊&lt;/li>
+&lt;li>[46] 一般論文中的圖表標題是用 Latex 語法 (caption) 來定義，所以生成時不需要，不過若是要拿來做簡報的話有標題會比較好。&lt;/li>
+&lt;li>[48] ~ [56] 設定 x、y 軸資訊&lt;/li>
+&lt;li>[61] 存成 pdf&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>成果
+&lt;img src="https://lh3.googleusercontent.com/pw/AM-JKLVRuXJ_D4kAHvBiLUnd0ZWrsFPlulrVEN38RvmizykmT85sxj3YvLEKvhSlvPg3TuEArI9VyFbEMxSUnTH0x6I3U1IR1ulU_xDOpyiZa-yO9KTioHJLjxhOVzzc4S559_IPZY_kdHSszjQhDndC8PtUYw=w1738-h1301-no" alt="折線圖">&lt;/li>
+&lt;/ul>
+&lt;h1 id="其他">其他&lt;/h1>
+&lt;p>用 Matplotlib 在一個 Figure 中塞入多個 Axes 是可以的，不過我目前遇到的都是用 Latex 的 minipage 來完成，這樣就可以有各自的 label 可以分開 ref。如下，不過這就有點離題了。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-latex" data-lang="latex">&lt;span style="color:#66d9ef">\begin&lt;/span>{table}[tbh!]
+&lt;span style="color:#66d9ef">\centering&lt;/span>
+&lt;span style="color:#66d9ef">\begin&lt;/span>{minipage}[t]{.47&lt;span style="color:#66d9ef">\linewidth&lt;/span>}
+&lt;span style="color:#66d9ef">\includegraphics&lt;/span>&lt;span style="color:#a6e22e">[width=\linewidth]&lt;/span>{figures/A.pdf}
+&lt;span style="color:#66d9ef">\captionof&lt;/span>{figure}{AAA}
+&lt;span style="color:#66d9ef">\label&lt;/span>{fig:A}
+&lt;span style="color:#66d9ef">\end&lt;/span>{minipage}
+&lt;span style="color:#66d9ef">\qquad&lt;/span>
+&lt;span style="color:#66d9ef">\begin&lt;/span>{minipage}[t]{.47&lt;span style="color:#66d9ef">\linewidth&lt;/span>}
+&lt;span style="color:#66d9ef">\includegraphics&lt;/span>&lt;span style="color:#a6e22e">[width=\linewidth]&lt;/span>{figures/B.pdf}
+&lt;span style="color:#66d9ef">\captionof&lt;/span>{figure}{BBB}
+&lt;span style="color:#66d9ef">\label&lt;/span>{fig:B}
+&lt;span style="color:#66d9ef">\end&lt;/span>{minipage}
+&lt;span style="color:#66d9ef">\end&lt;/span>{table}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="錯誤排除">錯誤排除&lt;/h1>
+&lt;h2 id="filenotfounderror-missing-font-metrics-file-rsfs10">&lt;code>FileNotFoundError: missing font metrics file: rsfs10&lt;/code>&lt;/h2>
+&lt;p>Solution &lt;sup id="fnref:6">&lt;a href="#fn:6" class="footnote-ref" role="doc-noteref">6&lt;/a>&lt;/sup>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&amp;gt; miktex-maketfm.exe rsfs10
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="permissionerror-errno-13-permission-denied-resultpdf">&lt;code>PermissionError: [Errno 13] Permission denied: 'result.pdf'&lt;/code>&lt;/h2>
+&lt;p>輸出覆寫 pdf 時有視窗開著該檔案，把 result.pdf 關掉即可。&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>&lt;a href="https://tecadmin.net/how-to-install-python-3-9-on-ubuntu-18-04/">https://tecadmin.net/how-to-install-python-3-9-on-ubuntu-18-04/&lt;/a> &lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2" role="doc-endnote">
+&lt;p>&lt;a href="https://stackoverflow.com/a/59815372">virtualenv in PowerShell?&lt;/a> &lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:3" role="doc-endnote">
+&lt;p>&lt;a href="https://github.com/garrettj403/SciencePlots">https://github.com/garrettj403/SciencePlots&lt;/a> &lt;a href="#fnref:3" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:4" role="doc-endnote">
+&lt;p>&lt;a href="https://matplotlib.org/1.5.1/faq/usage_faq.html#parts-of-a-figure">https://matplotlib.org/1.5.1/faq/usage_faq.html#parts-of-a-figure&lt;/a> &lt;a href="#fnref:4" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:5" role="doc-endnote">
+&lt;p>&lt;a href="https://matplotlib.org/stable/tutorials/introductory/usage.html#parts-of-a-figure">https://matplotlib.org/stable/tutorials/introductory/usage.html#parts-of-a-figure&lt;/a> &lt;a href="#fnref:5" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:6" role="doc-endnote">
+&lt;p>&lt;a href="https://stackoverflow.com/a/65965075">https://stackoverflow.com/a/65965075&lt;/a> &lt;a href="#fnref:6" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Use VSCode to Write LaTeX Paper</title><link>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</link><pubDate>Wed, 11 Aug 2021 13:50:05 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
 &lt;p>記錄一下如何用 VSCode 寫 paper&lt;/p>
 &lt;h1 id="前言">前言&lt;/h1>
 &lt;p>為了測完整的安裝流程，我用 virtualbox 裝了一個乾淨的 windows 10。記錄到可以編譯 latex 的最簡化流程就好，所以本篇的終端機使用的是 powershell 而不是 WSL。在 Ubuntu 理論上也可以套用這個方法，不過安裝的套件就不同，例如: MikTex 就要換成 Tex Live &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
