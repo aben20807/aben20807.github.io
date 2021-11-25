@@ -47,7 +47,7 @@
 &lt;/blockquote>
 &lt;p>其中的四者就是禮、義、廉、恥應該不用多說 (去複習國文啦&lt;/p></description></item><item><title>Makefile for Testing</title><link>https://aben20807.github.io/posts/20190216-makefile-for-testing/</link><pubDate>Sat, 16 Feb 2019 10:00:48 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190216-makefile-for-testing/</guid><description>&lt;p>Makefile 可以執行終端機的指令，所以也可以搭配重新導向 (redirection) 用來做簡單測試&lt;/p>
 &lt;p>例如：&lt;/p>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-make" data-lang="make">&lt;span style="color:#a6e22e">test&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-make" data-lang="make">&lt;span style="color:#a6e22e">test&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
 ./a.out &amp;lt; input.txt &amp;gt; output.txt
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>這樣只需要用 &lt;code>$ make test&lt;/code> 就可以測試輸入 input.txt，並把結果存到 output.txt&lt;/p></description></item><item><title>咖啡木蠹蛾</title><link>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</link><pubDate>Tue, 12 Feb 2019 22:51:30 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20190212-zeuzera-coffeae-nietner/</guid><description>&lt;p>(以下圖片皆攝於 2019.02.03)&lt;/p>
 &lt;p>咖啡木蠹蛾，學名 Zeuzera Coffeae Nietner
