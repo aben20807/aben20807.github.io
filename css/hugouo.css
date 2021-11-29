@@ -216,13 +216,8 @@ img {
   line-height: 0.1rem;
 }
 
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
+a,
+a:hover,
 .no-underline-on-hover:hover {
   text-decoration: none;
 }
@@ -511,4 +506,37 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
+}
+.footer {
+  border-top: 1px solid #dfe2e5;
+  border-bottom: 1px solid #dfe2e5;
+  text-align:center;
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dt {
+  display: block;
+  float: left;
+  width: 40%;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+dt:after {
+  content: ':';
+  margin: 0;
+  padding: 0;
+}
+
+dd {
+  display: block;
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
