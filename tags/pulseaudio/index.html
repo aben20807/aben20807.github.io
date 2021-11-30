@@ -38,7 +38,7 @@
 <a class="link f5 ml2 dim near-white fas fa-rss-square no-underline-on-hover" href=https://aben20807.github.io/index.xml title="RSS Feed"></a>
 <a class="link f5 ml2 dim near-white fas fa-envelope no-underline-on-hover" href=https://aben20807.github.io/subscription/ role=subscription title=Subscription></a>
 <a class="link f5 ml2 dim near-white fas fa-search no-underline-on-hover" href=https://aben20807.github.io/search/ role=search title=Search></a>
-<div class=js-toggle-wrapper>
+<div class="js-toggle-wrapper f5 ml1 dim">
 <div class=js-toggle>
 <div class=js-toggle-track>
 <div class=js-toggle-track-check>
@@ -52,12 +52,12 @@
 <input class=js-toggle-screenreader-only type=checkbox aria-label="Switch between Dark and Light mode">
 </div>
 </div>
-<style>.js-toggle-wrapper{display:inline;margin:0 auto;width:fit-content}.js-toggle{touch-action:pan-x;display:inline-block;position:relative;cursor:pointer;background-color:transparent;border:0;padding:0;-webkit-touch-callout:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent}.js-toggle-screenreader-only{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.js-toggle-track{width:50px;height:24px;padding:0;border-radius:30px;background-color:#0f1114;transition:all .2s ease}.js-toggle-track-check{position:absolute;width:17px;height:17px;left:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:0;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-check{opacity:1;transition:opacity .25s ease}.js-toggle-track-x{position:absolute;width:17px;height:17px;right:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:1;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-x{opacity:0}.js-toggle-thumb{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background-color:#fafafa;box-sizing:border-box;transition:all .5s cubic-bezier(.23,1,.32,1)0ms;transform:translateX(0)}.js-toggle--checked .js-toggle-thumb{transform:translateX(26px);border-color:#19ab27}.js-toggle--focus .js-toggle-thumb{box-shadow:0 0 2px 3px #ffa7c4}.js-toggle:active .js-toggle-thumb{box-shadow:0 0 5px 5px #ffa7c4}</style>
+<style>.js-toggle-wrapper{display:inline;width:fit-content}.js-toggle{touch-action:pan-x;display:inline-block;position:relative;cursor:pointer;background-color:transparent;border:0;padding:0;-webkit-touch-callout:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent}.js-toggle-screenreader-only{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.js-toggle-track{width:2rem;height:.95rem;padding:0;border-radius:1.3rem;background-color:#0f1114;transition:all .2s ease}.js-toggle-track-check{position:absolute;width:.7rem;height:.7rem;left:.2rem;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:0;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-check{opacity:1;transition:opacity .25s ease}.js-toggle-track-x{position:absolute;width:.7rem;height:.7rem;right:.2rem;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:1;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-x{opacity:0}.js-toggle-thumb{position:absolute;top:.03rem;left:.03rem;width:.9rem;height:.9rem;border-radius:50%;background-color:#fafafa;box-sizing:border-box;transition:all .5s cubic-bezier(.23,1,.32,1)0ms;transform:translateX(0)}.js-toggle--checked .js-toggle-thumb{transform:translateX(1.05rem);border-color:#19ab27}.js-toggle--focus .js-toggle-thumb{box-shadow:0 0 2px 3px #ffa7c4}.js-toggle:active .js-toggle-thumb{box-shadow:0 0 5px 5px #ffa7c4}</style>
 <script>var body=document.body,switcher=document.getElementsByClassName('js-toggle')[0];switcher.addEventListener("click",function(){this.classList.toggle('js-toggle--checked'),this.classList.add('js-toggle--focus'),this.classList.contains('js-toggle--checked')?(body.classList.add('dark-mode'),localStorage.setItem('darkMode','true')):(body.classList.remove('dark-mode'),setTimeout(function(){localStorage.removeItem('darkMode')},100))}),localStorage.getItem('darkMode')&&(switcher.classList.add('js-toggle--checked'),body.classList.add('dark-mode'))</script>
 </div>
 </nav>
 <div id=hdr class="tc-l pv4-ns pv5-l pv2 ph3 ph4-ns">
-<h1 class="near-white mt1-ns f3 fw3 pt5 mb0 mt0 lh-title">
+<h1 class="near-white mt1-ns f2 fw3 pt5 mb0 mt0 lh-title">
 pulseaudio</h1>
 <h2 class="near-white mt3-l mb4-l fw1 f6 f3-l measure-wide-l center lh-copy mt2 mb3">
 <span id=subtitle>
@@ -221,7 +221,7 @@ pulseaudio</h1>
 </div>
 </main>
 </main>
-<div id=gotop_btn class=post-meta><center><i class="fas fa-chevron-up"></i></center></div>
+<div id=gotop_btn class=post-meta><center><i class="fas fa-chevron-up tc-ns justify-center-l v-mid-l"></i></center></div>
 <footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role=contentinfo>
 <p class="w-50 fr tr nested-links" style=font-size:.875rem!important>
 Made with Hugo and
