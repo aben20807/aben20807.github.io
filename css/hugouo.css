@@ -540,3 +540,93 @@ dd {
   margin: 0;
   padding: 0;
 }
+
+/* dark mode begin
+ Ref: https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/
+*/
+body.dark-mode, 
+body.dark-mode main *
+:not(pre, pre *, code, a, .info-msg, .info-msg *, .success-msg, .success-msg *, .warning-msg, .warning-msg *, .error-msg, .error-msg *, .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *) {
+  background: rgb(45, 45, 45);
+  color: #f5f5f5;
+}
+body.dark-mode pre,
+body.dark-mode code {
+  background: rgb(39,40,33);
+}
+body.dark-mode .bg-white {
+  background: rgb(45, 45, 45);
+}
+body.dark-mode .post-item .meta,
+body.dark-mode .post-item a span {
+  color: #f5f5f5;
+}
+body.dark-mode .nested-links a,
+body.dark-mode .nested-links a i.fa-chevron-circle-right {
+  color: var(--deep-orange);
+}
+body.dark-mode a:hover,
+body.dark-mode .nested-links a:hover,
+body.dark-mode .post-meta a:hover,
+body.dark-mode a:hover .post-meta,
+body.dark-mode .post-item a:hover span {
+  color: var(--light-orange);
+  transition: color 0.15s ease-in;
+}
+
+body.dark-mode h1.article-heading:before,
+body.dark-mode h2.article-heading:before,
+body.dark-mode h3.article-heading:before,
+body.dark-mode h4.article-heading:before,
+body.dark-mode h5.article-heading:before,
+body.dark-mode h6.article-heading:before {
+  color: var(--light-orange);
+}
+body.dark-mode .toc-link,
+body.dark-mode .toc-nav,
+body.dark-mode .toc-item {
+  color: #f5f5f5;
+}
+body.dark-mode .toc-nav a.toc-link.active,
+body.dark-mode .toc-nav a.toc-link:active,
+body.dark-mode .toc-nav a.toc-link:hover {
+  color: var(--light-orange);
+  border-left: 0.125rem solid var(--light-orange);
+}
+
+body.dark-mode .tags-sm a,
+body.dark-mode .tags-md a,
+body.dark-mode .post-meta a {
+  color: #d1d1d1;
+}
+
+body.dark-mode .tags-sm a:hover,
+body.dark-mode .tags-sm a:active,
+body.dark-mode .tags-md a:hover,
+body.dark-mode .tags-md a:active {
+  color: var(--light-orange);
+  border: 1px solid var(--light-orange);
+}
+body.dark-mode blockquote {
+  border-left: 8px solid var(--light-orange);
+}
+
+body.dark-mode blockquote::before {
+  color: var(--light-orange);
+}
+/* dark mode end */
+
+#gotop_btn {
+  display: none;
+  right: 1%;
+  bottom: 5%;
+  float: right;
+  width: 44px;
+  position: sticky!important;
+  font-size: 80%;
+  background: #444444;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 1;
+}

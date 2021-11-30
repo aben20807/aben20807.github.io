@@ -102,3 +102,19 @@ $(window).bind("scroll", function () {
     }
   });
 });
+
+/* gotop_btn */
+$(function(){
+  $("#gotop_btn").click(function(){
+      jQuery("html,body").animate({
+          scrollTop:0
+      },1000);
+  });
+  $(window).scroll(function() {
+      if ( $(this).scrollTop() > 300){
+          $('#gotop_btn').fadeIn("fast");
+      } else {
+          $('#gotop_btn').stop().fadeOut("fast");
+      }
+  });
+});
