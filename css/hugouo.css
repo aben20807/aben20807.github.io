@@ -563,15 +563,20 @@ body.dark-mode .toc-nav,
 body.dark-mode .toc-item {
   color: #f5f5f5;
 }
-body.dark-mode .nested-links a,
-body.dark-mode .nested-links a i.fa-chevron-circle-right {
+body.dark-mode a,
+body.dark-mode a i.fa-chevron-circle-right,
+body.dark-mode a i.fa-arrow-circle-left,
+body.dark-mode a i.fa-arrow-circle-right {
   color: var(--deep-orange);
+  transition: color 0.15s ease-in;
 }
 body.dark-mode a:hover,
-body.dark-mode .nested-links a:hover,
 body.dark-mode .post-meta a:hover,
 body.dark-mode a:hover .post-meta,
-body.dark-mode .post-item a:hover span {
+body.dark-mode .post-item a:hover span,
+body.dark-mode a:hover i.fa-chevron-circle-right,
+body.dark-mode a:hover i.fa-arrow-circle-left,
+body.dark-mode a:hover i.fa-arrow-circle-right {
   color: var(--light-orange);
   transition: color 0.15s ease-in;
 }
@@ -603,6 +608,7 @@ body.dark-mode .tags-md a:hover,
 body.dark-mode .tags-md a:active {
   color: var(--light-orange);
   border: 1px solid var(--light-orange);
+  box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.16), 0 2px 10px 0 rgba(255, 255, 255, 0.12);
 }
 body.dark-mode blockquote {
   border-left: 8px solid var(--light-orange);
