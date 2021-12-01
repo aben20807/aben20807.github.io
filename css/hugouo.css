@@ -410,24 +410,25 @@ font.douyin {
 }
 a.footnote-ref,
 a.footnote-backref {
-  color: var(--deep-orange);
+  color: var(--deep-blue);
 }
 a.footnote-ref:hover,
 a.footnote-backref:hover {
-  color: var(--light-orange);
+  color: var(--light-blue);
   transition: color 0.15s ease-in;
 }
+
 .footnote-ref:before,
 a.footnote-backref:before {
   font-family: "Roboto Mono";
-  content: "[";
-  color: var(--deep-orange);
+  content: "";
+  color: var(--deep-blue);
 }
 .footnote-ref:after,
 a.footnote-backref:after {
   font-family: "Roboto Mono";
-  content: "]";
-  color: var(--deep-orange);
+  content: "";
+  color: var(--deep-blue);
 }
 .footnotes p {
   margin: 0;
@@ -544,7 +545,8 @@ dd {
 /* dark mode begin
  Ref: https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/
 */
-body.dark-mode, 
+body.dark-mode,
+body.dark-mode .bg-white,
 body.dark-mode main *
 :not(pre, pre *, code, a, .info-msg, .info-msg *, .success-msg, .success-msg *, .warning-msg, .warning-msg *, .error-msg, .error-msg *, .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *) {
   background: rgb(45, 45, 45);
@@ -554,11 +556,11 @@ body.dark-mode pre,
 body.dark-mode code {
   background: rgb(39,40,33);
 }
-body.dark-mode .bg-white {
-  background: rgb(45, 45, 45);
-}
 body.dark-mode .post-item .meta,
-body.dark-mode .post-item a span {
+body.dark-mode .post-item a span,
+body.dark-mode .toc-link,
+body.dark-mode .toc-nav,
+body.dark-mode .toc-item {
   color: #f5f5f5;
 }
 body.dark-mode .nested-links a,
@@ -573,19 +575,14 @@ body.dark-mode .post-item a:hover span {
   color: var(--light-orange);
   transition: color 0.15s ease-in;
 }
-
 body.dark-mode h1.article-heading:before,
 body.dark-mode h2.article-heading:before,
 body.dark-mode h3.article-heading:before,
 body.dark-mode h4.article-heading:before,
 body.dark-mode h5.article-heading:before,
-body.dark-mode h6.article-heading:before {
+body.dark-mode h6.article-heading:before,
+body.dark-mode blockquote::before {
   color: var(--light-orange);
-}
-body.dark-mode .toc-link,
-body.dark-mode .toc-nav,
-body.dark-mode .toc-item {
-  color: #f5f5f5;
 }
 body.dark-mode .toc-nav a.toc-link.active,
 body.dark-mode .toc-nav a.toc-link:active,
@@ -610,10 +607,6 @@ body.dark-mode .tags-md a:active {
 body.dark-mode blockquote {
   border-left: 8px solid var(--light-orange);
 }
-
-body.dark-mode blockquote::before {
-  color: var(--light-orange);
-}
 /* dark mode end */
 
 #gotop_btn {
@@ -630,4 +623,5 @@ body.dark-mode blockquote::before {
   cursor: pointer;
   border-radius: 8px;
   z-index: 1;
+  margin: auto;
 }
