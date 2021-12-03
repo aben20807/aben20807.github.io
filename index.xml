@@ -1,4 +1,110 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Ubuntu 中文輸入法 Hime</title><link>https://aben20807.github.io/posts/20211018-ubuntu-chinese-input-hime/</link><pubDate>Mon, 18 Oct 2021 09:28:11 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20211018-ubuntu-chinese-input-hime/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang Po-Hsuan)</managingEditor><webMaster>aben20807@gmail.com (Huang Po-Hsuan)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>大 大 大更新</title><link>https://aben20807.github.io/posts/20211203-huge-update-on-this-website/</link><pubDate>Fri, 03 Dec 2021 09:50:48 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20211203-huge-update-on-this-website/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
+&lt;p>本網站最近的更新項目&lt;/p>
+&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>最近做了許多大更新，果然還是有一個自己的主題 (theme) 比較自由，但是缺點就是會一直改來改去，似乎沒有盡頭。&lt;/p>
+&lt;p>&lt;del>哎呀，昨天 20211202 沒發到文。&lt;/del>&lt;/p>
+&lt;p>寫完發現太長了，所以右邊有開啟 toc。&lt;/p>
+&lt;h1 id="auto-deploy-from-the-private-repo">Auto deploy from the private repo&lt;/h1>
+&lt;h2 id="private-repo">Private repo&lt;/h2>
+&lt;p>本網站已經從原先開源發文內容的方式改為把該 repo 設定為私人，主要原因是為了防止別人輕易拿到原始內容進而能夠輕鬆盜取。先前我也已經檢舉了一堆內容農場，雖然防不勝防，不過我看到有些討論是建議把原始內容隱藏起來。再來私人模式下我也比較能夠控制一些內容何時可以公開發佈，這大概可以適用在鐵人賽預先囤文 (雖然我還不知道會不會參加)。原先舊的因為星星數頗多，所以維持公開並改為純記錄 issue (發文靈感)。&lt;/p>
+&lt;h2 id="github-action">GitHub Action&lt;/h2>
+&lt;p>此外，為了發文方便性，佈署方式已經從原先在本地端編譯好網站再推上去改為利用 GitHub Action。也就是我只要將內容更新推上 private repo，則 GitHub 那邊會自動幫忙編譯及推到&lt;a href="https://github.com/aben20807/aben20807.github.io">目標 repo&lt;/a>。因此整理一下，為了這個網站我現在有4個 repo：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/aben20807/hugOuO">aben20807/hugOuO&lt;/a>：主題&lt;/li>
+&lt;li>&lt;a href="https://github.com/aben20807/blog-post">aben20807/blog-post (private)&lt;/a>：發文內容&lt;/li>
+&lt;li>&lt;a href="https://github.com/aben20807/blog-post-issues">aben20807/blog-post-issues&lt;/a>：記錄靈感，&lt;del>收集星星&lt;/del>&lt;/li>
+&lt;li>&lt;a href="https://github.com/aben20807/aben20807.github.io">aben20807/aben20807.github.io&lt;/a>：渲染成此網站的目標 repo&lt;/li>
+&lt;/ul>
+&lt;p>為了使用 GitHub Action 完成自動佈署，我用了以下工具：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/peaceiris/actions-hugo">peaceiris/actions-hugo&lt;/a>：用於使用 hugo 編譯網站&lt;/li>
+&lt;li>&lt;a href="https://github.com/cpina/github-action-push-to-another-repository">cpina/github-action-push-to-another-repository-directory&lt;/a>：因為我的內容跟渲染 repo 分離，所以需要這個工具推到另外一個 repo，需要按照教學申請 &lt;code>API_TOKEN_GITHUB&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://github.com/nektos/act">nektos/act&lt;/a>：用於本地端測試 yaml 可不可以動&lt;/li>
+&lt;/ul>
+&lt;p>另外有一些小技巧會用到：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>set-output&lt;/code>: &lt;a href="https://stackoverflow.com/a/65616499">https://stackoverflow.com/a/65616499&lt;/a>&lt;/li>
+&lt;li>Multiple lines for git message in yaml: &lt;a href="https://stackoverflow.com/a/5064653">https://stackoverflow.com/a/5064653&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;details>
+&lt;summary>&lt;span>完整 &lt;code>blog-post/.github/workflows/deploy.yml&lt;/code> 內容 &lt;/span>&lt;/summary>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Deploy&lt;/span>
+&lt;span style="color:#f92672">on&lt;/span>:
+&lt;span style="color:#f92672">push&lt;/span>:
+&lt;span style="color:#f92672">branches&lt;/span>:
+- &lt;span style="color:#ae81ff">master&lt;/span>
+&lt;span style="color:#f92672">jobs&lt;/span>:
+&lt;span style="color:#f92672">deploy&lt;/span>:
+&lt;span style="color:#f92672">runs-on&lt;/span>: &lt;span style="color:#ae81ff">ubuntu-18.04&lt;/span>
+&lt;span style="color:#f92672">concurrency&lt;/span>:
+&lt;span style="color:#f92672">group&lt;/span>: &lt;span style="color:#ae81ff">${{ github.workflow }}-${{ github.ref }}&lt;/span>
+&lt;span style="color:#f92672">steps&lt;/span>:
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Dump GitHub context&lt;/span>
+&lt;span style="color:#f92672">env&lt;/span>:
+&lt;span style="color:#f92672">GITHUB_CONTEXT&lt;/span>: &lt;span style="color:#ae81ff">${{ toJson(github) }}&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;$GITHUB_CONTEXT&amp;#34;&lt;/span>
+- &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v2&lt;/span>
+&lt;span style="color:#f92672">with&lt;/span>:
+&lt;span style="color:#f92672">submodules&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#75715e"># Fetch Hugo themes (true OR recursive)&lt;/span>
+&lt;span style="color:#f92672">fetch-depth&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#75715e"># Fetch all history for .GitInfo and .Lastmod&lt;/span>
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Setup Hugo&lt;/span>
+&lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">peaceiris/actions-hugo@v2&lt;/span>
+&lt;span style="color:#f92672">with&lt;/span>:
+&lt;span style="color:#f92672">hugo-version&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;0.89.4&amp;#39;&lt;/span>
+&lt;span style="color:#f92672">extended&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Build&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">hugo --gc --minify --cleanDestinationDir&lt;/span>
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Copy README.md&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">cp README_web.md public/README.md&lt;/span>
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Retrieve commit message&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">|&lt;/span> &lt;span style="color:#75715e"># https://trstringer.com/github-actions-multiline-strings/&lt;/span>
+&lt;span style="color:#ae81ff">CMT_MSG_STR=$(cat &amp;lt;&amp;lt; EOF&lt;/span>
+&lt;span style="color:#ae81ff">Deploy site `date &amp;#39;+%Y-%m-%d %H:%M:%S&amp;#39;`&lt;/span>
+&lt;span style="color:#ae81ff">by `hugo version`&lt;/span>
+&lt;span style="color:#ae81ff">from ORIGIN_COMMIT&lt;/span>
+&lt;span style="color:#ae81ff">EOF&lt;/span>
+&lt;span style="color:#ae81ff">)&lt;/span>
+&lt;span style="color:#ae81ff">CMT_MSG_STR=&amp;#34;${CMT_MSG_STR//$&amp;#39;\n&amp;#39;/&amp;#39;%0A&amp;#39;}&amp;#34;&lt;/span>
+&lt;span style="color:#ae81ff">echo &amp;#34;::set-output name=CMT_MSG::$CMT_MSG_STR&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">id&lt;/span>: &lt;span style="color:#ae81ff">message&lt;/span>
+- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Deploy&lt;/span>
+&lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">cpina/github-action-push-to-another-repository@main&lt;/span>
+&lt;span style="color:#f92672">env&lt;/span>:
+&lt;span style="color:#f92672">API_TOKEN_GITHUB&lt;/span>: &lt;span style="color:#ae81ff">${{ secrets.API_TOKEN_GITHUB }}&lt;/span>
+&lt;span style="color:#f92672">with&lt;/span>:
+&lt;span style="color:#f92672">source-directory&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;public&amp;#39;&lt;/span>
+&lt;span style="color:#f92672">destination-github-username&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;aben20807&amp;#39;&lt;/span>
+&lt;span style="color:#f92672">destination-repository-name&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;aben20807.github.io&amp;#39;&lt;/span>
+&lt;span style="color:#f92672">commit-message&lt;/span>: &lt;span style="color:#ae81ff">${{ steps.message.outputs.CMT_MSG }}&lt;/span>
+&lt;span style="color:#f92672">user-email&lt;/span>: &lt;span style="color:#ae81ff">aben20807@gmail.com&lt;/span>
+&lt;span style="color:#f92672">target-branch&lt;/span>: &lt;span style="color:#ae81ff">master&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>
+&lt;/details>
+&lt;h1 id="dark-mode">Dark mode&lt;/h1>
+&lt;p>最近流行深色模式，主要可能是因為 OLED 螢幕比較省電，另外是可以減低藍光對眼睛的傷害。原先我打算跳槽到其他炫炮主題 (e.g., &lt;a href="https://github.com/dillonzq/LoveIt">LoveIt&lt;/a>)，不過後來查到深色模式可能沒有很複雜，所以就自己用了。我直接從 &lt;a href="https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/">SWITCHING OFF THE LIGHTS PART TWO - ADDING DARK MODE TO HUGO&lt;/a> 複製過來，比較麻煩的是 CSS 的控制。因為我原先都是手動硬改，所以這裡也需要比較多功 (細節可以去&lt;a href="https://github.com/aben20807/hugOuO/blob/75d26d4f0eae8e796d0c781b3fd6cbd9641149fc/static/css/hugouo.css#L545-L622">主題 repo&lt;/a> 看)。不過算是有完成，最右上角有一個切換的按鈕，也是因為這次機會我才知道原來有 &lt;code>localStorage&lt;/code> 可以用。&lt;/p>
+&lt;h1 id="go-top-button">Go top button&lt;/h1>
+&lt;p>捲動一段距離後，右下角會出現一個前往最上面的按鈕。我的舊網站其實有這個功能，不過一直沒有移植過來，所以就趁這個更新的機會順便。這樣之後手機版就不用再手動滑到最上面。&lt;/p>
+&lt;h1 id="prevnext-post">Prev/Next post&lt;/h1>
+&lt;p>偶然發現有這個技巧，所以順便&amp;hellip;，我是從 &lt;a href="https://brianli.com/adding-next-previous-post-links-in-hugo/">Adding Next and Previous Post Links in Hugo&lt;/a> 直接複製，然後加上一些 CSS 的 class 以便符合主題。因此回覆的上面就會有上、下一篇的連結。&lt;/p>
+&lt;h1 id="series">Series&lt;/h1>
+&lt;p>後來發現還是需要有一個分類來管理系列文章，這跟原先的分類、標籤不同，主要針對同一高度相關的議題 (會標記 ep 幾)。例如：&lt;a href="https://aben20807.github.io/series/build-a-simple-compiler/">Build a simple compiler&lt;/a>。&lt;/p>
+&lt;h1 id="license-section">License section&lt;/h1>
+&lt;p>發現還不錯的設計：&lt;a href="https://jdhao.github.io/2021/11/28/how_i_write_blog/">jdhao&amp;rsquo;s blog&lt;/a>，不過我是自己找如何讓分號對齊：&lt;a href="https://stackoverflow.com/a/9891619">How to align about the colon in each line of text like movie credits often do&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://user-images.githubusercontent.com/14831545/143805190-77ad75c9-f91c-40cd-b220-587446c9cee2.png" alt="成果">&lt;/p>
+&lt;h1 id="與網站無關">與網站無關&lt;/h1>
+&lt;h2 id="new-phone">New phone&lt;/h2>
+&lt;p>本人換新手機了，雖然已經過一個多月，不過還是無法適應這個重量，可能是原先 LG V30+ 實在是太輕。這3年的區間感覺最大升級是相機的軟體部份。螢幕雖然有 120Hz 但是實在是太耗電所以我預設是關閉。螢幕下指紋比起實體辨識還是有準確率問題。內建喇叭有立體感我蠻喜歡的。&lt;/p>
+&lt;p>&lt;img src="https://images.unsplash.com/photo-1637924681501-458bb899b071?ixlib=rb-1.2.1&amp;amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=3774&amp;amp;q=80" alt="S21U 拍攝滿月">&lt;/p>
+&lt;h2 id="instagram">Instagram&lt;/h2>
+&lt;p>已斷捨離，聯絡請用 messenger，近況更新暫用 FB 或本網站，如果是最近拍了什麼可以去我的 &lt;a href="https://unsplash.com/@aben20807">unsplash&lt;/a>。&lt;/p>
+&lt;h1 id="最後來一段-ouo">最後來一段 OuO&lt;/h1>
+&lt;p>雖然我沒玩，也沒業配&amp;hellip;&lt;/p>
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
+padding-bottom: 56.25%; /*16:9*/ ">
+&lt;iframe src="https://www.youtube.com/embed/2BZdlStdhKk?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
+allowfullscreen frameborder="0" title="YouTube Video">
+&lt;/iframe>
+&lt;/div></description></item><item><title>Ubuntu 中文輸入法 Hime</title><link>https://aben20807.github.io/posts/20211018-ubuntu-chinese-input-hime/</link><pubDate>Mon, 18 Oct 2021 09:28:11 +0800</pubDate><author>aben20807@gmail.com (Huang Po-Hsuan)</author><guid>https://aben20807.github.io/posts/20211018-ubuntu-chinese-input-hime/</guid><description>&lt;!-- https://drive.google.com/uc?export=view&amp;id= -->
 &lt;p>更新一下設定部分&lt;/p>
 &lt;blockquote>
 &lt;p>輸入法編輯器（英語：input method editor，縮寫為IME），是指鍵盤擊鍵或滑鼠移動翻譯成字符來輸入的作業系統組件。 &amp;ndash; &lt;a href="https://zh.wikipedia.org/wiki/%E8%BE%93%E5%85%A5%E6%B3%95">wiki&lt;/a>&lt;/p>
@@ -1634,7 +1740,7 @@ std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672
 &lt;p>可以從結果看到後者可讀性較高&lt;/p>
 &lt;p>&lt;img src="https://lh3.googleusercontent.com/pw/ACtC-3cFVFsP6QcLV2K8_d7pOf3SfR4bWEjy5oM8KqVHXHST8h7ysiSwCAJd4-oZOfWB_v54ekhXZ5OSM36lAtLS0EhN-YoDXIkuRVkDPU6sH41P5jrtNhPYsvgnIeg55ZGXouiUQe-vblaoFGLo40Y315J0=w1708-h1112-no" alt="封面照片 - 執行結果">&lt;/p>
 &lt;p>我發佈後才被 YouTube 推薦&amp;hellip;，不過我最近也看一堆他的影片。
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/uX99t7GmuDc?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
@@ -1669,7 +1775,7 @@ allowfullscreen frameborder="0" title="YouTube Video">
 &lt;h1 id="鋼琴推薦-ludovico-einaudi---nuvole-bianche">鋼琴推薦 Ludovico Einaudi - Nuvole Bianche&lt;/h1>
 &lt;p>我忘記之前有沒有分享過。這是我小時候 (大一 or 大二) 在 C++ 助教的 FB 發現他有分享，真的很耐聽，我可以重複這首邊做事一整天。歌名是義大利文，翻譯是 white clouds，不過若是翻成中文就變成白雲，雖然這個梗可能有年紀了，不過我這輩的應該都還是有聽過這個藝人，之後可能就可以直接用中文說歌名而不會有其他聯想了。&lt;/p>
 &lt;p>&lt;img src="https://lh3.googleusercontent.com/nGdLDnNyT3t-GAiJLcxPfNVIuoEl_EelGs9VBAgRQ6s0K37bK5cYnNc3UA5uY6fv98fC5VbQ96jzo5jtNJJDG-WenPQc-EaJdegb9xDOxDG2A8QvX-stQDuPKj5oGm6e-MQGrYc9jBU=w1292-h229-no" alt="Ludovico Einaudi - Nuvole Bianche">&lt;/p>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/xyY4IZ3JDFE?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
@@ -2308,21 +2414,21 @@ $ ./transpose.sh all.txt &amp;gt; all_tr.txt
 &lt;hr>
 &lt;h2 id="20190921-補充">2019.09.21 補充&lt;/h2>
 &lt;p>怎麼講呢，認真要挑反而沒有一首代表性的 (跟《你的名字》有點像)，不過我會想放グランドエスケープ(Grand Escape) - RADWIMPS (feat.三浦透子)，因為是電影短版所以那種到高潮處嘎然而止的感覺跟電影有點像，重低音的背景我有點愛但不太適合狂聽就是了。&lt;/p>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/j4fIz2ozjO0?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
 &lt;/iframe>
 &lt;/div>
 &lt;p>不過，大丈夫 (We&amp;rsquo;ll be alright) - RADWIMPS 這首的歌詞最棒最符合這部主角的心境了 OuO&lt;/p>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/tEL6EQE66FA?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
 &lt;/iframe>
 &lt;/div>
 &lt;p>另外，我上面的淺薄心得都是在看任何影評之前靠著自己寫的，有一個短評我覺得跟我想表達的有點像可是講得非常好 (我太爛啦XD)：【影評/解析】《天氣之子》-為了你，我可以放棄世界 | 超粒方&lt;/p>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/xFc8aLYF2e0?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
@@ -3474,7 +3580,7 @@ __*粗斜體*__
 &lt;pre>
 {{&amp;lt; youtube &amp;quot;&lt;span>https://www.youtube.com/watch?v=jC3jnC1dsAg&lt;/span>&amp;quot; &amp;gt;}}
 &lt;/pre>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/jC3jnC1dsAg?start=1" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
@@ -3483,7 +3589,7 @@ allowfullscreen frameborder="0" title="YouTube Video">
 &lt;pre>
 {{&amp;lt; youtube &amp;quot;&lt;span>https://www.youtube.com/watch?v=jC3jnC1dsAg?t=500&lt;/span>&amp;quot; &amp;gt;}}
 &lt;/pre>
-&lt;div style=" position: relative; width: 100%; height: 100%;
+&lt;div class="mb4" style=" position: relative; width: 100%; height: 100%;
 padding-bottom: 56.25%; /*16:9*/ ">
 &lt;iframe src="https://www.youtube.com/embed/jC3jnC1dsAg?start=500" style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="center"
 allowfullscreen frameborder="0" title="YouTube Video">
