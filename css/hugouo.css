@@ -88,7 +88,8 @@ p,
 ul,
 li,
 summary,
-details {
+details,
+.link-reverse {
   font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
@@ -577,6 +578,7 @@ body.dark-mode a i.fa-arrow-circle-right {
   transition: color 0.15s ease-in;
 }
 body.dark-mode a:hover,
+body.dark-mode a:focus,
 body.dark-mode .post-meta a:hover,
 body.dark-mode a:hover .post-meta,
 body.dark-mode .post-item a:hover span,
