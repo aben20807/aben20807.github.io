@@ -74,7 +74,7 @@ Published
 <time datetime=2021-08-11T13:50:05+08:00>Aug 11, 2021</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7 class="no-underline category title-link near-white dim">軟體工具</a>
-<span class=display-print>at https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/>https://aben20807.github.io/posts/20210811-use-vscode-to-write-latex-paper/</a></span>
 </h2>
 </div>
 <div class="w-100 cf hide-print">
@@ -110,8 +110,8 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 <script src=https://code.iconify.design/1/1.0.0-rc6/iconify.min.js></script>
 <p>記錄一下如何用 VSCode 寫 paper</p>
 <h1 id=前言 class=article-heading>前言<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#前言><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
-<p>為了測完整的安裝流程，我用 virtualbox 裝了一個乾淨的 windows 10。記錄到可以編譯 latex 的最簡化流程就好，所以本篇的終端機使用的是 powershell 而不是 WSL。在 Ubuntu 理論上也可以套用這個方法，不過安裝的套件就不同，例如: MikTex 就要換成 Tex Live <sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>。</p>
-<p>本篇範例使用 ACM 釋出的模板 <sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>，因此 IEEE 或是學校畢業論文的模板可能會有所不同。</p>
+<p>為了測完整的安裝流程，我用 virtualbox 裝了一個乾淨的 windows 10。記錄到可以編譯 latex 的最簡化流程就好，所以本篇的終端機使用的是 powershell 而不是 WSL。在 Ubuntu 理論上也可以套用這個方法，不過安裝的套件就不同，例如: MikTex 就要換成 Tex Live <sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>。</p>
+<p>本篇範例使用 ACM 釋出的模板 <sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>，因此 IEEE 或是學校畢業論文的模板可能會有所不同。</p>
 <p>因為圖太多了，所以使用 &ldquo;示意圖&rdquo; 按鈕來隱藏圖片，想參考時打開即可。</p>
 <h2 id=latex-cheat-sheet class=article-heading>LaTeX Cheat sheet<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#latex-cheat-sheet><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <ul>
@@ -381,7 +381,8 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -407,6 +408,7 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -482,7 +484,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>

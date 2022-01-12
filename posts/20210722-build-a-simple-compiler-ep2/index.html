@@ -73,7 +73,7 @@ Published
 <time datetime=2021-07-22T19:17:52+08:00>Jul 22, 2021</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 class="no-underline category title-link near-white dim">編譯器</a>
-<span class=display-print>at https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep2/</a></span>
 </h2>
 </div>
 <div class="w-100 cf hide-print">
@@ -128,7 +128,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </div>
 <h1 id=語法剖析器-parser class=article-heading>語法剖析器 (Parser)<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#語法剖析器-parser><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>與詞法分析器 (Scanner) 相同，這裡我們仰賴語法剖析器產生器來建構符合我們定義文法的語法剖析器。</p>
-<p>由於我們再來會使用到的 JVM 功能是屬於 stack-based 的 virtual machine <sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>，所以在語法剖析時就要預先考慮產生對應的指令順序。</p>
+<p>由於我們再來會使用到的 JVM 功能是屬於 stack-based 的 virtual machine <sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>，所以在語法剖析時就要預先考慮產生對應的指令順序。</p>
 <h2 id=bison-yacc-三大區塊 class=article-heading>bison (yacc) 三大區塊<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#bison-yacc-三大區塊><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <p>這裡其實與上一篇幾乎相同 (用 <code>%%</code> 切了三個區塊出來)，只是中間區塊從 Rules section 換成 Grammar section，用來定義文法。</p>
 <p>寫法如下，其實跟課本學到的文法表示差不多只是換個符號表示。</p>
@@ -137,7 +137,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
     <span style=color:#f92672>|</span> Child4
 ;
 </code></pre></div><h2 id=action class=article-heading>Action<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#action><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>Action <sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> 可以在 parse 過程中插入某些定義的動作，如下方程式範例中大括號部分。可以看到並不限於在最後方加上，也可以在 child 間加上 action。所以在建構不同層的 symbol table 時可以利用這個特性。</p>
+<p>Action <sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> 可以在 parse 過程中插入某些定義的動作，如下方程式範例中大括號部分。可以看到並不限於在最後方加上，也可以在 child 間加上 action。所以在建構不同層的 symbol table 時可以利用這個特性。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c>Parent
     : Child1 {
         printf(<span style=color:#e6db74>&#34;after reducing Child1; before reducing Parent&#34;</span>);
@@ -149,7 +149,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
     }
 ;
 </code></pre></div><h2 id=利用-semantic-value-將下方資訊向上傳遞 class=article-heading>利用 Semantic value 將下方資訊向上傳遞<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#利用-semantic-value-將下方資訊向上傳遞><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>為了向上傳遞資訊，bison (yacc) 提供了這項功能，讓下方的 action 可以用 <code>$$</code> 來作為回傳值，而上方的 action 可以用 <code>$1</code>, <code>$2</code> 來存取對應來自下方的回傳值。要使用這項功能需要注意需要在 Definition section 宣告相關的型別 (包含 <code>%union</code>, <code>%token</code>, <code>%type</code>) <sup id=fnref:3><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup><sup id=fnref:4><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>。另外，數字所表示的位子需要把 action 也計算進去，如下方範例第一個 rule <code>$1</code> 來自 <code>Child1</code>; <code>$2</code> 來自 <code>Child1</code> 的 action, <code>$3</code> 來自 <code>Child2</code>, <code>$4</code> 來自 <code>Child3</code>。換 rule 則再從 1 開始，如 <code>$1</code> 來自 <code>Child4</code>。</p>
+<p>為了向上傳遞資訊，bison (yacc) 提供了這項功能，讓下方的 action 可以用 <code>$$</code> 來作為回傳值，而上方的 action 可以用 <code>$1</code>, <code>$2</code> 來存取對應來自下方的回傳值。要使用這項功能需要注意需要在 Definition section 宣告相關的型別 (包含 <code>%union</code>, <code>%token</code>, <code>%type</code>) <sup id=fnref:3 class=footnote-ref-wrapper><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup><sup id=fnref:4 class=footnote-ref-wrapper><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>。另外，數字所表示的位子需要把 action 也計算進去，如下方範例第一個 rule <code>$1</code> 來自 <code>Child1</code>; <code>$2</code> 來自 <code>Child1</code> 的 action, <code>$3</code> 來自 <code>Child2</code>, <code>$4</code> 來自 <code>Child3</code>。換 rule 則再從 1 開始，如 <code>$1</code> 來自 <code>Child4</code>。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c>Parent
     : Child1 {
         printf(<span style=color:#e6db74>&#34;after reducing Child1; before reducing Parent&#34;</span>);
@@ -587,7 +587,8 @@ Total lines: 5
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -613,6 +614,7 @@ Total lines: 5
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -703,7 +705,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>

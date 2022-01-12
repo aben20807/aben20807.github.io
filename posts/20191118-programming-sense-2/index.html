@@ -73,7 +73,7 @@ Published
 <time datetime=2019-11-18T11:36:33+08:00>Nov 18, 2019</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88 class="no-underline category title-link near-white dim">程式設計</a>
-<span class=display-print>at https://aben20807.github.io/posts/20191118-programming-sense-2/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20191118-programming-sense-2/>https://aben20807.github.io/posts/20191118-programming-sense-2/</a></span>
 </h2>
 </div>
 <div class="w-100 cf hide-print">
@@ -187,7 +187,7 @@ in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8
 <h2 id=小步前進持續驗證 class=article-heading>小步前進，持續驗證<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#小步前進持續驗證><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <blockquote>
 <p>寫大程式要像西敏寺那樣的大教堂一樣，先從一個功能完整的小教堂開始，然後把小部分拆掉蓋個更大更豪華的；如果一次就想蓋個超大的教堂，最後可能弄成一團廢墟，連禮拜的功能都沒有。<br>
-&mdash; Yoda 生活筆記 (Lee You Tang) <sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup></p>
+&mdash; Yoda 生活筆記 (Lee You Tang) <sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup></p>
 </blockquote>
 <p>等萬事俱備只欠打扣時我們就可以開始寫程式囉，最有效率的流程就是小步前進逐步驗證，不要一次就把程式打完，這樣執行發現跟結果不一樣時，問題就會非常難找，是輸入錯誤還是中間的邏輯錯誤或是輸出錯誤，若沒有逐步驗證的話，哪個階段出問題真的很難定位。</p>
 <p>我的做法會先將輸入部分完成，並且印出結果確認是否跟想像中的結果一模一樣，這裡必須要注意是否有奇怪的換行，或是輸出的順序不對等等問題，因為 C 的輸入會有許多隱藏的陷阱，也許是把空格也當成一個成員之類的。操作的指令也是把讀到的直接印出來確認。驗證完畢才繼續往下一步走。 細心檢查每一個魔鬼細節才能達到最終目的。</p>
@@ -197,11 +197,11 @@ in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8
 <h2 id=編譯訊息 class=article-heading>編譯訊息<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#編譯訊息><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <p>編譯器產生的訊息相當重要，而且不是只有 Error 重要，Warning 也是一大關鍵，所以千萬不要忽略這些警告，反而要將這些警告視為錯誤，這裡推薦在編譯的時候加上 <code>-Wall -Werror</code> 這樣那些警告就會導致編譯錯誤了。</p>
 <h2 id=設計測資 class=article-heading>設計測資<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#設計測資><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 <sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>。</p>
+<p>題目給的測資一定很少，但是實際會遇到的情況相當多，所以一定要多設計幾組測試資料，可以利用上一篇提到的重新導向 (Redirection) 的方式才不用每次都要重新手打，照理說可以再加上 Makefile 來幫忙，可以參考我的另外一篇 <sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>。</p>
 <h2 id=註解大法 class=article-heading>註解大法<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#註解大法><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <p>用註解部份程式碼來找出錯誤是最簡單的方式，但這我通常是用來幫別人抓錯的時候會用，因為我不確定其是否使用逐步驗證的方式，因此只有結果錯誤，但是中間的過程無法直接看出是哪邊有問題，利用註解的方式隔離未驗證的程式碼來逐步比對。</p>
 <h2 id=printf-好夥伴 class=article-heading><code>printf</code> 好夥伴<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#printf-好夥伴><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup id=fnref:3><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
+<p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考 <sup id=fnref:3 class=footnote-ref-wrapper><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup>。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>print_queue</span>(<span style=color:#66d9ef>struct</span> Queue <span style=color:#66d9ef>const</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>const</span> q) {
   <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>26</span>; i<span style=color:#f92672>++</span>) {
     printf(<span style=color:#e6db74>&#34;%c &#34;</span>, q<span style=color:#f92672>-&gt;</span>que[i]);
@@ -209,7 +209,7 @@ in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8
   printf(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
 }
 </code></pre></div><h2 id=gdb class=article-heading>GDB<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#gdb><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>GDB (<a href=https://www.gnu.org/software/gdb/ target=_blank rel="noreferrer noopener">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href=https://github.com/cyrus-and/gdb-dashboard target=_blank rel="noreferrer noopener">GDB dashboard</a> 可以參考 <sup id=fnref:4><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>。</p>
+<p>GDB (<a href=https://www.gnu.org/software/gdb/ target=_blank rel="noreferrer noopener">The GNU Project Debugger</a>) 是 segmentation fault 發生時的好夥伴，它可以幫助你找出程式是在哪裡發生錯誤，這樣就可以去找出對應的解決方法。關於原生的 GDB 有點樸素這點我之前有寫過一篇介紹 <a href=https://github.com/cyrus-and/gdb-dashboard target=_blank rel="noreferrer noopener">GDB dashboard</a> 可以參考 <sup id=fnref:4 class=footnote-ref-wrapper><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>。</p>
 <h1 id=後記 class=article-heading>後記<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#後記><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>突然發現自己好像也不是這麼悠閒，不過還是把這些趕出來了，可能會有錯 (範例打錯或錯字) 再請大家幫忙抓漏 了，感恩 QuQ。很多部份也都沒有附上範例，這可能之後有需要的話可以補上。歡迎討論也歡迎在我有空的時候找我幫忙 review 程式碼，這對我來說也是一種成長的來源吧。身邊如果有人願意幫你 review 的話請盡量把握，也在此感謝曾經幫我看過程式碼的貴人們。</p>
 <section class=footnotes role=doc-endnotes>
@@ -229,7 +229,8 @@ in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -255,6 +256,7 @@ in <a href=https://aben20807.github.io/categories/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -350,7 +352,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>

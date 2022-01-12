@@ -73,7 +73,7 @@ Published
 <time datetime=2019-12-01T17:26:34+08:00>Dec 1, 2019</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/blog class="no-underline category title-link near-white dim">Blog</a>
-<span class=display-print>at https://aben20807.github.io/posts/20191201-hugo-0-60/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20191201-hugo-0-60/>https://aben20807.github.io/posts/20191201-hugo-0-60/</a></span>
 </h2>
 </div>
 <div class="w-100 cf hide-print">
@@ -108,15 +108,15 @@ in <a href=https://aben20807.github.io/categories/blog class="no-underline categ
 <p>記錄一下 hugo 的改變 QuQ</p>
 <h1 id=前言 class=article-heading>前言<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#前言><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>因為實在改的有點多東西，直接在 FB 發(抱)文(怨)又有點沒架構，所以乾脆來個小整理。另外這也不是全部，主要是我有遇到的 QuQ</p>
-<p>這裡主要是從 0.59 到 0.60 <sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup> 的一些記錄。</p>
+<p>這裡主要是從 0.59 到 0.60 <sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup> 的一些記錄。</p>
 <h1 id=不同之處 class=article-heading>不同之處<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#不同之處><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <h2 id=parser class=article-heading>Parser<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#parser><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>最大不同就是 markdown parser 從原本的 <a href=https://github.com/russross/blackfriday target=_blank rel="noreferrer noopener">Blackfriday</a> 換成使用 <a href=https://github.com/yuin/goldmark/ target=_blank rel="noreferrer noopener">Goldmark</a> 為預設了。所以有一堆是用 regex 改的內容全都要再改規則＠＠，例如 <code>&lt;img xxx /></code> 這類的 self-closing tags <sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> 把最後的 <code>/</code> 去掉了變成 <code>&lt;img xxx></code>，所以剛剛是看不到圖片的。我已經改成讓 <code>/</code> 可有可無了&mldr;</p>
+<p>最大不同就是 markdown parser 從原本的 <a href=https://github.com/russross/blackfriday target=_blank rel="noreferrer noopener">Blackfriday</a> 換成使用 <a href=https://github.com/yuin/goldmark/ target=_blank rel="noreferrer noopener">Goldmark</a> 為預設了。所以有一堆是用 regex 改的內容全都要再改規則＠＠，例如 <code>&lt;img xxx /></code> 這類的 self-closing tags <sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> 把最後的 <code>/</code> 去掉了變成 <code>&lt;img xxx></code>，所以剛剛是看不到圖片的。我已經改成讓 <code>/</code> 可有可無了&mldr;</p>
 <h2 id=footnote class=article-heading>Footnote<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#footnote><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>Footnote 的部份被大改了，產生的 html 跟原本的不太一樣，然後 0.60.1 好像有一些修改 <sup id=fnref:3><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> ，所以可能還要再等等 QuQ，目前 snap 最新還在 0.60.0 所以還不能返回 (<code>footnoteAnchorPrefix</code>, <code>footnoteReturnLinkContents</code> 也還沒看到實作<sup id=fnref:4><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>)。之後還要加入 smooth scroll 讓捲動有動畫而不是直接跳 (這邊我也是用 regex)。</p>
+<p>Footnote 的部份被大改了，產生的 html 跟原本的不太一樣，然後 0.60.1 好像有一些修改 <sup id=fnref:3 class=footnote-ref-wrapper><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> ，所以可能還要再等等 QuQ，目前 snap 最新還在 0.60.0 所以還不能返回 (<code>footnoteAnchorPrefix</code>, <code>footnoteReturnLinkContents</code> 也還沒看到實作<sup id=fnref:4 class=footnote-ref-wrapper><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>)。之後還要加入 smooth scroll 讓捲動有動畫而不是直接跳 (這邊我也是用 regex)。</p>
 <h2 id=預設不可以在-markdown-中使用-html class=article-heading>預設不可以在 markdown 中使用 html<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#預設不可以在-markdown-中使用-html><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <p>如果有加一些非 markdown 語法的 html 的話預設會變成 <code>&lt;!-- raw HTML omitted --></code>
-(例如從 google 雲端嵌入 pdf 檔案之類的)，如果想要修改這個預設 <sup id=fnref:5><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup> 的話可以在 config.tmol 裡面加入</p>
+(例如從 google 雲端嵌入 pdf 檔案之類的)，如果想要修改這個預設 <sup id=fnref:5 class=footnote-ref-wrapper><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup> 的話可以在 config.tmol 裡面加入</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml>[<span style=color:#a6e22e>markup</span>]
 [<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>]
 [<span style=color:#a6e22e>markup</span>.<span style=color:#a6e22e>goldmark</span>.<span style=color:#a6e22e>renderer</span>]
@@ -143,7 +143,8 @@ in <a href=https://aben20807.github.io/categories/blog class="no-underline categ
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -169,6 +170,7 @@ in <a href=https://aben20807.github.io/categories/blog class="no-underline categ
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -224,7 +226,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>

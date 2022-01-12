@@ -512,7 +512,6 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
 .footer {
   border-top: 1px solid #dfe2e5;
   border-bottom: 1px solid #dfe2e5;
-  text-align:center;
 }
 
 dl {
@@ -638,4 +637,83 @@ body.dark-mode blockquote {
   border-radius: 8px;
   z-index: 1;
   margin: auto;
+}
+
+/**
+ * footnote tooltip popup bubble
+ * Ref: https://www.xianmin.org/hugo-theme-jane/post/doc-footnote-preview/
+ * Ref: https://github.com/xianmin/hugo-theme-jane/search?q=footnote
+ */
+.footnote-ref-wrapper:hover .fn-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0,0,0) rotate3d(0,0,0,0)
+}
+
+.fn-content {
+  position: absolute;
+  display: inline-block;
+  z-index: 14;
+  left: 50%;
+  bottom: 100%;
+  border-radius: .5em;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background: #f6f6f6;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0,-10px,0);
+  transition: opacity .3s,transform .3s
+}
+
+body.dark-mode .fn-content {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.fn-content .fn-text p {
+  display: inline-block;
+  padding: .3em;
+  margin: 0;
+  z-index: 8
+}
+/**
+ * footnote tooltip popup bubble end
+ */
+
+@media print {
+  .sidebar,
+  .menu,
+  .footer,
+  #disqus_thread,
+  #gotop_btn *,
+  #toc {
+    display: none;
+  }
+  #hdr * {
+    font-family:"georgia", "times", "serif";
+    font-size: 14pt !important;
+    text-shadow: none;
+  }
+  .post-meta * {
+    font-size: 3pt !important;
+  }
+  article * {
+    font-family: "Noto Sans TC", "georgia", "times", "serif";
+    font-size: 12pt !important;
+  }
+  pre *, code {
+    font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
+    font-size: 5pt !important;
+    white-space: pre-wrap;
+  }
+  pre, :not(pre) > code {
+    border: 1px solid #dfe2e5;
+  }
+  h1.article-heading:before,
+  h2.article-heading:before,
+  h3.article-heading:before,
+  h4.article-heading:before,
+  h5.article-heading:before,
+  h6.article-heading:before {
+    color: #000000 !important;
+  }
 }

@@ -73,7 +73,7 @@ Published
 <time datetime=2021-07-22T18:17:52+08:00>Jul 22, 2021</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 class="no-underline category title-link near-white dim">編譯器</a>
-<span class=display-print>at https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/>https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep1/</a></span>
 </h2>
 </div>
 <div class="w-100 cf hide-print">
@@ -128,11 +128,11 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 <li>開發快速且方便除錯</li>
 <li><del>修課學生不是每一個都對編譯器有興趣，但這是必修課</del></li>
 </ul>
-<p>然而實際上真實的複雜語言，如 C++、Rust、Go <sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup> <sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> <sup id=fnref:3><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> 大多都是手寫來達到更高的設計彈性。</p>
+<p>然而實際上真實的複雜語言，如 C++、Rust、Go <sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup> <sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup> <sup id=fnref:3 class=footnote-ref-wrapper><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> 大多都是手寫來達到更高的設計彈性。</p>
 <h1 id=flex-lex-三大區塊 class=article-heading>flex (lex) 三大區塊<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#flex-lex-三大區塊><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>用兩個 <code>%%</code> 來作為區隔:</p>
 <ul>
-<li>Definition section: 又分作兩個小區塊 (可對照下方完整程式碼): %{ 定義標頭檔、全域變數 %}、正規表達式標籤、condition (<code>%x</code>) <sup id=fnref:4><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>、選項 (<code>%option</code>) <sup id=fnref:5><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup></li>
+<li>Definition section: 又分作兩個小區塊 (可對照下方完整程式碼): %{ 定義標頭檔、全域變數 %}、正規表達式標籤、condition (<code>%x</code>) <sup id=fnref:4 class=footnote-ref-wrapper><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup>、選項 (<code>%option</code>) <sup id=fnref:5 class=footnote-ref-wrapper><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup></li>
 <li>Rules section: 定義判斷為 token 的規則。定義的順序會影響優先度所以要考慮是否會覆蓋其他規則，例如關鍵字應該要優先於變數名，否則像是 <code>decl</code>, <code>print</code> 會被判定為 ident。這同時也是為何 <code>.</code> (匹配所有字元) 會放在最下面</li>
 <li>C Code section: 定義 main 函式、其他函式</li>
 </ul>
@@ -335,7 +335,8 @@ Finish scanning.
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -361,6 +362,7 @@ Finish scanning.
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -416,7 +418,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>

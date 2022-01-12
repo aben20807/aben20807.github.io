@@ -74,7 +74,7 @@ Published
 <time datetime=2021-08-12T13:18:37+08:00>Aug 12, 2021</time>
 <span class=display-print>by Huang Po-Hsuan</span>
 in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5%85%B7 class="no-underline category title-link near-white dim">軟體工具</a>
-<span class=display-print>at https://aben20807.github.io/posts/20210812-use-matplotlib-to-plot-academic-figures/</span>
+<span class=display-print>at <a href=https://aben20807.github.io/posts/20210812-use-matplotlib-to-plot-academic-figures/>https://aben20807.github.io/posts/20210812-use-matplotlib-to-plot-academic-figures/</a></span>
 </h2>
 </div>
 </div>
@@ -110,7 +110,7 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 <p>雖然有想過寫成一個工具，使用者只要提供資料，就可以自動畫出圖。不過後來發現這個想法是不實際，因為每張圖幾乎都需要客製化，所以就改成提供一個模板，要做任何調整會比較方便。</p>
 <h1 id=安裝套件 class=article-heading>安裝套件<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#安裝套件><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <h2 id=python39 class=article-heading>Python3.9<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#python39><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>Windows 直接到官網下載即可，Ubuntu 需要使用 PPA<sup id=fnref:1><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>。</p>
+<p>Windows 直接到官網下載即可，Ubuntu 需要使用 PPA<sup id=fnref:1 class=footnote-ref-wrapper><a href=#fn:1 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>1</a></sup>。</p>
 <details>
 <summary><span>示意圖 </span></summary>
 <figure class="gphoto-media center">
@@ -132,7 +132,7 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 </details>
 <h3 id=安裝-virtualenv-並進入虛擬環境 class=article-heading>安裝 virtualenv 並進入虛擬環境<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#安裝-virtualenv-並進入虛擬環境><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>&gt; pip install virtualenv
-</code></pre></div><p>要進入虛擬環境時需要執行 active 的腳本，在 Ubuntu 就很方便執行 <code>$ source venv/bin/activate</code>，但是 powershell 有權限問題，所以要先設定<sup id=fnref:2><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>。</p>
+</code></pre></div><p>要進入虛擬環境時需要執行 active 的腳本，在 Ubuntu 就很方便執行 <code>$ source venv/bin/activate</code>，但是 powershell 有權限問題，所以要先設定<sup id=fnref:2 class=footnote-ref-wrapper><a href=#fn:2 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>2</a></sup>。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>&gt; mkdir matplotlib_test
 &gt; cd matplotlib_test
 &gt; virtualenv --python python3.9 venv
@@ -158,7 +158,7 @@ in <a href=https://aben20807.github.io/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E5
 </figure>
 </p>
 <h3 id=matplotlib-and-scienceplots class=article-heading>Matplotlib and SciencePlots<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#matplotlib-and-scienceplots><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h3>
-<p>圖表樣式主要靠 SciencePlots<sup id=fnref:3><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> 來完成，所以我們只要專注使用 Matplotlib 來製作圖表即可。</p>
+<p>圖表樣式主要靠 SciencePlots<sup id=fnref:3 class=footnote-ref-wrapper><a href=#fn:3 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>3</a></sup> 來完成，所以我們只要專注使用 Matplotlib 來製作圖表即可。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>(venv)&gt; pip install matplotlib==3.4.2
 (venv)&gt; pip install SciencePlots==1.0.8
 (venv)&gt; pip list <span style=color:#75715e># 詳細版本資訊參考用</span>
@@ -187,7 +187,7 @@ wheel           0.37.0
 </div>
 <figcaption>
 <center class=caption-text>
-<p style="margin:.7rem 0 0">Parts of a Figure<sup id=fnref:4><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup></p>
+<p style="margin:.7rem 0 0">Parts of a Figure<sup id=fnref:4 class=footnote-ref-wrapper><a href=#fn:4 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>4</a></sup></p>
 <font class="douyin hover-show">
 <a href="https://lh3.googleusercontent.com/pw/AM-JKLV39YBiIYsdoJnTbBEfB23amAIXrpG65S-cq4ozucbJ13wlQNkKfsV7w0pWLeCnIDAYgVkj6tTpEv1tIPdm_v5S2Vv8n_Uvw1102twnZMG9OZhC2yxgNj6-c-hFpnRggyEL4nNPjpwzf5-fUcWH0ZUHBg=w385-h401-no" target=_blank rel="noreferrer noopener" style=opacity:1;text-decoration:none>OuO</a>
 </font>
@@ -203,7 +203,7 @@ wheel           0.37.0
 </div>
 <figcaption>
 <center class=caption-text>
-<p style="margin:.7rem 0 0">components of a Matplotlib figure<sup id=fnref:5><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup></p>
+<p style="margin:.7rem 0 0">components of a Matplotlib figure<sup id=fnref:5 class=footnote-ref-wrapper><a href=#fn:5 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>5</a></sup></p>
 <font class="douyin hover-show">
 <a href="https://lh3.googleusercontent.com/pw/AM-JKLX_WJxX_h8KTZjCPicenrC56Y2v4B4Trd6ft1DHJDG_YxycOsar94WCx073O9GWS7wSZZKH0QSSEQrWRAosK3zz16F73MvbT3J0O6ERQB0U2dCbhSis7RlQdWDSG95_TQmYua9DBi3kdTFpw4DmqwtHSA=s800-no" target=_blank rel="noreferrer noopener" style=opacity:1;text-decoration:none>OuO</a>
 </font>
@@ -404,7 +404,7 @@ print(table)
 <span style=color:#66d9ef>\end</span>{table}
 </code></pre></div><h1 id=錯誤排除 class=article-heading>錯誤排除<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#錯誤排除><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <h2 id=filenotfounderror-missing-font-metrics-file-rsfs10 class=article-heading><code>FileNotFoundError: missing font metrics file: rsfs10</code><a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#filenotfounderror-missing-font-metrics-file-rsfs10><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
-<p>Solution <sup id=fnref:6><a href=#fn:6 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>6</a></sup></p>
+<p>Solution <sup id=fnref:6 class=footnote-ref-wrapper><a href=#fn:6 class="footnote-ref smoothScroll no-underline-on-hover" role=doc-noteref>6</a></sup></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell>&gt; miktex-maketfm.exe rsfs10
 </code></pre></div><h2 id=permissionerror-errno-13-permission-denied-resultpdf class=article-heading><code>PermissionError: [Errno 13] Permission denied: 'result.pdf'</code><a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#permissionerror-errno-13-permission-denied-resultpdf><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h2>
 <p>輸出覆寫 pdf 時有視窗開著該檔案，把 result.pdf 關掉即可。</p>
@@ -431,7 +431,8 @@ print(table)
 </li>
 </ol>
 </section>
-<div class="column footer center">
+<div class=footer>
+<div class="column center tc">
 <dl style=font-size:80%>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
@@ -457,6 +458,7 @@ print(table)
 <script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//forrecording.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
 <noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
 <a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
 </article>
 </div><div id=toc class="column col-2 hide-print">
 <div class="toc toc-nav toc-pills ml-0 col-3">
@@ -537,7 +539,7 @@ Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a>
 </p>
 <p class="w-50 near-white" style=font-size:.875rem!important>
-&copy; 2019-2021 Huang Po-Hsuan
+&copy; 2019-2022 Huang Po-Hsuan
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
