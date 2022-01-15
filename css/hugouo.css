@@ -671,9 +671,11 @@ body.dark-mode .fn-content {
 
 .fn-content .fn-text p {
   display: inline-block;
-  padding: .3em;
+  font-size: 90% !important;
+  padding: .6em;
   margin: 0;
-  z-index: 8
+  z-index: 8;
+  text-align: left;
 }
 /**
  * footnote tooltip popup bubble end
