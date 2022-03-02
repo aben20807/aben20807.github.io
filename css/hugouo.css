@@ -138,9 +138,6 @@ pre {
   max-width: 100%;
   height: auto;
 }
-.mrow {
-  padding-right: 12px !important;
-}
 #hdr {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
@@ -542,6 +539,14 @@ dd {
   padding: 0;
 }
 
+.summary {
+  font-size: 80% !important;
+}
+
+p.footer-summary {
+  font-size: 80% !important;
+}
+
 /* dark mode begin
  Ref: https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/
 */
@@ -555,9 +560,15 @@ body.dark-mode main *
   background: rgb(45, 45, 45);
   color: #f5f5f5;
 }
+body.dark-mode span.MathJax * {
+  background: rgba(45, 45, 45, 0) !important;
+}
 body.dark-mode pre,
 body.dark-mode code {
   background: rgb(39,40,33);
+}
+body.dark-mode > div.CtxtMenu_MenuFrame > div.CtxtMenu_Info.CtxtMenu_MousePost > div > pre {
+  background: rgb(246,248,250);
 }
 body.dark-mode .post-item .meta,
 body.dark-mode .toc-link,
@@ -570,22 +581,24 @@ body.dark-mode #menu-bar * {
   color: #f5f5f5;
 }
 body.dark-mode a,
+body.dark-mode a p.footer-summary,
 body.dark-mode a i.fa-chevron-circle-right,
-body.dark-mode a i.fa-arrow-circle-left,
-body.dark-mode a i.fa-arrow-circle-right {
+body.dark-mode a i.fa-chevron-circle-left,
+body.dark-mode a i.fa-external-link-square-alt {
   color: var(--deep-orange);
   transition: color 0.15s ease-in;
 }
 body.dark-mode a:hover,
 body.dark-mode a:focus,
+body.dark-mode a:hover p.footer-summary,
 body.dark-mode .post-meta a:hover,
 body.dark-mode a:hover .post-meta,
 body.dark-mode .post-item a:hover span,
 body.dark-mode a:hover i.fa-chevron-circle-right,
-body.dark-mode a:hover i.fa-arrow-circle-left,
-body.dark-mode a:hover i.fa-arrow-circle-right {
+body.dark-mode a:hover i.fa-chevron-circle-left,
+body.dark-mode a:hover i.fa-external-link-square-alt {
   color: var(--light-orange);
-  transition: color 0.15s ease-in;
+  transition: color 0.15s ease-in !important;
 }
 body.dark-mode h1.article-heading:before,
 body.dark-mode h2.article-heading:before,

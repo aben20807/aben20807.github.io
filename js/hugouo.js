@@ -131,7 +131,7 @@ $(function(){
       outer_wrapper = $("<span>", { "class": "fn-content" }),
       inner_wrapper = $("<span>", { "class": "fn-text" });
     footnote.find(".footnote-backref").remove();
-    console.log(id);
+    // console.log(id);
     $(this).append(outer_wrapper.append(inner_wrapper.html(footnote.html())));
   });
 
