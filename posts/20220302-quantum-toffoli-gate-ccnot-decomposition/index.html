@@ -18,9 +18,9 @@
 <meta name=twitter:site content="@">
 <script src=https://cdn.jsdelivr.net/npm/fetch-inject@2.0.4/dist/fetch-inject.umd.min.js integrity="sha256-paKBtnIrL5ClLfBOtgxh1UqYCjL9790IRvDOnBh2LyI=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://aben20807.github.io/css/tachyons.min.css async>
-<link rel=stylesheet href=https://aben20807.github.io/css/story.css?1646222127 async>
-<link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1646222127 async>
-<link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1646222127 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/story.css?1646300814 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1646300814 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1646300814 async>
 <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous async>
 <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lora:400|Noto+Sans+TC:400,400i|Milonga:400|Roboto+Mono:500&subset=latin-ext" rel=stylesheet async>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js></script>
@@ -408,6 +408,8 @@ e^{-\TT}\frac{2}{\sqrt{2}}\lvert 111\rangle
 \end{split}
 \end{equation*}
 $$</p>
+<h1 id=解釋 class=article-heading>解釋<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#解釋><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
+<p>最終結果推出這樣的輸入下 (前兩位元疊加態，第三位元 0) 只有四種輸出可能 (000, 010, 100, 111) 各佔 25%，前三種因為前兩位元不全為 1 所以第三位元維持 0。第四種因為前兩位元皆為 1，第三位元因此翻轉成 1。</p>
 <h1 id=補充說明 class=article-heading>補充說明<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#補充說明><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>其中我認為最精采的是 $\lvert\Phi_{12}\rangle$，在這步驟中，原先 8 個狀態透過 $H$ 作用後可以抵消掉 4 個狀態。比較需要注意的是 $e^{-\TT} = -1 \cdot e^{3\TT}$ 因此會消掉 $\lvert 11\rangle\lvert 0\rangle$ 這項。</p>
 <h1 id=references class=article-heading>References<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#references><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
@@ -438,7 +440,7 @@ $$</p>
 <dt>Author</dt>
 <dd>Huang Po-Hsuan</dd>
 <dt>Last modified</dt>
-<dd>Mar 2, 2022</dd>
+<dd>Mar 3, 2022</dd>
 <dt>License</dt>
 <dd><a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel="noreferrer noopener">CC BY-NC
 4.0</a></dd>
@@ -455,6 +457,11 @@ $$</p>
 </a>
 </div>
 <div class="nested-links fl w-100">
+<a title="Next: Quantum Toffoli Gate (CCNOT) IBM Quantum" class="link-reverse fl w-100 truncate" href=https://aben20807.github.io/posts/20220303-quantum-toffoli-gate-ccnot-ibm-quantum/>
+<i class="fas fa-chevron-circle-right"></i> Quantum Toffoli Gate (CCNOT) IBM Quantum
+<p class="footer-summary ml3 mb1">使用 IBM Quantum Composer 去執行 CCNOT gate
+</p>
+</a>
 </div>
 <div class=mb2>
 </div>
@@ -512,6 +519,11 @@ Toffoli Gate (CCNOT)
 </a>
 </li>
 </ul><ul class=toc><li class=toc-item>
+<a class="toc-link smoothScroll" href=#%e8%a7%a3%e9%87%8b>
+解釋
+</a>
+</li>
+</ul><ul class=toc><li class=toc-item>
 <a class="toc-link smoothScroll" href=#%e8%a3%9c%e5%85%85%e8%aa%aa%e6%98%8e>
 補充說明
 </a>
@@ -544,7 +556,7 @@ Made with Hugo and
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
-<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1646222127 async></script>
+<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1646300814 async></script>
 <script src=https://aben20807.github.io/js/story.js async></script>
 <script>fetchInject(["https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"]).then(()=>{baffle(document.querySelector('h1')).start().set({speed:70}).reveal(800,800)})</script>
 <script>MathJax={startup:{requireMap:{AMSmath:'ams',AMSsymbols:'ams',AMScd:'amscd',HTML:'html',noErrors:'noerrors',noUndefined:'noundefined'}},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$']],tags:'ams'},skipTags:['script','noscript','style','textarea','pre'],svg:{fontCache:'global',scale:1},chtml:{scale:1}}</script>
