@@ -582,11 +582,12 @@ body.dark-mode #menu-bar * {
 }
 body.dark-mode a,
 body.dark-mode a p.footer-summary,
+body.dark-mode a i.fa-caret-square-down,
+body.dark-mode a i.fa-caret-square-up,
 body.dark-mode a i.fa-chevron-circle-right,
-body.dark-mode a i.fa-chevron-circle-left,
 body.dark-mode a i.fa-external-link-square-alt {
   color: var(--deep-orange);
-  transition: color 0.15s ease-in;
+  transition: color 0.15s ease-in !important;
 }
 body.dark-mode a:hover,
 body.dark-mode a:focus,
@@ -594,10 +595,11 @@ body.dark-mode a:hover p.footer-summary,
 body.dark-mode .post-meta a:hover,
 body.dark-mode a:hover .post-meta,
 body.dark-mode .post-item a:hover span,
+body.dark-mode a:hover i.fa-caret-square-down,
+body.dark-mode a:hover i.fa-caret-square-up,
 body.dark-mode a:hover i.fa-chevron-circle-right,
-body.dark-mode a:hover i.fa-chevron-circle-left,
 body.dark-mode a:hover i.fa-external-link-square-alt {
-  color: var(--light-orange);
+  color: var(--light-orange) !important;
   transition: color 0.15s ease-in !important;
 }
 body.dark-mode h1.article-heading:before,
