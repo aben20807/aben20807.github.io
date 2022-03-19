@@ -18,9 +18,9 @@
 <meta name=twitter:site content="@">
 <script src=https://cdn.jsdelivr.net/npm/fetch-inject@2.0.4/dist/fetch-inject.umd.min.js integrity="sha256-paKBtnIrL5ClLfBOtgxh1UqYCjL9790IRvDOnBh2LyI=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://aben20807.github.io/css/tachyons.min.css async>
-<link rel=stylesheet href=https://aben20807.github.io/css/story.css?1647079820 async>
-<link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1647079820 async>
-<link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1647079820 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/story.css?1647660705 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1647660705 async>
+<link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1647660705 async>
 <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous async>
 <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lora:400|Noto+Sans+TC:400,400i|Milonga:400|Roboto+Mono:500&subset=latin-ext" rel=stylesheet async>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js></script>
@@ -149,27 +149,27 @@ int main()
 </div>
 </div><h1 id=強調字型 class=article-heading>強調字型<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#強調字型><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>可參考：https://www.markdownguide.org/basic-syntax/#emphasis</p>
-<pre tabindex=0><code>__粗體__  
-**粗體**  
-_斜體_  
-*斜體*  
-__*粗斜體*__
-</code></pre><p><strong>粗體</strong><br>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown>__粗體__  
+<span style=font-weight:700>**粗體**</span>  
+<span style=font-style:italic>_斜體_</span>  
+<span style=font-style:italic>*斜體*</span>  
+<span style=font-style:italic>__</span>*粗斜體*__
+</code></pre></div><p><strong>粗體</strong><br>
 <strong>粗體</strong><br>
 <em>斜體</em><br>
 <em>斜體</em><br>
 <strong><em>粗斜體</em></strong></p>
 <h1 id=橫線 class=article-heading>橫線<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#橫線><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
-<pre tabindex=0><code>---
-</code></pre><hr>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown>---
+</code></pre></div><hr>
 <h1 id=項目-bullet class=article-heading>項目 (Bullet)<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#項目-bullet><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
-<pre tabindex=0><code>+ a
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown>+ a
   + 1
   + 2
 + b
-  1. OuO
-  2. QuQ
-</code></pre><ul>
+  <span style=color:#66d9ef>1.</span> OuO
+  <span style=color:#66d9ef>2.</span> QuQ
+</code></pre></div><ul>
 <li>a
 <ul>
 <li>1</li>
@@ -184,11 +184,11 @@ __*粗斜體*__
 </li>
 </ul>
 <h1 id=表格 class=article-heading>表格<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#表格><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
-<pre tabindex=0><code>|A|B|C|
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown>|A|B|C|
 |-|-|-|
 |a|b|c|
 |d|e|f|
-</code></pre><table>
+</code></pre></div><table>
 <thead>
 <tr>
 <th>A</th>
@@ -210,12 +210,22 @@ __*粗斜體*__
 </tbody>
 </table>
 <h1 id=引用 class=article-heading>引用<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#引用><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
-<pre tabindex=0><code>&gt; The more I learn, the more I realize how much I don't know.  
-&gt; --- Albert Einstein
-</code></pre><blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown><span style=color:#66d9ef>&gt; </span><span style=font-style:italic>The more I learn, the more I realize how much I don&#39;t know.  
+</span><span style=font-style:italic></span><span style=color:#66d9ef>&gt; </span><span style=font-style:italic>--- Albert Einstein
+</span></code></pre></div><blockquote>
 <p>The more I learn, the more I realize how much I don&rsquo;t know.<br>
 &mdash; Albert Einstein</p>
 </blockquote>
+<h1 id=跳轉 class=article-heading>跳轉<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#跳轉><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
+<ul>
+<li>參考: <a href=https://gohugo.io/content-management/cross-references/ target=_blank rel="noreferrer noopener">Use <code>ref</code> and <code>relref</code></a></li>
+</ul>
+<pre>
+[同一頁面不同 heading]({{&lt; relref "#表格" >}})  
+[不同頁面]({{&lt; relref "/about" >}})
+</pre>
+<p><a href=#表格 class="smoothScroll no-underline-on-hover">同一頁面不同 heading</a><br>
+<a href=/about/>不同頁面</a></p>
 <h1 id=插入圖片 class=article-heading>插入圖片<a class="headline-hash smoothScroll hover-show scrollspy" style=font-size:.75em;color:#000;padding-left:.25em href=#插入圖片><span class=iconify data-icon=octicon-link data-inline=false></span></a> </h1>
 <p>目前並不打算直接上傳到 github，所以找了一些方式<br>
 一般圖片</p>
@@ -352,7 +362,7 @@ OuO
 <div id=license-block onclick=copyToClip() style=cursor:pointer!important title="Copy the license block">
 <dl style=font-size:80%>
 <dt>Author:</dt> <dd>Huang, Po-Hsuan 黃柏瑄</dd>
-<dt>Last modified:</dt> <dd>Mar 3, 2022</dd>
+<dt>Last modified:</dt> <dd>Mar 19, 2022</dd>
 <dt>License:</dt> <dd><a href=https://creativecommons.org/licenses/by/4.0/ target=_blank rel="noreferrer noopener">CC BY 4.0</a></dd>
 </dl></div>
 <script>function copyToClip(){var b=document.getElementById("license-block"),a=document.createElement("textarea");a.value=b.textContent.replace(/^\n\n/g,'')+"Link: https://aben20807.github.io/posts/features/",document.body.appendChild(a),a.select(),document.execCommand("Copy"),a.remove(),b.title="Copied",setTimeout(function(){b.title="Copy the license block"},2e3)}</script>
@@ -446,6 +456,11 @@ Code section ref
 </a>
 </li>
 </ul><ul class=toc><li class=toc-item>
+<a class="toc-link smoothScroll" href=#%e8%b7%b3%e8%bd%89>
+跳轉
+</a>
+</li>
+</ul><ul class=toc><li class=toc-item>
 <a class="toc-link smoothScroll" href=#%e6%8f%92%e5%85%a5%e5%9c%96%e7%89%87>
 插入圖片
 </a>
@@ -498,10 +513,10 @@ Made with Hugo and
 </p>
 </footer>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
-<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1647079820 async></script>
+<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1647660705 async></script>
 <script src=https://aben20807.github.io/js/story.js async></script>
 <script>fetchInject(["https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"]).then(()=>{baffle(document.querySelector('h1')).start().set({speed:70}).reveal(800,800)})</script>
-<script>MathJax={startup:{requireMap:{AMSmath:'ams',AMSsymbols:'ams',AMScd:'amscd',HTML:'html',noErrors:'noerrors',noUndefined:'noundefined'}},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$']],tags:'ams'},skipTags:['script','noscript','style','textarea','pre'],svg:{fontCache:'global',scale:1},chtml:{scale:1}}</script>
+<script>MathJax={startup:{requireMap:{AMSmath:'ams',AMSsymbols:'ams',AMScd:'amscd',HTML:'html',noErrors:'noerrors',noUndefined:'noundefined'}},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$']],tags:'ams'},skipTags:['script','noscript','style','textarea','pre'],svg:{fontCache:'global',scale:1},chtml:{fontCache:'global',scale:1}}</script>
 <script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js></script>
 <script src=https://unpkg.com/zooming/build/zooming.min.js></script>
 <script>document.addEventListener('DOMContentLoaded',function(){new Zooming({bgColor:'rgb(0, 0, 0)',bgOpacity:'0.8',customSize:'200%',enableGrab:!1}).listen('.img-zoomable')})</script>

@@ -327,10 +327,10 @@ blockquote {
 blockquote::before {
   content: "\201C";
   color: #2060a8;
-  font-size: 77px;
+  font-size: 350%;
   position: absolute;
-  left: 15px;
-  top: 0px;
+  left: -1rem;
+  top: 0;
 }
 
 .gphoto-media {
@@ -560,7 +560,8 @@ body.dark-mode main *
   background: rgb(45, 45, 45);
   color: #f5f5f5;
 }
-body.dark-mode span.MathJax * {
+body.dark-mode span.MathJax *,
+body.dark-mode mjx-texatom *{
   background: rgba(45, 45, 45, 0) !important;
 }
 body.dark-mode pre,
