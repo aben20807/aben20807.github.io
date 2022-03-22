@@ -177,12 +177,6 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
-.img-container img {
-  /* max-height: 100%; */
-}
-.img-container {
-  /* height: 60vh; */
-}
 .row {
   display: flex;
 }
@@ -203,7 +197,7 @@ img {
   }
 }
 .side-bar {
-  max-width: 20%;
+  max-width: 25%;
   line-height: 0.1rem;
 }
 .col-2 {
