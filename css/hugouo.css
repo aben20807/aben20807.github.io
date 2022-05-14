@@ -162,6 +162,9 @@ summary {
 p + ul {
   margin-top: -1.2em;
 }
+p + ol {
+  margin-top: -1.2em;
+}
 p + details {
   margin-top: -1.0em;
 }
