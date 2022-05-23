@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Generalized Quantum Fourier Transform</title><link>https://aben20807.github.io/posts/20220519-generalized-quantum-fourier-transform/</link><pubDate>Thu, 19 May 2022 16:02:11 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220519-generalized-quantum-fourier-transform/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>aben20807's Anime List</title><link>https://aben20807.github.io/anime/</link><pubDate>Mon, 23 May 2022 16:06:29 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/anime/</guid><description><![CDATA[
+          Edit entry (needs login): link
+          
+            <p><a href="https://aben20807.github.io/anime/"><img src="https://aben20807.github.io//img/default-header-img.jpg" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/anime/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>Edit entry (needs login): <br/><br/><a href="https://docs.google.com/spreadsheets/d/1ZJulH_m4k-nzG6LW1Slk57N1_30vpKU0FF5SDBBGTv8/edit#gid=0" target="_blank" rel="noreferrer noopener">link</a></p> 
+        ]]></description></item><item><title>Generalized Quantum Fourier Transform</title><link>https://aben20807.github.io/posts/20220519-generalized-quantum-fourier-transform/</link><pubDate>Thu, 19 May 2022 16:02:11 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220519-generalized-quantum-fourier-transform/</guid><description><![CDATA[
           <p>上上篇 &ldquo;<br/><br/><a href="https://aben20807.github.io/posts/20220514-quantum-fourier-transform/">Quantum Fourier Transform</a>&rdquo; 介紹了 DFT 與 QFT 之間的關係，並用一些小規模的範例讓讀者可以方便驗證該理論。接下來我們要往更一般化的形式以完善 QFT 的介紹。</p><br/><p>有錯誤請告知，感謝。</p>
           
             <p><a href="https://aben20807.github.io/posts/20220519-generalized-quantum-fourier-transform/"><img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2422&amp;q=80" style="max-width: 100%;"/></a></p>
