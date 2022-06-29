@@ -139,6 +139,23 @@ pre {
   max-width: 100%;
   height: auto;
 }
+table pre {
+  padding: 0em !important;
+}
+label.code-label {
+  font-size: 60%;
+  color: #f6f6f6;
+  background-color: var(--deep-blue);
+  padding:1px 5px;
+  border-radius: 7px 7px 0 0;
+  display: table-cell;
+  vertical-align: bottom;
+  text-align: center;
+  min-width: 1rem;
+}
+div.highlight > pre {
+  margin-top: 0 !important;
+}
 #hdr {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
@@ -154,10 +171,14 @@ details {
   margin-left: 5px;
 }
 p,
-summary {
+summary,
+table {
   font-size: 19px !important;
   line-height: 1.653em;
   margin: 0 0 1.3em;
+}
+div.highlight {
+  margin: 0 0 1.3em !important;
 }
 p + ul {
   margin-top: -1.2em;
@@ -542,7 +563,7 @@ body.dark-mode,
 body.dark-mode .bg-white,
 body.dark-mode main *
 :not(
-  pre, pre *, code, a, 
+  pre, pre *, code, a, label.code-label, div.highlight *,
   .info-msg, .info-msg *, .success-msg, .success-msg *, .warning-msg, .warning-msg *, .error-msg, .error-msg *, 
   .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *, .gsc-control-cse, .gsc-control-cse *) {
   background: rgb(45, 45, 45);
@@ -599,6 +620,9 @@ body.dark-mode h5.article-heading:before,
 body.dark-mode h6.article-heading:before,
 body.dark-mode blockquote::before {
   color: var(--light-orange);
+}
+body.dark-mode label.code-label {
+  background-color: var(--deep-orange);
 }
 body.dark-mode .toc-nav a.toc-link.active,
 body.dark-mode .toc-nav a.toc-link:active,

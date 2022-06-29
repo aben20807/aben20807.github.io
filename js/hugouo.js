@@ -154,6 +154,17 @@ $(function(){
   $(window).resize(position());
 }
 
+/* show the code label for code highlight block */
+/* Ref: https://github.com/highlightjs/highlight.js/issues/1108#issuecomment-608415953 */
+document.addEventListener('DOMContentLoaded', function() {
+  let highlight = document.querySelectorAll('div.highlight');
+  Array.prototype.forEach.call(highlight, function(block) {
+    let code = block.querySelectorAll('pre code[data-lang]');
+    let language = code[0].getAttribute('data-lang');
+    block.insertAdjacentHTML("beforebegin",`<label class="code-label">${language}</label>`);
+  });
+})
+
 /* main */
 $(document).ready(function () {
   if (isMobile) return;
