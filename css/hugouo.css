@@ -508,6 +508,7 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
   word-break: break-word;
+  overflow-x: scroll !important;
 }
 .info-msg {
   color: #059;
