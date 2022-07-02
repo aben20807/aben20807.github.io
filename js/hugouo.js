@@ -161,6 +161,10 @@ document.addEventListener('DOMContentLoaded', function() {
   Array.prototype.forEach.call(highlight, function(block) {
     let code = block.querySelectorAll('pre code[data-lang]');
     let language = code[0].getAttribute('data-lang');
+    let alias = block.getAttribute('name');
+    if (alias != null) {
+      language = alias;
+    }
     block.insertAdjacentHTML("beforebegin",`<label class="code-label">${language}</label>`);
   });
 })
