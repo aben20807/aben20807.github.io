@@ -17,23 +17,23 @@ body {
   counter-reset: h1_cnt;
 }
 h1 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   counter-reset: h2_cnt;
 }
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   counter-reset: h3_cnt;
 }
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   counter-reset: h4_cnt;
 }
 h4 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   counter-reset: h5_cnt;
 }
 h5 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   counter-reset: h6_cnt;
 }
 h6 {
