@@ -17,27 +17,27 @@ body {
   counter-reset: h1_cnt;
 }
 h1 {
-  font-size: 25px;
+  font-size: 1.7rem;
   counter-reset: h2_cnt;
 }
 h2 {
-  font-size: 24px;
+  font-size: 1.6rem;
   counter-reset: h3_cnt;
 }
 h3 {
-  font-size: 23px;
+  font-size: 1.5rem;
   counter-reset: h4_cnt;
 }
 h4 {
-  font-size: 22px;
+  font-size: 1.4rem;
   counter-reset: h5_cnt;
 }
 h5 {
-  font-size: 21px;
+  font-size: 1.3rem;
   counter-reset: h6_cnt;
 }
 h6 {
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 h1.article-heading:after {
   content: "";
@@ -135,7 +135,7 @@ h6:hover .hover-show {
 pre {
   font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
   border-style: hidden;
-  font-size: 16px !important;
+  font-size: 0.9rem !important;
   max-width: 100%;
   height: auto;
 }
@@ -173,7 +173,7 @@ details {
 p,
 summary,
 table {
-  font-size: 19px !important;
+  font-size: 1rem !important;
   line-height: 1.653em;
   margin: 0 0 1.3em;
 }
@@ -194,7 +194,7 @@ ul {
 }
 ul,
 li {
-  font-size: 19px !important;
+  font-size: 1rem !important;
   line-height: 1.653em;
 }
 img {
@@ -257,7 +257,7 @@ a:hover,
 
 .toc-nav .toc-item,
 .toc-nav .toc-link {
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 400;
   line-height: 1.35em;
   padding: 0 5px;
@@ -331,7 +331,7 @@ summary:hover,
 blockquote > p {
   margin: 0.9em 0 0.3em;
   font-family: "Lora", "Noto Sans TC", "Quattrocento Sans";
-  font-size: 18px !important;
+  font-size: 98% !important;
 }
 
 blockquote {
@@ -506,7 +506,7 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
   margin: 10px 0;
   padding: 10px;
   border-radius: 3px 3px 3px 3px;
-  font-size: 16px !important;
+  font-size: 1rem !important;
   font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
@@ -726,19 +726,19 @@ body.dark-mode .fn-content {
   }
   #hdr * {
     font-family:"georgia", "times", "serif";
-    font-size: 14pt !important;
+    font-size: 1rem !important;
     text-shadow: none;
   }
   .post-meta * {
-    font-size: 3pt !important;
+    font-size: 0.5rem !important;
   }
   article * {
     font-family: "Noto Sans TC", "georgia", "times", "serif";
-    font-size: 12pt !important;
+    font-size: 1rem !important;
   }
   pre *, code {
     font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
-    font-size: 5pt !important;
+    font-size: 0.5rem !important;
     white-space: pre-wrap;
   }
   pre, :not(pre) > code {
