@@ -170,7 +170,7 @@ a:active .active-color  {
   list-style: none;
   padding-left: 0;
   padding-right: 0;
-  margin-bottom: 2px;
+  margin-bottom: 1rem;
   padding-top: .25rem;
   vertical-align: middle;
 }
@@ -517,7 +517,7 @@ Markdown
 }
 
 .tags-sm li {
-  padding: 7px 3px;
+  padding: .1rem .1rem;
 }
 
 .tags-md li {
