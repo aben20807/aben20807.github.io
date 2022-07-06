@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (alias != null) {
       language = alias;
     }
+    if (language == "fallback") {
+      return;
+    }
     block.insertAdjacentHTML("beforebegin",`<label class="code-label">${language}</label>`);
   });
 })
