@@ -503,10 +503,11 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
 .info-msg,
 .success-msg,
 .warning-msg,
-.error-msg {
-  margin: 10px 0;
+.danger-msg {
+  margin-top: 0;
+  margin-bottom: 10px;
   padding: 10px;
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 0px 0px 3px 3px;
   font-size: 1rem !important;
   font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
@@ -514,21 +515,52 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
   word-break: break-word;
   overflow-x: scroll !important;
 }
+.info-title,
+.success-title,
+.warning-title,
+.danger-title {
+  padding-left: 10px;
+  margin-bottom: 0;
+  font-size: 1rem !important;
+  border-radius: 3px 3px 0px 0px;
+}
+.info-msg > p,
+.success-msg > p,
+.warning-msg > p,
+.danger-msg > p {
+  margin-bottom: 0;
+}
 .info-msg {
   color: #059;
   background-color: #BEF;
+}
+.info-title {
+  background-color: #059;
+  color: #BEF;
 }
 .success-msg {
   color: #270;
   background-color: #DFF2BF;
 }
+.success-title {
+  background-color: #270;
+  color: #DFF2BF;
+}
 .warning-msg {
   color: #9F6000;
   background-color: #FEEFB3;
 }
-.error-msg {
+.warning-title {
+  background-color: #9F6000;
+  color: #FEEFB3;
+}
+.danger-msg {
   color: #D8000C;
   background-color: #FFBABA;
+}
+.danger-title {
+  background-color: #D8000C;
+  color: #FFBABA;
 }
 .footer {
   border-top: 1px solid #dfe2e5;

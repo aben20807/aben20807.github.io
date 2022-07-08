@@ -415,13 +415,16 @@
     </a>
 </h1><p>這邊使用了比較直觀會用到的 Lemma，且使用範例當作說明，不使用證明。</p>
 
+<div class="alert-block">
 
-  <div class="info-msg">
-    Lemma 1:<br>
+  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-msg db">
+    <p>Lemma 1:<br>
 $g^2\equiv1(\text{mod }N), 1&lt;g&lt;N-1\Rightarrow$<br>
-$\gcd(N, g-1)\mid N \text{ or }\gcd(N, g+1)\mid N$
+$\gcd(N, g-1)\mid N \text{ or }\gcd(N, g+1)\mid N$</p>
   </div>
 
+</div>
 <ul>
 <li>
 <p>Example 1: $N = 15$<br>
@@ -433,15 +436,18 @@ $8^2\equiv 1(\text{mod }21), \gcd(21, 7) = 7\mid 21, \gcd(21, 9) = 3 \mid 21$</p
 </li>
 </ul>
 
+<div class="alert-block">
 
-  <div class="info-msg">
-    Lemma 2:<br>
+  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-msg db">
+    <p>Lemma 2:<br>
 $g^x\equiv1(\text{mod }N), 2\mid x, g^{\frac{x}{2}}\not\equiv1(\text{mod }N)\Rightarrow$<br>
 $(g^{\frac{x}{2}})^2\equiv1(\text{mod }N), g^{\frac{x}{2}}\not\equiv 1(\text{mod }N) \text{, and }g^{\frac{x}{2}}\not\equiv N-1(\text{mod }N)<br>
 \Rightarrow$<br>
-$\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$
+$\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$</p>
   </div>
 
+</div>
 <ul>
 <li>
 <p>Example 1: $N = 15$<br>
@@ -453,13 +459,16 @@ $2^6\equiv 1(\text{mod }N), \gcd(21, 7) = 7\mid 21, \gcd(21, 9) = 3 \mid 21$</p>
 </li>
 </ul>
 
+<div class="alert-block">
 
-  <div class="info-msg">
-    Lemma 3:<br>
+  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-msg db">
+    <p>Lemma 3:<br>
 $g^p\equiv 1(\text{mod }N)\Rightarrow$<br>
-$g^x\equiv g^{x+np}(\text{mod }N), n \in\mathbb{N}$
+$g^x\equiv g^{x+np}(\text{mod }N), n \in\mathbb{N}$</p>
   </div>
 
+</div>
 <ul>
 <li>Example: $N = 15, g = 2$<br>
 $2^1\equiv 2^5\equiv 2^9\equiv 2(\text{mod }15); 2^2\equiv 2^6\equiv 2^{10}\equiv 4(\text{mod }15)$<br>
@@ -2132,6 +2141,7 @@ $$</p>
 <li><a href="https://www.videolan.org/vlc/download-windows.zh_TW.html" target="_blank" rel="noreferrer noopener">VLC</a>: 影音播放器</li>
 <li><a href="https://apps.microsoft.com/store/detail/microsoft-powertoys/XP89DCGQ3K6VLD" target="_blank" rel="noreferrer noopener">Microsoft PowerToys</a>: 各種小工具</li>
 <li><a href="https://www.7-zip.org/download.html" target="_blank" rel="noreferrer noopener">7-zip</a>: 壓縮、解壓縮</li>
+<li><a href="https://www.mindgems.com/products/Folder-Size/Folder-Size-Tutorials.htm?postinstall=1" target="_blank" rel="noreferrer noopener">FolderSize - MindGems</a> 查看整個硬碟的資料大小分布</li>
 <li>Synology Drive Client: 從網頁登入後安裝，用於同步備份資料夾</li>
 <li><a href="https://zealdocs.org/download.html" target="_blank" rel="noreferrer noopener">Zeal</a>: 離線文件 (沒網路不用怕)，內建找不到的話可以去 <a href="https://github.com/hashhar/dash-contrib-docset-feeds" target="_blank" rel="noreferrer noopener">hashhar/dash-contrib-docset-feeds</a> 看看，記得用 raw 才能加到 feed。<br>
 
@@ -5620,11 +5630,14 @@ $$</p>
     </a>
 </h1><p>仔細看的話就會發現跟 ep2 的程式碼幾乎差不多，只有加了寫檔把對應操作的指令寫入 bytecode.j。</p>
 
+<div class="alert-block">
 
-  <div class="alert error-msg">
+  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="alert danger-msg">
     下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
   </div>
 
+</div>
 <ul>
 <li><code>mycompiler.y</code>:</li>
 </ul>
@@ -5921,11 +5934,14 @@ $$</p>
 <li>Source code: <a href="https://github.com/aben20807/learn_compiler" target="_blank" rel="noreferrer noopener">aben20807/learn_compiler</a></li>
 </ul>
 
+<div class="alert-block">
 
-  <div class="info-msg">
-    從文章長度跟作業繳交期限就可以知道 parser 的難度遠大於 scanner，所以請提早動手開始，<del>雖然不斷宣導下還是一定有人會不信邪前一個禮拜才開始</del>。
+  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-msg db">
+    <p>從文章長度跟作業繳交期限就可以知道 parser 的難度遠大於 scanner，所以請提早動手開始，<del>雖然不斷宣導下還是一定有人會不信邪前一個禮拜才開始</del>。</p>
   </div>
 
+</div>
 <h1 id="語法剖析器-parser" class="article-heading">語法剖析器 (Parser) 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%aa%9e%e6%b3%95%e5%89%96%e6%9e%90%e5%99%a8-parser">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -6129,11 +6145,14 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1>
+<div class="alert-block">
 
-  <div class="alert error-msg">
+  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="alert danger-msg">
     下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
   </div>
 
+</div>
 <ul>
 <li><code>mycompiler.y</code>:</li>
 </ul>
@@ -10766,10 +10785,11 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#footnote">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Hi [^label]
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Hi [^label], Link [^llink].
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[^label]: OuO
-</span></span></code></pre></div><p>Hi  </p>
+</span></span><span style="display:flex;"><span>[^llink]: [<span style="color:#f92672">homepage</span>](<span style="color:#a6e22e">https://aben20807.github.io/</span>)
+</span></span></code></pre></div><p>Hi  , Link  .</p>
 <h1 id="youtube" class="article-heading">YouTube 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#youtube">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -10796,51 +10816,66 @@ $$</p>
 
 
  
-<h1 id="section-refhttpscodepeniodobsondevpenggrjwv" class="article-heading">Section <a href="https://codepen.io/DobsonDev/pen/GgRJwv" target="_blank" rel="noreferrer noopener">ref</a> 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#section-refhttpscodepeniodobsondevpenggrjwv">
+<h1 id="alert-section" class="article-heading">Alert Section 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#alert-section">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><pre>
+</h1><ul>
+<li><a href="https://codepen.io/DobsonDev/pen/GgRJwv" target="_blank" rel="noreferrer noopener">ref</a></li>
+</ul>
+<pre>
 {{&lt; alert info >}}
-&lt;i class="fa fa-info-circle">&lt;/i>** Beware !** is a text
+** Beware !** is a text
 {{&lt; /alert >}}
 
 {{&lt; alert success >}}
-&lt;i class="fa fa-check">&lt;/i> **Beware !** is a text
+**Beware !** is a text
 {{&lt; /alert >}}
 
 {{&lt; alert warning >}}
-&lt;i class="fa fa-exclamation-triangle">&lt;/i> **Beware !** is a text
+**Beware !** is a text
 {{&lt; /alert >}}
 
 {{&lt; alert danger >}}
-&lt;i class="fa fa-times-circle">&lt;/i> **Beware !** is a text
+**Beware !** is a text
 {{&lt; /alert >}}
 </pre>
 
+<div class="alert-block">
 
-  <div class="info-msg">
-    <i class="fa fa-info-circle"></i> <strong>Beware !</strong> is a text
+  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-msg db">
+    <p><strong>Beware !</strong> is a text</p>
   </div>
 
+</div>
 
+<div class="alert-block">
 
+  <div class="success-title"><i class="fa fa-check"></i></div>
   <div class="success-msg">
-    <i class="fa fa-check"></i> <strong>Beware !</strong> is a text
+    <strong>Beware !</strong> is a text
   </div>
 
+</div>
 
+<div class="alert-block">
 
+  <div class="warning-title"><i class="fa fa-exclamation-triangle"></i></div>
   <div class="warning-msg">
-    <i class="fa fa-exclamation-triangle"></i> <strong>Beware !</strong> is a text
+    <strong>Beware !</strong> is a text
   </div>
 
+</div>
 
+<div class="alert-block">
 
-  <div class="alert error-msg">
-    <i class="fa fa-times-circle"></i> <strong>Beware !</strong> is a text
+  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="alert danger-msg">
+    <strong>Beware !</strong> is a text
   </div>
 
+</div>
 <h1 id="details-summary-section" class="article-heading">Details, summary section 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#details-summary-section">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
