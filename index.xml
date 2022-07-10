@@ -1,4 +1,143 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Weekly Collection</title><link>https://aben20807.github.io/posts/20220627-weekly-collection/</link><pubDate>Sun, 03 Jul 2022 16:20:36 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220627-weekly-collection/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Weekly Collection</title><link>https://aben20807.github.io/posts/20220704-weekly-collection/</link><pubDate>Sun, 10 Jul 2022 17:33:30 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220704-weekly-collection/</guid><description><![CDATA[
+          <p>資訊大爆炸，留下一些看過的痕跡 (不知道會持續更新多久 OuO)。</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20220704-weekly-collection/"><img src="https://images.unsplash.com/photo-1654071976078-b3906c59719f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1374&amp;q=80" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20220704-weekly-collection/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>資訊大爆炸，留下一些看過的痕跡 (不知道會持續更新多久 OuO)。</p>
+<p>目前不定期出沒。</p>
+<h1 id="演算法圖示講解" class="article-heading">演算法圖示講解 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%bc%94%e7%ae%97%e6%b3%95%e5%9c%96%e7%a4%ba%e8%ac%9b%e8%a7%a3">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>來源: <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid02q7jDJ36PspFkUeKezrKP7torKj2teXtFVxT82TWCch1pzagZqfK3xo1i4hwXpfCPl&amp;id=105673814305452" target="_blank" rel="noreferrer noopener">用圖片高效學程式 FB</a></li>
+</ul>
+<h1 id="設計模式-software-design-pattern" class="article-heading">設計模式 (Software design pattern) 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%a8%ad%e8%a8%88%e6%a8%a1%e5%bc%8f-software-design-pattern">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>來源: <a href="http://www.mcdonaldland.info/2007/11/28/40/" target="_blank" rel="noreferrer noopener">DESIGN PATTERNS QUICK REFERENCE</a></li>
+<li>連結: <a href="http://www.mcdonaldland.info/files/designpatterns/designpatternscard.pdf" target="_blank" rel="noreferrer noopener">檔案</a></li>
+<li><a href="https://drive.google.com/file/d/19d3_0ImtJSC_IBHKq-gKE5Fk5YsKl6EA/view?usp=sharing" target="_blank" rel="noreferrer noopener">備份</a></li>
+</ul>
+<h1 id="css-layout" class="article-heading">CSS Layout 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#css-layout">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>ref: <a href="https://csslayout.io/" target="_blank" rel="noreferrer noopener">https://csslayout.io/</a></li>
+</ul>
+<h1 id="vim-90-發布" class="article-heading">Vim 9.0 發布 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#vim-90-%e7%99%bc%e5%b8%83">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>從 Vim Script 改使用 Vim9 Script 。從 ThePrimeagen (下方 youtube 影片) 的觀點來看，針對自己的系統發明一個語言不是明智之選，Neovim  使用 Lua  是一個較好的方向，所以他仍會繼續使用 Neovim。</p>
+
+
+
+
+
+
+
+ 
+<h1 id="跨平台開發套件" class="article-heading">跨平台開發套件 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%b7%a8%e5%b9%b3%e5%8f%b0%e9%96%8b%e7%99%bc%e5%a5%97%e4%bb%b6">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>原先一般會用 <a href="https://www.electronjs.org/" target="_blank" rel="noreferrer noopener">Electron</a> (GitHub 開發的開源框架 )，但是缺點太多 (檔案過大、記憶體使用量過多)，主因是使用 <a href="https://nodejs.org/en/about/" target="_blank" rel="noreferrer noopener">Node.js</a> 當作後端，且前端使用 <a href="https://www.chromium.org/chromium-projects/" target="_blank" rel="noreferrer noopener">Chromium</a>，有名的使用案例是 <a href="https://github.com/atom/atom" target="_blank" rel="noreferrer noopener">Atom editor</a> (可惜 GitHub 年底要收掉它了)。Tauri 將後端轉成 Rust，前端為自行開發的輕量框架 (TAO, WRY)，大幅減少相關資源的使用量。</p>
+<ul>
+<li>官網: <a href="https://tauri.app/" target="_blank" rel="noreferrer noopener">https://tauri.app/</a></li>
+<li>GitHub: <a href="https://github.com/tauri-apps/tauri" target="_blank" rel="noreferrer noopener">https://github.com/tauri-apps/tauri</a></li>
+</ul>
+<h1 id="jserv-分享有關-linux-核心程式碼開發風格" class="article-heading">Jserv 分享有關 Linux 核心程式碼開發風格 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#jserv-%e5%88%86%e4%ba%ab%e6%9c%89%e9%97%9c-linux-%e6%a0%b8%e5%bf%83%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%96%8b%e7%99%bc%e9%a2%a8%e6%a0%bc">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://www.facebook.com/groups/system.software2022/posts/2088482591333140/" target="_blank" rel="noreferrer noopener">FB 貼文</a></li>
+<li>投影片: <a href="https://elinux.org/images/4/4f/Kernel-Coding-The-Upstream-Way.pdf" target="_blank" rel="noreferrer noopener">Kernel-Coding-The-Upstream-Way.pdf</a></li>
+<li>線上說明:</li>
+</ul>
+
+
+
+
+
+
+
+ 
+<h1 id="各種-roadmap" class="article-heading">各種 roadmap 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%90%84%e7%a8%ae-roadmap">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://roadmap.sh/" target="_blank" rel="noreferrer noopener">https://roadmap.sh/</a></li>
+</ul>
+<h1 id="我们为何工作" class="article-heading">我们为何工作？ 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bd%95%e5%b7%a5%e4%bd%9c">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://jdhao.github.io/2022/07/07/thought_on_working/" target="_blank" rel="noreferrer noopener">我们为何工作？ - jdhao&rsquo;s digital space</a></li>
+<li>作者定義的 &ldquo;好公司&rdquo;:</li>
+</ul>
+<blockquote>
+<p>工作时间灵活，不会耗在公司假装努力<br>
+关心员工的职业发展，不会拼命压榨<br>
+有时间去学习新东西，去成长，不会一直忙于业务<br>
+开会要少，很多会长时间浪费参与者时间，没有任何用<br>
+薪水达到平均水平，不一定最高</p>
+</blockquote>
+<h1 id="免費日系中文字體" class="article-heading">免費日系中文字體 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%85%8d%e8%b2%bb%e6%97%a5%e7%b3%bb%e4%b8%ad%e6%96%87%e5%ad%97%e9%ab%94">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>介紹: <a href="https://free.com.tw/naikaifont/?utm_content=buffer2571b&amp;utm_medium=social&amp;utm_source=facebook.com&amp;utm_campaign=buffer" target="_blank" rel="noreferrer noopener">內海字體：瀨戶字體繁體中文字型免費下載，五種字重可做商業用途</a></li>
+<li>GitHub: <a href="https://github.com/max32002/naikaifont" target="_blank" rel="noreferrer noopener">https://github.com/max32002/naikaifont</a></li>
+</ul>
+<h1 id="有趣的ㄐㄐ知識" class="article-heading">有趣的ㄐㄐ知識 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%9c%89%e8%b6%a3%e7%9a%84%e3%84%90%e3%84%90%e7%9f%a5%e8%ad%98">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://www.wildonetaiwan.org/node/258" target="_blank" rel="noreferrer noopener">鄉民的科學：淺嚐自然界勃大莖深的奧秘｜ Ep.2 重口味的交配行為與ㄐㄐ</a></li>
+</ul>
+<h1 id="資訊梗圖" class="article-heading">資訊梗圖 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%b3%87%e8%a8%8a%e6%a2%97%e5%9c%96">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLWl0rmmXILhksMnR52775RZAoH8rnhjM88d677SFuZdQenP4czBcOX8pGXxCRzKy172FnGUUfYK9wIXkwQu47bHf1AI5MbS4kfn5V3lTUuiuqnxyDrMa7RcCy8SkROwvtDE58VSHKuerjbx2jvA8ERDMw=w660-h738-no?authuser=1" alt='python 蒸蚌' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">python 蒸蚌</center>
+    </figcaption>
+  </figure>
+</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLUCqnJAu5HbDqKBAVIj70uYsvvF-DkeCkKq2iLd5_HyUeNztxIBw1CeyAYKek58Wl5T41v3njfzoP7LjzntvwOpojvIFXYJDbs_N8aV6D_AsCeusInQoqcPguIwux6_KZ44x-iU7ZznaHkWuMtQp6zDPw=w500-h760-no?authuser=1" alt='javascript 蒸蚌' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">javascript 蒸蚌</center>
+    </figcaption>
+  </figure>
+</p>
+ 
+        ]]></description></item><item><title>Weekly Collection</title><link>https://aben20807.github.io/posts/20220627-weekly-collection/</link><pubDate>Sun, 03 Jul 2022 16:20:36 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220627-weekly-collection/</guid><description><![CDATA[
           <p>資訊大爆炸，留下一些看過的痕跡 OuO。</p>
           
             <p><a href="https://aben20807.github.io/posts/20220627-weekly-collection/"><img src="https://images.unsplash.com/photo-1654071976078-b3906c59719f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1374&amp;q=80" style="max-width: 100%;"/></a></p>
