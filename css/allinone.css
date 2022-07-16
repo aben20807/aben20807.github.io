@@ -518,6 +518,7 @@ Markdown
 
 .tags-sm li {
   padding: .1rem .1rem;
+  margin-bottom: .5rem;
 }
 
 .tags-md li {
