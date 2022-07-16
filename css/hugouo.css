@@ -210,6 +210,9 @@ img {
   flex: 80%;
   max-width: 100%;
 }
+.img-container {
+  width: 88%;
+}
 @media screen and (max-width: 600px) {
   .col-2 {
     display: none;
@@ -500,6 +503,7 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
 }
 
 /* https://codepen.io/DobsonDev/pen/GgRJwv */
+/* Alert section */
 .info-msg,
 .success-msg,
 .warning-msg,
@@ -600,7 +604,7 @@ body.dark-mode,
 body.dark-mode .bg-white,
 body.dark-mode main *
 :not(
-  pre, pre *, code, a, label.code-label, div.highlight *, table, table *,
+  pre, pre *, code, a, label.code-label, div.highlight *, table, table *, .alert-block *,
   .info-msg, .info-msg *, .success-msg, .success-msg *, .warning-msg, .warning-msg *, .error-msg, .error-msg *, 
   .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *, .gsc-control-cse, .gsc-control-cse *) {
   background: rgb(45, 45, 45);
