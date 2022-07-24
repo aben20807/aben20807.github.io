@@ -1,4 +1,203 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Nikon Z6ii</title><link>https://aben20807.github.io/posts/20220722-nikon-z6ii/</link><pubDate>Fri, 22 Jul 2022 18:29:34 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220722-nikon-z6ii/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Darktable</title><link>https://aben20807.github.io/posts/20220724-darktable/</link><pubDate>Sun, 24 Jul 2022 15:19:10 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220724-darktable/</guid><description><![CDATA[
+          <p>感覺上傳原圖到目前圖床 (Google Photo) 的用量太大，且網頁上呈現壓縮過的版本就好。不想買 Adobe Lightroom (Lr) 來套用常見圖片處理的話，可以參考開源免費的替代軟體: Darktable。</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20220724-darktable/"><img src="https://lh3.googleusercontent.com/pw/AM-JKLXOYMNHaRBvZYwJ9XB_bvPJmkeypeJdhT-TeHJe1_lgbiIU8VQQ_2MhnzYdi_Bsl5cNSIr0O0Q0Gl-cQyW_cjen33PvR6L8fzLov-K_aGHbzGuF60Rd0752IpUQj8fzTxBOOGNMXnjgzdv297cOsZ7TRA=w3212-h1749-no?authuser=1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20220724-darktable/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>感覺上傳原圖到目前圖床 (Google Photo) 的用量太大，且網頁上呈現壓縮過的版本就好。不想買 Adobe Lightroom (Lr) 來套用常見圖片處理的話，可以參考開源免費的替代軟體: Darktable。</p>
+<p>官網: <a href="https://www.darktable.org/" target="_blank" rel="noreferrer noopener">https://www.darktable.org/</a><br>
+GitHub: <a href="https://github.com/darktable-org/darktable" target="_blank" rel="noreferrer noopener">https://github.com/darktable-org/darktable</a></p>
+<h1 id="簡易使用流程" class="article-heading">簡易使用流程 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%b0%a1%e6%98%93%e4%bd%bf%e7%94%a8%e6%b5%81%e7%a8%8b">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><h2 id="加上浮水印" class="article-heading">加上浮水印 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8a%a0%e4%b8%8a%e6%b5%ae%e6%b0%b4%e5%8d%b0">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><ul>
+<li>導入需要處理的相片</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLUgE_2eJsEYehxj1fyQNbK5qV0vwrgtrejQ3lmUo1wFNCpr5XaVUALAOCzmI_1NpW5yjqV5dt4_cySiI1OhECzkNOwag_2O_30d2Vu91LIJVIEAK6TXsYl1Q6dyq5UzMTmwPuV6DResj99ZscNucW5IHQ=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>點擊其中一張後進入 darkroom 修圖</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLXrt92nRItjUEWwSva7nMvuAQ2dC8JFBllaUYF5bVcAmuQ60i6EqLCmCf9bxIm59r6RTNjw87vj3oanrdg9OVPvjPspUZxBMA5O1zXF5GVp2fFK4vHwCkgyfy5BRqwaxj3eJZoQFoJyYYgNjmdGLJCV_Q=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>右方搜尋 watermark 來打開浮水印功能</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLXyjEAolO9e7yqChkLqRDrLxnM4sLxxNZrUDZAypC393loW8Z5G1DjjnLtJEOW8zaFX66WdjIz6a5ulOe-kCbmXMDw2IdnymS7C1j-ov7welz6AnDElV5VyV5Mk4pdTFLRSIgrTxUQhEke-xjozDdi7uA=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>選擇 simple text 模式，調整透明度、大小、位置 (鍵盤左右可調整，ctrl 按住可以微調)</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLXTbnUi1-SPSsslJVTY96wP99LY67lDdjiXbnzQhU5IsA6QKCPCCCg6UBMtnslB5XCRG89AHSVIu8IzalhvX5orIGozusKngHMNPEoXPiF-SLFl_LTd089kzUNoS9mA9kzdPc95Ykpyv_RC-6ToHAYeYg=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>可以存為 preset 方便下次使用</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLWHN-EF2EgMa4gtgjoGhtkvlgw3AQBI-ijiwaZxZjbkC4F2604riwP8gBszjzBd3EddXV-q1-5f19OAZ4_9lC-YcZwqSerT87DXAu57s6F6aJp7fdt3iVocfFK4vMLTeZ2PZmIX_cY7KISC_CxkiKkAtw=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>回到 lighttable，點擊 history stack 並點 selective copy</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLVJw4-fHTdMpkCLiEn_KizsDFNBfgoupBFfmjR601CGB8_NgPoMCAQJuVs9NXJBXKf9e-xJjjjgiMiwpi3Y6MpFA9NV-bNdQAuf_T-4hUIqcOgqlJClnid43iC65nQPEve_OY_fmuYQIMa9fEEhKkExrA=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>僅選取 watermark</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLXYbXHs_WKnG_lBa7zpqIjZCb0YQnwAo5I62HRI4IgCTbQP9e7ygSMnmoKHNR7bqo8J7nnu0wTJdYr-BiwrSPStNI36IYlr_O7oXK6ogBo2wLk9VpzXuACTwlXwk1QjjfJm2veeyr5eu6xtaOZIe2pmsg=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>選取其他未加上浮水印的圖片後點 paste</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLUdwfmMyDa83REP0xIhOKes8Jx8iADxPMBJBFsGjaX9krLMYJwifaqDTMdueinUkAS-hzvQvWSfiyWyEFfIyp4O3glnRQE_0RwL65N8u3FAJgoWxXopyWDS17btUXc6_Mv1linjMKb7ig1vbuYuCtu5Ug=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<h2 id="保留-exif" class="article-heading">保留 Exif 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e4%bf%9d%e7%95%99-exif">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p>Exif 為 Exchangeable image file format，通常存放相片的 metadata (例如，相機型號、照片大小、使用光圈、ISO、快門&hellip;)。建議匯出前可以確認一下這些資訊是否會一起匯出。</p>
+<ul>
+<li>全選圖片後點 export 右邊的三條線，接著點 perferences&hellip;</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLWdQF8H9lGFuwZIrhgLPvlxmtLoGNjICPqEJ1tAUDOR1_TSleSUDodVduHeYWfZpJihyTdW6H6GA2sfA-G-FqNTUNh3y4uk2HBGv7F_ipgz6W5WrWuyyUMivX8SpIMRGT-WecI1pLAbeed9DfqQUQsdww=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>勾選想要保留的資訊並儲存</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLUKsoT_EewY23MXM4La_0vguRd-Oui8SAgP_SgkEnYQByp1AWWCS_nNp6o7q-bCmy8ZW35JI3PBQiFLZYOZQxpU8pVE_17H_edEvYK22Re6NNdwCuoAacYZIRYbeeXxtXB33WECcpTSnpnSj4gAtSv-Fg=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<h2 id="匯出" class="article-heading">匯出 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8c%af%e5%87%ba">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><ul>
+<li>依照需求調整格式及輸出品質並匯出</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLXQ6XNucbZAb57W-CaEt2m6hTkgdfnDEtekkaZKTzG8-Qc_jW_ik8qfR-U48ocClYoSjWlHAoRaJ41kz4V27HVtZPff1dhqn9ps61PEbzY2ld9ScyineuTKaXuiZO_YB_wkHDmneIhZ6Z8HrAHjadXlCQ=w3212-h1749-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>輸出結果可以在原資料夾找到</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLWWgCI964FWKXM5tB_52yDsilVtViyQFE5s-BtVVzKoEOM0N6EGdiiTG380pImzKxhKo4drOvDF8q-ff6CIdChk2MK_yg_ButXRr9fhcGLf50aA5V2_LEN6fDrsj_esHUjsa8sQOIEy6Kc7t6g1HKNnAg=w1603-h745-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<ul>
+<li>檔案大小比較</li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLWIzSod7CFHHwEKOW1Bi-ixEp6tKQ2o6OBKXCpiMAC9lBIwAF_61i7opj0YFJF5eQbTUeFhWdZnUYCZqeCXQRNxOSN8sK9PUsES37LYCZ4FKD_lceP1CwEq5DR7Eu--NSwWWq4DY4tqlCi1g-KWl5tm_A=w1179-h441-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="references" class="article-heading">References 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://www.youtube.com/watch?v=m7WEEWh0nIM" target="_blank" rel="noreferrer noopener">Darktable Lesson 6 | How to add a Custom Watermark to Photos - TJ FREE (YouTube)</a></li>
+<li><a href="https://darktable.gitlab.io/doc/en/export_selected.html" target="_blank" rel="noreferrer noopener">Darktable doc - 2.3.14. Export selected</a></li>
+</ul>
+        ]]></description></item><item><title>Nikon Z6ii</title><link>https://aben20807.github.io/posts/20220722-nikon-z6ii/</link><pubDate>Fri, 22 Jul 2022 18:29:34 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220722-nikon-z6ii/</guid><description><![CDATA[
           <p>買了!!!</p>
           
             <p><a href="https://aben20807.github.io/posts/20220722-nikon-z6ii/"><img src="https://lh3.googleusercontent.com/pw/AM-JKLXetpoTkAksbN5oTR62uTpEEozsy0paz0MQf3-fyBUTxKl0Orp6nTdn-iUhNOx_RFIpmoVZAB6OHTen5hgUBK_b6FnjVjW7puZ4oAZrmIRSnJKzFVioJE-1jUiJd7f68GOe_nz5GP-VhURPdDCmje_TLQ=w2414-h1810-no?authuser=1" style="max-width: 100%;"/></a></p>
