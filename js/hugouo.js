@@ -156,7 +156,7 @@ $(function(){
 
 /* show the code label for code highlight block */
 /* Ref: https://github.com/highlightjs/highlight.js/issues/1108#issuecomment-608415953 */
-if (document.readyState !== 'loading') init()
+if (document.readyState !== 'loading') putLanguageLabels()
 else document.addEventListener('DOMContentLoaded', putLanguageLabels);
 function putLanguageLabels() {
   let highlight = document.querySelectorAll('div.highlight');
