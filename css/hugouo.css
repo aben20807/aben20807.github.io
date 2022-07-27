@@ -834,3 +834,10 @@ body.dark-mode .fn-content {
   padding-top: 0.4rem;
   text-align: left;
 }
+
+.gallery-wrapper {
+  display: grid;
+}
+p:empty {
+  display:none;
+}
