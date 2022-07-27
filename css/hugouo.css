@@ -148,7 +148,7 @@ label.code-label {
   color: #f6f6f6;
   background-color: var(--deep-blue);
   padding:1px 5px;
-  border-radius: 7px 7px 0 0;
+  border-radius: 3px 3px 0 0;
   display: table-cell;
   vertical-align: bottom;
   text-align: center;
@@ -157,6 +157,9 @@ label.code-label {
 div.highlight > pre {
   margin-top: 0 !important;
 }
+label.code-label + div.highlight > pre {
+  border-radius: 0 3px 3px 3px !important;
+} /* TODO label.code-label + div.highlight table  */
 #hdr {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
