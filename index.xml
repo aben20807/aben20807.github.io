@@ -1,4 +1,167 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Weekly Collection</title><link>https://aben20807.github.io/posts/20220718-weekly-collection/</link><pubDate>Sun, 24 Jul 2022 17:54:39 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220718-weekly-collection/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Easy Gallery Shortcode</title><link>https://aben20807.github.io/posts/20220728-hugo-easy-gallery-shortcode/</link><pubDate>Thu, 28 Jul 2022 11:00:03 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220728-hugo-easy-gallery-shortcode/</guid><description><![CDATA[
+          <p>The existing work force the users using the image folder in the site or shortcodes to add the link to the image while I just want to use the markdown language to add images. Therefore, I write this post and create a demo site to show how I make it work.</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20220728-hugo-easy-gallery-shortcode/"><img src="https://lh3.googleusercontent.com/pw/AM-JKLVuAFvd9mCVx8QjhGszrA9IfwMW7SK_Vo9RXhuXb4K4mnuTOvpuIsQWkd4cDTmy75YJFDIYt9RoEj12DV4J112pCug05eU2GH3hmmvl37ad2-Fic1BShPNfJqGzP5I_4AS-thpaJjryvj-5yYrfzpmwyg=w2022-h1137-no?authuser=1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20220728-hugo-easy-gallery-shortcode/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>The existing work force the users using the image folder in the site or shortcodes to add the link to the image while I just want to use the markdown language to add images. Therefore, I write this post and create a demo site to show how I make it work.</p>
+<h1 id="new-a-project" class="article-heading">New a project 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#new-a-project">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>We start from an empty project to make sure that it is able to be reproduced. Jump to section 3, if you just want to see the shortcode.</p>
+<p>Ref: <a href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noreferrer noopener">Hugo Quick Start</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new site gallery-demo
+</span></span><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">cd</span> gallery-demo/ <span style="color:#6272a4"># all following bash commands are run at this directory</span>
+</span></span><span style="display:flex;"><span>$ git init
+</span></span><span style="display:flex;"><span>$ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+</span></span><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#8be9fd;font-style:italic">theme</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">\&#34;</span>ananke<span style="color:#f1fa8c">\&#34;</span> &gt;&gt; config.toml
+</span></span></code></pre></div><p>Remember to modify the default configurations by editing <code>config.toml</code> if you want to publish your site. For example the content of the demo site:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>baseurl = <span style="color:#f1fa8c">&#39;https://aben20807.github.io/hugo-gallery-demo&#39;</span>
+</span></span><span style="display:flex;"><span>languagecode = <span style="color:#f1fa8c">&#39;en-us&#39;</span>
+</span></span><span style="display:flex;"><span>title = <span style="color:#f1fa8c">&#39;gallery demo&#39;</span>
+</span></span><span style="display:flex;"><span>theme = <span style="color:#f1fa8c">&#34;ananke&#34;</span>
+</span></span></code></pre></div><h1 id="setup-deployment-via-github-action" class="article-heading">Setup deployment via GitHub Action 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#setup-deployment-via-github-action">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>Ref: <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#build-hugo-with-github-action" target="_blank" rel="noreferrer noopener">Build Hugo With GitHub Action</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir .github/workflows -p
+</span></span><span style="display:flex;"><span>$ vim .github/workflows/gh-pages.yml
+</span></span></code></pre></div> 
+
+<details>
+  <summary><span>Click to see detailed yml file </span></summary>
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff79c6">name</span>: github pages
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">branches</span>:
+</span></span><span style="display:flex;"><span>      - master  <span style="color:#6272a4"># Set a branch to deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">pull_request</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">runs-on</span>: ubuntu-20.04
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">uses</span>: actions/checkout@v2
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">submodules</span>: <span style="color:#ff79c6">true</span>  <span style="color:#6272a4"># Fetch Hugo themes (true OR recursive)</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">fetch-depth</span>: <span style="color:#bd93f9">0</span>    <span style="color:#6272a4"># Fetch all history for .GitInfo and .Lastmod</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: Setup Hugo
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">uses</span>: peaceiris/actions-hugo@v2
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">hugo-version</span>: <span style="color:#f1fa8c">&#39;0.98.0&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#6272a4"># extended: true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: Build
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">run</span>: hugo --gc --minify --cleanDestinationDir
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: Deploy
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">uses</span>: peaceiris/actions-gh-pages@v3
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span>: github.ref == &#39;refs/heads/master&#39;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">publish_dir</span>: ./public
+</span></span></code></pre></div>
+</details>
+<h1 id="add-the-gallery-shorcode" class="article-heading">Add the gallery shorcode 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#add-the-gallery-shorcode">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><h2 id="html" class="article-heading">html 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#html">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir layouts/shortcodes -p
+</span></span><span style="display:flex;"><span>$ vim layouts/shortcodes/gallery.html
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ $rowSize := index .Params 0 | default 2 }}
+</span></span><span style="display:flex;"><span>{{- $images := split .Inner &#34;\n&#34; -}}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;gallery-wrapper&#34;</span> <span style="color:#50fa7b">style</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;grid-template-columns: repeat({{- $rowSize -}}, 1fr)&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    {{- range $i, $img := $images -}}
+</span></span><span style="display:flex;"><span>    {{- with $img -}}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;img-wrapper&#34;</span>&gt;{{- $img | markdownify -}}&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span><span style="display:flex;"><span>    {{- end -}}
+</span></span><span style="display:flex;"><span>    {{- end -}}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">div</span>&gt;
+</span></span></code></pre></div><h2 id="css" class="article-heading">css 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#css">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p><a href="https://github.com/theNewDynamic/gohugo-theme-ananke#custom-css" target="_blank" rel="noreferrer noopener">Custom CSS</a> may not work for your theme, and you can change to edit the theme&rsquo;s css or add <code>&lt;style&gt;...&lt;/style&gt;</code> in <code>layouts/shortcodes/gallery.html</code> as the workarounds.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#39;[params]\ncustom_css = [&#34;gallery.css&#34;]&#39;</span> &gt;&gt; config.toml
+</span></span><span style="display:flex;"><span>$ mkdir assets/ananke/css -p
+</span></span><span style="display:flex;"><span>$ vim assets/ananke/css/gallery.css
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#50fa7b">gallery-wrapper</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">display</span>: <span style="color:#ff79c6">grid</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#50fa7b">img-wrapper</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">margin</span>: <span style="color:#bd93f9">1</span><span style="color:#8be9fd">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="new-a-post" class="article-heading">New a post 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#new-a-post">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new posts/gallery-demo.md
+</span></span><span style="display:flex;"><span>$ vim content/posts/gallery-demo.md
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;Gallery Demo&#34;
+</span></span><span style="display:flex;"><span>date: 2022-07-28T11:05:57+08:00
+</span></span><span style="display:flex;"><span>draft: false
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+ By default: 2 images for each row
+</span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">gallery</span> &gt;}}
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLVm1_boC8RA1aIv0ZUVc6IdrBXjgEyl1m9klNm8MRS7swkvtZB8F08Gw3se3SrUJ5RSHTB10TOGP6BtUbfVu5ZkXLIuffTCy5ucIiWOMpNWuwfymgPP65S7fiOBPOhMRCC7tZyAGAAJULYakAX0O6PiaA=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLW_0tSG9VlexB02W4mM6dNeGob67fsIFS1j-4y4Dy7fKVODCs2BzJRFu4MFJg5OsFXpBlsVfNPqf3hsAkxYG9wvUN0NohwXxn17QZJablvUi3NDrHJOKNELPkE6i4GjjHz-84IhpWDd6emEKIPDX197Xw=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLW3oxUukttTKV7Z3krsEl-KLXdmXBe27BzNVxLZi6nJYBF4M1Zda6VGQjLKZ8ZM4OSHFFxbDQ5d4BTsqlVtvmrT1gpAOsDQvb2IMOxUV4zzJrrXiQozBkx6NGW40l0GhWXNA5gyGJ9rToDRLM1Yi6ZSLQ=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWValYQhX4vEf-SY0Eavl1OK_RIOvXnZ2aAzMXDG8YSWlMtXOaUFuv_DDE4uFddQRFOMeZDoVOmJB53qJMrJdYlqmohUGHAu-e_YXvRG9Zdbo99TW4nd5Zx3keDMY2zeFDHnWzKCm3VNiZ859-mLIDO5Q=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWFgb6jVGdZFgOMRpRBK13iNKu3WvoDN8hJwH8-Cv5_zrcB0jS-m8zbCYq_mDyBegvmzPdEyQ9ezluOydUBKD_mI1l_RG2AqJQn-YYLXF2zFpYVRVVf8pipWqXjcK47nmV_KpVAS-4YCCZ2f8rGEyl-Kg=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWe_FCQjmTkRG0nlAryiQ7c2BRr3W84PZY-szIYcT3NurR3zdd9xZie12Z7zFruJyMLv8OL7cbQzWxuSBRGvBQFcw3rmgCj2ahyKHuo7vvjL7UzjUqHmvLU79CUUtyblAlyXvsRVkEgrm1oBx7ShXzLGg=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#ff79c6">gallery</span> &gt;}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+ Pass argument to set 3 images for each row
+</span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">gallery</span> <span style="color:#50fa7b">3</span> &gt;}}
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLVm1_boC8RA1aIv0ZUVc6IdrBXjgEyl1m9klNm8MRS7swkvtZB8F08Gw3se3SrUJ5RSHTB10TOGP6BtUbfVu5ZkXLIuffTCy5ucIiWOMpNWuwfymgPP65S7fiOBPOhMRCC7tZyAGAAJULYakAX0O6PiaA=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLW_0tSG9VlexB02W4mM6dNeGob67fsIFS1j-4y4Dy7fKVODCs2BzJRFu4MFJg5OsFXpBlsVfNPqf3hsAkxYG9wvUN0NohwXxn17QZJablvUi3NDrHJOKNELPkE6i4GjjHz-84IhpWDd6emEKIPDX197Xw=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLW3oxUukttTKV7Z3krsEl-KLXdmXBe27BzNVxLZi6nJYBF4M1Zda6VGQjLKZ8ZM4OSHFFxbDQ5d4BTsqlVtvmrT1gpAOsDQvb2IMOxUV4zzJrrXiQozBkx6NGW40l0GhWXNA5gyGJ9rToDRLM1Yi6ZSLQ=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWValYQhX4vEf-SY0Eavl1OK_RIOvXnZ2aAzMXDG8YSWlMtXOaUFuv_DDE4uFddQRFOMeZDoVOmJB53qJMrJdYlqmohUGHAu-e_YXvRG9Zdbo99TW4nd5Zx3keDMY2zeFDHnWzKCm3VNiZ859-mLIDO5Q=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWFgb6jVGdZFgOMRpRBK13iNKu3WvoDN8hJwH8-Cv5_zrcB0jS-m8zbCYq_mDyBegvmzPdEyQ9ezluOydUBKD_mI1l_RG2AqJQn-YYLXF2zFpYVRVVf8pipWqXjcK47nmV_KpVAS-4YCCZ2f8rGEyl-Kg=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>![](https://lh3.googleusercontent.com/pw/AM-JKLWe_FCQjmTkRG0nlAryiQ7c2BRr3W84PZY-szIYcT3NurR3zdd9xZie12Z7zFruJyMLv8OL7cbQzWxuSBRGvBQFcw3rmgCj2ahyKHuo7vvjL7UzjUqHmvLU79CUUtyblAlyXvsRVkEgrm1oBx7ShXzLGg=w1643-h1232-no?authuser=1)
+</span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#ff79c6">gallery</span> &gt;}}
+</span></span></code></pre></div><h1 id="result" class="article-heading">Result 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#result">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>Check the <a href="https://aben20807.github.io/hugo-gallery-demo/posts/gallery-demo/" target="_blank" rel="noreferrer noopener">Live Demo</a></p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AM-JKLVuAFvd9mCVx8QjhGszrA9IfwMW7SK_Vo9RXhuXb4K4mnuTOvpuIsQWkd4cDTmy75YJFDIYt9RoEj12DV4J112pCug05eU2GH3hmmvl37ad2-Fic1BShPNfJqGzP5I_4AS-thpaJjryvj-5yYrfzpmwyg=w2022-h1137-no?authuser=1" alt='' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"></center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="related-work" class="article-heading">Related work 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#related-work">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://github.com/liwenyip/hugo-easy-gallery" target="_blank" rel="noreferrer noopener">liwenyip/hugo-easy-gallery</a></li>
+<li><a href="https://github.com/mfg92/hugo-shortcode-gallery" target="_blank" rel="noreferrer noopener">mfg92/hugo-shortcode-gallery</a></li>
+</ul>
+        ]]></description></item><item><title>Weekly Collection</title><link>https://aben20807.github.io/posts/20220718-weekly-collection/</link><pubDate>Sun, 24 Jul 2022 17:54:39 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220718-weekly-collection/</guid><description><![CDATA[
           <p>一篇涵蓋一整個禮拜我看到、搜尋到的任何領域的大小事好像有些混亂@@</p>
           
             <p><a href="https://aben20807.github.io/posts/20220718-weekly-collection/"><img src="https://images.unsplash.com/photo-1654071976078-b3906c59719f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1374&amp;q=80" style="max-width: 100%;"/></a></p>
