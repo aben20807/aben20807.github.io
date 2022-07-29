@@ -11822,20 +11822,34 @@ measure q[1] -> c[1];
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>目前並不打算直接上傳到 github，所以找了一些方式<br>
-一般圖片</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#ff79c6">alt</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)
+一般圖片 (寬度設定可在網址後方加上空格再加 <code>&quot;=300x&quot;</code>，來將寬度設定為 <code>300</code>，我嘗試了一些方法不過很可惜跟 HackMD 不相容)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#ff79c6">pic</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)
+</span></span><span style="display:flex;"><span>![<span style="color:#ff79c6">pic with width = 300</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC &#34;=300x&#34;</span>)
 </span></span></code></pre></div><p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" alt='alt' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" alt='pic' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">alt</center>
+      <center class="caption-text">pic</center>
+    </figcaption>
+  </figure>
+<br>
+
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC" alt='pic with width = 300' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">pic with width = 300</center>
     </figcaption>
   </figure>
 </p>
-<p>這裡少部份會使用 google 雲端當作圖床 (目前大部分使用 google photo 當作圖床，右鍵複製圖片連結即可，不須使用下方技巧)<br>
-不過從取得連結那裡會拿到：&ldquo;<a href="https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC%22" target="_blank" rel="noreferrer noopener">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC"</a><br>
-要改成 &ldquo;<a href="https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC%22" target="_blank" rel="noreferrer noopener">https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC"</a> 才行 (<a href="https://stackoverflow.com/a/70143719" target="_blank" rel="noreferrer noopener">2022/7/6 可用版本</a>)，所以我動了一些手腳，下面還會顯示標題說明，點擊即可在新分頁開啟可放大的圖片瀏覽器</p>
+ 
+
+<details>
+  <summary><span>不建議使用: google 雲端當作圖床 </span></summary>
+  <p><del>這裡少部份會使用 google 雲端當作圖床 (目前大部分使用 google photo 當作圖床，右鍵複製圖片連結即可，不須使用下方技巧)<br>
+不過從取得連結那裡會拿到：&ldquo;<a href="https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC%22" target="_blank" rel="noreferrer noopener">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC"</a></del><br>
+<del>要改成 &ldquo;<a href="https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC%22" target="_blank" rel="noreferrer noopener">https://lh3.googleusercontent.com/d/1LipAb-4seXENzvyjSYbgtCqEQUfzGziC"</a> 才行 (<a href="https://stackoverflow.com/a/70143719" target="_blank" rel="noreferrer noopener">2022/7/6 可用版本</a>)，所以我動了一些手腳，下面還會顯示標題說明，點擊即可在新分頁開啟可放大的圖片瀏覽器</del></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#ff79c6">google-title here</span>](<span style="color:#50fa7b">https://drive.google.com/open?id=1LipAb-4seXENzvyjSYbgtCqEQUfzGziC</span>)
 </span></span></code></pre></div><p>
  
@@ -11846,6 +11860,8 @@ measure q[1] -> c[1];
     </figcaption>
   </figure>
 </p>
+
+</details>
 <h1 id="gallery" class="article-heading">Gallery 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gallery">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
