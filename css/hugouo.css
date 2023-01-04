@@ -177,8 +177,6 @@ details {
 p,
 summary,
 table {
-  font-size: 1rem !important;
-  line-height: 1.653em;
   margin: 0 0 1.3em;
 }
 div.highlight {
@@ -196,9 +194,12 @@ p + details {
 ul {
   margin: 0 0 1.3em;
 }
+p,
+summary,
+table,
 ul,
 li {
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
   line-height: 1.653em;
 }
 img {
@@ -232,7 +233,7 @@ img {
   line-height: 0.1rem;
 }
 .side-bar * {
-  font-size: 97% !important;
+  font-size: 1rem !important;
 }
 .col-2 {
   float: left;
@@ -265,7 +266,7 @@ a:hover,
 
 .toc-nav .toc-item,
 .toc-nav .toc-link {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.35em;
   padding: 0 5px;
