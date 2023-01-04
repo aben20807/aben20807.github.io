@@ -12218,11 +12218,10 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <li><a href="https://github.com/ikatyang/emoji-cheat-sheet" target="_blank" rel="noreferrer noopener">ref</a></li>
 <li><a href="https://stackoverflow.com/a/50662126" target="_blank" rel="noreferrer noopener"><code>&lt;zero-width space&gt;</code></a></li>
 </ul>
-<pre>
-:<zero-width space>smile:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown">:<zero-width space>smile:
 :<zero-width space>thinking:
 :<zero-width space>flushed:
-</pre>
+</code></pre></div>
 <p>😄<br>
 🤔<br>
 😳</p>
@@ -12240,17 +12239,15 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <li>hl_lines: 標記特定行</li>
 <li>linenostart: 行數起始值</li>
 </ul>
-<pre>
-```c {linenos=table,hl_lines=[2,"4-6"],linenostart=199}
-#include <stdio.h>
-int main()
-{
-    int a = 0;
-    return a;
-}
-```
-</pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>```c {linenos=table,hl_lines=[2,&#34;4-6&#34;],linenostart=199}
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">#include &lt;stdio.h&gt;
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold"></span>int main()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    int a = 0;
+</span></span><span style="display:flex;"><span>    return a;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>```
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex; background-color:#3d3f4a"><span><span style="color:#ff79c6"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>()
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex; background-color:#3d3f4a"><span>    <span style="color:#8be9fd">int</span> a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
@@ -12260,19 +12257,17 @@ int main()
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#code-block-alias">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h2><pre>
-```c {name="qasm"}
-OPENQASM 2.0;
-include "qelib1.inc";
-qreg q[2];
-creg c[2];
-x q[0];
-x q[1];
-measure q[0] -> c[0];
-measure q[1] -> c[1];
-```
-</pre>
-<div class="highlight" name="qasm"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>OPENQASM <span style="color:#bd93f9">2.0</span>;
+</h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>```c {name=&#34;qasm&#34;}
+</span></span><span style="display:flex;"><span>OPENQASM 2.0;
+</span></span><span style="display:flex;"><span>include &#34;qelib1.inc&#34;;
+</span></span><span style="display:flex;"><span>qreg q[2];
+</span></span><span style="display:flex;"><span>creg c[2];
+</span></span><span style="display:flex;"><span>x q[0];
+</span></span><span style="display:flex;"><span>x q[1];
+</span></span><span style="display:flex;"><span>measure q[0] -&gt; c[0];
+</span></span><span style="display:flex;"><span>measure q[1] -&gt; c[1];
+</span></span><span style="display:flex;"><span>```
+</span></span></code></pre></div><div class="highlight" name="qasm"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>OPENQASM <span style="color:#bd93f9">2.0</span>;
 </span></span><span style="display:flex;"><span>include <span style="color:#f1fa8c">&#34;qelib1.inc&#34;</span>;
 </span></span><span style="display:flex;"><span>qreg q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>creg c[<span style="color:#bd93f9">2</span>];

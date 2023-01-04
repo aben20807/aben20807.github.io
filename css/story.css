@@ -41,16 +41,6 @@ pre {
   background: #f6f8fa;
   overflow: auto;
 }
-p > code,
-li > code,
-a > code,
-td > code {
-  font-size: 80%;
-  background: #f6f8fa;
-  margin: 0;
-  border-radius: 3px;
-  padding: 0.15em 0.25em;
-}
 article img {
   max-width: 100%;
 }
