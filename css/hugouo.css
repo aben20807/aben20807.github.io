@@ -3,6 +3,8 @@
   --light-blue: #96ccff;
   --deep-orange: #ff6456;
   --light-orange: #ffb980;
+  --white: #f5f5f5;
+  --black: ;
 }
 @font-face {
   font-family: 'Pacifico';
@@ -208,7 +210,7 @@ summary,
 table,
 ul,
 li {
-  font-size: 1.1rem !important;
+  font-size: 1.0rem !important;
   line-height: 1.653em;
 }
 img {
@@ -242,7 +244,7 @@ img {
   line-height: 0.1rem;
 }
 .side-bar * {
-  font-size: 1rem !important;
+  font-size: 97%;
 }
 .col-2 {
   float: left;
@@ -275,7 +277,7 @@ a:hover,
 
 .toc-nav .toc-item,
 .toc-nav .toc-link {
-  font-size: 1rem;
+  font-size: 95%;
   font-weight: 400;
   line-height: 1.35em;
   padding: 0 5px;
@@ -622,13 +624,13 @@ body.dark-mode main *
   .info-msg, .info-msg *, .success-msg, .success-msg *, .warning-msg, .warning-msg *, .error-msg, .error-msg *, 
   .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *, .gsc-control-cse, .gsc-control-cse *) {
   background: rgb(45, 45, 45);
-  color: #f5f5f5;
+  color: var(--white);
 }
 body.dark-mode table {
   color: #000000;
 }
 body.dark-mode table * {
-  background: #f5f5f5;
+  background: var(--white);
 }
 body.dark-mode div.highlight * {
   background-color: initial;
@@ -639,10 +641,10 @@ body.dark-mode mjx-texatom *{
 }
 body.dark-mode pre,
 body.dark-mode code {
-  background: rgb(39,40,33);
+  background: #777777;
 }
 body.dark-mode > div.CtxtMenu_MenuFrame > div.CtxtMenu_Info.CtxtMenu_MousePost > div > pre {
-  background: rgb(246,248,250);
+  background: var(--white);
 }
 body.dark-mode .post-item .meta,
 body.dark-mode .toc-link,
@@ -652,14 +654,16 @@ body.dark-mode .title-link,
 body.dark-mode .fa-camera,
 body.dark-mode h1 a,
 body.dark-mode #menu-bar * {
-  color: #f5f5f5;
+  color: var(--white);
 }
 body.dark-mode a,
 body.dark-mode a p.footer-summary,
 body.dark-mode a i.fa-caret-square-down,
 body.dark-mode a i.fa-caret-square-up,
 body.dark-mode a i.fa-chevron-circle-right,
-body.dark-mode a i.fa-external-link-square-alt {
+body.dark-mode a i.fa-external-link-square-alt,
+body.dark-mode a i.fa-sign-out-alt,
+body.dark-mode a i.fa-seedling {
   color: var(--deep-orange);
   transition: color 0.15s ease-in !important;
 }
@@ -669,10 +673,7 @@ body.dark-mode a:hover p.footer-summary,
 body.dark-mode .post-meta a:hover,
 body.dark-mode a:hover .post-meta,
 body.dark-mode .post-item a:hover span,
-body.dark-mode a:hover i.fa-caret-square-down,
-body.dark-mode a:hover i.fa-caret-square-up,
-body.dark-mode a:hover i.fa-chevron-circle-right,
-body.dark-mode a:hover i.fa-external-link-square-alt {
+body.dark-mode a:hover i.fas {
   color: var(--light-orange) !important;
   transition: color 0.15s ease-in !important;
 }
@@ -698,7 +699,7 @@ body.dark-mode .toc-nav a.toc-link:hover {
 body.dark-mode .tags-sm a,
 body.dark-mode .tags-md a,
 body.dark-mode .post-meta a {
-  color: #d1d1d1;
+  color: var(--white);
 }
 
 body.dark-mode .tags-sm a:hover,
@@ -723,8 +724,8 @@ body.dark-mode blockquote {
   height: 40px;
   position: sticky!important;
   font-size: 80%;
-  background: #444444;
-  color: white;
+  background: #777777;
+  color: var(--white);
   cursor: pointer;
   border-radius: 8px;
   z-index: 1;
@@ -750,7 +751,7 @@ body.dark-mode blockquote {
   bottom: 100%;
   border-radius: .5em;
   border: 2px solid rgba(0, 0, 0, 0.3);
-  background: #f6f6f6;
+  background: var(--white);
   opacity: 0;
   visibility: hidden;
   transform: translate3d(0,-10px,0);

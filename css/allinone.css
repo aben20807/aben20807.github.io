@@ -220,7 +220,7 @@ a:hover.post-meta, a:active.post-meta {
 
 /* li-x 表示横过来的li */
 .li-x li {
-  padding: 0 8px;
+  padding: 0 4px;
   display: inline-block;
 }
 
@@ -522,7 +522,7 @@ Markdown
 }
 
 .tags-md li {
-  padding: 7px 3px;
+  padding: 4px 3px;
 }
 
 
