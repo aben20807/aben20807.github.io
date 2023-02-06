@@ -36,8 +36,8 @@ jQuery(document).ready(function ($) {
 
   $.fn.overflown = function () {
     // detect element overflow ref: https://stackoverflow.com/questions/9333379/check-if-an-elements-content-is-overflowing#comment27010845_9541579
-    var e = this[0]; 
-    return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; 
+    var e = this[0];
+    return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth;
   }
 
   // prevent scroll main window ref: https://stackoverflow.com/a/24742225/6734174
@@ -104,18 +104,18 @@ $(window).bind("scroll", function () {
 });
 
 /* gotop_btn */
-$(function(){
-  $("#gotop_btn").click(function(){
-      jQuery("html,body").animate({
-          scrollTop:0
-      },1000);
+$(function () {
+  $("#gotop_btn").click(function () {
+    jQuery("html,body").animate({
+      scrollTop: 0
+    }, 1000);
   });
-  $(window).scroll(function() {
-      if ( $(this).scrollTop() > 300){
-          $('#gotop_btn').fadeIn("fast");
-      } else {
-          $('#gotop_btn').stop().fadeOut("fast");
-      }
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+      $('#gotop_btn').fadeIn("fast");
+    } else {
+      $('#gotop_btn').stop().fadeOut("fast");
+    }
   });
 });
 
@@ -124,7 +124,7 @@ $(function(){
  * Ref: https://www.xianmin.org/hugo-theme-jane/post/doc-footnote-preview/
  * Ref: https://github.com/xianmin/hugo-theme-jane/search?q=footnote
  */
- var fnTooltip = function () {
+var fnTooltip = function () {
   $(".footnote-ref-wrapper").each(function () {
     var id = $(this).children("a").attr("href").substr(1),
       footnote = $(document.getElementById(id)).clone(),
@@ -154,14 +154,22 @@ $(function(){
   $(window).resize(position());
 }
 
+// generate random id
+let s4 = () => {
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1);
+}
+
 /* show the code label for code highlight block */
 /* Ref: https://github.com/highlightjs/highlight.js/issues/1108#issuecomment-608415953 */
 if (document.readyState !== 'loading') putLanguageLabels()
 else document.addEventListener('DOMContentLoaded', putLanguageLabels);
 function putLanguageLabels() {
   let highlight = document.querySelectorAll('div.highlight');
-  Array.prototype.forEach.call(highlight, function(block) {
+  Array.prototype.forEach.call(highlight, function (block) {
     let code = block.querySelectorAll('pre code[data-lang]');
+    block.id = "code-" + s4() + s4();
     let language = code[0].getAttribute('data-lang');
     let alias = block.getAttribute('name');
     if (alias != null) {
@@ -170,7 +178,47 @@ function putLanguageLabels() {
     if (language == "fallback") {
       return;
     }
-    block.insertAdjacentHTML("beforebegin",`<label class="code-label">${language}</label>`);
+    block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
+    // block.insertAdjacentHTML("beforebegin",`<i class="far fa-clone"></i>`);
+  });
+}
+
+function copyCodeToClip(code_id) {
+  let code = document.getElementById(code_id);
+  let textArea = document.createElement("textarea");
+
+  // hide line number before copy
+  let tds = code.querySelectorAll("td");
+  if (tds.length > 1) {
+    let prestore = tds[0].style.display;
+    tds[0].style.display = "none";
+    textArea.value += code.innerText
+      .replace(/\n\n/gm, "\n")
+      .replace(/^> /gm, "")
+      .replace(/^\$ /gm, "");
+    tds[0].style.display = prestore;
+  } else {
+    textArea.value += code.innerText
+      .replace(/\n\n/gm, "\n")
+      .replace(/^> /gm, "")
+      .replace(/^\$ /gm, "");
+  }
+
+  document.body.appendChild(textArea);
+  navigator.clipboard.writeText(textArea.value).then(function () {
+    // console.log('Async: Copying to clipboard was successful!');
+  }, function (err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+  textArea.remove();
+
+  // https://github.com/Xtrendence/X-Notify  (modified)
+  const Notify = new XNotify("BottomLeft");
+  Notify.info({
+    borderRadius: "2px",
+    title: "copied!",
+    duration: 3000,
+    background: "#646464"
   });
 }
 

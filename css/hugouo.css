@@ -5,6 +5,10 @@
   --light-orange: #ffb980;
   --white: #f5f5f5;
   --black: ;
+
+  --link-color: #428bca;
+  --active-color: #428bca;
+  --text-dark: #333333;
 }
 @font-face {
   font-family: 'Pacifico';
@@ -163,7 +167,11 @@ label.code-label {
 div.highlight > pre {
   margin-top: 0 !important;
 }
-label.code-label + div.highlight > pre {
+a.code-copy{
+  padding-top: 3px;
+  margin-left: auto;
+}
+div.code-meta + div.highlight > pre {
   border-radius: 0 3px 3px 3px !important;
 } /* TODO label.code-label + div.highlight table  */
 #hdr {
@@ -255,6 +263,15 @@ img {
   line-height: 0.1rem;
 }
 
+a {
+  color: var(--link-color);
+}
+a:hover, a:active {
+  color: var(--active-color);
+}
+a.no-color, a.no-color:hover, a.no-color:active {
+  color: var(--text-dark);
+}
 a,
 a:hover,
 .no-underline-on-hover:hover {

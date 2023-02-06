@@ -43,11 +43,11 @@ img {
   max-width: 100%;
 }
 
-a {
-  /* color: #428bca; */
+/* a {
+  color: #428bca;
   color: var(--link-color);
-  /* font-weight: 400; */
-}
+  font-weight: 400;
+} */
 
 /* post-card use */
 /* .a-inherit a {
@@ -55,10 +55,9 @@ a {
   font-weight: inherit;
 } */
 
-a:hover, a:active {
-  /* color: #38849e; */
+/* a:hover, a:active {
   color: var(--active-color);
-}
+} */
 
 
 .active-color .active *,
