@@ -1,6 +1,6 @@
 :root {
-  --deep-blue: #357edd;
-  --light-blue: #96ccff;
+  --deep-blue: #2c76d7;
+  --light-blue: #4ca8ff;
   --deep-orange: #ff6456;
   --light-orange: #ffb980;
   --white: #f5f5f5;
@@ -213,6 +213,9 @@ p + details {
 ul {
   margin: 0 0 1.3em;
 }
+.post-meta ul {
+  padding: 0;
+}
 p,
 summary,
 table,
@@ -264,13 +267,14 @@ img {
 }
 
 a {
-  color: var(--link-color);
+  color: var(--deep-blue);
 }
 a:hover, a:active {
-  color: var(--active-color);
+  color: var(--light-blue) !important;
+  transition: color .15s ease-in;
 }
 a.no-color, a.no-color:hover, a.no-color:active {
-  color: var(--text-dark);
+  color: var(--text-dark) !important;
 }
 a,
 a:hover,
