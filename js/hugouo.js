@@ -216,7 +216,7 @@ function copyCodeToClip(code_id) {
   const Notify = new XNotify("BottomLeft");
   Notify.info({
     borderRadius: "2px",
-    title: "copied!",
+    content: "copied!",
     duration: 3000,
     background: "#646464"
   });

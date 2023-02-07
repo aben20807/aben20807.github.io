@@ -10,12 +10,11 @@
   --active-color: #428bca;
   --text-dark: #333333;
 }
-@font-face {
-  font-family: 'Pacifico';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2) format('woff2');
-  font-display: swap;
+@font-face{
+  font-family:cascadia code;
+  font-style:normal;
+  font-weight:400;
+  src: local('Cascadia Code'), url('/assets/fonts/Cascadia.woff'),url(https://fonts.cdnfonts.com/s/29131/Cascadia.woff) format('woff')
 }
 body {
   /* ref: https://stackoverflow.com/a/44000322/6734174 */
@@ -57,6 +56,7 @@ h4.article-heading:before,
 h5.article-heading:before,
 h6.article-heading:before {
   font-family: "Milonga";
+  font-display: swap;
   font-size: 85%;
   color: #2060a8;
   padding-right: 0.45em;
@@ -97,9 +97,10 @@ summary,
 details,
 body article,
 .link-reverse {
-  font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
+  font-family: "Noto Sans TC", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
-    ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    ubuntu, noto, "segoe ui", arial, sans-serif;
+  font-display: swap;
   word-break: break-word;
 }
 h1,
@@ -109,9 +110,10 @@ h4,
 h5,
 h6,
 .serif {
-  font-family: "Lora", "Noto Sans TC", "Quattrocento Sans", -apple-system,
+  font-family: "Lora", "Noto Sans TC", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
-    ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    ubuntu, noto, "segoe ui", arial, sans-serif;
+  font-display: swap;
   word-break: break-word;
   margin: 0em;
   padding: 0.6em 0em 0.3em;
@@ -141,7 +143,8 @@ h6:hover .hover-show {
   opacity: 1;
 }
 pre, code {
-  font-family: "Cascadia Code", "Roboto Mono", "Consolas", "monaco", "monospace";
+  font-family: "Cascadia Code", "Consolas", "monaco", "monospace";
+  font-display: swap;
 }
 pre {
   border-style: hidden;
@@ -371,7 +374,8 @@ summary:hover,
 }
 blockquote > p {
   margin: 0.9em 0 0.3em;
-  font-family: "Lora", "Noto Sans TC", "Quattrocento Sans";
+  font-family: "Lora", "Noto Sans TC", "Times";
+  font-display: swap;
   font-size: 98% !important;
 }
 
@@ -481,13 +485,11 @@ a.footnote-backref:hover {
 
 .footnote-ref:before,
 a.footnote-backref:before {
-  font-family: "Roboto Mono";
   content: "";
   color: var(--deep-blue);
 }
 .footnote-ref:after,
 a.footnote-backref:after {
-  font-family: "Roboto Mono";
   content: "";
   color: var(--deep-blue);
 }
@@ -550,9 +552,10 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
   padding: 10px;
   border-radius: 0px 0px 3px 3px;
   font-size: 1rem !important;
-  font-family: "Noto Sans TC", "Quattrocento Sans", -apple-system,
+  font-family: "Noto Sans TC", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
-    ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    ubuntu, noto, "segoe ui", arial, sans-serif;
+  font-display: swap;
   word-break: break-word;
   overflow-x: scroll !important;
 }
@@ -819,7 +822,7 @@ body.dark-mode .fn-content {
     font-size: 1rem !important;
   }
   pre *, code {
-    font-family: "Roboto Mono", "Consolas", "monaco", "monospace";
+    font-family: "Cascadia Code", "Consolas", "monaco", "monospace";
     font-size: 0.5rem !important;
     white-space: pre-wrap;
   }
