@@ -289,6 +289,42 @@
     </figcaption>
   </figure>
 </p>
+
+<div class="alert-block">
+
+  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="alert danger-msg">
+    <p><a href="https://github.com/aben20807/latex_examples/blob/master/03_figure_ieeetrans.tex" title="03_1 Figure IEEEtran 完整程式碼" aria-label="03_1 Figure IEEEtran 完整程式碼"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 03_1 Figure IEEEtran 完整程式碼</a><br>
+若是使用 IEEE 的模板 (例如 <code>\documentclass[conference,10pt]{IEEEtran}</code>)，<del>建議</del>絕對不要使用 subfigure (相信我，我跟它硬碰硬半天，結果我輸了) 而是改用 subfig，以避免格式設定被 subfigure 覆蓋。注意不可以使用 <code>\usepackage{caption}</code>、<code>\usepackage{subcaption}</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#6272a4">% before \begin{document}
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\ifCLASSOPTIONcompsoc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[caption=false, font=normalsize, labelfont=sf, textfont=sf]</span><span style="color:#8be9fd;font-style:italic">{</span>subfig<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[caption=false, font=footnotesize]</span><span style="color:#8be9fd;font-style:italic">{</span>subfig<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\captionsetup</span><span style="color:#50fa7b">[subfigure]</span><span style="color:#8be9fd;font-style:italic">{</span>width=0.48<span style="color:#ff79c6">\textwidth</span><span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#6272a4">% 讓 caption 最大寬度一致
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% after \begin{document}
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>figure<span style="color:#8be9fd;font-style:italic">}</span>[htb!]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\centering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\subfloat</span><span style="color:#50fa7b">[Caption for example.]</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\label</span><span style="color:#8be9fd;font-style:italic">{</span>fig:example<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#ff79c6">\includegraphics</span><span style="color:#50fa7b">[width=0.33\textwidth]</span><span style="color:#8be9fd;font-style:italic">{</span>figures/paper-example.pdf<span style="color:#8be9fd;font-style:italic">}}</span><span style="color:#ff79c6">\hfill</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\subfloat</span><span style="color:#50fa7b">[\tiny Cat.]</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\label</span><span style="color:#8be9fd;font-style:italic">{</span>fig:cat<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#ff79c6">\includegraphics</span><span style="color:#50fa7b">[width=0.48\textwidth]</span><span style="color:#8be9fd;font-style:italic">{</span>figures/cat.png<span style="color:#8be9fd;font-style:italic">}}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\caption</span><span style="color:#8be9fd;font-style:italic">{</span>Two subfigures.<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\label</span><span style="color:#8be9fd;font-style:italic">{</span>fig:all<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>figure<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AMWts8CkfWyXsDtSyFu1MEmdddjzSbvr_AHBNco2sfcSerylECy6hfrLny8byqG-F9q1faOciGnqTdna9jJ1TRIH_iM2WhCd3IDU-fQy0ijQox18tCDfwWl5lwr5nNNYqdcE-IuY1s-Um6VwaePzZywzYbCBdA=w722-h853-no?authuser=1" alt='subfig' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">subfig</center>
+    </figcaption>
+  </figure>
+</p>
+
+  </div>
+
+</div>
 <h2 id="minipage" class="article-heading">minipage 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#minipage">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
