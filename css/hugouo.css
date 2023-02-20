@@ -557,7 +557,6 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
     ubuntu, noto, "segoe ui", arial, sans-serif;
   font-display: swap;
   word-break: break-word;
-  overflow-x: scroll !important;
 }
 .info-title,
 .success-title,
