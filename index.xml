@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Latex Examples</title><link>https://aben20807.github.io/posts/20221227-latex-examples/</link><pubDate>Tue, 10 Jan 2023 16:54:52 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20221227-latex-examples/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Install Hugo on Ubuntu 20.04</title><link>https://aben20807.github.io/posts/20230310-install-hugo-on-ubuntu-20-04/</link><pubDate>Fri, 10 Mar 2023 14:15:12 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230310-install-hugo-on-ubuntu-20-04/</guid><description><![CDATA[
+          
+          
+            <p><a href="https://aben20807.github.io/posts/20230310-install-hugo-on-ubuntu-20-04/"><img src="https://lh3.googleusercontent.com/pw/AMWts8D7p0AaV1QfRxKHRhLNUXC3plqxvalD99OsM5hM9sC4zvaLQW4lzJwR6rg2-vGPmOLXpDdNO19eA4BHGxdWHmHMi382LjJXc493lTZBK-lnytJbu5BZwC-I_LAF393OHZnPefh2-sCapojvzaac_pm3bw=w990-h676-no?authuser=1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230310-install-hugo-on-ubuntu-20-04/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <h1 id="install-go" class="article-heading">Install Go 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#install-go">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo add-apt-repository ppa:longsleep/golang-backports
+</span></span><span style="display:flex;"><span>$ sudo apt update
+</span></span><span style="display:flex;"><span>$ sudo apt install golang-go
+</span></span><span style="display:flex;"><span>$ go version
+</span></span><span style="display:flex;"><span>go version go1.20.2 linux/amd64
+</span></span></code></pre></div><h1 id="install-hugo" class="article-heading">Install hugo 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#install-hugo">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#8be9fd;font-style:italic">CGO_ENABLED</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">1</span> go install --tags extended github.com/gohugoio/hugo@latest
+</span></span></code></pre></div><h1 id="add-go-to-the-path-environment-variable" class="article-heading">Add go to the path environment variable 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#add-go-to-the-path-environment-variable">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>Add <code>export PATH=$PATH:$HOME/go/bin</code> in <code>~/.bashrc</code></p>
+<h1 id="check-the-version" class="article-heading">Check the version 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#check-the-version">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo version
+</span></span><span style="display:flex;"><span>hugo v0.111.2+extended linux/amd64 <span style="color:#8be9fd;font-style:italic">BuildDate</span><span style="color:#ff79c6">=</span>unknown
+</span></span></code></pre></div><h1 id="references" class="article-heading">References 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://github.com/aben20807/blog-post-issues/issues/129#issue-1276405615" title="Build from cloned hugo repo" aria-label="Build from cloned hugo repo"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Build from cloned hugo repo</a></li>
+<li><a href="https://github.com/gohugoio/hugo#build-and-install-the-binary-from-source-using-the-go-toolchain" title="Build and Install the Binary from Source (Using the Go toolchain)" aria-label="Build and Install the Binary from Source (Using the Go toolchain)"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Build and Install the Binary from Source (Using the Go toolchain)</a></li>
+</ul>
+        ]]></description></item><item><title>Latex Examples</title><link>https://aben20807.github.io/posts/20221227-latex-examples/</link><pubDate>Tue, 10 Jan 2023 16:54:52 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20221227-latex-examples/</guid><description><![CDATA[
           <p>Latex 應該也算是一種程式語言 吧</p>
           
             <p><a href="https://aben20807.github.io/posts/20221227-latex-examples/"><img src="https://lh3.googleusercontent.com/pw/AL9nZEUMrYxiEzKnoR5Luk3P6SLeyeb5GVkg7yVUoW1FWJznXirzfdB4YBeOsrVsnH75tcM5DFjBPHPXb7dKIHwK-JI8DXcZ9o5pAmA4Ku5PYSwutbo0n5aFo18CSrn8lclq7fCg7herizF3E3OhfdOUgugmdA=w1365-h908-no?authuser=1" style="max-width: 100%;"/></a></p>
@@ -9330,7 +9378,7 @@ $$</p>
         ]]></description></item><item><title>Hugo on WSL2 (Ubuntu18.04)</title><link>https://aben20807.github.io/posts/20210215-hugo-on-wsl2/</link><pubDate>Mon, 15 Feb 2021 10:56:01 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20210215-hugo-on-wsl2/</guid><description><![CDATA[
            <br/><p>漸漸變成老闆的樣子 (?)</p>
           
-            <p><a href="https://aben20807.github.io/posts/20210215-hugo-on-wsl2/"><img src="https://lh3.googleusercontent.com/pw/ACtC-3dz0JI6eOlA0KVRH15KQGVdaa5_NwujRTRNGtgyJMhM0RwFOQ95GUou8cjNdH4g7Bjg3N4yjfr085yg-IIUa_mOAxgBEkUwVRNTe_r_ZE3nv1whJfAyP5Xb9LSqQQ2eTUVyOlKAJktv0CXH2UFHUncbQw=w587-h422-no" style="max-width: 100%;"/></a></p>
+            <p><a href="https://aben20807.github.io/posts/20210215-hugo-on-wsl2/"><img src="https://lh3.googleusercontent.com/pw/AMWts8D7p0AaV1QfRxKHRhLNUXC3plqxvalD99OsM5hM9sC4zvaLQW4lzJwR6rg2-vGPmOLXpDdNO19eA4BHGxdWHmHMi382LjJXc493lTZBK-lnytJbu5BZwC-I_LAF393OHZnPefh2-sCapojvzaac_pm3bw=w990-h676-no?authuser=1" style="max-width: 100%;"/></a></p>
           
           <p><a href="https://aben20807.github.io/posts/20210215-hugo-on-wsl2/">Visit website to read the full article</a></p>
           
