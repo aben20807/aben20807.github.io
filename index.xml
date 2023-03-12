@@ -1,4 +1,98 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>無法接受新事物的現代人</title><link>https://aben20807.github.io/posts/20230311-no-more-new-thing/</link><pubDate>Sat, 11 Mar 2023 20:51:50 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230311-no-more-new-thing/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Flockfile for Multithreading stdout</title><link>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</link><pubDate>Sun, 12 Mar 2023 20:32:29 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</guid><description><![CDATA[
+          
+          
+            <p><a href="https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/"><img src="https://aben20807.github.io//img/default-header-img.jpg" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <h1 id="原版" class="article-heading">原版 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8e%9f%e7%89%88">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p><code>worker</code> 內有兩個 <code>fprintf</code> 在多執行緒情境下無法保證第一個執行完後馬上換下一個。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;omp.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">worker</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span> message) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> omp_get_thread_num();
+</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
+</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
+</span></span><span style="display:flex;"><span>    omp_set_num_threads(<span style="color:#bd93f9">4</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#pragma omp parallel for
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">100</span>; <span style="color:#ff79c6">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">char</span> message[<span style="color:#bd93f9">8</span>];
+</span></span><span style="display:flex;"><span>        snprintf(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
+</span></span><span style="display:flex;"><span>        worker(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gcc -o flockfile_test -fopenmp flockfile_test.c
+</span></span><span style="display:flex;"><span>$ ./flockfile_test &gt;|out.txt
+</span></span></code></pre></div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AMWts8CPV6I3Dwr0eKcybJQjtzpTmS81u8QBNq4aSKFg0741JD3iWRmee8w_b-ZK5eepgJY33nn0LKlHyQ_eHn2LI-1_NVdLnxkpa7XoMKDDw_dZDpvCrq7yLNYdAn5xgNPXdNrOe9X7rVCCwdpXMNeMQCJpNQ=w1460-h1628-no?authuser=1" alt='正常預期輸出' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">正常預期輸出</center>
+    </figcaption>
+  </figure>
+</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AMWts8Dz41_mutp37g8cuVAx6JS4djxb3EuXrHb5t7zV-RFYzdXTDypC68dMxx70atpkCxgZ1HOBk4Y2ZdmQfm5-mCLsRRdMYuPH03MFQ0eTnnzGf1JmwhYjVFWJw4l6Ha3SnVwdbbT7xrlRKAbYsC5813tjPw=w978-h1098-no?authuser=1" alt='因多執行緒關係導致不合預期' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">因多執行緒關係導致不合預期</center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="利用-flockfile-達成預期效果" class="article-heading">利用 flockfile 達成預期效果 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%88%a9%e7%94%a8-flockfile-%e9%81%94%e6%88%90%e9%a0%90%e6%9c%9f%e6%95%88%e6%9e%9c">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>要記得 unlock。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;omp.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">worker</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span> message) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> omp_get_thread_num();
+</span></span><span style="display:flex; background-color:#3d3f4a"><span>    flockfile(stdout);
+</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
+</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span>    funlockfile(stdout);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
+</span></span><span style="display:flex;"><span>    omp_set_num_threads(<span style="color:#bd93f9">4</span>);
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">#pragma omp parallel for
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">100</span>; <span style="color:#ff79c6">++</span>i) {
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">char</span> message[<span style="color:#bd93f9">8</span>];
+</span></span><span style="display:flex;"><span>        snprintf(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
+</span></span><span style="display:flex;"><span>        worker(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="references" class="article-heading">References 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://manpages.ubuntu.com/manpages/focal/zh_TW/man3/flockfile.3.html" title="man page - flockfile, ftrylockfile, funlockfile" aria-label="man page - flockfile, ftrylockfile, funlockfile"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> man page - flockfile, ftrylockfile, funlockfile</a></li>
+</ul>
+        ]]></description></item><item><title>無法接受新事物的現代人</title><link>https://aben20807.github.io/posts/20230311-no-more-new-thing/</link><pubDate>Sat, 11 Mar 2023 20:51:50 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230311-no-more-new-thing/</guid><description><![CDATA[
           <p>簡單整理我對 ChatGPT 等 AI 應用的看法。<br><br/>先寫著等待之後可能的改觀。</p><br/><p>以下主要為個人觀點，歡迎理性討論。</p>
           
             <p><a href="https://aben20807.github.io/posts/20230311-no-more-new-thing/"><img src="https://lh3.googleusercontent.com/pw/AMWts8C5RrD4s4FwNUDqdejeJDNQweB7PfhgVvaj241p08T2xvThM2vvMAUUHOauzNYVjgO1Kh3Lmc9zwTxR0In-Od6eyzDNdR4uUh4fyKR9tw-yAwHoiXABU5Bb8y_m5567OdbP4mJg4lQHN-iVmY_r8_vzCw=w1365-h908-no?authuser=1" style="max-width: 100%;"/></a></p>
