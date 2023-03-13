@@ -155,8 +155,8 @@ var fnTooltip = function () {
 }
 
 // generate random id
-let s4 = () => {
-  return Math.floor((1 + Math.random()) * 0x10000)
+let random_id = () => {
+  return Math.floor((1 + Math.random()) * 0x100000000)
     .toString(16)
     .substring(1);
 }
@@ -169,7 +169,7 @@ function putLanguageLabels() {
   let highlight = document.querySelectorAll('div.highlight');
   Array.prototype.forEach.call(highlight, function (block) {
     let code = block.querySelectorAll('pre code[data-lang]');
-    block.id = "code-" + s4() + s4();
+    block.id = "code-" + random_id();
     let language = code[0].getAttribute('data-lang');
     let alias = block.getAttribute('name');
     if (alias != null) {
@@ -178,8 +178,13 @@ function putLanguageLabels() {
     if (language == "fallback") {
       return;
     }
-    block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
-    // block.insertAdjacentHTML("beforebegin",`<i class="far fa-clone"></i>`);
+    let need_copy = block.getAttribute('copy');
+    console.log(need_copy);
+    if (need_copy === null || need_copy != "no") {
+      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
+    } else {
+      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label></div>`);
+    }
   });
 }
 
