@@ -735,6 +735,11 @@ body.dark-mode .tags-md a:active {
 body.dark-mode blockquote {
   border-left: 8px solid var(--light-orange);
 }
+body.dark-mode li.page-item.active a { /* active current page */
+  color: var(--white);
+  background-color: var(--deep-orange);
+  border: var(--deep-orange);
+}
 /* dark mode end */
 
 #gotop_btn {
@@ -873,4 +878,9 @@ body.dark-mode .fn-content {
 }
 p:empty {
   display:none;
+}
+li.page-item.active a { /* active current page */
+  color: var(--white);
+  background-color: var(--deep-blue);
+  border: var(--deep-blue);
 }
