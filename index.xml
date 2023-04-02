@@ -1,4 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Flockfile for Multithreading stdout</title><link>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</link><pubDate>Sun, 12 Mar 2023 20:32:29 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>NCKU CSIE 博士畢業點數計算</title><link>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</link><pubDate>Sun, 02 Apr 2023 10:08:51 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</guid><description><![CDATA[
+          <p>寫個線上小工具取代之前寫的 <a href="https://gist.github.com/aben20807/10146edb54989c2cd72671c225dc3eb1" title="python script" aria-label="python script"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> python script</a>。</p><br/><p><del>JavaScript 好難寫</del></p>
+          
+            <p><a href="https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/"><img src="https://lh3.googleusercontent.com/pw/AMWts8DNReCcjUtj5xiWWTI6N23TF_pZq_2GXsSrOyc28oEEKwHcpo8rQYEC_Mja7kJXok1xNATgAiKnoxxW9YjvmCIfVzxovXak-EbMiwVzlsJeNeqWxx-XriDynsxTQj2eBpEVErPNnsXOuyhQMQA85fchHw=w685-h380-s-no?authuser=1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>寫個線上小工具取代之前寫的 <a href="https://gist.github.com/aben20807/10146edb54989c2cd72671c225dc3eb1" title="python script" aria-label="python script"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> python script</a>。</p>
+<p><del>JavaScript 好難寫</del></p>
+<h1 id="tldr-線上計算機" class="article-heading">TL;DR 線上計算機 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#tldr-%e7%b7%9a%e4%b8%8a%e8%a8%88%e7%ae%97%e6%a9%9f">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1>
+<div class="alert-block">
+
+  <div class="warning-title"><i class="fa fa-exclamation-triangle"></i></div>
+  <div class="warning-msg db overflow-x-scroll ov-for-img">
+    實際點數規定請務必自行確認系上公告。
+  </div>
+
+</div>
+<div>PhD points: <span style="font-weight: bold;" id="count">0</span></div>
+<div style="margin: 5px 0;"><button style="cursor:pointer;" onclick="calc()">calc</button></div>
+<div><textarea id="input" rows="6" cols="20">B 1 1
+B 1 2
+6 1 5</textarea></div>
+<p>使用方式: 每列為一篇論文的 T, i, N</p>
+<ul>
+<li>T 可為 A, B, C 或直接寫對應點數</li>
+<li>i 代表自己是第幾作者</li>
+<li>N 沒意外的話應該是除了指導教授及國內外學術合作研究學者後的作者數 (包含自己)。</li>
+</ul>
+<script>
+// Ref: https://cborchers.com/2020/12/08/how-to-include-javascript-in-your-hugo-website-or-blog-for-cool-applications/
+var count = document.getElementById('count');
+var input = document.getElementById('input');
+var iserrer = false;
+
+input.addEventListener('keyup', function(e) {
+  calc(e.target.value);
+});
+
+function assert(condition, message) {
+    if (!condition) {
+        const Notify = new XNotify("BottomLeft");
+        Notify.info({
+            borderRadius: "2px",
+            content: message,
+            duration: 5000,
+            background: "#B22222"
+        });
+        iserror = true;
+    }
+}
+
+function cal(L, i, N) {
+    assert(L == 'A' || L == 'B' || L == 'C' || !isNaN(L), "Rank should be A, B, C, or an integer");
+    let T;
+    if (!isNaN(L)) {
+        T = parseInt(L);
+    } else {
+        T = 6 - 2 * (L.charCodeAt(0) - 'A'.charCodeAt(0));
+    }
+    let U = Math.pow(2, N-i);
+    let D = Math.pow(2, N) - 1;
+    return Math.round(((T * U / D) + Number.EPSILON) * 100) / 100;
+}
+
+function calc(text) {
+    iserror = false;
+    var text = input.value;
+    text = text.split('\n').map(function(x){ return x.split(' '); });
+    let total = 0;
+    let detail = "";
+    text.map(e => { let s = cal(...e); total += s; detail += s + "+"; });
+    total = Math.round( ( total + Number.EPSILON ) * 100 ) / 100
+    let result = total.toString() + " (" + detail.slice(0,-1) + ")";
+
+    if (iserror || isNaN(total)) {
+        count.innerText = "ERROR!";
+    } else {
+        count.innerText = result;
+    }
+}
+</script>
+<h1 id="公式推導" class="article-heading">公式推導 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%85%ac%e5%bc%8f%e6%8e%a8%e5%b0%8e">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>先看看公告內容 (目前最新版本: 民國100年1月11日系務會議修改通過)</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/pw/AMWts8A-IQMj_4K3zZJSgFQO38aygi16gxUjEnlIit1HUq-OLXTu2hw9UHXOT7dgwJztzk-MsWKsLUVt2j-eMIOwfxRnXRiw6fE-Qu7ednQ6BjnMCQhCM6kY3bMFDnc38FrBJ56NifGUEKVGJcNdIapWGfGj1g=w1821-h811-s-no?authuser=1" alt='國立成功大學資訊工程學系博士班學位考試辦法' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">國立成功大學資訊工程學系博士班學位考試辦法</center>
+    </figcaption>
+  </figure>
+</p>
+<p>其實公式下方就是一個等比級數和，我還去複習一下公式 ($S_n = a+ar+ar^2+&hellip;+ar^n = \frac{a(1-r^n)}{1-r}$)。</p>
+<p>$$<br>
+\begin{equation*}<br>
+\begin{split}<br>
+P &amp;= T \times\frac{\frac{1}{2^i}}{\frac{1}{2^1}+\frac{1}{2^2}+&hellip;+\frac{1}{2^N}}<br>
+= T\times\frac{\frac{1}{2^i}}{\frac{\frac{1}{2}(1-\frac{1}{2^N})}{1-\frac{1}{2}}}<br>
+\newline<br>
+&amp;= T\times\frac{\frac{1}{2^i}}{\frac{2^N-1}{2^N}}<br>
+= T\times\frac{2^{(N-i)}}{2^N-1}<br>
+\end{split}<br>
+\end{equation*}<br>
+$$</p>
+<h1 id="範例" class="article-heading">範例 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%af%84%e4%be%8b">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>A 1 1 (A 級，第一作者，沒其他人)
+<ul>
+<li>$T\times\frac{2^{(N-i)}}{2^n-1} = 6\times\frac{2^{1-1}}{2^1-1} = 6$</li>
+</ul>
+</li>
+<li>B 1 2 (B 級，第一作者，有另一位作者)
+<ul>
+<li>$T\times\frac{2^{(N-i)}}{2^n-1} = 4\times\frac{2^{2-1}}{2^2-1} = 2.67$</li>
+</ul>
+</li>
+<li>C 2 3 (C 級，第二作者，有另兩位作者)
+<ul>
+<li>$T\times\frac{2^{(N-i)}}{2^n-1} = 2\times\frac{2^{3-2}}{2^3-1} = 0.57$</li>
+</ul>
+</li>
+</ul>
+        ]]></description></item><item><title>Flockfile for Multithreading stdout</title><link>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</link><pubDate>Sun, 12 Mar 2023 20:32:29 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/</guid><description><![CDATA[
           
           
             <p><a href="https://aben20807.github.io/posts/20230310-flockfile-for-multithreading-stdout/"><img src="https://lh3.googleusercontent.com/pw/AMWts8AXDj1msjEut1QrflvK3Xm-90cGoNqN29IaMdfx62p69NBoTEsmKbyKMRQkSWyExwJX2xVq3N6fNl7vp-E3dhBoevcKM17rVbxFTL6caeb9bQVMYg7SrzqpfTYwOqiJ34AeO9e8B2vXQSBmrp6_6zDB2g=w1006-h756-no?authuser=1" style="max-width: 100%;"/></a></p>
