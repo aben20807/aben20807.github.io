@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>NCKU CSIE 博士畢業點數計算</title><link>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</link><pubDate>Sun, 02 Apr 2023 10:08:51 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Github Action Ubuntu 18.04 Waiting for a Runner</title><link>https://aben20807.github.io/posts/20230411-github-action-ubuntu-18.04-waiting-for-a-runner</link><pubDate>Tue, 11 Apr 2023 16:23:41 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230411-github-action-ubuntu-18.04-waiting-for-a-runner</guid><description><![CDATA[
+          <p>Waiting for a runner to pick up this job&hellip;</p><br/><p>&hellip; because runners for ubuntu-18.04 are deprecated</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20230411-github-action-ubuntu-18.04-waiting-for-a-runner"><img src="https://lh3.googleusercontent.com/pw/AJFCJaWxl0h_BCuH57-ezE0jOusc6GFWjTjSW8xA6sBJESaPtqr8w3gqRDzJ6yeg-7iatKNaP8sMI9NWRb9sWqbRdSVn5ffGEekF1yv_pBvmPxLH7NLTGyFsuCEcp7pW013rWA-oHl0nM8DQNaZv-u2pfLptxw=w1578-h891-s-no?authuser=1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230411-github-action-ubuntu-18.04-waiting-for-a-runner">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>Waiting for a runner to pick up this job&hellip;</p>
+<p>&hellip; because runners for ubuntu-18.04 are deprecated</p>
+<div class="highlight" copy="no"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Requested labels: ubuntu-18.04
+</span></span><span style="display:flex;"><span>Job defined at: aben20807/blog-post/.github/workflows/deploy.yml@refs/heads/master
+</span></span><span style="display:flex;"><span>Waiting <span style="color:#ff79c6">for</span> a runner to pick up this job...
+</span></span></code></pre></div><p>原因是 Ubuntu 18.04 已經被棄用了 - <a href="https://github.blog/changelog/2022-08-09-github-actions-the-ubuntu-18-04-actions-runner-image-is-being-deprecated-and-will-be-removed-by-12-1-22/" title="原文文章: GitHub Actions: The Ubuntu 18.04 Actions runner image is being deprecated and will be removed by 12/1/22" aria-label="原文文章: GitHub Actions: The Ubuntu 18.04 Actions runner image is being deprecated and will be removed by 12/1/22"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 原文文章: GitHub Actions: The Ubuntu 18.04 Actions runner image is being deprecated and will be removed by 12/1/22</a></p>
+<p>再來需要改用 <code>ubuntu-20.04</code>, <code>ubuntu-22.04</code>, 或 <code>ubuntu-latest</code>，我直接改用 <code>ubuntu-latest</code> 好了，一勞永逸。</p>
+<div class="highlight" copy="no"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">runs-on</span>: ubuntu-latest
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div>
+        ]]></description></item><item><title>NCKU CSIE 博士畢業點數計算</title><link>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</link><pubDate>Sun, 02 Apr 2023 10:08:51 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/</guid><description><![CDATA[
           <p>寫個線上小工具取代之前寫的 <a href="https://gist.github.com/aben20807/10146edb54989c2cd72671c225dc3eb1" title="python script" aria-label="python script"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> python script</a>。</p><br/><p><del>JavaScript 好難寫</del></p>
           
             <p><a href="https://aben20807.github.io/posts/20230402-ncku-csie-phd-point-calc/"><img src="https://lh3.googleusercontent.com/pw/AMWts8DNReCcjUtj5xiWWTI6N23TF_pZq_2GXsSrOyc28oEEKwHcpo8rQYEC_Mja7kJXok1xNATgAiKnoxxW9YjvmCIfVzxovXak-EbMiwVzlsJeNeqWxx-XriDynsxTQj2eBpEVErPNnsXOuyhQMQA85fchHw=w685-h380-s-no?authuser=1" style="max-width: 100%;"/></a></p>
@@ -6099,19 +6127,21 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#convert-to-pdf">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><p>這裡使用的工具是 <a href="https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf" title="yzane.markdown-pdf" aria-label="yzane.markdown-pdf"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> yzane.markdown-pdf</a>，下載後可以做一些設定如下使其產生的檔案跟 github 渲染的結果類似。其中 &ldquo;markdown-pdf.styles&rdquo; 所需要的 &ldquo;github.css&rdquo; 可以到 <a href="https://gist.github.com/tuzz/3331384" title="tuzz/github.css" aria-label="tuzz/github.css"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> tuzz/github.css</a> 拿到，並放在跟 &ldquo;.md&rdquo; 同一個路徑。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    &#34;markdown-pdf.highlightStyle&#34;: &#34;github.css&#34;,
-</span></span><span style="display:flex;"><span>    &#34;markdown-pdf.breaks&#34;: true,
-</span></span><span style="display:flex;"><span>    &#34;markdown-pdf.headerTemplate&#34;: &#34;&#34;,
-</span></span><span style="display:flex;"><span>    &#34;markdown-pdf.stylesRelativePathFile&#34;: true,
-</span></span><span style="display:flex;"><span>    &#34;markdown-pdf.styles&#34;: [
-</span></span><span style="display:flex;"><span>        &#34;github.css&#34;
+</h1><p>這裡使用的工具是 <a href="https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf" title="yzane.markdown-pdf" aria-label="yzane.markdown-pdf"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> yzane.markdown-pdf</a>，下載後可以做一些設定 (.vscode/settings.json for workspace or your global settings) 如下使其產生的檔案跟 github 渲染的結果類似。其中 &ldquo;markdown-pdf.styles&rdquo; 所需要的 &ldquo;github.css&rdquo; 可以到 <a href="https://gist.github.com/tuzz/3331384" title="tuzz/github.css" aria-label="tuzz/github.css"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> tuzz/github.css</a> 拿到，並放在跟 &ldquo;.md&rdquo; 同一個路徑。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// ... other settings in .vscode/settings.json
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">&#34;markdown-pdf.highlightStyle&#34;</span>: <span style="color:#f1fa8c">&#34;./github.css&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;markdown-pdf.breaks&#34;</span>: <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;markdown-pdf.headerTemplate&#34;</span>: <span style="color:#f1fa8c">&#34;&lt;!--&lt;div style=\&#34;font-size: 9px; margin-left: 1cm;\&#34;&gt; &lt;span class=&#39;title&#39;&gt;&lt;/span&gt;&lt;/div&gt; &lt;div style=\&#34;font-size: 9px; margin-left: auto; margin-right: 1cm; \&#34;&gt; &lt;span class=&#39;date&#39;&gt;&lt;/span&gt;&lt;/div&gt;--&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;markdown-pdf.stylesRelativePathFile&#34;</span>: <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;markdown-pdf.styles&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;./github.css&#34;</span>
 </span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
 </span></span></code></pre></div><ul>
 <li>breaks: 預設 markdown 要兩個空格才換行，設定成 <code>true</code> 可以在 markdown 換行時就在 pdf 產生換行</li>
-<li>headerTemplate 原先會在每一頁的 header 產生檔名，我的設定把它移除</li>
+<li>headerTemplate 原先會在每一頁的 header 產生檔名，我的設定把它移除，詳細設定可以參考該工具網站</li>
 </ul>
 <p>另外，附上我微調過的 <a href="https://gist.github.com/aben20807/a61a640579fb941546dd831f81b4ed9f" title="&amp;ldquo;github.css&amp;rdquo;" aria-label="&amp;ldquo;github.css&amp;rdquo;"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> &ldquo;github.css&rdquo;</a>，有以下調整:</p>
 <ul>
