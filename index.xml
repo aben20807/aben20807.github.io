@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Image Host Transfer Program with ChatGPT V2 (success by me)</title><link>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</link><pubDate>Sat, 15 Apr 2023 15:28:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Give Me Direct Link to Image in Google Drive</title><link>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</link><pubDate>Sun, 16 Apr 2023 18:01:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</guid><description><![CDATA[
+          <p>因為圖床改回 Google Drive 了，來解決一下方便性問題。</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/"><img src="https://lh3.googleusercontent.com/d/1LLKNljiX9Ghuh0ucLs5detAyvwkm7hN3" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>因為圖床改回 Google Drive 了，來解決一下方便性問題。</p>
+<p>原先在 google drive 裡要拿到可以嵌入在網站上的連結需要多個步驟:</p>
+<ol>
+<li>右鍵圖片點取得連結 (資料夾已經先設定所有人可以檢視)</li>
+<li>再複製連結</li>
+<li>轉換連結後才能得到可嵌入的連結
+<ul>
+<li>原本是 <code>https://drive.google.com/file/d/{ID}/view?usp=share_link</code></li>
+<li>要改成 <code>https://drive.google.com/uc?id={ID}</code> 或是 <code>https://lh3.googleusercontent.com/d/{ID}</code> (我使用後者)</li>
+</ul>
+</li>
+</ol>
+<p>之前在已分享的 google photo 是可以直接右鍵拿到連結的。</p>
+<p>因此就來動個手腳，來用 google extension 來完成</p>
+<h1 id="gmdl" class="article-heading">GMDL 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gmdl">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>Github 連結: <a href="https://github.com/aben20807/GMDL" title="aben20807/GMDL" aria-label="aben20807/GMDL"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/GMDL</a></p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1iyFzPODpFIgWUvICJVo4s_osAm1brPGF" alt='GMDL 直接在圖片下方產生可嵌入連結' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">GMDL 直接在圖片下方產生可嵌入連結</center>
+    </figcaption>
+  </figure>
+</p>
+<p>開發過程中遇到的困難。寫 google extension 已經不是第一次，插 code 到瀏覽頁面之前已經有示範 (<a href="https://github.com/aben20807/inject_js" title="aben20807/inject_js" aria-label="aben20807/inject_js"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/inject_js</a>)。</p>
+<ul>
+<li>第一個困難點是找出 <code>{ID}</code>，google drive 回傳的資料頗多。要先類似爬蟲那樣去看資料長相</li>
+<li>第二個困難點是 google drive 設計中檔案跟資料夾的長相一樣，不過會在 <code>aria-label</code> 後方標記是圖片還是雲端資料夾檔案，所以這邊直接去看結尾</li>
+<li>第三個最為困難，就是 google drive 一偵測到 DOM 有變化就會想辦法改回來，所以產生的連接只會出現一下子就被移除。用了一些其他技巧都無效。所以這邊直接用一個 listener 去監聽 pointermove 的事件，只要連結被移除時滑鼠動一動就會重新產生一個，幾次之後 google drive 就放棄刪除了 😜</li>
+</ul>
+<p>因為這應該無法上架到 google extension store，所以只能用開發者模式載入，詳細步驟可以參考 README。</p>
+        ]]></description></item><item><title>Image Host Transfer Program with ChatGPT V2 (success by me)</title><link>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</link><pubDate>Sat, 15 Apr 2023 15:28:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</guid><description><![CDATA[
           <p>延續上一篇 <a href="/posts/20230411-image-host-transfer-program-with-chatgpt-v1/"target="_blank" rel="noreferrer noopener">Image Host Transfer Program with ChatGPT V1 (failed)</a>，歷經失敗後我終於成功了，對，不是我們。</p>
           
             <p><a href="https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/"><img src="https://lh3.googleusercontent.com/d/169oCfmolMxpUWCjJwafKnrBux_aPo6j-" style="max-width: 100%;"/></a></p>
