@@ -96,7 +96,7 @@ $(window).bind("scroll", function () {
     if (currentTop >= elemTop && currentTop <= elemBottom) {
       // handle chinese heading
       var href = $(this).attr("href").toLowerCase();
-      var nowElem = $('a.toc-link[href="' + href + '"');
+      var nowElem = $('a.toc-link[href="' + href + '"]');
       $("a.toc-link").removeClass("active");
       nowElem.addClass("active");
     }
