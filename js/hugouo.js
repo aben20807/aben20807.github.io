@@ -179,7 +179,6 @@ function putLanguageLabels() {
       return;
     }
     let need_copy = block.getAttribute('copy');
-    console.log(need_copy);
     if (need_copy === null || need_copy != "no") {
       block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
     } else {

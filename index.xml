@@ -15405,6 +15405,22 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </span></span><span style="display:flex;"><span>+ b
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">1.</span> OuO
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">2.</span> QuQ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>         <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>               <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>                  <span style="color:#ff79c6">1.</span> XXX
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>+ XXX
+</span></span><span style="display:flex;"><span>  + XXX
+</span></span><span style="display:flex;"><span>    + XXX
+</span></span><span style="display:flex;"><span>      + XXX
+</span></span><span style="display:flex;"><span>        + XXX
+</span></span><span style="display:flex;"><span>          + XXX
+</span></span><span style="display:flex;"><span>            + XXX
 </span></span></code></pre></div><ul>
 <li>a
 <ul>
@@ -15417,6 +15433,60 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <li>OuO</li>
 <li>QuQ</li>
 </ol>
+</li>
+</ul>
+<ol>
+<li>XXX
+<ol>
+<li>XXX
+<ol>
+<li>XXX
+<ol>
+<li>XXX
+<ol>
+<li>XXX
+<ol>
+<li>XXX
+<ol>
+<li>XXX</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>XXX
+<ul>
+<li>XXX
+<ul>
+<li>XXX
+<ul>
+<li>XXX
+<ul>
+<li>XXX
+<ul>
+<li>XXX
+<ul>
+<li>XXX</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <h1 id="表格" class="article-heading">表格 
@@ -15488,7 +15558,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>目前並不打算直接上傳到 github，所以找了一些方式<br>
-一般圖片 (寬度設定可在網址後方加上空格再加 <code>&quot;=300x&quot;</code>，來將寬度設定為 <code>300</code>，我嘗試了一些方法不過很可惜跟 HackMD 不相容)</p>
+一般圖片 (寬度設定可在網址後方加上空格再加 <code>&quot;=300x&quot;</code>，來將寬度設定為 <code>300</code>，我嘗試了一些方法不過很可惜跟 HackMD 不相容)。圖床使用 google drive，可以使用 <a href="https://github.com/aben20807/GMDL" title="aben20807/GMDL" aria-label="aben20807/GMDL"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/GMDL</a> 直接拿到可嵌入的圖片連結。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#ff79c6">pic</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO</span>)
 </span></span><span style="display:flex;"><span>![<span style="color:#ff79c6">pic with width = 300</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO &#34;=300x&#34;</span>)
 </span></span></code></pre></div><p>
@@ -15509,25 +15579,6 @@ e.g., <code>MAX_ROW_SIZE</code></p>
     </figcaption>
   </figure>
 </p>
- 
-
-<details>
-  <summary><span>不建議使用: google 雲端當作圖床 </span></summary>
-  <p><del>這裡少部份會使用 google 雲端當作圖床 (目前大部分使用 google photo 當作圖床，右鍵複製圖片連結即可，不須使用下方技巧)<br>
-不過從取得連結那裡會拿到：&ldquo;<a href="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO%22" title="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO&#34;" aria-label="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO&#34;"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO"</a></del><br>
-<del>要改成 &ldquo;<a href="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO%22" title="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO&#34;" aria-label="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO&#34;"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO"</a> 才行 (<a href="https://stackoverflow.com/a/70143719" title="2022/7/6 可用版本" aria-label="2022/7/6 可用版本"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 2022/7/6 可用版本</a>)，所以我動了一些手腳，下面還會顯示標題說明，點擊即可在新分頁開啟可放大的圖片瀏覽器</del></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#ff79c6">google-title here</span>](<span style="color:#50fa7b">https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO</span>)
-</span></span></code></pre></div><p>
- 
-  <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO" alt='title here' style="max-width: 100%;"/>
-    <figcaption>
-      <center class="caption-text">title here</center>
-    </figcaption>
-  </figure>
-</p>
-
-</details>
 <h1 id="gallery" class="article-heading">Gallery 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gallery">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -15609,20 +15660,21 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#footnote">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Hi [^label], Link [^llink].
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>Hi [^label], Link [^llink], Long footnote[^long].
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>![Footnote in caption[^img]](https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[^label]: OuO
 </span></span><span style="display:flex;"><span>[^llink]: [<span style="color:#ff79c6">homepage</span>](<span style="color:#50fa7b">https://aben20807.github.io/</span>)
 </span></span><span style="display:flex;"><span>[^img]: Image
-</span></span></code></pre></div><p>Hi  , Link  .<br>
-
+</span></span><span style="display:flex;"><span>[^long]: 請注意，以下所呈現的文字並不具有任何實際的意義或價值，僅用於填充文章內容。在這個世界上，每個人都有著不同的人生經歷和價值觀念，並且受到各種不同的文化、社會背景、環境等多種因素的影響。因此，我們需要尊重並包容彼此的不同，並且在多元化的社會中建立和諧共存的氛圍。這樣的價值觀和行為方式將有助於促進社會的發展和進步。
+</span></span></code></pre></div><p>Hi  , Link  , Long footnote .</p>
+<p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO" alt='Footnote in caption3' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/19Efo1jhOyadRa7Fu-HDE7G7-Dxm9gUNO" alt='Footnote in caption4' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">Footnote in caption3</center>
+      <center class="caption-text">Footnote in caption4</center>
     </figcaption>
   </figure>
 </p>

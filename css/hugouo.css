@@ -1,5 +1,5 @@
 :root {
-  --deep-blue: #2c76d7;
+  --deep-blue: #2060a8;
   --light-blue: #4ca8ff;
   --deep-orange: #ff6456;
   --light-orange: #ffb980;
@@ -159,7 +159,7 @@ table pre {
 label.code-label {
   font-size: 85%;
   color: #f6f6f6;
-  background-color: var(--deep-blue);
+  background-color: var(--active-color);
   padding:1px 5px;
   border-radius: 3px 3px 0 0;
   display: table-cell;
@@ -193,28 +193,45 @@ details {
 p,
 summary,
 table {
-  margin: 0 0 1.3em;
+  margin: 0 0 1em;
 }
 div.highlight {
-  margin: 0 0 1.3em !important;
+  margin: 0 0 1em !important;
 }
-h1 + ol,
-h2 + ol,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
+h1 + ol, h1 + ul,
+h2 + ol, h2 + ul,
+h3 + ol, h3 + ul,
+h4 + ol, h4 + ul,
+h5 + ol, h5 + ul,
+h6 + ol, h6 + ul {
   margin-top: -0.1em;
-}
-p + ul, p + ol {
-  margin-top: -1.2em;
 }
 p + details {
   margin-top: -1.0em;
 }
-ul {
-  margin: 0 0 1.3em;
+ol, ul {
+  margin: 0 0 1em;
+  padding-left: 1.2em;
 }
+ol p, ul p, ol ol, ol ul, ul ol, ul ul {
+  margin: 0;
+}
+/* list styles */
+ol { list-style-type: decimal; }
+ol ol { list-style-type: upper-alpha; }
+ol ol ol {list-style-type: upper-roman; }
+ol ol ol ol {list-style-type: lower-alpha; }
+ol ol ol ol ol {list-style-type: lower-roman; }
+ol ol ol ol ol ol {list-style-type: lower-greek; }
+ol ol ol ol ol ol ol {list-style-type: decimal; }
+ul { list-style: disc outside; }
+ul ul { list-style: circle outside; }
+ul ul ul {list-style: square outside; }
+ul ul ul ul {list-style: disc outside; }
+ul ul ul ul ul {list-style: circle outside; }
+ul ul ul ul ul ul {list-style: square outside; }
+ul ul ul ul ul ul ul { list-style: disc outside; }
+
 .post-meta ul {
   padding: 0;
 }
@@ -379,23 +396,25 @@ blockquote > p {
 }
 
 blockquote {
-  margin: 30px auto;
+  margin: 1em auto;
   font-style: unset;
-  color: #444444;
-  padding: 1.2em 10px 1.2em 40px;
-  border-left: 8px solid #2060a8;
+  /* color: #666666; */
+  padding: 1em .5em 1em 1em;
+  border: .05em solid var(--deep-blue);
+  border-left: .5em solid var(--deep-blue);
   line-height: 1.2;
   position: relative;
-  background: #ededed;
+  background: #f4f4f4;
 }
 
 blockquote::before {
   content: "\201C";
-  color: #2060a8;
+  color: var(--deep-blue);
   font-size: 350%;
-  position: absolute;
-  left: -1rem;
+  display: block;
+  left: -55%;
   top: 0;
+  margin: -.1vh -1.8vw -4vh;
 }
 
 .gphoto-media {
@@ -733,7 +752,8 @@ body.dark-mode .tags-md a:active {
   box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.16), 0 2px 10px 0 rgba(255, 255, 255, 0.12);
 }
 body.dark-mode blockquote {
-  border-left: 8px solid var(--light-orange);
+  border: .05em solid var(--light-orange);
+  border-left: .5em solid var(--light-orange);
 }
 body.dark-mode li.page-item.active a { /* active current page */
   color: var(--white);
@@ -791,7 +811,7 @@ body.dark-mode .fn-content {
 
 .fn-content .fn-text p {
   display: inline-block !important;
-  font-size: 90% !important;
+  font-size: 110% !important;
   padding: .6em;
   margin: 0;
   z-index: 8;
