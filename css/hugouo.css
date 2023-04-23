@@ -16,6 +16,12 @@
   font-weight:400;
   src: local('Cascadia Code'), url('/assets/fonts/Cascadia.woff'),url(https://fonts.cdnfonts.com/s/29131/Cascadia.woff) format('woff')
 }
+@font-face{
+  font-family:Alice;
+  font-style:normal;
+  font-weight:400;
+  src: local('Alice'), url('/assets/fonts/Alice-Regular.woff2'),url(https://github.com/cyrealtype/Alice/blob/master/fonts/webfonts/Alice-Regular.woff2?raw=true) format('woff2')
+}
 body {
   /* ref: https://stackoverflow.com/a/44000322/6734174 */
   width: 100vw;
@@ -55,12 +61,11 @@ h3.article-heading:before,
 h4.article-heading:before,
 h5.article-heading:before,
 h6.article-heading:before {
-  font-family: "Milonga";
+  font-family: "Alice";
   font-display: swap;
-  font-size: 85%;
+  font-size: 97%;
   color: #2060a8;
   padding-right: 0.45em;
-  vertical-align: middle;
 }
 h1.article-heading:before {
   counter-increment: h1_cnt;
@@ -110,7 +115,7 @@ h4,
 h5,
 h6,
 .serif {
-  font-family: "Lora", "Noto Sans TC", -apple-system,
+  font-family: "Alice", "Noto Sans TC", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, noto, "segoe ui", arial, sans-serif;
   font-display: swap;
@@ -390,9 +395,9 @@ summary:hover,
 }
 blockquote > p {
   margin: 0.9em 0 0.3em;
-  font-family: "Lora", "Noto Sans TC", "Times";
+  font-family: "Alice", "Noto Sans TC", "Times";
   font-display: swap;
-  font-size: 98% !important;
+  font-size: 100% !important;
 }
 
 blockquote {
@@ -407,14 +412,17 @@ blockquote {
   background: #f4f4f4;
 }
 
-blockquote::before {
+blockquote > p:first-child:before {
   content: "\201C";
   color: var(--deep-blue);
-  font-size: 350%;
-  display: block;
-  left: -55%;
-  top: 0;
-  margin: -.1vh -1.8vw -4vh;
+  font-size: 370%;
+  /* width: 20%; */
+  /* display: block; */
+  /* position: absolute; */
+  /* float: left; */
+  /* left: 0; */
+  /* top: 0; */
+  /* margin: 0vh 0vw 1vh -1vw; */
 }
 
 .gphoto-media {
