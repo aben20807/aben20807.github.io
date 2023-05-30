@@ -1990,7 +1990,8 @@ delete temp files in file_names after replacing in main function</p>
 <div style="margin: 5px 0;"><button style="cursor:pointer;" onclick="calc()">calc</button></div>
 <div><textarea id="input" rows="6" cols="20">B 1 1
 B 1 2
-6 1 5</textarea></div>
+6 1 5
+2 2 2</textarea></div>
 <p>使用方式: 每列為一篇論文的 T, i, N</p>
 <ul>
 <li>T 可為 A, B, C 或直接寫對應點數</li>
