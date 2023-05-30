@@ -10169,9 +10169,11 @@ $$</p>
 </h3><p>理論上必要的只有 latex-workshop，其他的選用。</p>
 <ul>
 <li>james-yu.latex-workshop</li>
+<li>analytic-signal.preview-pdf</li>
 <li>mhutchie.git-graph</li>
-<li>coenraads.bracket-pair-colorizer</li>
-<li>valentjn.vscode-ltex: 英文文法檢查，需要安裝 Java</li>
+<li><del>coenraads.bracket-pair-colorizer</del></li>
+<li><del>valentjn.vscode-ltex: 英文文法檢查，需要安裝 Java</del> (改用 Grammarly)</li>
+<li>znck.grammarly: 上官網申請免費帳號後用 <code>grammarly.login</code> 登入</li>
 <li>vscode-icons-team.vscode-icons</li>
 </ul>
  
