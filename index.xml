@@ -10105,7 +10105,7 @@ $$</p>
 </p>
 
 </details>
-<h2 id="miktex" class="article-heading">MikTex 
+<h2 id="miktex" class="article-heading">MikTeX 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#miktex">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
@@ -10166,12 +10166,12 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%a4%96%e6%8e%9b">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h3><p>理論上必要的只有 latex-workshop，其他的選用。</p>
+</h3><p>理論上必要的只有 latex-workshop 和 preview-pdf，其他的選用。</p>
 <ul>
 <li>james-yu.latex-workshop</li>
 <li>analytic-signal.preview-pdf</li>
 <li>mhutchie.git-graph</li>
-<li><del>coenraads.bracket-pair-colorizer</del></li>
+<li><del>coenraads.bracket-pair-colorizer</del> (已內建)</li>
 <li><del>valentjn.vscode-ltex: 英文文法檢查，需要安裝 Java</del> (改用 Grammarly)</li>
 <li>znck.grammarly: 上官網申請免費帳號後用 <code>grammarly.login</code> 登入</li>
 <li>vscode-icons-team.vscode-icons</li>
