@@ -67,9 +67,9 @@
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/169oCfmolMxpUWCjJwafKnrBux_aPo6j-" alt='credit:  https://makeameme.org/meme/me-and-chatgpt' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/169oCfmolMxpUWCjJwafKnrBux_aPo6j-" alt='credit: https://makeameme.org/meme/me-and-chatgpt' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">credit:  https://makeameme.org/meme/me-and-chatgpt</center>
+      <center class="caption-text">credit: https://makeameme.org/meme/me-and-chatgpt</center>
     </figcaption>
   </figure>
 </p>
@@ -589,9 +589,9 @@ Use ArgumentParser to input markdown file path and credentials path in your main
 </h1><p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1nYLUMxzbB2McD52Lye9pAoYh__e5twkE" alt='credit:  https://twitter.com/ThePracticalDev/status/1602372296827600906/photo/1' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1nYLUMxzbB2McD52Lye9pAoYh__e5twkE" alt='credit: https://twitter.com/ThePracticalDev/status/1602372296827600906/photo/1' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">credit:  https://twitter.com/ThePracticalDev/status/1602372296827600906/photo/1</center>
+      <center class="caption-text">credit: https://twitter.com/ThePracticalDev/status/1602372296827600906/photo/1</center>
     </figcaption>
   </figure>
 </p>
@@ -1882,9 +1882,9 @@ continue and starts from def main():</p>
 </span></span><span style="display:flex;"><span>    matches <span style="color:#ff79c6">=</span> re<span style="color:#ff79c6">.</span>findall(pattern, md_content)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    image_data_list <span style="color:#ff79c6">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> match <span style="color:#ff79c6">in</span> matches:
-</span></span><span style="display:flex;"><span>        image_caption <span style="color:#ff79c6">=</span> match[<span style="color:#bd93f9">0</span>]
-</span></span><span style="display:flex;"><span>        image_url <span style="color:#ff79c6">=</span> match[<span style="color:#bd93f9">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">match</span> <span style="color:#ff79c6">in</span> matches:
+</span></span><span style="display:flex;"><span>        image_caption <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">match</span>[<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>        image_url <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">match</span>[<span style="color:#bd93f9">1</span>]
 </span></span><span style="display:flex;"><span>        image_data_list<span style="color:#ff79c6">.</span>append({<span style="color:#f1fa8c">&#39;caption&#39;</span>: image_caption, <span style="color:#f1fa8c">&#39;url&#39;</span>: image_url})
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> image_data_list
@@ -2122,18 +2122,18 @@ $$</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;omp.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">worker</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span> message) {
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> omp_get_thread_num();
-</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
-</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">omp_get_thread_num</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fprintf</span>(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fprintf</span>(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
-</span></span><span style="display:flex;"><span>    omp_set_num_threads(<span style="color:#bd93f9">4</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">omp_set_num_threads</span>(<span style="color:#bd93f9">4</span>);
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">#pragma omp parallel for
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">100</span>; <span style="color:#ff79c6">++</span>i) {
 </span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">char</span> message[<span style="color:#bd93f9">8</span>];
-</span></span><span style="display:flex;"><span>        snprintf(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
-</span></span><span style="display:flex;"><span>        worker(message);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">snprintf</span>(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">worker</span>(message);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
@@ -2167,20 +2167,20 @@ $$</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;omp.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">worker</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span> message) {
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> omp_get_thread_num();
-</span></span><span style="display:flex; background-color:#3d3f4a"><span>    flockfile(stdout);
-</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
-</span></span><span style="display:flex;"><span>    fprintf(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
-</span></span><span style="display:flex; background-color:#3d3f4a"><span>    funlockfile(stdout);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> tid <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">omp_get_thread_num</span>();
+</span></span><span style="display:flex; background-color:#3d3f4a"><span>    <span style="color:#50fa7b">flockfile</span>(stdout);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fprintf</span>(stdout, <span style="color:#f1fa8c">&#34;worker %d: &#34;</span>, tid);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fprintf</span>(stdout, <span style="color:#f1fa8c">&#34;do %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, message);
+</span></span><span style="display:flex; background-color:#3d3f4a"><span>    <span style="color:#50fa7b">funlockfile</span>(stdout);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>) {
-</span></span><span style="display:flex;"><span>    omp_set_num_threads(<span style="color:#bd93f9">4</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">omp_set_num_threads</span>(<span style="color:#bd93f9">4</span>);
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">#pragma omp parallel for
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">100</span>; <span style="color:#ff79c6">++</span>i) {
 </span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">char</span> message[<span style="color:#bd93f9">8</span>];
-</span></span><span style="display:flex;"><span>        snprintf(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
-</span></span><span style="display:flex;"><span>        worker(message);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">snprintf</span>(message, <span style="color:#bd93f9">8</span>, <span style="color:#f1fa8c">&#34;task %d&#34;</span>, i);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">worker</span>(message);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
@@ -2273,7 +2273,14 @@ $$</p>
     </a>
 </h1><div class="highlight" copy="no"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo version
 </span></span><span style="display:flex;"><span>hugo v0.111.2+extended linux/amd64 <span style="color:#8be9fd;font-style:italic">BuildDate</span><span style="color:#ff79c6">=</span>unknown
-</span></span></code></pre></div><h1 id="references" class="article-heading">References 
+</span></span></code></pre></div><h1 id="see-also" class="article-heading">See also 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#see-also">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>Download prebuild binary: <a href="/posts/20210215-hugo-on-wsl2/"target="_blank" rel="noreferrer noopener">Hugo on WSL2 (Ubuntu18.04)</a></li>
+</ul>
+<h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
@@ -2907,9 +2914,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/138CXR-Dzxq1wmnZoSaQyrIblUvOHChJq" alt='Back reference example:  Dual Cross-Attention Learning for Fine-Grained Visual Categorization and Object Re-Identification' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/138CXR-Dzxq1wmnZoSaQyrIblUvOHChJq" alt='Back reference example: Dual Cross-Attention Learning for Fine-Grained Visual Categorization and Object Re-Identification' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">Back reference example:  Dual Cross-Attention Learning for Fine-Grained Visual Categorization and Object Re-Identification</center>
+      <center class="caption-text">Back reference example: Dual Cross-Attention Learning for Fine-Grained Visual Categorization and Object Re-Identification</center>
     </figcaption>
   </figure>
 </p>
@@ -3610,9 +3617,9 @@ DHN: <a href="https://news.ycombinator.com/item?id=32232546" title="https://news
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1lK0xv8Dqfnp55oESXAwLygFoB94T8XmO" alt='來源:  閱讀前哨站 (FB)' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1lK0xv8Dqfnp55oESXAwLygFoB94T8XmO" alt='來源: 閱讀前哨站 (FB)' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  閱讀前哨站 (FB)</center>
+      <center class="caption-text">來源: 閱讀前哨站 (FB)</center>
     </figcaption>
   </figure>
 </p>
@@ -3642,9 +3649,9 @@ DHN: <a href="https://news.ycombinator.com/item?id=32232546" title="https://news
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1L-7vG20hyKtLR8_UxbmnMvlUuCkPzqVi" alt='來源:  對人生感到迷惘，不知道自己適合做什麼？用 Ikigai，4 步驟找回你的價值' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1L-7vG20hyKtLR8_UxbmnMvlUuCkPzqVi" alt='來源: 對人生感到迷惘，不知道自己適合做什麼？用 Ikigai，4 步驟找回你的價值' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  對人生感到迷惘，不知道自己適合做什麼？用 Ikigai，4 步驟找回你的價值</center>
+      <center class="caption-text">來源: 對人生感到迷惘，不知道自己適合做什麼？用 Ikigai，4 步驟找回你的價值</center>
     </figcaption>
   </figure>
 </p>
@@ -3855,9 +3862,9 @@ DHN: <a href="https://news.ycombinator.com/item?id=32232546" title="https://news
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/11MeOII8H6a2tZc5YhlfXvXdlAzwnnv37" alt='來源:  閱讀前哨站 FB' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/11MeOII8H6a2tZc5YhlfXvXdlAzwnnv37" alt='來源: 閱讀前哨站 FB' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  閱讀前哨站 FB</center>
+      <center class="caption-text">來源: 閱讀前哨站 FB</center>
     </figcaption>
   </figure>
 </p>
@@ -3931,9 +3938,9 @@ DHN: <a href="https://news.ycombinator.com/item?id=32232546" title="https://news
 </h1><p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1HfdUKDEUty9HCplf3NoaVXc5qDMSC9Mx" alt='來源:  MonkeyUser.com' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1HfdUKDEUty9HCplf3NoaVXc5qDMSC9Mx" alt='來源: MonkeyUser.com' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  MonkeyUser.com</center>
+      <center class="caption-text">來源: MonkeyUser.com</center>
     </figcaption>
   </figure>
 </p>
@@ -3948,9 +3955,9 @@ DHN: <a href="https://news.ycombinator.com/item?id=32232546" title="https://news
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1aVGSx-NPNdOlTsJWxDJH6CmocrYEE5TQ" alt='來源:  金氏世界紀錄官網' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1aVGSx-NPNdOlTsJWxDJH6CmocrYEE5TQ" alt='來源: 金氏世界紀錄官網' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  金氏世界紀錄官網</center>
+      <center class="caption-text">來源: 金氏世界紀錄官網</center>
     </figcaption>
   </figure>
 </p>
@@ -4278,9 +4285,9 @@ GitHub: <a href="https://github.com/darktable-org/darktable" title="https://gith
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/15b7me4F0tlBfk-cjzylRZEB9PgXLjrqn" alt='來源:  閱讀前哨站 FB' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/15b7me4F0tlBfk-cjzylRZEB9PgXLjrqn" alt='來源: 閱讀前哨站 FB' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  閱讀前哨站 FB</center>
+      <center class="caption-text">來源: 閱讀前哨站 FB</center>
     </figcaption>
   </figure>
 </p>
@@ -4342,9 +4349,9 @@ GitHub: <a href="https://github.com/darktable-org/darktable" title="https://gith
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1qm5SSblrf0btRn4KL8-Q8XmJwzxN_Vad" alt='NASA’s Webb Delivers Deepest Infrared Image of Universe Yet  [src]' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1qm5SSblrf0btRn4KL8-Q8XmJwzxN_Vad" alt='NASA’s Webb Delivers Deepest Infrared Image of Universe Yet [src]' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">NASA’s Webb Delivers Deepest Infrared Image of Universe Yet  [src]</center>
+      <center class="caption-text">NASA’s Webb Delivers Deepest Infrared Image of Universe Yet [src]</center>
     </figcaption>
   </figure>
 </p>
@@ -6178,14 +6185,14 @@ $$</p>
 </span></span><span style="display:flex;"><span>x q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>barrier q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
@@ -6193,14 +6200,14 @@ $$</p>
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>barrier q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>measure q[<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">-&gt;</span> c[<span style="color:#bd93f9">0</span>];
@@ -6245,28 +6252,28 @@ $$</p>
 </span></span><span style="display:flex;"><span>x q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>barrier q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>barrier q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">2</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">8</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">4</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">2</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">1</span>], q[<span style="color:#bd93f9">2</span>];
@@ -6463,14 +6470,14 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// QFT
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// IQFT
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>swap q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
-</span></span><span style="display:flex;"><span>cu1(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(<span style="color:#ff79c6">-</span>pi <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>], q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// Output
@@ -6557,9 +6564,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1ehmQCUDIllxntkhCKPFhd1du-n-Auh35" alt='來源:  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1ehmQCUDIllxntkhCKPFhd1du-n-Auh35" alt='來源: link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源:  link</center>
+      <center class="caption-text">來源: link</center>
     </figcaption>
   </figure>
 </p>
@@ -6571,9 +6578,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1rSPCv0chhgaJUka_ijqTImvE1tDbtzBK" alt='MarekSchmidt, Public domain, via Wikimedia Commons  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1rSPCv0chhgaJUka_ijqTImvE1tDbtzBK" alt='MarekSchmidt, Public domain, via Wikimedia Commons link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">MarekSchmidt, Public domain, via Wikimedia Commons  link</center>
+      <center class="caption-text">MarekSchmidt, Public domain, via Wikimedia Commons link</center>
     </figcaption>
   </figure>
 </p>
@@ -6603,9 +6610,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1H_pp4eat8PNkBAubugfLieyuMPwv7IGv" alt='John Ringland,  CC BY-SA 4.0, via Wikimedia Commons  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1H_pp4eat8PNkBAubugfLieyuMPwv7IGv" alt='John Ringland, CC BY-SA 4.0, via Wikimedia Commons link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">John Ringland,  CC BY-SA 4.0, via Wikimedia Commons  link</center>
+      <center class="caption-text">John Ringland, CC BY-SA 4.0, via Wikimedia Commons link</center>
     </figcaption>
   </figure>
 </p>
@@ -6638,9 +6645,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1B2bIrcuh0P-YtXXXoKoCVb-Vpsv4d3st" alt='來源: 3Blue1Brown  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1B2bIrcuh0P-YtXXXoKoCVb-Vpsv4d3st" alt='來源: 3Blue1Brown link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">來源: 3Blue1Brown  link</center>
+      <center class="caption-text">來源: 3Blue1Brown link</center>
     </figcaption>
   </figure>
 </p>
@@ -6704,9 +6711,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1Ry35aq7kUDBjUPJXXP2VuTDEAHT1cbsR" alt='$N = 8 = 2^n (n = 3)$。來源:  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1Ry35aq7kUDBjUPJXXP2VuTDEAHT1cbsR" alt='$N = 8 = 2^n (n = 3)$。來源: link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">$N = 8 = 2^n (n = 3)$。來源:  link</center>
+      <center class="caption-text">$N = 8 = 2^n (n = 3)$。來源: link</center>
     </figcaption>
   </figure>
 </p>
@@ -6743,9 +6750,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1h7-_-DC33Xn5l8vYgv_Necj_DSqYYCZI" alt='對 Z 軸旋轉不會影響 quantum state 出現的機率，只會變更 phase。來源:  link' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1h7-_-DC33Xn5l8vYgv_Necj_DSqYYCZI" alt='對 Z 軸旋轉不會影響 quantum state 出現的機率，只會變更 phase。來源: link' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">對 Z 軸旋轉不會影響 quantum state 出現的機率，只會變更 phase。來源:  link</center>
+      <center class="caption-text">對 Z 軸旋轉不會影響 quantum state 出現的機率，只會變更 phase。來源: link</center>
     </figcaption>
   </figure>
 </p>
@@ -6789,7 +6796,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>x q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>barrier q[<span style="color:#bd93f9">0</span>],q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">1</span>];
-</span></span><span style="display:flex;"><span>cu1(pi<span style="color:#ff79c6">/</span><span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>],q[<span style="color:#bd93f9">1</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">cu1</span>(pi<span style="color:#ff79c6">/</span><span style="color:#bd93f9">2</span>) q[<span style="color:#bd93f9">0</span>],q[<span style="color:#bd93f9">1</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>swap q[<span style="color:#bd93f9">0</span>],q[<span style="color:#bd93f9">1</span>];
 </span></span></code></pre></div><p>
@@ -7292,7 +7299,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">4</span>];
 </span></span><span style="display:flex;"><span>x q[<span style="color:#bd93f9">4</span>];
 </span></span><span style="display:flex;"><span>x q[<span style="color:#bd93f9">3</span>];
-</span></span><span style="display:flex;"><span>u3(<span style="color:#bd93f9">2</span><span style="color:#ff79c6">*</span>pi,<span style="color:#bd93f9">0</span><span style="color:#ff79c6">*</span>pi,<span style="color:#bd93f9">0</span><span style="color:#ff79c6">*</span>pi) q[<span style="color:#bd93f9">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">u3</span>(<span style="color:#bd93f9">2</span><span style="color:#ff79c6">*</span>pi,<span style="color:#bd93f9">0</span><span style="color:#ff79c6">*</span>pi,<span style="color:#bd93f9">0</span><span style="color:#ff79c6">*</span>pi) q[<span style="color:#bd93f9">3</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">4</span>];
 </span></span><span style="display:flex;"><span>h q[<span style="color:#bd93f9">3</span>];
@@ -7759,7 +7766,7 @@ $$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span><span style="color:#ff79c6">extern</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">xyz</span>();
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[]) {
-</span></span><span style="display:flex;"><span>    xyz();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">xyz</span>();
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
@@ -9868,23 +9875,23 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h3><p>圖表樣式主要靠 SciencePlots  來完成，所以我們只要專注使用 Matplotlib 來製作圖表即可。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>(venv)&gt; pip install matplotlib==3.4.2
-</span></span><span style="display:flex;"><span>(venv)&gt; pip install SciencePlots==1.0.8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>(venv)&gt; pip install matplotlib==<span style="color:#bd93f9">3.4</span>.2
+</span></span><span style="display:flex;"><span>(venv)&gt; pip install SciencePlots==<span style="color:#bd93f9">1.0</span>.8
 </span></span><span style="display:flex;"><span>(venv)&gt; pip list <span style="color:#6272a4"># 詳細版本資訊參考用</span>
 </span></span><span style="display:flex;"><span>Package         Version
 </span></span><span style="display:flex;"><span>--------------- -------
-</span></span><span style="display:flex;"><span>cycler          0.10.0
-</span></span><span style="display:flex;"><span>kiwisolver      1.3.1
-</span></span><span style="display:flex;"><span>matplotlib      3.4.2
-</span></span><span style="display:flex;"><span>numpy           1.21.1
-</span></span><span style="display:flex;"><span>Pillow          8.3.1
-</span></span><span style="display:flex;"><span>pip             21.2.3
-</span></span><span style="display:flex;"><span>pyparsing       2.4.7
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">python-dateutil</span> 2.8.2
-</span></span><span style="display:flex;"><span>SciencePlots    1.0.8
-</span></span><span style="display:flex;"><span>setuptools      57.4.0
-</span></span><span style="display:flex;"><span>six             1.16.0
-</span></span><span style="display:flex;"><span>wheel           0.37.0
+</span></span><span style="display:flex;"><span>cycler          <span style="color:#bd93f9">0.10</span>.0
+</span></span><span style="display:flex;"><span>kiwisolver      <span style="color:#bd93f9">1.3</span>.1
+</span></span><span style="display:flex;"><span>matplotlib      <span style="color:#bd93f9">3.4</span>.2
+</span></span><span style="display:flex;"><span>numpy           <span style="color:#bd93f9">1.21</span>.1
+</span></span><span style="display:flex;"><span>Pillow          <span style="color:#bd93f9">8.3</span>.1
+</span></span><span style="display:flex;"><span>pip             <span style="color:#bd93f9">21.2</span>.3
+</span></span><span style="display:flex;"><span>pyparsing       <span style="color:#bd93f9">2.4</span>.7
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">python-dateutil</span> <span style="color:#bd93f9">2.8</span>.2
+</span></span><span style="display:flex;"><span>SciencePlots    <span style="color:#bd93f9">1.0</span>.8
+</span></span><span style="display:flex;"><span>setuptools      <span style="color:#bd93f9">57.4</span>.0
+</span></span><span style="display:flex;"><span>six             <span style="color:#bd93f9">1.16</span>.0
+</span></span><span style="display:flex;"><span>wheel           <span style="color:#bd93f9">0.37</span>.0
 </span></span></code></pre></div><h1 id="畫圖技巧" class="article-heading">畫圖技巧 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%95%ab%e5%9c%96%e6%8a%80%e5%b7%a7">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -10383,7 +10390,7 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">.class</span> public Main
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">.super</span> java/lang/Object
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">.method</span> public static main([Ljava/lang/String<span style="color:#6272a4">;)V
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>.limit stack <span style="color:#bd93f9">10</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#50fa7b">.limit</span> stack <span style="color:#bd93f9">10</span>
 </span></span><span style="display:flex;"><span><span style="color:#50fa7b">.limit</span> locals <span style="color:#bd93f9">10</span>
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">; generated instructions
@@ -10420,7 +10427,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">yyerror</span> (<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">*</span>s)
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;error:%d: %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno, s);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;error:%d: %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno, s);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">#define codegen(...) \
@@ -10437,7 +10444,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">insert_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">lookup_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">dump_symbol</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_name</span>(op_t op) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_name</span>(<span style="color:#8be9fd">op_t</span> op) {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">switch</span> (op) {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">case</span> <span style="color:#8be9fd;font-style:italic">OP_ADD</span>:
 </span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;ADD&#34;</span>;
@@ -10451,7 +10458,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;unknown&#34;</span>;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_instruction</span>(op_t op) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_instruction</span>(<span style="color:#8be9fd">op_t</span> op) {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">switch</span> (op) {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">case</span> <span style="color:#8be9fd;font-style:italic">OP_ADD</span>:
 </span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;iadd&#34;</span>;
@@ -10482,7 +10489,7 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%</span><span style="color:#ff79c6">union</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> val;
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>id_name;
-</span></span><span style="display:flex;"><span>    op_t op;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">op_t</span> op;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/* Token without return */</span>
@@ -10517,20 +10524,20 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">DeclStmt</span>
 </span></span><span style="display:flex;"><span>    : DECL IDENT <span style="color:#f1fa8c">&#39;=&#39;</span> Expression NEWLINE {
-</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> insert_symbol($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>, ref);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;STORE</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        free($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;istore %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">insert_symbol</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;STORE</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;istore %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, ref);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">PrintStmt</span>
 </span></span><span style="display:flex;"><span>    : PRINT Expression NEWLINE {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;PRINT</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;getstatic java/lang/System/out Ljava/io/PrintStream;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;swap</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;invokevirtual java/io/PrintStream/print(I)V</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;PRINT</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;getstatic java/lang/System/out Ljava/io/PrintStream;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;swap</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;invokevirtual java/io/PrintStream/print(I)V</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span><span style="display:flex;"><span>
@@ -10540,8 +10547,8 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">AddExpr</span>
 </span></span><span style="display:flex;"><span>    : AddExpr AddOp MulExpr {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_name($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_instruction($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_name</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_instruction</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> MulExpr
 </span></span><span style="display:flex;"><span>;
@@ -10557,8 +10564,8 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">MulExpr</span>
 </span></span><span style="display:flex;"><span>    : MulExpr MulOp Operand {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_name($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_instruction($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_name</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_instruction</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> Operand
 </span></span><span style="display:flex;"><span>;
@@ -10574,15 +10581,15 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Operand</span>
 </span></span><span style="display:flex;"><span>    : NUMLIT {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;NUMLIT %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;ldc %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;NUMLIT %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;ldc %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> IDENT {
-</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> lookup_symbol($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>, ref);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;LOAD</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        free($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>        codegen(<span style="color:#f1fa8c">&#34;iload %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">lookup_symbol</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;LOAD</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;iload %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, ref);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> <span style="color:#f1fa8c">&#39;(&#39;</span> Expression <span style="color:#f1fa8c">&#39;)&#39;</span>
 </span></span><span style="display:flex;"><span>;
@@ -10591,70 +10598,70 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%%</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/* C code section */</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> main(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (argc <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">2</span>) {
-</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> fopen(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">fopen</span>(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
 </span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> stdin;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/* Codegen output init */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>bytecode_filename <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;bytecode.j&#34;</span>;
-</span></span><span style="display:flex;"><span>    fout <span style="color:#ff79c6">=</span> fopen(bytecode_filename, <span style="color:#f1fa8c">&#34;w&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.source bytecode.j</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.class public Main</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.super java/lang/Object</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.method public static main([Ljava/lang/String;)V</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.limit stack 10</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.limit locals 10</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    fout <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">fopen</span>(bytecode_filename, <span style="color:#f1fa8c">&#34;w&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.source bytecode.j</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.class public Main</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.super java/lang/Object</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.method public static main([Ljava/lang/String;)V</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.limit stack 10</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.limit locals 10</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    indent_cnt<span style="color:#ff79c6">++</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    create_symbol();
-</span></span><span style="display:flex;"><span>    yyparse();
-</span></span><span style="display:flex;"><span>    dump_symbol();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">create_symbol</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">yyparse</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">dump_symbol</span>();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/* Codegen end */</span>
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;return</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;return</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    indent_cnt<span style="color:#ff79c6">--</span>;
-</span></span><span style="display:flex;"><span>    codegen(<span style="color:#f1fa8c">&#34;.end method</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>    fclose(fout);
-</span></span><span style="display:flex;"><span>    fclose(yyin);
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;Total lines: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">codegen</span>(<span style="color:#f1fa8c">&#34;.end method</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fclose</span>(fout);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fclose</span>(yyin);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Total lines: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> create_symbol()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">create_symbol</span>()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Create symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Create symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// do nothing...
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> insert_symbol(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">insert_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, 
 </span></span><span style="display:flex;"><span>        id_name, example_symbol_cnt);
-</span></span><span style="display:flex;"><span>    example_symbol[example_symbol_cnt] <span style="color:#ff79c6">=</span> strdup(id_name);
+</span></span><span style="display:flex;"><span>    example_symbol[example_symbol_cnt] <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">strdup</span>(id_name);
 </span></span><span style="display:flex;"><span>    example_symbol_cnt<span style="color:#ff79c6">++</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> example_symbol_cnt <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> lookup_symbol(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">lookup_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Lookup in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Lookup in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> example_symbol_cnt; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (strcmp(id_name, example_symbol[i]) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#50fa7b">strcmp</span>(id_name, example_symbol[i]) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> i;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;{%s} not found in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, id_name);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;{%s} not found in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, id_name);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> dump_symbol()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">dump_symbol</span>()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Dump symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Dump symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> example_symbol_cnt; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        free(example_symbol[i]);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>(example_symbol[i]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="測試範例" class="article-heading">測試範例 
@@ -10731,12 +10738,12 @@ $$</p>
 </h2><p>Action   可以在 parse 過程中插入某些定義的動作，如下方程式範例中大括號部分。可以看到並不限於在最後方加上，也可以在 child 間加上 action。所以在建構不同層的 symbol table 時可以利用這個特性。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Parent</span>
 </span></span><span style="display:flex;"><span>    : Child1 {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;after reducing Child1; before reducing Parent&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;after reducing Child1; before reducing Parent&#34;</span>);
 </span></span><span style="display:flex;"><span>    } Child2 Child3 {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;reduce Parent!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;reduce Parent!&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> Child4 {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;reduce Parent from Child4&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;reduce Parent from Child4&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span></code></pre></div><h2 id="利用-semantic-value-將下方資訊向上傳遞" class="article-heading">利用 Semantic value 將下方資訊向上傳遞 
@@ -10746,14 +10753,14 @@ $$</p>
 </h2><p>為了向上傳遞資訊，bison (yacc) 提供了這項功能，讓下方的 action 可以用 <code>$$</code> 來作為回傳值，而上方的 action 可以用 <code>$1</code>, <code>$2</code> 來存取對應來自下方的回傳值。要使用這項功能需要注意需要在 Definition section 宣告相關的型別 (包含 <code>%union</code>, <code>%token</code>, <code>%type</code>)   。另外，數字所表示的位子需要把 action 也計算進去，如下方範例第一個 rule <code>$1</code> 來自 <code>Child1</code>; <code>$2</code> 來自 <code>Child1</code> 的 action, <code>$3</code> 來自 <code>Child2</code>, <code>$4</code> 來自 <code>Child3</code>。換 rule 則再從 1 開始，如 <code>$1</code> 來自 <code>Child4</code>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Parent</span>
 </span></span><span style="display:flex;"><span>    : Child1 {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;after reducing Child1; before reducing Parent&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;after reducing Child1; before reducing Parent&#34;</span>);
 </span></span><span style="display:flex;"><span>    } Child2 Child3 {
 </span></span><span style="display:flex;"><span>        $$ <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">123</span> <span style="color:#ff79c6">+</span> $<span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> $<span style="color:#bd93f9">3</span> <span style="color:#ff79c6">+</span> $<span style="color:#bd93f9">4</span>;
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;reduce Parent!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;reduce Parent!&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> Child4 {
 </span></span><span style="display:flex;"><span>        $$ <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">4</span> <span style="color:#ff79c6">+</span> $<span style="color:#bd93f9">1</span>;
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;reduce Parent from Child4&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;reduce Parent from Child4&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span></code></pre></div><h1 id="symbol-table" class="article-heading">Symbol table 
@@ -10935,7 +10942,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">yyerror</span> (<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">*</span>s)
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;error:%d: %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno, s);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;error:%d: %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno, s);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -10950,7 +10957,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">#define MAX_SYMBOL_NUM 10
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>example_symbol[MAX_SYMBOL_NUM] <span style="color:#ff79c6">=</span> {};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_name</span>(op_t op) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> <span style="color:#50fa7b">get_op_name</span>(<span style="color:#8be9fd">op_t</span> op) {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">switch</span> (op) {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">case</span> <span style="color:#8be9fd;font-style:italic">OP_ADD</span>:
 </span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;ADD&#34;</span>;
@@ -10974,7 +10981,7 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%</span><span style="color:#ff79c6">union</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> val;
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>id_name;
-</span></span><span style="display:flex;"><span>    op_t op;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">op_t</span> op;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/* Token without return */</span>
@@ -11009,16 +11016,16 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">DeclStmt</span>
 </span></span><span style="display:flex;"><span>    : DECL IDENT <span style="color:#f1fa8c">&#39;=&#39;</span> Expression NEWLINE {
-</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> insert_symbol($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>, ref);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;STORE</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        free($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">insert_symbol</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;STORE</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">PrintStmt</span>
 </span></span><span style="display:flex;"><span>    : PRINT Expression NEWLINE {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;PRINT</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;PRINT</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>;
 </span></span><span style="display:flex;"><span>
@@ -11028,7 +11035,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">AddExpr</span>
 </span></span><span style="display:flex;"><span>    : AddExpr AddOp MulExpr {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_name($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_name</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> MulExpr
 </span></span><span style="display:flex;"><span>;
@@ -11044,7 +11051,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">MulExpr</span>
 </span></span><span style="display:flex;"><span>    : MulExpr MulOp Operand {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, get_op_name($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">get_op_name</span>($<span style="color:#ff79c6">&lt;</span>op<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">2</span>));
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> Operand
 </span></span><span style="display:flex;"><span>;
@@ -11060,13 +11067,13 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Operand</span>
 </span></span><span style="display:flex;"><span>    : NUMLIT {
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;NUMLIT %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;NUMLIT %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>val<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> IDENT {
-</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> lookup_symbol($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>, ref);
-</span></span><span style="display:flex;"><span>        printf(<span style="color:#f1fa8c">&#34;LOAD</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
-</span></span><span style="display:flex;"><span>        free($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> ref <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">lookup_symbol</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;IDENT %s, ref: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, $<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>, ref);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;LOAD</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>($<span style="color:#ff79c6">&lt;</span>id_name<span style="color:#ff79c6">&gt;</span><span style="color:#bd93f9">1</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">|</span> <span style="color:#f1fa8c">&#39;(&#39;</span> Expression <span style="color:#f1fa8c">&#39;)&#39;</span>
 </span></span><span style="display:flex;"><span>;
@@ -11075,54 +11082,54 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%%</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/* C code section */</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> main(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (argc <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">2</span>) {
-</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> fopen(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">fopen</span>(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
 </span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> stdin;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    create_symbol();
-</span></span><span style="display:flex;"><span>    yyparse();
-</span></span><span style="display:flex;"><span>    dump_symbol();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">create_symbol</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">yyparse</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">dump_symbol</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    fclose(yyin);    
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;Total lines: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fclose</span>(yyin);    
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Total lines: %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yylineno);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> create_symbol()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">create_symbol</span>()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Create symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Create symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// do nothing...
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> insert_symbol(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">insert_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, 
 </span></span><span style="display:flex;"><span>        id_name, example_symbol_cnt);
-</span></span><span style="display:flex;"><span>    example_symbol[example_symbol_cnt] <span style="color:#ff79c6">=</span> strdup(id_name);
+</span></span><span style="display:flex;"><span>    example_symbol[example_symbol_cnt] <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">strdup</span>(id_name);
 </span></span><span style="display:flex;"><span>    example_symbol_cnt<span style="color:#ff79c6">++</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> example_symbol_cnt <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> lookup_symbol(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">lookup_symbol</span>(<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">char</span><span style="color:#ff79c6">*</span> id_name)
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Lookup in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Lookup in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> example_symbol_cnt; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (strcmp(id_name, example_symbol[i]) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#50fa7b">strcmp</span>(id_name, example_symbol[i]) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> i;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;{%s} not found in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, id_name);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;{%s} not found in symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, id_name);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> dump_symbol()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">dump_symbol</span>()
 </span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;&gt; Dump symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;&gt; Dump symbol table</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> example_symbol_cnt; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>        free(example_symbol[i]);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">free</span>(example_symbol[i]);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="測試範例-1" class="article-heading">測試範例 
@@ -11261,40 +11268,40 @@ $$</p>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/* Rules section */</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%%</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;+&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;ADD&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;-&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;SUB&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;*&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;MUL&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;/&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;DIV&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;(&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;LPAR&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;)&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;RPAR&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;=&#34;</span>         { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;ASSIGN&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>        { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">n&#34;</span>, <span style="color:#f1fa8c">&#34;NEWLINE&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;decl&#34;</span>      { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;DECL&#34;</span>); }
-</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;print&#34;</span>     { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;PRINT&#34;</span>); }
-</span></span><span style="display:flex;"><span>{ident}     { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;IDENT&#34;</span>); }
-</span></span><span style="display:flex;"><span>{num_lit}   { printf(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;NUMLIT&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;+&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;ADD&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;-&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;SUB&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;*&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;MUL&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;/&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;DIV&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;(&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;LPAR&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;)&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;RPAR&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;=&#34;</span>         { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;ASSIGN&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>        { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">n&#34;</span>, <span style="color:#f1fa8c">&#34;NEWLINE&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;decl&#34;</span>      { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;DECL&#34;</span>); }
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;print&#34;</span>     { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;PRINT&#34;</span>); }
+</span></span><span style="display:flex;"><span>{ident}     { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;IDENT&#34;</span>); }
+</span></span><span style="display:flex;"><span>{num_lit}   { <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%-8s </span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c"> %s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, yytext, <span style="color:#f1fa8c">&#34;NUMLIT&#34;</span>); }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;&lt;</span>EOF<span style="color:#ff79c6">&gt;&gt;</span>     { yyterminate(); }
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;&lt;</span>EOF<span style="color:#ff79c6">&gt;&gt;</span>     { <span style="color:#50fa7b">yyterminate</span>(); }
 </span></span><span style="display:flex;"><span>.           {;}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">%%</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">/*  C Code section */</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> yywrap(<span style="color:#8be9fd">void</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">yywrap</span>(<span style="color:#8be9fd">void</span>)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> main(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[])
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (argc <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">2</span>) {
-</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> fopen(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">fopen</span>(argv[<span style="color:#bd93f9">1</span>], <span style="color:#f1fa8c">&#34;r&#34;</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
 </span></span><span style="display:flex;"><span>        yyin <span style="color:#ff79c6">=</span> stdin;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    yylex();
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">Finish scanning.&#34;</span>);
-</span></span><span style="display:flex;"><span>    fclose(yyin);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">yylex</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">Finish scanning.&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">fclose</span>(yyin);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="測試範例" class="article-heading">測試範例 
@@ -11663,6 +11670,13 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>結果每次都是過年在寫文章&hellip;</p>
+<h1 id="see-also" class="article-heading">See also 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#see-also">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li>Build from source: <a href="/posts/20230310-install-hugo-on-ubuntu-20-04/"target="_blank" rel="noreferrer noopener">Install Hugo on Ubuntu 20.04</a></li>
+</ul>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -12380,18 +12394,18 @@ $$</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;string.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">int</span> argc, <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>argv[]) {
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>s <span style="color:#ff79c6">=</span> strdup(argv[<span style="color:#bd93f9">1</span>]);
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> len <span style="color:#ff79c6">=</span> strlen(s);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>s <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">strdup</span>(argv[<span style="color:#bd93f9">1</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> len <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">strlen</span>(s);
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> mid <span style="color:#ff79c6">=</span> len <span style="color:#ff79c6">/</span> <span style="color:#bd93f9">2</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> mid; i<span style="color:#ff79c6">++</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (s[i] <span style="color:#ff79c6">!=</span> s[len <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">-</span> i]) {
-</span></span><span style="display:flex;"><span>            printf(<span style="color:#f1fa8c">&#34;Not Palindrome QuQ</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Not Palindrome QuQ</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">goto</span> exit;
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;Palindrome! OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Palindrome! OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">exit</span>:
-</span></span><span style="display:flex;"><span>    free(s);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">free</span>(s);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gcc -o palindrome palindrome.c
@@ -12490,7 +12504,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// 初始化
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">*</span><span style="color:#50fa7b">init_queue</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">*</span>ret <span style="color:#ff79c6">=</span> calloc(<span style="color:#ff79c6">sizeof</span>(<span style="color:#ff79c6">struct</span> Queue), <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">*</span>ret <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">calloc</span>(<span style="color:#ff79c6">sizeof</span>(<span style="color:#ff79c6">struct</span> Queue), <span style="color:#bd93f9">1</span>);
 </span></span><span style="display:flex;"><span>  ret<span style="color:#ff79c6">-&gt;</span>front <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>  ret<span style="color:#ff79c6">-&gt;</span>rear <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>  ret<span style="color:#ff79c6">-&gt;</span>enque <span style="color:#ff79c6">=</span> enque; <span style="color:#6272a4">// 須另外定義 enque 函式
@@ -12500,9 +12514,9 @@ $$</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// 使用
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">*</span>q <span style="color:#ff79c6">=</span> init_queue();
-</span></span><span style="display:flex;"><span>  q<span style="color:#ff79c6">-&gt;</span>enque(q, <span style="color:#f1fa8c">&#39;A&#39;</span>);
-</span></span><span style="display:flex;"><span>  q<span style="color:#ff79c6">-&gt;</span>deque(q);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">*</span>q <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">init_queue</span>();
+</span></span><span style="display:flex;"><span>  q<span style="color:#ff79c6">-&gt;</span><span style="color:#50fa7b">enque</span>(q, <span style="color:#f1fa8c">&#39;A&#39;</span>);
+</span></span><span style="display:flex;"><span>  q<span style="color:#ff79c6">-&gt;</span><span style="color:#50fa7b">deque</span>(q);
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h1 id="寫程式的過程" class="article-heading">寫程式的過程 
@@ -12593,9 +12607,9 @@ $$</p>
 </h2><p><code>printf()</code> 是一個相當神奇且好用的函式，其底層非常複雜歡迎有興趣的人可以參考  。我的習慣是在實作不同資料結構時都會做一個對應的函式來印出其內容以方便驗證。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">print_queue</span>(<span style="color:#ff79c6">struct</span> Queue <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">const</span> q) {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">26</span>; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%c &#34;</span>, q<span style="color:#ff79c6">-&gt;</span>que[i]);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%c &#34;</span>, q<span style="color:#ff79c6">-&gt;</span>que[i]);
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  printf(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="gdb" class="article-heading">GDB 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#gdb">
@@ -12794,7 +12808,7 @@ $$</p>
 </h4><p>注意 <code>;</code> 前不要後要。<br>
 這裡用 <code>i++</code> 或 <code>++i</code> 其實基本上沒有效能差異  ，編譯器會幫你最佳化，我更喜歡 <code>i++</code> 因為要改成 <code>i+=2</code> 之類的比較方便，另外也是有 <code>i-=-1</code>   這種邪教&hellip;</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> some_number; i<span style="color:#ff79c6">++</span>) {
-</span></span><span style="display:flex;"><span>  printf(<span style="color:#f1fa8c">&#34;OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="pointer-變數宣告" class="article-heading">Pointer 變數宣告 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#pointer-%e8%ae%8a%e6%95%b8%e5%ae%a3%e5%91%8a">
@@ -12856,9 +12870,9 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </h3><p>但是在開發過程需要適時隔離變化，C 語言提供了 <code>const</code> 修飾字來標示該參數在函式中不會被修改。以下範例中的 <code>rear</code> 和 <code>orig</code>  不會被修改到內容，所以可以利用 <code>const</code> 來提醒函式呼叫者該參數不會被改動，反之 <code>front</code> 就有機會被改動。詳細的排列組合可以參考  。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">deque</span>(<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>orig, <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>front, <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>rear) {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">*</span>rear) {
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;Empty&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Empty&#34;</span>);
 </span></span><span style="display:flex;"><span>  } <span style="color:#ff79c6">else</span> {
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%c</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, orig[<span style="color:#ff79c6">*</span>front]);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%c</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, orig[<span style="color:#ff79c6">*</span>front]);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
@@ -12882,9 +12896,9 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>front,
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> rear_value) {
 </span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">==</span> rear_value) {
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;Empty&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Empty&#34;</span>);
 </span></span><span style="display:flex;"><span>  } <span style="color:#ff79c6">else</span> {
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%c</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, orig[<span style="color:#ff79c6">*</span>front]);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%c</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, orig[<span style="color:#ff79c6">*</span>front]);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">*</span>front <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
@@ -12909,7 +12923,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
     </a>
 </h3><p>如果在多檔案下函數並不是要開放給其他檔案呼叫時，請加上 <code>static</code> 來保證只有當前檔案內部可以看到那個函數。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">my_local_function</span>() {
-</span></span><span style="display:flex;"><span>  printf(<span style="color:#f1fa8c">&#34;OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;OuO</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="避免使用危險的函式們" class="article-heading">避免使用危險的函式們 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e9%81%bf%e5%85%8d%e4%bd%bf%e7%94%a8%e5%8d%b1%e9%9a%aa%e7%9a%84%e5%87%bd%e5%bc%8f%e5%80%91">
@@ -13515,8 +13529,8 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdlib.h&gt;</span><span style="color:#ff79c6">
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>a <span style="color:#ff79c6">=</span> (<span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>) malloc(<span style="color:#bd93f9">1024</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">sizeof</span>(<span style="color:#8be9fd">int</span>));
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%p</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>a <span style="color:#ff79c6">=</span> (<span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>) <span style="color:#50fa7b">malloc</span>(<span style="color:#bd93f9">1024</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">sizeof</span>(<span style="color:#8be9fd">int</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%p</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a);
 </span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// free(a);
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
@@ -15098,8 +15112,8 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> a, b;
-</span></span><span style="display:flex;"><span>    scanf(<span style="color:#f1fa8c">&#34;%d%d&#34;</span>, <span style="color:#ff79c6">&amp;</span>a, <span style="color:#ff79c6">&amp;</span>b);
-</span></span><span style="display:flex;"><span>    printf(<span style="color:#f1fa8c">&#34;%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a <span style="color:#ff79c6">+</span> b);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">scanf</span>(<span style="color:#f1fa8c">&#34;%d%d&#34;</span>, <span style="color:#ff79c6">&amp;</span>a, <span style="color:#ff79c6">&amp;</span>b);
+</span></span><span style="display:flex;"><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a <span style="color:#ff79c6">+</span> b);
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="makefile" class="article-heading"><code>Makefile</code>: 
@@ -15390,7 +15404,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <li><a href="https://www.markdownguide.org/basic-syntax/#emphasis" title="ref" aria-label="ref"  target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> ref</a></li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>__粗體__  
-</span></span><span style="display:flex;"><span>**粗體**  
+</span></span><span style="display:flex;"><span><span style="text-decoration:underline">**</span>粗體**  
 </span></span><span style="display:flex;"><span><span style="text-decoration:underline">_斜體_</span>  
 </span></span><span style="display:flex;"><span><span style="text-decoration:underline">*斜體*</span>  
 </span></span><span style="display:flex;"><span><span style="text-decoration:underline">__</span>*粗斜體*__
@@ -15553,7 +15567,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%b7%b3%e8%bd%89%e5%8a%a0%e5%bc%b7%e7%89%88-%e8%87%aa%e5%8b%95%e7%94%9f%e6%88%90%e6%a8%99%e9%a1%8c">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;#<span style="color:#50fa7b">表格</span>&#34; &gt;}}  
+</h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;#表格&#34; &gt;}}  
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;/<span style="color:#50fa7b">about</span>&#34; &gt;}}
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;<span style="color:#50fa7b">20220620-4-bit-qft-iqft</span>&#34; &gt;}}  
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;<span style="color:#50fa7b">20220620-4-bit-qft-iqft</span>/&#34; &gt;}}  

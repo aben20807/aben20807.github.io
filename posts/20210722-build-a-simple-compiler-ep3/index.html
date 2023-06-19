@@ -1,7 +1,7 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Build a Simple Compiler Ep3</title><link rel=alternate type=application/rss+xml title=RSS href=https://aben20807.github.io/index.xml><link rel=canonical href=https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/><link rel="shortcut icon" type=image/png href=https://aben20807.github.io/apple-touch-icon-precomposed.png><meta name=generator content="Hugo 0.98.0"><meta name=og:title content="Build a Simple Compiler Ep3"><meta name=og:type content="article"><meta name=og:image content="https://images.unsplash.com/photo-1534631615537-d8f2af94b6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"><meta name=og:description content><meta name=og:url content="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/"><meta name=og:site_name content="記錄用"><meta name=keywords content="flex,bison,compiler,lex,yacc,jvm,bytecode"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@"><script src=https://cdn.jsdelivr.net/npm/fetch-inject@2.0.4/dist/fetch-inject.umd.min.js integrity="sha256-paKBtnIrL5ClLfBOtgxh1UqYCjL9790IRvDOnBh2LyI=" crossorigin=anonymous></script>
-<link rel=stylesheet href=https://aben20807.github.io/css/tachyons.min.css async><link rel=stylesheet href=https://aben20807.github.io/css/story.css?1687140030 async><link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1687140030 async><link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1687140030 async><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous async><link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,400i&subset=latin-ext" rel=stylesheet async><script src=https://code.iconify.design/1/1.0.0-rc6/iconify.min.js></script>
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Build a Simple Compiler Ep3</title><link rel=alternate type=application/rss+xml title=RSS href=https://aben20807.github.io/index.xml><link rel=canonical href=https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/><link rel="shortcut icon" type=image/png href=https://aben20807.github.io/apple-touch-icon-precomposed.png><meta name=generator content="Hugo 0.113.0"><meta name=og:title content="Build a Simple Compiler Ep3"><meta name=og:type content="article"><meta name=og:image content="https://images.unsplash.com/photo-1534631615537-d8f2af94b6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"><meta name=og:description content><meta name=og:url content="https://aben20807.github.io/posts/20210722-build-a-simple-compiler-ep3/"><meta name=og:site_name content="記錄用"><meta name=keywords content="flex,bison,compiler,lex,yacc,jvm,bytecode"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@"><script src=https://cdn.jsdelivr.net/npm/fetch-inject@2.0.4/dist/fetch-inject.umd.min.js integrity="sha256-paKBtnIrL5ClLfBOtgxh1UqYCjL9790IRvDOnBh2LyI=" crossorigin=anonymous></script>
+<link rel=stylesheet href=https://aben20807.github.io/css/tachyons.min.css async><link rel=stylesheet href=https://aben20807.github.io/css/story.css?1687153648 async><link rel=stylesheet href=https://aben20807.github.io/css/hugouo.css?1687153648 async><link rel=stylesheet href=https://aben20807.github.io/css/allinone.css?1687153648 async><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous async><link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,400i&amp;subset=latin-ext" rel=stylesheet async><script src=https://code.iconify.design/1/1.0.0-rc6/iconify.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js></script><noscript><style type=text/css>.lazyload{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-TCW0ZKBVFW"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-TCW0ZKBVFW",{anonymize_ip:!1})}</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075275543045163" crossorigin=anonymous></script><meta name=referrer content="no-referrer"></head><body class="ma0 bg-white section-posts page-kind-page is-page-true"><header class="cover bg-top" style="background-image:url(https://images.unsplash.com/photo-1534631615537-d8f2af94b6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80);background-position:50%"><div class=bg-black-60><nav class="hide-print sans-serif border-box pa3 ph5-l"><a href=https://aben20807.github.io/ title=Home><img src=https://aben20807.github.io/img/logo.jpg class="w2 h2 br-100" alt=記錄用></a><div class="fr h2 pv2 tr" id=menu-bar><a class="link f5 ml2 dim near-white no-underline-on-hover" href=/categories/>分類</a><div class=subnav><span class="link f5 ml2 dim h-100 near-white no-underline-on-hover">More <i class="fa fa-caret-down"></i></span><div class=subnav-content><a class="link f5 ml2 dim ml2 w-100 dim near-white no-underline-on-hover" href=/tags/>標籤</a>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-TCW0ZKBVFW",{anonymize_ip:!1})}</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075275543045163" crossorigin=anonymous></script><meta name=referrer content="no-referrer"></head><body class="ma0 bg-white section-posts page-kind-page is-page-true"><header class="cover bg-top" style="background-image:url(https://images.unsplash.com/photo-1534631615537-d8f2af94b6ae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80);background-position:50%"><div class=bg-black-60><nav class="hide-print sans-serif border-box pa3 ph5-l"><a href=https://aben20807.github.io/ title=Home><img src=https://aben20807.github.io/img/logo.jpg class="w2 h2 br-100" alt=記錄用></a><div class="fr h2 pv2 tr" id=menu-bar><a class="link f5 ml2 dim near-white no-underline-on-hover" href=/categories/>分類</a><div class=subnav><span class="link f5 ml2 dim h-100 near-white no-underline-on-hover">More <i class="fa fa-caret-down"></i></span><div class=subnav-content><a class="link f5 ml2 dim ml2 w-100 dim near-white no-underline-on-hover" href=/tags/>標籤</a>
 <a class="link f5 ml2 dim ml2 w-100 dim near-white no-underline-on-hover" href=/series/>系列</a>
 <a class="link f5 ml2 dim ml2 w-100 dim near-white no-underline-on-hover" href=/archives/>歸檔</a>
 <a class="link f5 ml2 dim ml2 w-100 dim near-white no-underline-on-hover" href=/anime/>Anime</a>
@@ -20,7 +20,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span><span style=color:#50fa7b>.class</span> public Main
 </span></span><span style=display:flex><span><span style=color:#50fa7b>.super</span> java/lang/Object
 </span></span><span style=display:flex><span><span style=color:#50fa7b>.method</span> public static main([Ljava/lang/String<span style=color:#6272a4>;)V
-</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>.limit stack <span style=color:#bd93f9>10</span>
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span><span style=color:#50fa7b>.limit</span> stack <span style=color:#bd93f9>10</span>
 </span></span><span style=display:flex><span><span style=color:#50fa7b>.limit</span> locals <span style=color:#bd93f9>10</span>
 </span></span><span style=display:flex><span>    
 </span></span><span style=display:flex><span>    <span style=color:#6272a4>; generated instructions
@@ -41,7 +41,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#8be9fd>void</span> <span style=color:#50fa7b>yyerror</span> (<span style=color:#8be9fd>char</span> <span style=color:#ff79c6>const</span> <span style=color:#ff79c6>*</span>s)
 </span></span><span style=display:flex><span>    {
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;error:%d: %s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, yylineno, s);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;error:%d: %s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, yylineno, s);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>#define codegen(...) \
@@ -58,7 +58,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>insert_symbol</span>(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>lookup_symbol</span>(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>static</span> <span style=color:#8be9fd>void</span> <span style=color:#50fa7b>dump_symbol</span>();
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> <span style=color:#50fa7b>get_op_name</span>(op_t op) {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> <span style=color:#50fa7b>get_op_name</span>(<span style=color:#8be9fd>op_t</span> op) {
 </span></span><span style=display:flex><span>        <span style=color:#ff79c6>switch</span> (op) {
 </span></span><span style=display:flex><span>            <span style=color:#ff79c6>case</span> <span style=color:#8be9fd;font-style:italic>OP_ADD</span>:
 </span></span><span style=display:flex><span>                <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;ADD&#34;</span>;
@@ -72,7 +72,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>                <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;unknown&#34;</span>;
 </span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> <span style=color:#50fa7b>get_op_instruction</span>(op_t op) {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> <span style=color:#50fa7b>get_op_instruction</span>(<span style=color:#8be9fd>op_t</span> op) {
 </span></span><span style=display:flex><span>        <span style=color:#ff79c6>switch</span> (op) {
 </span></span><span style=display:flex><span>            <span style=color:#ff79c6>case</span> <span style=color:#8be9fd;font-style:italic>OP_ADD</span>:
 </span></span><span style=display:flex><span>                <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;iadd&#34;</span>;
@@ -103,7 +103,7 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span><span style=color:#ff79c6>%</span><span style=color:#ff79c6>union</span> {
 </span></span><span style=display:flex><span>    <span style=color:#8be9fd>int</span> val;
 </span></span><span style=display:flex><span>    <span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>id_name;
-</span></span><span style=display:flex><span>    op_t op;
+</span></span><span style=display:flex><span>    <span style=color:#8be9fd>op_t</span> op;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#6272a4>/* Token without return */</span>
@@ -138,20 +138,20 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>DeclStmt</span>
 </span></span><span style=display:flex><span>    : DECL IDENT <span style=color:#f1fa8c>&#39;=&#39;</span> Expression NEWLINE {
-</span></span><span style=display:flex><span>        <span style=color:#8be9fd>int</span> ref <span style=color:#ff79c6>=</span> insert_symbol($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>);
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;IDENT %s, ref: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>, ref);
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;STORE</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>        free($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;istore %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, ref);
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd>int</span> ref <span style=color:#ff79c6>=</span> <span style=color:#50fa7b>insert_symbol</span>($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;IDENT %s, ref: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>, ref);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;STORE</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>free</span>($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;istore %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, ref);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>PrintStmt</span>
 </span></span><span style=display:flex><span>    : PRINT Expression NEWLINE {
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;PRINT</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;getstatic java/lang/System/out Ljava/io/PrintStream;</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;swap</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;invokevirtual java/io/PrintStream/print(I)V</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;PRINT</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;getstatic java/lang/System/out Ljava/io/PrintStream;</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;swap</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;invokevirtual java/io/PrintStream/print(I)V</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>;
 </span></span><span style=display:flex><span>
@@ -161,8 +161,8 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>AddExpr</span>
 </span></span><span style=display:flex><span>    : AddExpr AddOp MulExpr {
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, get_op_name($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, get_op_instruction($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, <span style=color:#50fa7b>get_op_name</span>($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, <span style=color:#50fa7b>get_op_instruction</span>($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>|</span> MulExpr
 </span></span><span style=display:flex><span>;
@@ -178,8 +178,8 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>MulExpr</span>
 </span></span><span style=display:flex><span>    : MulExpr MulOp Operand {
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, get_op_name($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, get_op_instruction($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, <span style=color:#50fa7b>get_op_name</span>($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;%s</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, <span style=color:#50fa7b>get_op_instruction</span>($<span style=color:#ff79c6>&lt;</span>op<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>2</span>));
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>|</span> Operand
 </span></span><span style=display:flex><span>;
@@ -195,15 +195,15 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>Operand</span>
 </span></span><span style=display:flex><span>    : NUMLIT {
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;NUMLIT %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>val<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;ldc %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>val<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;NUMLIT %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>val<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;ldc %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>val<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>|</span> IDENT {
-</span></span><span style=display:flex><span>        <span style=color:#8be9fd>int</span> ref <span style=color:#ff79c6>=</span> lookup_symbol($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;IDENT %s, ref: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>, ref);
-</span></span><span style=display:flex><span>        printf(<span style=color:#f1fa8c>&#34;LOAD</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>        free($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
-</span></span><span style=display:flex><span>        codegen(<span style=color:#f1fa8c>&#34;iload %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, ref);
+</span></span><span style=display:flex><span>        <span style=color:#8be9fd>int</span> ref <span style=color:#ff79c6>=</span> <span style=color:#50fa7b>lookup_symbol</span>($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;IDENT %s, ref: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, $<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>, ref);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;LOAD</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>free</span>($<span style=color:#ff79c6>&lt;</span>id_name<span style=color:#ff79c6>&gt;</span><span style=color:#bd93f9>1</span>);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;iload %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, ref);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>|</span> <span style=color:#f1fa8c>&#39;(&#39;</span> Expression <span style=color:#f1fa8c>&#39;)&#39;</span>
 </span></span><span style=display:flex><span>;
@@ -212,70 +212,70 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 </span></span><span style=display:flex><span><span style=color:#ff79c6>%%</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#6272a4>/* C code section */</span>
-</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> main(<span style=color:#8be9fd>int</span> argc, <span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>argv[])
+</span></span><span style=display:flex><span><span style=color:#8be9fd>int</span> <span style=color:#50fa7b>main</span>(<span style=color:#8be9fd>int</span> argc, <span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>argv[])
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>if</span> (argc <span style=color:#ff79c6>==</span> <span style=color:#bd93f9>2</span>) {
-</span></span><span style=display:flex><span>        yyin <span style=color:#ff79c6>=</span> fopen(argv[<span style=color:#bd93f9>1</span>], <span style=color:#f1fa8c>&#34;r&#34;</span>);
+</span></span><span style=display:flex><span>        yyin <span style=color:#ff79c6>=</span> <span style=color:#50fa7b>fopen</span>(argv[<span style=color:#bd93f9>1</span>], <span style=color:#f1fa8c>&#34;r&#34;</span>);
 </span></span><span style=display:flex><span>    } <span style=color:#ff79c6>else</span> {
 </span></span><span style=display:flex><span>        yyin <span style=color:#ff79c6>=</span> stdin;
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#6272a4>/* Codegen output init */</span>
 </span></span><span style=display:flex><span>    <span style=color:#8be9fd>char</span> <span style=color:#ff79c6>*</span>bytecode_filename <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;bytecode.j&#34;</span>;
-</span></span><span style=display:flex><span>    fout <span style=color:#ff79c6>=</span> fopen(bytecode_filename, <span style=color:#f1fa8c>&#34;w&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.source bytecode.j</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.class public Main</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.super java/lang/Object</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.method public static main([Ljava/lang/String;)V</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.limit stack 10</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.limit locals 10</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    fout <span style=color:#ff79c6>=</span> <span style=color:#50fa7b>fopen</span>(bytecode_filename, <span style=color:#f1fa8c>&#34;w&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.source bytecode.j</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.class public Main</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.super java/lang/Object</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.method public static main([Ljava/lang/String;)V</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.limit stack 10</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.limit locals 10</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    indent_cnt<span style=color:#ff79c6>++</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    create_symbol();
-</span></span><span style=display:flex><span>    yyparse();
-</span></span><span style=display:flex><span>    dump_symbol();
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>create_symbol</span>();
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>yyparse</span>();
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>dump_symbol</span>();
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#6272a4>/* Codegen end */</span>
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;return</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;return</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    indent_cnt<span style=color:#ff79c6>--</span>;
-</span></span><span style=display:flex><span>    codegen(<span style=color:#f1fa8c>&#34;.end method</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
-</span></span><span style=display:flex><span>    fclose(fout);
-</span></span><span style=display:flex><span>    fclose(yyin);
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;Total lines: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, yylineno);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>codegen</span>(<span style=color:#f1fa8c>&#34;.end method</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>fclose</span>(fout);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>fclose</span>(yyin);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;Total lines: %d</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, yylineno);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> <span style=color:#bd93f9>0</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>void</span> create_symbol()
+</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>void</span> <span style=color:#50fa7b>create_symbol</span>()
 </span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;&gt; Create symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;&gt; Create symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#6272a4>// do nothing...
 </span></span></span><span style=display:flex><span><span style=color:#6272a4></span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> insert_symbol(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name)
+</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>insert_symbol</span>(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name)
 </span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, 
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;&gt; Insert {%s} into symbol table; assign it as ref {%d}</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, 
 </span></span><span style=display:flex><span>        id_name, example_symbol_cnt);
-</span></span><span style=display:flex><span>    example_symbol[example_symbol_cnt] <span style=color:#ff79c6>=</span> strdup(id_name);
+</span></span><span style=display:flex><span>    example_symbol[example_symbol_cnt] <span style=color:#ff79c6>=</span> <span style=color:#50fa7b>strdup</span>(id_name);
 </span></span><span style=display:flex><span>    example_symbol_cnt<span style=color:#ff79c6>++</span>;
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> example_symbol_cnt <span style=color:#ff79c6>-</span> <span style=color:#bd93f9>1</span>;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> lookup_symbol(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name)
+</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>lookup_symbol</span>(<span style=color:#ff79c6>const</span> <span style=color:#8be9fd>char</span><span style=color:#ff79c6>*</span> id_name)
 </span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;&gt; Lookup in symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;&gt; Lookup in symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>for</span> (<span style=color:#8be9fd>int</span> i <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>; i <span style=color:#ff79c6>&lt;</span> example_symbol_cnt; i<span style=color:#ff79c6>++</span>) {
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>if</span> (strcmp(id_name, example_symbol[i]) <span style=color:#ff79c6>==</span> <span style=color:#bd93f9>0</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>if</span> (<span style=color:#50fa7b>strcmp</span>(id_name, example_symbol[i]) <span style=color:#ff79c6>==</span> <span style=color:#bd93f9>0</span>) {
 </span></span><span style=display:flex><span>            <span style=color:#ff79c6>return</span> i;
 </span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;{%s} not found in symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, id_name);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;{%s} not found in symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>, id_name);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> <span style=color:#ff79c6>-</span><span style=color:#bd93f9>1</span>;
 </span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>void</span> dump_symbol()
+</span></span><span style=display:flex><span><span style=color:#ff79c6>static</span> <span style=color:#8be9fd>void</span> <span style=color:#50fa7b>dump_symbol</span>()
 </span></span><span style=display:flex><span>{
-</span></span><span style=display:flex><span>    printf(<span style=color:#f1fa8c>&#34;&gt; Dump symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#50fa7b>printf</span>(<span style=color:#f1fa8c>&#34;&gt; Dump symbol table</span><span style=color:#f1fa8c>\n</span><span style=color:#f1fa8c>&#34;</span>);
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>for</span> (<span style=color:#8be9fd>int</span> i <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>; i <span style=color:#ff79c6>&lt;</span> example_symbol_cnt; i<span style=color:#ff79c6>++</span>) {
-</span></span><span style=display:flex><span>        free(example_symbol[i]);
+</span></span><span style=display:flex><span>        <span style=color:#50fa7b>free</span>(example_symbol[i]);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h1 id=測試範例 class=article-heading>測試範例
@@ -294,9 +294,9 @@ in <a href=https://aben20807.github.io/categories/%E7%B7%A8%E8%AD%AF%E5%99%A8 cl
 Jasmin</a></li></ul><ul class=toc><ul class=toc><li class=toc-item><a class="toc-link smoothScroll" href=#j-%e6%aa%94%e6%a0%bc%e5%bc%8f>2.1.
 .j 檔格式</a></li></ul></ul><ul class=toc><li class=toc-item><a class="toc-link smoothScroll" href=#%e5%ae%8c%e6%95%b4%e7%a8%8b%e5%bc%8f%e7%a2%bc>3.
 完整程式碼</a></li></ul><ul class=toc><li class=toc-item><a class="toc-link smoothScroll" href=#%e6%b8%ac%e8%a9%a6%e7%af%84%e4%be%8b>4.
-測試範例</a></li></ul></div><ul class=toc><li class=toc-item><a class="goto pl1 toc-item" id=gotop>⊛ Back to top</a></li><li class=toc-item><a class="goto pl1 toc-item" id=gobottom>⊛ Go to bottom</a></li><script type=text/javascript>fetchInject(["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"]).then(()=>{var e="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";$.getScript(e,function(){$("#gotop").click(function(){$("html,body").animate({scrollTop:0},300,"swing",function(){$("a.toc-link").removeClass("active")})}),$("#gobottom").click(function(){$("html,body").animate({scrollTop:$(document).height()},300,"swing",function(){$("a.toc-link").removeClass("active")})})})})</script></ul></div></div></div></main><div id=gotop_btn class="post-meta center"><center><i class="fas fa-chevron-up tc-ns justify-center-l v-mid-l pt1"></i></center></div><footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role=contentinfo><p class="w-50 fr tr nested-links" style=font-size:.875rem!important>Made with Hugo and
+測試範例</a></li></ul></div><ul class=toc><li class=toc-item><a class='goto pl1 toc-item' id=gotop>⊛ Back to top</a></li><li class=toc-item><a class='goto pl1 toc-item' id=gobottom>⊛ Go to bottom</a></li><script type=text/javascript>fetchInject(["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"]).then(()=>{var e="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";$.getScript(e,function(){$("#gotop").click(function(){$("html,body").animate({scrollTop:0},300,"swing",function(){$("a.toc-link").removeClass("active")})}),$("#gobottom").click(function(){$("html,body").animate({scrollTop:$(document).height()},300,"swing",function(){$("a.toc-link").removeClass("active")})})})})</script></ul></div></div></div></main><div id=gotop_btn class="post-meta center"><center><i class="fas fa-chevron-up tc-ns justify-center-l v-mid-l pt1"></i></center></div><footer class="hide-print sans-serif f6 fw1 bg-black near-white bottom-0 w-100 pa3 db overflow-auto" role=contentinfo><p class="w-50 fr tr nested-links" style=font-size:.875rem!important>Made with Hugo and
 <a class="no-underline no-underline-on-hover" href=https://github.com/aben20807/hugOuO target=_blank rel="noreferrer noopener">hugOuO</a></p><p class="w-50 near-white" style=font-size:.875rem!important>&copy; 2019-2023 Huang, Po-Hsuan 黃柏瑄</p></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js></script>
-<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1687140030 async></script>
+<script type=text/javascript src=https://aben20807.github.io/js/hugouo.js?1687153648 async></script>
 <script type=text/javascript src=https://aben20807.github.io/js/x-notify.min.js async></script>
 <script src=https://aben20807.github.io/js/story.js async></script>
 <script>fetchInject(["https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"]).then(()=>{baffle(document.querySelector("h1")).start().set({speed:70}).reveal(800,800)})</script><script>MathJax={startup:{requireMap:{AMSmath:"ams",AMSsymbols:"ams",AMScd:"amscd",HTML:"html",noErrors:"noerrors",noUndefined:"noundefined"}},tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"]],tags:"ams"},skipTags:["script","noscript","style","textarea","pre"],svg:{fontCache:"global",scale:1},chtml:{scale:1}}</script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js></script><script type=text/javascript src=https://aben20807.github.io/js/zooming.min.js></script>
