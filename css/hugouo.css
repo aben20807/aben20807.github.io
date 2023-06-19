@@ -26,6 +26,7 @@ body {
   /* ref: https://stackoverflow.com/a/44000322/6734174 */
   width: 100vw;
   counter-reset: h1_cnt;
+  overflow-x: hidden;
 }
 h1 {
   font-size: 1.5rem;
@@ -101,7 +102,8 @@ li,
 summary,
 details,
 body article,
-.link-reverse {
+.link-reverse,
+.sans-serif {
   font-family: "Noto Sans TC", -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, noto, "segoe ui", arial, sans-serif;
@@ -285,8 +287,8 @@ img {
   float: left;
   flex: 16.666667%;
   max-width: 16.666667%;
-  padding-top: 2vw;
-  margin-right: 6vw;
+  padding-top: 2vh;
+  margin-right: 14vw;
   line-height: 0.1rem;
 }
 

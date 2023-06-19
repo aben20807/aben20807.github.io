@@ -51,7 +51,7 @@ hr {
 }
 table caption {
   text-align: left;
-  font-family: 'Spectral', Georgia, Times, serif;
+  /* font-family: 'Spectral', Georgia, Times, serif; */
   font-style: italic;
   padding: 0px 0.5rem;
 }
@@ -131,7 +131,7 @@ body:not(.feature-tablefig) table {
   width: 100%;
   overflow: auto;
   font-size: 85%;
-  font-family: 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+  /* font-family: 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif; */
 }
 body:not(.feature-tablefig) table tr:nth-child(2n) {
   background-color: #f6f8fa;
@@ -147,14 +147,14 @@ body:not(.feature-tablefig) table th {
   font-weight: 600;
 }
 body.feature-tablefw:not(.feature-tablefig) td {
-  font-family: arial;
+  /* font-family: arial; */
 }
 body.feature-tablefig:not(.feature-notablefig) table {
   border-spacing: 0;
   border-collapse: collapse;
   overflow: auto;
   font-size: 85%;
-  font-family: inherit;
+  /* font-family: inherit; */
   border-top: 2px solid black;
 }
 body.feature-tablefig:not(.feature-notablefig) table thead,
