@@ -49,7 +49,7 @@
 </ul>
 <p>因為這應該無法上架到 google extension store，所以只能用開發者模式載入，詳細步驟可以參考 README。</p>
         ]]></description></item><item><title>Image Host Transfer Program with ChatGPT V2 (success by me)</title><link>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</link><pubDate>Sat, 15 Apr 2023 15:28:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/</guid><description><![CDATA[
-          <p>延續上一篇 false<br/><a href="/posts/20230411-image-host-transfer-program-with-chatgpt-v1/">Image Host Transfer Program with ChatGPT V1 (failed)</a>，歷經失敗後我終於成功了，對，不是我們。</p>
+          <p>延續上一篇 <a href="/posts/20230411-image-host-transfer-program-with-chatgpt-v1/">Image Host Transfer Program with ChatGPT V1 (failed)</a>，歷經失敗後我終於成功了，對，不是我們。</p>
           
             <p><a href="https://aben20807.github.io/posts/20230415-image-host-transfer-program-with-chatgpt-v2/"><img src="https://lh3.googleusercontent.com/d/169oCfmolMxpUWCjJwafKnrBux_aPo6j-" style="max-width: 100%;"/></a></p>
           
@@ -63,8 +63,7 @@
           
           
           
-          <p>延續上一篇 false
-<a href="/posts/20230411-image-host-transfer-program-with-chatgpt-v1/">Image Host Transfer Program with ChatGPT V1 (failed)</a>，歷經失敗後我終於成功了，對，不是我們。</p>
+          <p>延續上一篇 <a href="/posts/20230411-image-host-transfer-program-with-chatgpt-v1/">Image Host Transfer Program with ChatGPT V1 (failed)</a>，歷經失敗後我終於成功了，對，不是我們。</p>
 <p>
  
   <figure class="gphoto-media rss">
@@ -568,7 +567,7 @@ Use ArgumentParser to input markdown file path and credentials path in your main
 <hr>
 <p>Exported on 2023年4月15日 下午2:49.</p>
         ]]></description></item><item><title>Image Host Transfer Program with ChatGPT V1 (failed)</title><link>https://aben20807.github.io/posts/20230411-image-host-transfer-program-with-chatgpt-v1/</link><pubDate>Sat, 15 Apr 2023 14:48:27 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230411-image-host-transfer-program-with-chatgpt-v1/</guid><description><![CDATA[
-          <p>雖然 false<br/><a href="/posts/20230311-no-more-new-thing/">無法接受新事物的現代人</a> 已經這麼說了，還是讓我們看看它可以做什麼，究竟是不是只是個幹話產生器呢。</p>
+          <p>雖然 <a href="/posts/20230311-no-more-new-thing/">無法接受新事物的現代人</a> 已經這麼說了，還是讓我們看看它可以做什麼，究竟是不是只是個幹話產生器呢。</p>
           
             <p><a href="https://aben20807.github.io/posts/20230411-image-host-transfer-program-with-chatgpt-v1/"><img src="https://lh3.googleusercontent.com/d/1nYLUMxzbB2McD52Lye9pAoYh__e5twkE" style="max-width: 100%;"/></a></p>
           
@@ -582,8 +581,7 @@ Use ArgumentParser to input markdown file path and credentials path in your main
           
           
           
-          <p>雖然 false
-<a href="/posts/20230311-no-more-new-thing/">無法接受新事物的現代人</a> 已經這麼說了，還是讓我們看看它可以做什麼，究竟是不是只是個幹話產生器呢。</p>
+          <p>雖然 <a href="/posts/20230311-no-more-new-thing/">無法接受新事物的現代人</a> 已經這麼說了，還是讓我們看看它可以做什麼，究竟是不是只是個幹話產生器呢。</p>
 <h1 id="chatgpt" class="article-heading">ChatGPT 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#chatgpt">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -2280,8 +2278,7 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><ul>
-<li>Download prebuild binary: false
- <a href="/posts/20210215-hugo-on-wsl2/">Hugo on WSL2 (Ubuntu18.04)</a></li>
+<li>Download prebuild binary: <a href="/posts/20210215-hugo-on-wsl2/">Hugo on WSL2 (Ubuntu18.04)</a></li>
 </ul>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
@@ -2309,8 +2306,7 @@ $$</p>
           <p>Latex 應該也算是一種程式語言 吧</p>
 <ul>
 <li>repo: <a href="https://github.com/aben20807/latex_examples" title="aben20807/latex_examples" aria-label="aben20807/latex_examples" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/latex_examples</a></li>
-<li>setup: false
- <a href="/posts/20210811-use-vscode-to-write-latex-paper/">Use VSCode to Write LaTeX Paper</a></li>
+<li>setup: <a href="/posts/20210811-use-vscode-to-write-latex-paper/">Use VSCode to Write LaTeX Paper</a></li>
 </ul>
 <p><span style="font-size: 1.5rem;">前言</span></p>
 <p>Latex 是一個有趣的程式語言，透過它能夠產生對應的 pdf 文件，這對於文件撰寫有很大幫助 (例如可以輕易被版本控制)。然而實際在使用時會遇到不少問題，其編譯錯誤的訊息也很難去直接聯想到錯誤位置，比方說某些字元 (<code>_</code>, <code>&amp;</code>) 不能直接寫不然會出錯 (要改用 <code>\_</code>, <code>\&amp;</code>)，但是又很難找，只能找跟上個版本的差異。latex 也提供許多功能，甚至不用 draw.io 也能用 latex 畫出流程圖，但是這些太過進階可能有 80% 的功能是平常用不到。因此本篇主要記錄目前會固定使用的模板以及特殊技巧 (基於我個人對於美感的堅持)，也減少之後錯誤發生，更希望對後來需要使用 latex 的人 (包括未來的我) 有幫助。</p>
@@ -2488,15 +2484,14 @@ $$</p>
     </figcaption>
   </figure>
 </p>
-<p>接下來的程式碼會以 false
-<a href="#%e6%96%87%e7%ab%a0%e6%a7%8b%e6%88%90">Latex Examples#文章構成</a> 為外部框架，只提供 <code>Contents</code>。</p>
+<p>接下來的程式碼會以 
+<a href="#%e6%96%87%e7%ab%a0%e6%a7%8b%e6%88%90">#文章構成</a> 為外部框架，只提供 <code>Contents</code>。</p>
 <h1 id="math" class="article-heading">Math 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#math">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p><a href="https://github.com/aben20807/latex_examples/blob/master/02_math.tex" title="02 Math 完整程式碼" aria-label="02 Math 完整程式碼" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 02 Math 完整程式碼</a></p>
-<p>Latex 的強項是提供一個較為標準的格式寫數學式，不像 word 都要利用 GUI 介面 (好像也可以在 word 用 latex 但就超出本篇範圍)。數學很多符號都有對應的 latex 程式，通常是常用的才會記住，之前有發現可以用手寫辨識找出符號對應的 latex (false
-<a href="/posts/20220627-weekly-collection/#latex-%e7%ac%a6%e8%99%9f%e6%89%8b%e5%af%ab%e8%be%a8%e8%ad%98">Weekly Collection#latex-符號手寫辨識</a>) 再次推薦。</p>
+<p>Latex 的強項是提供一個較為標準的格式寫數學式，不像 word 都要利用 GUI 介面 (好像也可以在 word 用 latex 但就超出本篇範圍)。數學很多符號都有對應的 latex 程式，通常是常用的才會記住，之前有發現可以用手寫辨識找出符號對應的 latex (<a href="/posts/20220627-weekly-collection/#latex-%e7%ac%a6%e8%99%9f%e6%89%8b%e5%af%ab%e8%be%a8%e8%ad%98">Weekly Collection#latex-符號手寫辨識</a>) 再次推薦。</p>
 <p>注意在用數學式 (或演算法) 表達時會跟程式碼不同，例如賦值不能寫成 <code>=</code> 而是用 <code>\gets</code>，但也不是強制規定，有在文章中定義好即可。特殊字型 (例如 <code>\mathbb{Z}</code>) 需要使用 <code>\usepackage{amsfonts}</code>。</p>
 <p>行內數學式使用 <code>$</code>，而 <code>$$</code> 會獨立並至中，但還是一行。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>Inline latex: <span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">x </span><span style="color:#8be9fd;font-style:italic">\in</span><span style="color:#8be9fd;font-style:italic">_R </span><span style="color:#8be9fd;font-style:italic">\mathbb</span><span style="color:#8be9fd;font-style:italic">{Z}_{</span><span style="color:#bd93f9">2</span><span style="color:#8be9fd;font-style:italic">^</span><span style="color:#8be9fd;font-style:italic">\ell</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#f1fa8c">$</span>, use <span style="color:#ff79c6">\$</span> to wrap.
@@ -2535,8 +2530,7 @@ $$</p>
     </a>
 </h1><p><a href="https://github.com/aben20807/latex_examples/blob/master/03_figure.tex" title="03 Figure 完整程式碼" aria-label="03 Figure 完整程式碼" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 03 Figure 完整程式碼</a></p>
 <p>流程圖建議用 <a href="draw.io" title="draw.io" aria-label="draw.io" >draw.io</a> 繪製後輸出 pdf，也就是先匡選要輸出的部分或是 ctrl-a (要輸出全部的話)，接著選 File &gt; Export as &gt; PDF&hellip;&gt; 勾選 Selection Only 及 Crop &gt; Export。除了是<strong>向量格式</strong>外還有一個優點就是編譯出來的圖片是可以選取上面的字也可以搜尋，不過我有遇過在投稿最後一步 pdf proof 時會破圖，這時候就要改輸出成 png (Zoom 調成 400% 確保解析度，勾選 Selection Only)。</p>
-<p>實驗畫折線圖或長條圖的話建議使用 matplotlib 繪製學術風格的成果圖，可以參考之前的文章: false
- <a href="/posts/20210812-use-matplotlib-to-plot-academic-figures/">Use Matplotlib to Plot Academic Figures</a>。</p>
+<p>實驗畫折線圖或長條圖的話建議使用 matplotlib 繪製學術風格的成果圖，可以參考之前的文章: <a href="/posts/20210812-use-matplotlib-to-plot-academic-figures/">Use Matplotlib to Plot Academic Figures</a>。</p>
 <h2 id="figure-1" class="article-heading">figure 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#figure-1">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -5024,8 +5018,7 @@ GitHub: <a href="https://github.com/darktable-org/darktable" title="https://gith
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#alias">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><p>上述問題已經 &ldquo;利用額外設定屬性的方式&rdquo; 繞過 OuO，將上面的 js 程式碼改用下面的版本即可。使用方式請參考 false
-<a href="/posts/features/#code-block-alias">Features#code-block-alias</a>。</p>
+</h1><p>上述問題已經 &ldquo;利用額外設定屬性的方式&rdquo; 繞過 OuO，將上面的 js 程式碼改用下面的版本即可。使用方式請參考 <a href="/posts/features/#code-block-alias">Features#code-block-alias</a>。</p>
 <div class="highlight" name="OuO"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">document</span>.addEventListener(<span style="color:#f1fa8c">&#39;DOMContentLoaded&#39;</span>, <span style="color:#8be9fd;font-style:italic">function</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">let</span> highlight <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.querySelectorAll(<span style="color:#f1fa8c">&#39;div.highlight&#39;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">Array</span>.prototype.forEach.call(highlight, <span style="color:#8be9fd;font-style:italic">function</span>(block) {
@@ -5781,8 +5774,7 @@ $$</p>
 <li>$\mu$ 的部分，輸出似乎不是 $\mu$ 本身，而是四種狀態 (1, 4, 7, 13) 隨機出現。</li>
 <li>無法直觀看出 QPE 中 phase kickback 的影響。</li>
 </ul>
-<p>上述兩點已解決，請參考 false
-<a href="/posts/20220630-shor-algorithm-part2/">Shor&#39;s Algorithm Part2</a>。</p>
+<p>上述兩點已解決，請參考 <a href="/posts/20220630-shor-algorithm-part2/">Shor&#39;s Algorithm Part2</a>。</p>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
@@ -11684,8 +11676,7 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><ul>
-<li>Build from source: false
- <a href="/posts/20230310-install-hugo-on-ubuntu-20-04/">Install Hugo on Ubuntu 20.04</a></li>
+<li>Build from source: <a href="/posts/20230310-install-hugo-on-ubuntu-20-04/">Install Hugo on Ubuntu 20.04</a></li>
 </ul>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
@@ -15583,17 +15574,12 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;<span style="color:#50fa7b">20220620-4-bit-qft-iqft</span>/&#34; &gt;}}  
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;<span style="color:#50fa7b">20220620-4-bit-qft-iqft</span>/#<span style="color:#50fa7b">version-1</span>&#34; &gt;}}
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#ff79c6">reff</span> &#34;<span style="color:#50fa7b">20220620-4-bit-qft-iqft</span>/#<span style="color:#50fa7b">version-1</span>&#34; &#34;<span style="color:#50fa7b">Named</span> <span style="color:#50fa7b">heading</span>&#34; &gt;}}
-</span></span></code></pre></div><p>false
-<a href="#%e8%a1%a8%e6%a0%bc">Features#表格</a><br>
-false
+</span></span></code></pre></div><p>
+<a href="#%e8%a1%a8%e6%a0%bc">#表格</a><br>
 <a href="/about/">About</a><br>
-false
 <a href="/posts/20220620-4-bit-qft-iqft/">4-bit QFT IQFT</a><br>
-false
 <a href="/posts/20220620-4-bit-qft-iqft/">4-bit QFT IQFT</a><br>
-false
 <a href="/posts/20220620-4-bit-qft-iqft/#version-1">4-bit QFT IQFT#version-1</a><br>
-false
 <a href="/posts/20220620-4-bit-qft-iqft/#version-1">4-bit QFT IQFT#Named heading</a></p>
 <h1 id="插入圖片" class="article-heading">插入圖片 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%8f%92%e5%85%a5%e5%9c%96%e7%89%87">
