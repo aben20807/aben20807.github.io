@@ -12487,8 +12487,8 @@ $$</p>
            
 <p>結果因為太多項了導致右邊的目錄超出邊界，所以還是要拆成兩篇。QuQ</p>
 <p><a href="https://aben20807.github.io/posts/20191116-programming-sense/" title="{{ 上一篇傳送門：Programming Sense (1) }}" aria-label="{{ 上一篇傳送門：Programming Sense (1) }}" >{{ 上一篇傳送門：Programming Sense (1) }}</a></p>
-<h1 id="抽像化-abstractionhttpsenwikipediaorgwikiabstraction_computer_science" class="article-heading">抽像化 (<a href="https://en.wikipedia.org/wiki/Abstraction_%28computer_science%29" title="Abstraction" aria-label="Abstraction" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Abstraction</a>) 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%8a%bd%e5%83%8f%e5%8c%96-abstractionhttpsenwikipediaorgwikiabstraction_computer_science">
+<h1 id="抽象化-abstractionhttpsenwikipediaorgwikiabstraction_computer_science" class="article-heading">抽象化 (<a href="https://en.wikipedia.org/wiki/Abstraction_%28computer_science%29" title="Abstraction" aria-label="Abstraction" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Abstraction</a>) 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%8a%bd%e8%b1%a1%e5%8c%96-abstractionhttpsenwikipediaorgwikiabstraction_computer_science">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>盡量的抽象化自己的程式，最簡單的方式就是把相關的程式碼包成一塊，而不是散在主函式中，包起來的動作通常稱作封裝 (<a href="https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29" title="Encapsulation" aria-label="Encapsulation" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Encapsulation</a>)，也有實作成 ADT (<a href="https://en.wikipedia.org/wiki/Abstract_data_type" title="Abstract data type" aria-label="Abstract data type" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Abstract data type</a>) 一說。</p>
@@ -12532,9 +12532,9 @@ $$</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1_nzDQ5a4EmSdGUuGaPlb6-eu4BgyaLSB" alt=' ' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1BZa9FDgy3iPF7TzELCquYt81eKrl8COL" alt='source: tapas.io' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text"> </center>
+      <center class="caption-text">source: tapas.io</center>
     </figcaption>
   </figure>
 </p>
@@ -12586,7 +12586,16 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e9%99%a4%e9%8c%af-debug">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><h2 id="編譯訊息" class="article-heading">編譯訊息 
+</h1><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1V2d1kt9HW2OZWGdJ1pOfzY2NmIYEy7dD" alt='source: tapas.io' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">source: tapas.io</center>
+    </figcaption>
+  </figure>
+</p>
+<h2 id="編譯訊息" class="article-heading">編譯訊息 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%b7%a8%e8%ad%af%e8%a8%8a%e6%81%af">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
