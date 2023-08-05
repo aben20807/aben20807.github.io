@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Give Me Direct Link to Image in Google Drive</title><link>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</link><pubDate>Sun, 16 Apr 2023 18:01:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Copy Latex Bibliography without Line Break for each Item</title><link>https://aben20807.github.io/posts/20230805-copy-latex-bibliography-without-line-break-for-each-item/</link><pubDate>Sat, 05 Aug 2023 15:54:01 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230805-copy-latex-bibliography-without-line-break-for-each-item/</guid><description><![CDATA[
+          <p>產生無換行的參考文獻，不用手動刪除換行。</p><br/><p><del>用於上傳論文比對系統</del></p>
+          
+            <p><a href="https://aben20807.github.io/posts/20230805-copy-latex-bibliography-without-line-break-for-each-item/"><img src="https://lh3.googleusercontent.com/d/1snyT57Fp4fvMJiwhsLkJwmAJ-f4tktmx" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20230805-copy-latex-bibliography-without-line-break-for-each-item/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>產生無換行的參考文獻，不用手動刪除換行。</p>
+<p><del>用於上傳論文比對系統</del></p>
+<h1 id="前言" class="article-heading">前言 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%89%8d%e8%a8%80">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>直接從 pdf 複製參考文獻到 word 會產生如下圖情況，紅框是我們不要的換行，綠框是要的。</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1snyT57Fp4fvMJiwhsLkJwmAJ-f4tktmx" alt='Unwanted line breaks' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">Unwanted line breaks</center>
+    </figcaption>
+  </figure>
+</p>
+<p>發現有個檔案 (.bbl) 會隨著 latex 編譯成 pdf 時產生，裡面是參考文獻的文字檔不過有一些 latex 語法。經過實測，latex 語法並不會事先被處理，例如 <code>Tram{\`{e}}r</code> 不會先轉成 <code>Tramèr</code> 再放到 .bbl。這個問題有些棘手，我可不想寫一個編譯器來解決。</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1N1Jd3nInQnrRnQon8oC6htOcAJYtsL5d" alt='觀察編譯後產物，有個 .bbl' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">觀察編譯後產物，有個 .bbl</center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="step-1" class="article-heading">Step 1 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#step-1">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>所以第一步我們先使用 pandoc 這個線上轉換工具，直接把 .bbl 內容貼過去再按 Convert。工具連結:</p>
+<ul>
+<li><a href="https://pandoc.org/try/?params=%7B%22text%22%3A%22%22%2C%22to%22%3A%22plain%22%2C%22from%22%3A%22latex%22%2C%22standalone%22%3Afalse%2C%22embed-resources%22%3Afalse%2C%22table-of-contents%22%3Afalse%2C%22number-sections%22%3Afalse%2C%22citeproc%22%3Afalse%2C%22html-math-method%22%3A%22plain%22%2C%22wrap%22%3A%22auto%22%2C%22highlight-style%22%3Anull%2C%22files%22%3A%7B%7D%2C%22template%22%3Anull%7D" title="pandoc latex to plain" aria-label="pandoc latex to plain" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> pandoc latex to plain</a></li>
+</ul>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1sc7O6VeB7b8Z2_8t7LApc7ki0kFQAypR" alt='右下角是轉換後的文字' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">右下角是轉換後的文字</center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="step-2" class="article-heading">Step 2 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#step-2">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>轉換後會用一個空行隔開每個項目，寫個簡單的 python script 來把每個項目的內容合併即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4"># Step 1: copy .bbl to online converter and copy result to in.txt</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># https://pandoc.org/try/?params=%7B%22text%22%3A%22%22%2C%22to%22%3A%22plain%22%2C%22from%22%3A%22latex%22%2C%22standalone%22%3Afalse%2C%22embed-resources%22%3Afalse%2C%22table-of-contents%22%3Afalse%2C%22number-sections%22%3Afalse%2C%22citeproc%22%3Afalse%2C%22html-math-method%22%3A%22plain%22%2C%22wrap%22%3A%22auto%22%2C%22highlight-style%22%3Anull%2C%22files%22%3A%7B%7D%2C%22template%22%3Anull%7D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Step 2: python3 utils/bib_plain.py in.txt &gt;| out.txt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>in_file <span style="color:#ff79c6">=</span> sys<span style="color:#ff79c6">.</span>argv[<span style="color:#bd93f9">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lines <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">with</span> <span style="color:#8be9fd;font-style:italic">open</span>(in_file) <span style="color:#ff79c6">as</span> fp:
+</span></span><span style="display:flex;"><span>    lines <span style="color:#ff79c6">=</span> fp<span style="color:#ff79c6">.</span>readlines()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bibitems <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">.</span>join(lines)<span style="color:#ff79c6">.</span>split(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c"> </span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> idx, bibitem <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(bibitems):
+</span></span><span style="display:flex;"><span>    bibitem <span style="color:#ff79c6">=</span> bibitem<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#f1fa8c">&#34;&#34;</span>)<span style="color:#ff79c6">.</span>strip()
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;[</span><span style="color:#f1fa8c">{</span>idx<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">] </span><span style="color:#f1fa8c">{</span>bibitem<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span></code></pre></div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1Pyn4wqAEVArbHmy3rG8DPG-eRvTLtLOV" alt='Remove all unwanted line breaks' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">Remove all unwanted line breaks</center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="後記" class="article-heading">後記 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%be%8c%e8%a8%98">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>不用 pandoc 而是直接從 pdf 複製文字也可以，不過要改一下 step 2 python script 的邏輯，改成去看 <code>[</code> 當作項目分隔處。</p>
+        ]]></description></item><item><title>Give Me Direct Link to Image in Google Drive</title><link>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</link><pubDate>Sun, 16 Apr 2023 18:01:08 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/</guid><description><![CDATA[
           <p>因為圖床改回 Google Drive 了，來解決一下方便性問題。</p>
           
             <p><a href="https://aben20807.github.io/posts/20230416-give-me-direct-link-to-image-google-drive/"><img src="https://lh3.googleusercontent.com/d/1LLKNljiX9Ghuh0ucLs5detAyvwkm7hN3" style="max-width: 100%;"/></a></p>
