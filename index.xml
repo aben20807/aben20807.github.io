@@ -10922,20 +10922,43 @@ $$</p>
 </p>
 
 </details>
-<h3 id="針對-latex-文字顯示設定" class="article-heading">針對 latex 文字顯示設定 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e9%87%9d%e5%b0%8d-latex-%e6%96%87%e5%ad%97%e9%a1%af%e7%a4%ba%e8%a8%ad%e5%ae%9a">
+<h3 id="latex-workshop-設定" class="article-heading">latex-workshop 設定 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#latex-workshop-%e8%a8%ad%e5%ae%9a">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h3><p>使用 <code>Ctrl-Shift-P</code>，輸入 setting，打開 json 檔。可加入如下設定，這樣只會針對 latex 設定，而不會影響程式編輯。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</h3><p>使用 <code>Ctrl-Shift-P</code>，輸入 setting，打開 json 檔。經過下方設定可以在 pdf 顯示視窗點兩下就連結回對應位置的 tex 程式碼；反之，在 tex 程式碼可以使用 <code>Ctrl-Alt-j</code> 前往 pdf 對應位置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-setting.json" data-lang="setting.json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.hover.preview.enabled&#34;</span>: <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.hover.preview.scale&#34;</span>: <span style="color:#bd93f9">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.message.error.show&#34;</span>: <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.message.warning.show&#34;</span>: <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.synctex.afterBuild.enabled&#34;</span>: <span style="color:#ff79c6">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.view.outline.sections&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;part&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;chapter&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;section&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;subsection&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;subsubsection&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;paragraph&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.view.pdf.internal.synctex.keybinding&#34;</span>: <span style="color:#f1fa8c">&#34;double-click&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;latex-workshop.view.pdf.viewer&#34;</span>: <span style="color:#f1fa8c">&#34;tab&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="vscode-針對-latex-文字顯示設定" class="article-heading">VSCode 針對 latex 文字顯示設定 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#vscode-%e9%87%9d%e5%b0%8d-latex-%e6%96%87%e5%ad%97%e9%a1%af%e7%a4%ba%e8%a8%ad%e5%ae%9a">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h3><p>同樣 json 設定檔。可加入如下設定，這樣只會針對 latex 設定，而不會影響程式編輯。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-setting.json" data-lang="setting.json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;[latex]&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.fontSize&#34;</span>: <span style="color:#bd93f9">18</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.fontFamily&#34;</span>: <span style="color:#f1fa8c">&#34;&#39;Georgia&#39;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.fontFamily&#34;</span>: <span style="color:#f1fa8c">&#34;&#39;Georgia&#39;,&#39;iA Writer Duospace&#39;, &#39;Dejavu Sans Mono&#39;&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.fontSize&#34;</span>: <span style="color:#bd93f9">22</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.formatOnSave&#34;</span>: <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.letterSpacing&#34;</span>: <span style="color:#bd93f9">0.2</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.lineHeight&#34;</span>: <span style="color:#bd93f9">44</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.lineNumbers&#34;</span>: <span style="color:#f1fa8c">&#34;on&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.wordWrap&#34;</span>: <span style="color:#f1fa8c">&#34;bounded&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.letterSpacing&#34;</span>: <span style="color:#bd93f9">0.1</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.lineHeight&#34;</span>: <span style="color:#bd93f9">38</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.formatOnSave&#34;</span>: <span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">&#34;editor.wordWrapColumn&#34;</span>: <span style="color:#bd93f9">100</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div> 
@@ -10962,11 +10985,11 @@ $$</p>
 </p>
 
 </details>
-<h1 id="範例" class="article-heading">範例 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%af%84%e4%be%8b">
+<h1 id="範例-optional" class="article-heading">範例 (optional) 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e7%af%84%e4%be%8b-optional">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><p>這裡直接使用 git 來拉範例 (使用 ACM 模板)，因此會需要用到 git，可直接安裝 <a href="https://gitforwindows.org/" title="git for windows" aria-label="git for windows" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> git for windows</a>，或直接上 github 下載也可以。</p>
+</h1><p>這裡直接使用 git 來拉範例 (使用 ACM 模板)，因此會需要用到 git，可直接安裝 <a href="https://gitforwindows.org/" title="git for windows" aria-label="git for windows" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> git for windows</a>，或直接上 github 下載也可以。若已經有其他範例可以直接用 code 打開該資料夾。</p>
  
 
 <details>
