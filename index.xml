@@ -10051,16 +10051,21 @@ $$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># Rust</span>
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">RUST_HOME</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">$HOME</span>/.cargo/
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">PATH</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">$PATH</span>:<span style="color:#8be9fd;font-style:italic">$RUST_HOME</span>/bin
-</span></span></code></pre></div><h2 id="exahttpsgithubcomoghamexa-取代-ls" class="article-heading"><a href="https://github.com/ogham/exa" title="exa" aria-label="exa" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> exa</a> 取代 ls 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#exahttpsgithubcomoghamexa-%e5%8f%96%e4%bb%a3-ls">
+</span></span></code></pre></div><h2 id="exahttpsgithubcomoghamexa-取代-ls-停止維護" class="article-heading"><del><a href="https://github.com/ogham/exa" title="exa" aria-label="exa" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> exa</a> 取代 ls</del> (停止維護) 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#exahttpsgithubcomoghamexa-%e5%8f%96%e4%bb%a3-ls-%e5%81%9c%e6%ad%a2%e7%b6%ad%e8%ad%b7">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h2> 
-<p>因為我們已經有 Rust 環境了，所以可以使用 <code>$ cargo install exa</code> 安裝。</p>
+<p><del>因為我們已經有 Rust 環境了，所以可以使用 <code>$ cargo install exa</code> 安裝。</del></p>
+<h2 id="ezahttpsgithubcomeza-communityeza-取代-ls" class="article-heading"><a href="https://github.com/eza-community/eza" title="eza" aria-label="eza" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> eza</a> 取代 ls 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#ezahttpsgithubcomeza-communityeza-%e5%8f%96%e4%bb%a3-ls">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p>因為我們已經有 Rust 環境了，所以可以使用 <code>$ cargo install eza</code> 安裝。</p>
 <p><code>~/.bashrc</code> 中可以加入以下來取代 <code>ls</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">ls</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;exa -F --group-directories-first&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">ll</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;exa -alF&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">lls</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;exa --sort=size -l&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">ls</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;eza -F --group-directories-first&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">ll</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;eza -alF&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">alias</span> <span style="color:#8be9fd;font-style:italic">lls</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;eza --sort=size -l&#39;</span>
 </span></span></code></pre></div><h2 id="bathttpsgithubcomsharkdpbat-取代-cat" class="article-heading"><a href="https://github.com/sharkdp/bat" title="bat" aria-label="bat" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> bat</a> 取代 cat 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#bathttpsgithubcomsharkdpbat-%e5%8f%96%e4%bb%a3-cat">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
