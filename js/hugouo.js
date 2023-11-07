@@ -172,17 +172,31 @@ function putLanguageLabels() {
     block.id = "code-" + random_id();
     let language = code[0].getAttribute('data-lang');
     let alias = block.getAttribute('name');
+    
     if (alias != null) {
       language = alias;
     }
     if (language == "fallback") {
       return;
     }
+    // change the label color
+    let color_overwrite = ""
+    let bg = block.getAttribute('bg');
+    if (bg != null) {
+      color_overwrite += "background-color:"+ bg +";";
+    }
+    let fg = block.getAttribute('fg');
+    if (fg != null) {
+      color_overwrite += "color:"+ fg +";";
+    }
+    if (color_overwrite != "") {
+      color_overwrite = "style='" + color_overwrite + "'";
+    }
     let need_copy = block.getAttribute('copy');
     if (need_copy === null || need_copy != "no") {
-      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
+      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label" ${color_overwrite}>${language}</label><a onclick="copyCodeToClip('${block.id}')" role="button" class="code-copy no-underline no-underline-on-hover no-color" title="Copy the code block" style="cursor: pointer"><i class="far fa-clone"></i></a></div>`);
     } else {
-      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label">${language}</label></div>`);
+      block.insertAdjacentHTML("beforebegin", `<div class="row code-meta"><label class="code-label" ${color_overwrite}>${language}</label></div>`);
     }
   });
 }
