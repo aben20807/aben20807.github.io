@@ -1,4 +1,319 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>To Lua or Not to Lua</title><link>https://aben20807.github.io/posts/20231103-to-lua-or-not-to-lua/</link><pubDate>Tue, 07 Nov 2023 15:41:48 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20231103-to-lua-or-not-to-lua/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>繁體中文.tex</title><link>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</link><pubDate>Wed, 08 Nov 2023 13:31:32 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</guid><description><![CDATA[
+          <p>以我目前經驗，在資訊界還是有用中文寫報告的機會，例如一些計畫的期中期末報告，通常會有給 word 檔案來遵守現有的格式。但如果什麼都沒有，又不想用 word，那 latex 可能是協作下又保有好看格式的好幫手。</p><br/><p>此篇文章提供一個簡易的繁體中文設定，並改良之前 <a href="/posts/20221227-latex-examples/">Latex Examples</a> 提供的程式碼設定。</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20231107-traditional-chinese-latex/"><img src="https://lh3.googleusercontent.com/d/124NnDqqF9FZODw9ki_DSU75d8qC_6Rj1" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20231107-traditional-chinese-latex/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>以我目前經驗，在資訊界還是有用中文寫報告的機會，例如一些計畫的期中期末報告，通常會有給 word 檔案來遵守現有的格式。但如果什麼都沒有，又不想用 word，那 latex 可能是協作下又保有好看格式的好幫手。</p>
+<p>此篇文章提供一個簡易的繁體中文設定，並改良之前 <a href="/posts/20221227-latex-examples/">Latex Examples</a> 提供的程式碼設定。</p>
+<p>用中文最重要的部分是需要改用 xelatex 或 lualatex 作為編譯器 (安裝 MikTex 就會包含了，不需要另外安裝)。我在使用後者的體驗較好，所以這裡以 lualatex 作為編譯器，參考文獻則是用 biber。若是使用 vscode，可以將 settings.json 修改如下。</p>
+ 
+
+<details>
+  <summary><span>settings.json </span></summary>
+  <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-settings.json" data-lang="settings.json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#fb4934">&#34;latex-workshop.latex.tools&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;name&#34;</span>: <span style="color:#b8bb26">&#34;lualatexmk&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;command&#34;</span>: <span style="color:#b8bb26">&#34;latexmk&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;-synctex=1&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;-interaction=nonstopmode&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;-file-line-error&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;-lualatex&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;-outdir=%OUTDIR%&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;%DOC%&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;name&#34;</span>: <span style="color:#b8bb26">&#34;biber&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;command&#34;</span>: <span style="color:#b8bb26">&#34;biber&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;%DOCFILE%&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;env&#34;</span>: {}
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#fb4934">&#34;latex-workshop.latex.recipes&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;name&#34;</span>: <span style="color:#b8bb26">&#34;lualatexmk ➞ biber ➞ lualatexmk × 2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#fb4934">&#34;tools&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;lualatexmk&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;biber&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;lualatexmk&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#b8bb26">&#34;lualatexmk&#34;</span>
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</details>
+<p>接著是字體設定，我使用下載並放到 fonts 資料夾裡的 ttf 或 otf，希望這樣可以有效避免不同系統相依本地安裝的字型。完整的檔案架構請參考: <a href="https://github.com/aben20807/traditional_chinese.tex" title="aben20807/traditional_chinese.tex" aria-label="aben20807/traditional_chinese.tex" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/traditional_chinese.tex</a>。比較難的是找出如何載入相對路徑下的文字檔，這裡使用 <code>luatexja</code> 及 <code>luatexja-fontspec</code> 詳細如下。目前我自行測試下還無法同時使用多個中文字型，但英文字型可以，下方範例以 <a href="https://github.com/be5invis/Iosevka/blob/v27.3.4/doc/PACKAGE-LIST.md" title="Iosevka" aria-label="Iosevka" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Iosevka</a> 作為程式碼字型 (因為比較瘦，變數名稱很長時還是好看)。</p>
+ 
+
+<details>
+  <summary><span>report.tex </span></summary>
+  <div class="highlight" name="report.tex"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% !TEX root = ./report.tex
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\documentclass</span><span style="color:#b8bb26;font-weight:bold">[12pt, a4paper]</span><span style="color:#fabd2f">{</span>article<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\usepackage</span><span style="color:#b8bb26;font-weight:bold">[a4paper, margin=1.0in, foot=.25in]</span><span style="color:#fabd2f">{</span>geometry<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Detect lualatex
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>ifluatex<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\ifluatex\else\errmessage</span><span style="color:#fabd2f">{</span>Please use LuaLaTex.<span style="color:#fabd2f">}</span><span style="color:#fe8019">\stop\fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Fonts
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>luatexja<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>luatexja-fontspec<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% English font
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\setmainfont</span><span style="color:#b8bb26;font-weight:bold">[ExternalLocation=fonts/]</span><span style="color:#fabd2f">{</span>linlibertine<span style="color:#fabd2f">_</span>re-4.7.5ro.ttf<span style="color:#fabd2f">}</span>[
+</span></span><span style="display:flex;"><span>    Ligatures=TeX,
+</span></span><span style="display:flex;"><span>    BoldFont=linlibertine<span style="color:#fabd2f">_</span>bd-4.1.5ro.ttf,
+</span></span><span style="display:flex;"><span>    ItalicFont=linlibertine<span style="color:#fabd2f">_</span>it-4.2.6ro.ttf
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Chinese font
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% 思源宋體
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\setmainjfont</span><span style="color:#b8bb26;font-weight:bold">[Scale=0.85,ExternalLocation=fonts/]</span><span style="color:#fabd2f">{</span>NotoSerifTC-Regular.otf<span style="color:#fabd2f">}</span>[
+</span></span><span style="display:flex;"><span>    Ligatures=TeX,
+</span></span><span style="display:flex;"><span>    BoldFont=NotoSerifTC-Bold.otf,
+</span></span><span style="display:flex;"><span>    ItalicFont=NotoSerifTC-Regular.otf,
+</span></span><span style="display:flex;"><span>    BoldItalicFont=NotoSerifTC-Regular.otf,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% 芫荽體
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% \setmainjfont[Scale=0.85,ExternalLocation=./fonts/]{Iansui-Regular.ttf}
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% font for code
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\newfontfamily</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Iosevka</span><span style="color:#fabd2f">}</span>[Path=./fonts/, Scale=0.86]<span style="color:#fabd2f">{</span>iosevka-fixed-ss15-regular.ttf<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newfontfamily</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\IosevkaItalic</span><span style="color:#fabd2f">}</span>[Path=./fonts/, Scale=0.86]<span style="color:#fabd2f">{</span>iosevka-fixed-ss15-italic.ttf<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newfontfamily</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\IosevkaBold</span><span style="color:#fabd2f">}</span>[Path=./fonts/, Scale=0.86]<span style="color:#fabd2f">{</span>iosevka-fixed-ss15-bold.ttf<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Bibliography
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#b8bb26;font-weight:bold">[backend=biber,maxbibnames=99,sorting=ynt,isbn=false]</span><span style="color:#fabd2f">{</span>biblatex<span style="color:#fabd2f">}</span> 
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\renewcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\cite</span><span style="color:#fabd2f">}{</span><span style="color:#fe8019">\autocite</span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\addbibresource</span><span style="color:#fabd2f">{</span>report.bib<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Code 
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>listings<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\usepackage</span><span style="color:#b8bb26;font-weight:bold">[dvipsnames]</span><span style="color:#fabd2f">{</span>xcolor<span style="color:#fabd2f">}</span> <span style="color:#928374;font-style:italic">% color
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#b8bb26;font-weight:bold">[most]</span><span style="color:#fabd2f">{</span>tcolorbox<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\tcbset</span><span style="color:#fabd2f">{</span>on line, 
+</span></span><span style="display:flex;"><span>    boxsep=0pt, left=3pt,right=3pt,top=2pt,bottom=2pt,
+</span></span><span style="display:flex;"><span>    colframe=white,  
+</span></span><span style="display:flex;"><span>    highlight math style=<span style="color:#fabd2f">{</span>enhanced<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% my color
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyRed<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>FF6666<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyGreen<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>00CC00<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyBlue<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>3399FF<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyOrange<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>FF9933<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyGreenBG<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>CCFF99<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyYellowBG<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>FFFF99<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\definecolor</span><span style="color:#fabd2f">{</span>MyGreyBG<span style="color:#fabd2f">}{</span>HTML<span style="color:#fabd2f">}{</span>E6E6E6<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% copy indent from the code
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\lstset</span><span style="color:#fabd2f">{</span>keepspaces=true<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\makeatletter</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\def\lst</span>@outputspace<span style="color:#fabd2f">{{</span><span style="color:#fe8019">\ifx\lst</span>@bkgcolor<span style="color:#fe8019">\empty\color</span><span style="color:#fabd2f">{</span>white<span style="color:#fabd2f">}</span><span style="color:#fe8019">\else\lst</span>@bkgcolor<span style="color:#fe8019">\fi\lst</span>@visiblespace<span style="color:#fabd2f">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\makeatother</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% make line number of code no be copied
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% https://tex.stackexchange.com/a/122270
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#b8bb26;font-weight:bold">[space=true]</span><span style="color:#fabd2f">{</span>accsupp<span style="color:#fabd2f">}</span>    
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\noncopynumber</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>    <span style="color:#fe8019">\BeginAccSupp</span><span style="color:#fabd2f">{</span>method=escape,ActualText=<span style="color:#fabd2f">{}}</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>    #1<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>    <span style="color:#fe8019">\EndAccSupp</span><span style="color:#fabd2f">{}</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Python style for highlighting
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\newcommand\pythonstyle</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\lstset</span><span style="color:#fabd2f">{</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>language=Python,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>basicstyle=<span style="color:#fe8019">\Iosevka</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>morekeywords=<span style="color:#fabd2f">{</span>self,with<span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">% Add keywords here
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>keywordstyle=<span style="color:#fe8019">\IosevkaBold\color</span><span style="color:#fabd2f">{</span>BlueViolet<span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>emph=<span style="color:#fabd2f">{</span>MyClass,<span style="color:#fabd2f">__</span>init<span style="color:#fabd2f">__}</span>,<span style="color:#928374;font-style:italic">% Custom highlighting
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>emphstyle=<span style="color:#fe8019">\IosevkaBold\color</span><span style="color:#fabd2f">{</span>BrickRed<span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">% Custom highlighting style
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>stringstyle=<span style="color:#fe8019">\color</span><span style="color:#fabd2f">{</span>ForestGreen<span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>frame=single,<span style="color:#928374;font-style:italic">% Any extra options here
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>showstringspaces=false,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>showspaces=true,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>commentstyle=<span style="color:#fe8019">\IosevkaItalic\color</span><span style="color:#fabd2f">{</span>Gray<span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>morecomment=[l][<span style="color:#fe8019">\IosevkaItalic\color</span><span style="color:#fabd2f">{</span>Gray<span style="color:#fabd2f">}</span>]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\#</span><span style="color:#fabd2f">}</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>numbers=left,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>stepnumber=1,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>literate=<span style="color:#fabd2f">{</span>-<span style="color:#fabd2f">}{</span>-<span style="color:#fabd2f">}</span>1,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>columns=fullflexible,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>numberstyle=<span style="color:#fe8019">\footnotesize\noncopynumber</span>,<span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>mathescape=true,<span style="color:#928374;font-style:italic">% show math equation, e.g., $x = \sqrt{2}$
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fabd2f">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% remove space char
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\makeatletter</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\def\lst</span>@visiblespace<span style="color:#fabd2f">{</span> <span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\makeatother</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Python for inline
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\newcommand\pythoninline</span><span style="color:#b8bb26;font-weight:bold">[1]</span><span style="color:#fabd2f">{</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>    <span style="color:#fabd2f">{</span><span style="color:#fe8019">\pythonstyle\lstinline</span><span style="color:#b8bb26;font-weight:bold">[breaklines=false]</span><span style="color:#fabd2f">{</span>#1<span style="color:#fabd2f">}}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand\pythoninlinebg</span><span style="color:#b8bb26;font-weight:bold">[1]</span><span style="color:#fabd2f">{</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\tcbox</span><span style="color:#b8bb26;font-weight:bold">[colback=MyGreyBG]</span><span style="color:#fabd2f">{{</span><span style="color:#fe8019">\pythonstyle\lstinline</span><span style="color:#b8bb26;font-weight:bold">[breaklines=false]</span><span style="color:#fabd2f">{</span>#1<span style="color:#fabd2f">}}}</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Python for block
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\lstnewenvironment</span><span style="color:#fabd2f">{</span>python<span style="color:#fabd2f">}</span>[1][]<span style="color:#fabd2f">{</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>    <span style="color:#fe8019">\pythonstyle\footnotesize\lstset</span><span style="color:#fabd2f">{</span>#1<span style="color:#fabd2f">}</span><span style="color:#928374;font-style:italic">%
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fabd2f">}{}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% links of cite, ref
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>xurl<span style="color:#fabd2f">}</span> <span style="color:#928374;font-style:italic">% url wrap
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>hyperref<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\hypersetup</span><span style="color:#fabd2f">{</span>
+</span></span><span style="display:flex;"><span>    colorlinks,
+</span></span><span style="display:flex;"><span>    linkcolor=[RGB]<span style="color:#fabd2f">{</span>120, 29, 125<span style="color:#fabd2f">}</span>,
+</span></span><span style="display:flex;"><span>    citecolor=[RGB]<span style="color:#fabd2f">{</span>120, 29, 125<span style="color:#fabd2f">}</span>,
+</span></span><span style="display:flex;"><span>    urlcolor=[RGB]<span style="color:#fabd2f">{</span>0, 85, 150<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Figure
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>graphicx<span style="color:#fabd2f">}</span> <span style="color:#928374;font-style:italic">% figure
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>caption<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% Misc.
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">% ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>placeins<span style="color:#fabd2f">}</span> <span style="color:#928374;font-style:italic">% \FloatBarrier
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\usepackage</span><span style="color:#fabd2f">{</span>booktabs<span style="color:#fabd2f">}</span> <span style="color:#928374;font-style:italic">% \toprule, \midrule, \bottomrule
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span><span style="color:#fe8019">\renewcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\figurename</span><span style="color:#fabd2f">}{</span>圖<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\sectionname</span><span style="color:#fabd2f">}{</span>節<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\chaptername</span><span style="color:#fabd2f">}{</span>章<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\renewcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\tablename</span><span style="color:#fabd2f">}{</span>表<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\renewcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\lstlistingname</span><span style="color:#fabd2f">}{</span>程式碼<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Figure</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\figurename</span>~#1<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Table</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\tablename</span>~#1<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Section</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\sectionname</span>~#1<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Chapter</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\chaptername</span>~#1<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\newcommand</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\Listing</span><span style="color:#fabd2f">}</span>[1]<span style="color:#fabd2f">{</span><span style="color:#fe8019">\lstlistingname</span>~#1<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\title</span><span style="color:#fabd2f">{</span>繁體中文標題<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\author</span><span style="color:#fabd2f">{</span>作者：黃柏瑄<span style="color:#fe8019">\\</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\texttt</span><span style="color:#fabd2f">{</span>aben20807@gmail.com<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\date</span><span style="color:#fabd2f">{}</span> <span style="color:#928374;font-style:italic">% skip date
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>document<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\maketitle</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\section</span><span style="color:#fabd2f">{</span>介紹<span style="color:#fabd2f">}</span><span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>sec:first<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>這是一個關於 LaTeX 的介紹。測試引用功能 <span style="color:#fe8019">\cite</span><span style="color:#fabd2f">{</span>huang2023securetvm<span style="color:#fabd2f">}</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\subsection</span><span style="color:#fabd2f">{</span>第一節的一個小節<span style="color:#fabd2f">}</span><span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>sec:first<span style="color:#fabd2f">_</span>sub<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>這是第一章的一個小節。參見第 <span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>sec:second<span style="color:#fabd2f">}</span> 節中的更多細節。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\section</span><span style="color:#fabd2f">{</span>第二節標題<span style="color:#fabd2f">}</span><span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>sec:second<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>這是第二節的內容。<span style="color:#fe8019">\textcolor</span><span style="color:#fabd2f">{</span>MyRed<span style="color:#fabd2f">}{</span>參見<span style="color:#fabd2f">}</span>第 <span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>sec:first<span style="color:#fabd2f">}</span> 節以獲得<span style="color:#fe8019">\textcolor</span><span style="color:#b8bb26;font-weight:bold">[HTML]</span><span style="color:#fabd2f">{</span>FF6666<span style="color:#fabd2f">}{</span>更多資訊<span style="color:#fabd2f">}</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\section</span><span style="color:#fabd2f">{</span>程式碼<span style="color:#fabd2f">}</span><span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>sec:code<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>使用行內程式碼，<span style="color:#fe8019">\pythoninline</span><span style="color:#fabd2f">{</span>print(&#34;Hello&#34;)<span style="color:#fabd2f">}</span>，也可以使用有背景顏色版本<span style="color:#fe8019">\pythoninlinebg</span><span style="color:#fabd2f">{</span>x = 42<span style="color:#fabd2f">}</span>。程式碼區塊如下方~<span style="color:#fe8019">\Listing</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>list:example<span style="color:#fabd2f">}}</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>python<span style="color:#fabd2f">}</span>[caption=<span style="color:#fabd2f">{</span>定義 <span style="color:#fe8019">\protect\pythoninlinebg</span><span style="color:#fabd2f">{</span>main<span style="color:#fabd2f">}</span> 函式。<span style="color:#fabd2f">}</span>,label=list:example,escapechar=|]
+</span></span><span style="display:flex;"><span>def main():
+</span></span><span style="display:flex;"><span>    x = 42
+</span></span><span style="display:flex;"><span>    print(f&#34;Hello <span style="color:#fabd2f">{</span>x<span style="color:#fabd2f">}</span>&#34;)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>if <span style="color:#fabd2f">__</span>name<span style="color:#fabd2f">__</span> == &#34;<span style="color:#fabd2f">__</span>main<span style="color:#fabd2f">__</span>&#34;:
+</span></span><span style="display:flex;"><span>    main()
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>python<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\section</span><span style="color:#fabd2f">{</span>圖片<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>參考~<span style="color:#fe8019">\Figure</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>fig:A<span style="color:#fabd2f">}}</span> 和~<span style="color:#fe8019">\Figure</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>fig:B<span style="color:#fabd2f">}}</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>table<span style="color:#fabd2f">}</span>[t]
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\centering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>minipage<span style="color:#fabd2f">}</span>[t]<span style="color:#fabd2f">{</span>.48<span style="color:#fe8019">\linewidth</span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\includegraphics</span><span style="color:#b8bb26;font-weight:bold">[width=\linewidth]</span><span style="color:#fabd2f">{</span>figures/paper-example.pdf<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\captionof</span><span style="color:#fabd2f">{</span>figure<span style="color:#fabd2f">}{</span>第一張圖。<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>fig:A<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>minipage<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\qquad</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>minipage<span style="color:#fabd2f">}</span>[t]<span style="color:#fabd2f">{</span>.44<span style="color:#fe8019">\linewidth</span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\includegraphics</span><span style="color:#b8bb26;font-weight:bold">[width=\linewidth]</span><span style="color:#fabd2f">{</span>figures/cat.png<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\captionof</span><span style="color:#fabd2f">{</span>figure<span style="color:#fabd2f">}{</span>第二張圖。<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>fig:B<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>minipage<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>table<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\section</span><span style="color:#fabd2f">{</span>表格<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>參考~<span style="color:#fe8019">\Table</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\ref</span><span style="color:#fabd2f">{</span>tab:example<span style="color:#fabd2f">}}</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>table<span style="color:#fabd2f">}</span>[t]
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\centering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\caption</span><span style="color:#fabd2f">{</span>表格說明。<span style="color:#fabd2f">}</span><span style="color:#fe8019">\label</span><span style="color:#fabd2f">{</span>tab:example<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\begin</span><span style="color:#fabd2f">{</span>tabular<span style="color:#fabd2f">}{</span>lll<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\toprule</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\textbf</span><span style="color:#fabd2f">{</span>Category<span style="color:#fabd2f">}</span> <span style="color:#fabd2f">&amp;</span> <span style="color:#fe8019">\textbf</span><span style="color:#fabd2f">{</span>Work<span style="color:#fabd2f">}</span> <span style="color:#fabd2f">&amp;</span> <span style="color:#fe8019">\textbf</span><span style="color:#fabd2f">{</span>Tags<span style="color:#fabd2f">}</span> <span style="color:#fe8019">\\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\midrule</span>
+</span></span><span style="display:flex;"><span>        Open     <span style="color:#fabd2f">&amp;</span>   Title A   <span style="color:#fabd2f">&amp;</span>   A, B, C   <span style="color:#fe8019">\\</span>
+</span></span><span style="display:flex;"><span>        Open     <span style="color:#fabd2f">&amp;</span>   Title B   <span style="color:#fabd2f">&amp;</span>  B, D    <span style="color:#fe8019">\\</span>
+</span></span><span style="display:flex;"><span>        Close     <span style="color:#fabd2f">&amp;</span>   Title C   <span style="color:#fabd2f">&amp;</span>  A, B, D    <span style="color:#fe8019">\\</span>
+</span></span><span style="display:flex;"><span>        Close     <span style="color:#fabd2f">&amp;</span>   ``Title D&#39;&#39;   <span style="color:#fabd2f">&amp;</span>  E <span style="color:#fe8019">\pythoninlinebg</span><span style="color:#fabd2f">{</span>TestClass<span style="color:#fabd2f">}</span>   <span style="color:#fe8019">\\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\bottomrule</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>tabular<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>table<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\FloatBarrier</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\renewcommand*</span><span style="color:#fabd2f">{</span><span style="color:#fe8019">\bibfont</span><span style="color:#fabd2f">}{</span><span style="color:#fe8019">\small</span><span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\printbibliography</span>[
+</span></span><span style="display:flex;"><span>    heading=bibintoc,
+</span></span><span style="display:flex;"><span>    title=<span style="color:#fabd2f">{</span>參考文獻<span style="color:#fabd2f">}</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">\end</span><span style="color:#fabd2f">{</span>document<span style="color:#fabd2f">}</span>
+</span></span></code></pre></div>
+</details>
+<p>完成效果:</p>
+<div class="gallery-wrapper" style="grid-template-columns: repeat(2, 1fr)"><div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/15yFUD1E0eBF1-A8KyvPHYeNIQxTkL503" alt='第一頁' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">第一頁</center>
+    </figcaption>
+  </figure>
+</p>
+</div><div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1EjIbnXAc1dUp9FcUFXdEtrBJytifD-U4" alt='第二頁' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">第二頁</center>
+    </figcaption>
+  </figure>
+</p>
+</div></div>
+        ]]></description></item><item><title>To Lua or Not to Lua</title><link>https://aben20807.github.io/posts/20231103-to-lua-or-not-to-lua/</link><pubDate>Tue, 07 Nov 2023 15:41:48 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20231103-to-lua-or-not-to-lua/</guid><description><![CDATA[
           <p>Explore the transition to Lua support in Neovim configurations. Follow along as settings are tweaked and personalized, discovering plugin choices, themes, and the challenges faced along the way.</p>
           
             <p><a href="https://aben20807.github.io/posts/20231103-to-lua-or-not-to-lua/"><img src="https://lh3.googleusercontent.com/d/1nven9GanGzAXxTEgecpCRDf3dLd7OoeB" style="max-width: 100%;"/></a></p>

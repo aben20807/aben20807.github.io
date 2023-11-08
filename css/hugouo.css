@@ -213,9 +213,6 @@ h5 + ol, h5 + ul,
 h6 + ol, h6 + ul {
   margin-top: -0.1em;
 }
-p + details {
-  margin-top: -1.0em;
-}
 ol, ul {
   margin: 0 0 1em;
   padding-left: 1.2em;
