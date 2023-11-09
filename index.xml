@@ -558,7 +558,7 @@
   <div class="highlight" bg="#01007D"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-init.lua" data-lang="init.lua"><span style="display:flex;"><span><span style="color:#928374;font-style:italic">--[[--
 </span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">File              : init.lua
 </span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">Author            : Huang, Po-Hsuan &lt;aben20807@gmail.com&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">Last Modified Date: 2023-11-07 15:41:48
+</span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">Last Modified Date: 2023-11-09 09:58:25
 </span></span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">--]]</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic">-- &#34;alpertuna/vim-header&#34; --</span>
@@ -761,19 +761,19 @@
 </span></span><span style="display:flex;"><span>			})
 </span></span><span style="display:flex;"><span>			require(<span style="color:#b8bb26">&#34;mason-lspconfig&#34;</span>).setup({
 </span></span><span style="display:flex;"><span>				ensure_installed <span style="color:#fe8019">=</span> {
-</span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;rust_analyzer&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#928374;font-style:italic">-- &#34;rust_analyzer&#34;,</span>
 </span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;pyright&#34;</span>,
 </span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;marksman&#34;</span>,
 </span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;bashls&#34;</span>,
 </span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;clangd&#34;</span>,
 </span></span><span style="display:flex;"><span>					<span style="color:#b8bb26">&#34;lua_ls&#34;</span>,
 </span></span><span style="display:flex;"><span>				},
-</span></span><span style="display:flex;"><span>				handlers <span style="color:#fe8019">=</span> {
-</span></span><span style="display:flex;"><span>					rust_analyzer <span style="color:#fe8019">=</span> <span style="color:#fe8019">function</span>() <span style="color:#fe8019">end</span>, <span style="color:#928374;font-style:italic">-- use rustaceanvim</span>
-</span></span><span style="display:flex;"><span>				},
+</span></span><span style="display:flex;"><span>				<span style="color:#928374;font-style:italic">-- handlers = {</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#928374;font-style:italic">-- 	rust_analyzer = function() end, -- use rustaceanvim</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#928374;font-style:italic">-- },</span>
 </span></span><span style="display:flex;"><span>			})
 </span></span><span style="display:flex;"><span>			<span style="color:#fe8019">local</span> lspconfig <span style="color:#fe8019">=</span> require(<span style="color:#b8bb26">&#34;lspconfig&#34;</span>)
-</span></span><span style="display:flex;"><span>			lspconfig.rust_analyzer.setup({})
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- lspconfig.rust_analyzer.setup({})</span>
 </span></span><span style="display:flex;"><span>			lspconfig.pyright.setup({})
 </span></span><span style="display:flex;"><span>			lspconfig.marksman.setup({})
 </span></span><span style="display:flex;"><span>			lspconfig.bashls.setup({})
@@ -806,6 +806,17 @@
 </span></span><span style="display:flex;"><span>		<span style="color:#fe8019">end</span>,
 </span></span><span style="display:flex;"><span>	},
 </span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#b8bb26">&#34;https://git.sr.ht/~whynothugo/lsp_lines.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>		config <span style="color:#fe8019">=</span> <span style="color:#fe8019">function</span>()
+</span></span><span style="display:flex;"><span>			require(<span style="color:#b8bb26">&#34;lsp_lines&#34;</span>).setup()
+</span></span><span style="display:flex;"><span>			vim.diagnostic.config({
+</span></span><span style="display:flex;"><span>				virtual_text <span style="color:#fe8019">=</span> <span style="color:#fe8019">false</span>,
+</span></span><span style="display:flex;"><span>			})
+</span></span><span style="display:flex;"><span>			vim.keymap.set(<span style="color:#b8bb26">&#34;n&#34;</span>, <span style="color:#b8bb26">&#34;&lt;Leader&gt;l&#34;</span>, require(<span style="color:#b8bb26">&#34;lsp_lines&#34;</span>).toggle, { desc <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;Toggle lsp_lines&#34;</span> }
+</span></span><span style="display:flex;"><span>			)
+</span></span><span style="display:flex;"><span>		<span style="color:#fe8019">end</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	{
 </span></span><span style="display:flex;"><span>		<span style="color:#b8bb26">&#34;hrsh7th/nvim-cmp&#34;</span>,
 </span></span><span style="display:flex;"><span>		dependencies <span style="color:#fe8019">=</span> {
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;hrsh7th/cmp-nvim-lsp&#34;</span>,
@@ -813,9 +824,10 @@
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;hrsh7th/cmp-buffer&#34;</span>,
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;hrsh7th/cmp-path&#34;</span>,
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;hrsh7th/cmp-cmdline&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- luasnip</span>
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;saadparwaiz1/cmp_luasnip&#34;</span>,
 </span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;L3MON4D3/LuaSnip&#34;</span>,
-</span></span><span style="display:flex;"><span>			<span style="color:#b8bb26">&#34;simrat39/rust-tools.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- &#34;simrat39/rust-tools.nvim&#34;,</span>
 </span></span><span style="display:flex;"><span>		},
 </span></span><span style="display:flex;"><span>		config <span style="color:#fe8019">=</span> <span style="color:#fe8019">function</span>()
 </span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">--Set completeopt to have a better completion experience</span>
@@ -859,7 +871,7 @@
 </span></span><span style="display:flex;"><span>				<span style="color:#928374;font-style:italic">-- Enable LSP snippets</span>
 </span></span><span style="display:flex;"><span>				snippet <span style="color:#fe8019">=</span> {
 </span></span><span style="display:flex;"><span>					expand <span style="color:#fe8019">=</span> <span style="color:#fe8019">function</span>(args)
-</span></span><span style="display:flex;"><span>						vim.fn[<span style="color:#b8bb26">&#34;vsnip#anonymous&#34;</span>](args.body)
+</span></span><span style="display:flex;"><span>						require(<span style="color:#b8bb26">&#39;luasnip&#39;</span>).lsp_expand(args.body)
 </span></span><span style="display:flex;"><span>					<span style="color:#fe8019">end</span>,
 </span></span><span style="display:flex;"><span>				},
 </span></span><span style="display:flex;"><span>				mapping <span style="color:#fe8019">=</span> {
@@ -903,19 +915,19 @@
 </span></span><span style="display:flex;"><span>				},
 </span></span><span style="display:flex;"><span>			})
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>			<span style="color:#fe8019">local</span> rt <span style="color:#fe8019">=</span> require(<span style="color:#b8bb26">&#34;rust-tools&#34;</span>)
-</span></span><span style="display:flex;"><span>			rt.setup({
-</span></span><span style="display:flex;"><span>				server <span style="color:#fe8019">=</span> {
-</span></span><span style="display:flex;"><span>					on_attach <span style="color:#fe8019">=</span> <span style="color:#fe8019">function</span>(_, bufnr)
-</span></span><span style="display:flex;"><span>						<span style="color:#928374;font-style:italic">-- Hover actions</span>
-</span></span><span style="display:flex;"><span>						vim.keymap.set(<span style="color:#b8bb26">&#34;n&#34;</span>, <span style="color:#b8bb26">&#34;&lt;C-space&gt;&#34;</span>, rt.hover_actions.hover_actions,
-</span></span><span style="display:flex;"><span>							{ buffer <span style="color:#fe8019">=</span> bufnr, desc <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;Hover actions [RUST]&#34;</span> })
-</span></span><span style="display:flex;"><span>						<span style="color:#928374;font-style:italic">-- Code action groups</span>
-</span></span><span style="display:flex;"><span>						vim.keymap.set(<span style="color:#b8bb26">&#34;n&#34;</span>, <span style="color:#b8bb26">&#34;&lt;Leader&gt;aa&#34;</span>, rt.code_action_group.code_action_group,
-</span></span><span style="display:flex;"><span>							{ buffer <span style="color:#fe8019">=</span> bufnr, desc <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;Code action groups [RUST]&#34;</span> })
-</span></span><span style="display:flex;"><span>					<span style="color:#fe8019">end</span>,
-</span></span><span style="display:flex;"><span>				},
-</span></span><span style="display:flex;"><span>			})
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- local rt = require(&#34;rust-tools&#34;)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- rt.setup({</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 	server = {</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 		on_attach = function(_, bufnr)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 			-- Hover actions</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 			vim.keymap.set(&#34;n&#34;, &#34;&lt;C-space&gt;&#34;, rt.hover_actions.hover_actions,</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 				{ buffer = bufnr, desc = &#34;Hover actions [RUST]&#34; })</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 			-- Code action groups</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 			vim.keymap.set(&#34;n&#34;, &#34;&lt;Leader&gt;aa&#34;, rt.code_action_group.code_action_group,</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 				{ buffer = bufnr, desc = &#34;Code action groups [RUST]&#34; })</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 		end,</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- 	},</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#928374;font-style:italic">-- })</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#fe8019">end</span>,
 </span></span><span style="display:flex;"><span>	},
 </span></span><span style="display:flex;"><span>	{
