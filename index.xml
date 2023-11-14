@@ -359,6 +359,7 @@
 </span></span><span style="display:flex;"><span>$ cargo install stylua <span style="color:#928374;font-style:italic"># to format lua code</span>
 </span></span><span style="display:flex;"><span>$ cargo install tree-sitter-cli <span style="color:#928374;font-style:italic"># for nvim-treesitter/nvim-treesitter</span>
 </span></span><span style="display:flex;"><span>$ cargo install ripgrep <span style="color:#928374;font-style:italic"># for telescope &#39;s live_grep</span>
+</span></span><span style="display:flex;"><span>$ rustup component add rust-src rust-analyzer <span style="color:#928374;font-style:italic"># for mrcjkb/rustaceanvim</span>
 </span></span></code></pre></div><h1 id="install-neovim" class="article-heading">Install Neovim 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#install-neovim">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
