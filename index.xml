@@ -351,11 +351,23 @@
 <li>Ubuntu 20.04</li>
 <li>WSL2 with Ubuntu 20.04</li>
 </ul>
+<h2 id="recommended-font" class="article-heading">Recommended font 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#recommended-font">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><ul>
+<li><a href="https://github.com/ryanoasis/nerd-fonts" title="ryanoasis/nerd-fonts" aria-label="ryanoasis/nerd-fonts" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> ryanoasis/nerd-fonts</a>; My choice: CascadiaCode.zip
+<ul>
+<li>Install <strong>Caskaydia Cove Nerd Font Complete Mono</strong> Regular, Italic, Bold</li>
+</ul>
+</li>
+</ul>
 <h2 id="preinstall-packages" class="article-heading">Preinstall packages 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#preinstall-packages">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h2><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install lldb <span style="color:#928374;font-style:italic"># lldb tool for rustaceanvim</span>
+</span></span><span style="display:flex;"><span>$ curl -L https://deb.nodesource.com/nsolid_setup_deb.sh | sudo bash -s -- <span style="color:#d3869b">20</span> <span style="color:#fe8019">&amp;&amp;</span> sudo apt install -y nodejs <span style="color:#928374;font-style:italic"># nodejs for mason-lspconfig.nvim</span>
 </span></span><span style="display:flex;"><span>$ cargo install stylua <span style="color:#928374;font-style:italic"># to format lua code</span>
 </span></span><span style="display:flex;"><span>$ cargo install tree-sitter-cli <span style="color:#928374;font-style:italic"># for nvim-treesitter/nvim-treesitter</span>
 </span></span><span style="display:flex;"><span>$ cargo install ripgrep <span style="color:#928374;font-style:italic"># for telescope &#39;s live_grep</span>
