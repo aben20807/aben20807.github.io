@@ -11320,7 +11320,13 @@ $$</p>
 </h2><p>安裝:</p>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cargo install du-dust
 </span></span></code></pre></div><p>alias:</p>
-<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#fabd2f">alias</span> disk<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#39;dust&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#fabd2f">alias</span> disk<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#39;dust -x&#39;</span>
+</span></span></code></pre></div><h2 id="deltahttpsgithubcomdandavisondelta-高級-diff" class="article-heading"><a href="https://github.com/dandavison/delta" title="delta" aria-label="delta" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> delta</a> 高級 diff 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#deltahttpsgithubcomdandavisondelta-%e9%ab%98%e7%b4%9a-diff">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p>安裝:</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cargo install git-delta
 </span></span></code></pre></div> 
         ]]></description></item><item><title>Human Resource Machine</title><link>https://aben20807.github.io/posts/20211205-human-resource-machine/</link><pubDate>Sun, 05 Dec 2021 14:23:22 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20211205-human-resource-machine/</guid><description><![CDATA[
           <p>[非業配] 最近 (12/7 前) <a href="https://store.steampowered.com/app/375820/Human_Resource_Machine/" title="steam" aria-label="steam" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> steam</a> 特價中 (Human Resource Machine + 7 Billion Humans 兩款合併只需要 NT$114)。</p>
