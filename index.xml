@@ -8866,13 +8866,15 @@ $$</p>
 </h1><ul>
 <li><a href="https://picpick.app/zh-tw/download" title="PicPick" aria-label="PicPick" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> PicPick</a>: 截圖神器</li>
 <li><a href="https://code.visualstudio.com/download" title="VSCode" aria-label="VSCode" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> VSCode</a>: 寫扣神器</li>
-<li><a href="https://obsproject.com/download" title="OBS" aria-label="OBS" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> OBS</a>: 畫面錄製神器</li>
+<li><a href="https://obsproject.com/download" title="OBS" aria-label="OBS" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> OBS</a>: 畫面錄製神器 (Optional)</li>
 <li><a href="https://www.videolan.org/vlc/download-windows.zh_TW.html" title="VLC" aria-label="VLC" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> VLC</a>: 影音播放器</li>
-<li><a href="https://apps.microsoft.com/store/detail/microsoft-powertoys/XP89DCGQ3K6VLD" title="Microsoft PowerToys" aria-label="Microsoft PowerToys" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Microsoft PowerToys</a>: 各種小工具</li>
+<li><a href="https://apps.microsoft.com/store/detail/microsoft-powertoys/XP89DCGQ3K6VLD" title="Microsoft PowerToys" aria-label="Microsoft PowerToys" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Microsoft PowerToys</a>: 各種小工具 (Optional)</li>
 <li><a href="https://www.7-zip.org/download.html" title="7-zip" aria-label="7-zip" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 7-zip</a>: 壓縮、解壓縮</li>
 <li><a href="https://www.mindgems.com/products/Folder-Size/Folder-Size-Tutorials.htm?postinstall=1" title="FolderSize - MindGems" aria-label="FolderSize - MindGems" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> FolderSize - MindGems</a> 查看整個硬碟的資料大小分布</li>
+<li><a href="https://crystalmark.info/en/download/" title="Crystal Disk Info" aria-label="Crystal Disk Info" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Crystal Disk Info</a>: 查看硬碟健康狀態</li>
+<li><a href="https://www.alcpu.com/CoreTemp/" title="Core Temp" aria-label="Core Temp" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Core Temp</a>: 監控溫度及耗電瓦數</li>
 <li>Synology Drive Client: 從網頁登入後安裝，用於同步備份資料夾</li>
-<li><a href="https://zealdocs.org/download.html" title="Zeal" aria-label="Zeal" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Zeal</a>: 離線文件 (沒網路不用怕)，內建找不到的話可以去 <a href="https://github.com/hashhar/dash-contrib-docset-feeds" title="hashhar/dash-contrib-docset-feeds" aria-label="hashhar/dash-contrib-docset-feeds" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> hashhar/dash-contrib-docset-feeds</a> 看看，記得用 raw 才能加到 feed。<br>
+<li><a href="https://zealdocs.org/download.html" title="Zeal" aria-label="Zeal" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Zeal</a>: 離線文件 (沒網路不用怕)，內建找不到的話可以去 <a href="https://github.com/hashhar/dash-contrib-docset-feeds" title="hashhar/dash-contrib-docset-feeds" aria-label="hashhar/dash-contrib-docset-feeds" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> hashhar/dash-contrib-docset-feeds</a> 看看，記得用 raw 才能加到 feed。 (Optional)<br>
 
  
   <figure class="gphoto-media rss">
@@ -8916,12 +8918,12 @@ $$</p>
     </figcaption>
   </figure>
 </p>
-<h1 id="調整-win10" class="article-heading">調整 win10 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e8%aa%bf%e6%95%b4-win10">
+<h1 id="取消登入畫面讓我直接打密碼" class="article-heading">取消登入畫面，讓我直接打密碼 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8f%96%e6%b6%88%e7%99%bb%e5%85%a5%e7%95%ab%e9%9d%a2%e8%ae%93%e6%88%91%e7%9b%b4%e6%8e%a5%e6%89%93%e5%af%86%e7%a2%bc">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><h2 id="取消登入畫面讓我直接打密碼" class="article-heading">取消登入畫面，讓我直接打密碼 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8f%96%e6%b6%88%e7%99%bb%e5%85%a5%e7%95%ab%e9%9d%a2%e8%ae%93%e6%88%91%e7%9b%b4%e6%8e%a5%e6%89%93%e5%af%86%e7%a2%bc">
+</h1><h2 id="win10" class="article-heading">win10 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#win10">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h2><p>
@@ -8989,16 +8991,34 @@ $$</p>
   </figure>
 </li>
 </ul>
-<h2 id="caps-lock-換成-esc" class="article-heading">Caps lock 換成 esc 
+<h2 id="win11" class="article-heading">win11 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#win11">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p>Windows + R -&gt; gpedit.msc (參考 References 2.)</p>
+<p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1F0R3XNLRobM4MWxOSPnlAgUhPdgU7nOq" alt=' ' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text"> </center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="caps-lock-換成-esc" class="article-heading">Caps lock 換成 esc 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#caps-lock-%e6%8f%9b%e6%88%90-esc">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h2><p>請參考: <a href="https://aben20807.blogspot.com/2017/07/1060726-win10-caps-lockesc.html#more" title="106.07.26 win10 caps lock換成esc" aria-label="106.07.26 win10 caps lock換成esc" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 106.07.26 win10 caps lock換成esc</a>。</p>
-<h1 id="安裝及設定-wsl2" class="article-heading">安裝及設定 WSL2 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%ae%89%e8%a3%9d%e5%8f%8a%e8%a8%ad%e5%ae%9a-wsl2">
+</h1><p>請參考: <a href="https://aben20807.blogspot.com/2017/07/1060726-win10-caps-lockesc.html#more" title="106.07.26 win10 caps lock換成esc" aria-label="106.07.26 win10 caps lock換成esc" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 106.07.26 win10 caps lock換成esc</a>。</p>
+<h1 id="wsl2" class="article-heading">WSL2 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#wsl2">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><ul>
+</h1><h2 id="安裝及設定" class="article-heading">安裝及設定 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%ae%89%e8%a3%9d%e5%8f%8a%e8%a8%ad%e5%ae%9a">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><ul>
 <li>安裝參考: <a href="https://docs.microsoft.com/zh-tw/windows/wsl/install" title="https://docs.microsoft.com/zh-tw/windows/wsl/install" aria-label="https://docs.microsoft.com/zh-tw/windows/wsl/install" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://docs.microsoft.com/zh-tw/windows/wsl/install</a></li>
 <li>更新至 WSL2
 <ul>
@@ -9018,13 +9038,27 @@ $$</p>
   </figure>
 </li>
 </ul>
+<h2 id="不安裝-wsl2-的話" class="article-heading">不安裝 WSL2 的話 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e4%b8%8d%e5%ae%89%e8%a3%9d-wsl2-%e7%9a%84%e8%a9%b1">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><p>因為 WSL2 太過肥大，硬碟空間不夠的話有點麻煩，所以用 PowerShell 替代 (PowerShell and Windows PowerShell are different applications.)。設定參考 References 3.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS&gt; winget install --id Git.Git -e --source winget
+</span></span><span style="display:flex;"><span>PS&gt; winget install Microsoft.PowerShell
+</span></span></code></pre></div><h1 id="下載字型" class="article-heading">下載字型 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e4%b8%8b%e8%bc%89%e5%ad%97%e5%9e%8b">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p><a href="https://github.com/ryanoasis/nerd-fonts/releases" title="nerd-fonts" aria-label="nerd-fonts" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> nerd-fonts</a>: CascadiaCode</p>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><ul>
+</h1><ol>
 <li><a href="https://www.windowscentral.com/how-disable-windows-10-lock-screen" title="https://www.windowscentral.com/how-disable-windows-10-lock-screen" aria-label="https://www.windowscentral.com/how-disable-windows-10-lock-screen" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://www.windowscentral.com/how-disable-windows-10-lock-screen</a></li>
-</ul>
+<li><a href="https://helpdeskgeek.com/windows-11/how-to-disable-the-lock-screen-in-windows-11/" title="https://helpdeskgeek.com/windows-11/how-to-disable-the-lock-screen-in-windows-11/" aria-label="https://helpdeskgeek.com/windows-11/how-to-disable-the-lock-screen-in-windows-11/" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://helpdeskgeek.com/windows-11/how-to-disable-the-lock-screen-in-windows-11/</a></li>
+<li><a href="https://blog.miniasp.com/post/2021/11/24/PowerShell-prompt-with-Oh-My-Posh-and-Windows-Terminal" title="如何打造一個華麗又實用的 PowerShell 命令輸入環境" aria-label="如何打造一個華麗又實用的 PowerShell 命令輸入環境" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 如何打造一個華麗又實用的 PowerShell 命令輸入環境</a></li>
+</ol>
         ]]></description></item><item><title>Quantum Search for Boolean Satisfiability Problem</title><link>https://aben20807.github.io/posts/20220410-quantum-search-for-boolean-satisfiability-problem/</link><pubDate>Sun, 10 Apr 2022 20:31:38 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20220410-quantum-search-for-boolean-satisfiability-problem/</guid><description><![CDATA[
           <p>進入量子演算法了。<br><br/>越來越複雜，勉強能跟上。</p>
           
