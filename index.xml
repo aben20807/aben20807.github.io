@@ -3932,9 +3932,10 @@ delete temp files in file_names after replacing in main function</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1>
+
 <div class="alert-block">
 
-  <div class="warning-title"><i class="fa fa-exclamation-triangle"></i></div>
+  <div class="warning-title"><i class="fa fa-exclamation-triangle pr2"></i></div>
   <div class="warning-msg db overflow-x-scroll ov-for-img">
     實際點數規定請務必自行確認系上公告。
   </div>
@@ -4535,9 +4536,10 @@ $$</p>
   </figure>
 </p>
 
+
 <div class="alert-block">
 
-  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="danger-title"><i class="fa fa-times-circle pr2"></i></div>
   <div class="alert danger-msg db overflow-x-scroll ov-for-img">
     <p><a href="https://github.com/aben20807/latex_examples/blob/master/03_figure_ieeetrans.tex" title="03_1 Figure IEEEtran 完整程式碼" aria-label="03_1 Figure IEEEtran 完整程式碼" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> 03_1 Figure IEEEtran 完整程式碼</a><br>
 若是使用 IEEE 的模板 (例如 <code>\documentclass[conference,10pt]{IEEEtran}</code>)，<del>建議</del>絕對不要使用 subfigure (相信我，我跟它硬碰硬半天，結果我輸了) 而是改用 subfig，以避免格式設定被 subfigure 覆蓋。注意不可以使用 <code>\usepackage{caption}</code>、<code>\usepackage{subcaption}</code>。</p>
@@ -7146,9 +7148,10 @@ GitHub: <a href="https://github.com/darktable-org/darktable" title="https://gith
     </a>
 </h1><p>這邊使用了比較直觀會用到的 Lemma，且使用範例當作說明，不使用證明。</p>
 
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p>Lemma 1:<br>
 $g^2\equiv1(\text{mod }N), 1&lt;g&lt;N-1\Rightarrow$<br>
@@ -7167,9 +7170,10 @@ $8^2\equiv 1(\text{mod }21), \gcd(21, 7) = 7\mid 21, \gcd(21, 9) = 3 \mid 21$</p
 </li>
 </ul>
 
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p>Lemma 2:<br>
 $g^x\equiv1(\text{mod }N), 2\mid x, g^{\frac{x}{2}}\not\equiv1(\text{mod }N)\Rightarrow$<br>
@@ -7190,9 +7194,10 @@ $2^6\equiv 1(\text{mod }N), \gcd(21, 7) = 7\mid 21, \gcd(21, 9) = 3 \mid 21$</p>
 </li>
 </ul>
 
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p>Lemma 3:<br>
 $g^p\equiv 1(\text{mod }N)\Rightarrow$<br>
@@ -12433,9 +12438,10 @@ $$</p>
     </a>
 </h1><p>仔細看的話就會發現跟 ep2 的程式碼幾乎差不多，只有加了寫檔把對應操作的指令寫入 bytecode.j。</p>
 
+
 <div class="alert-block">
 
-  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="danger-title"><i class="fa fa-times-circle pr2"></i></div>
   <div class="alert danger-msg db overflow-x-scroll ov-for-img">
     下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
   </div>
@@ -12737,9 +12743,10 @@ $$</p>
 <li>Source code: <a href="https://github.com/aben20807/learn_compiler" title="aben20807/learn_compiler" aria-label="aben20807/learn_compiler" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> aben20807/learn_compiler</a></li>
 </ul>
 
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p>從文章長度跟作業繳交期限就可以知道 parser 的難度遠大於 scanner，所以請提早動手開始，<del>雖然不斷宣導下還是一定有人會不信邪前一個禮拜才開始</del>。</p>
   </div>
@@ -12948,9 +12955,10 @@ $$</p>
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1>
+
 <div class="alert-block">
 
-  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="danger-title"><i class="fa fa-times-circle pr2"></i></div>
   <div class="alert danger-msg db overflow-x-scroll ov-for-img">
     下方程式碼的 symbol table 為求簡單所以使用一維陣列實作，僅適用於本範例，容易造成記憶體錯誤且無法套用至多層級的 scope，所以請勿學習。
   </div>
@@ -17764,7 +17772,7 @@ $$</p>
 <li><a href="https://codepen.io/DobsonDev/pen/GgRJwv" title="ref" aria-label="ref" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> ref</a></li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">info</span> &gt;}}
-</span></span><span style="display:flex;"><span><span style="color:#83a598;text-decoration:underline">**</span> Beware !** is a text
+</span></span><span style="display:flex;"><span>**Beware !** is a text
 </span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">success</span> &gt;}}
@@ -17786,50 +17794,86 @@ $$</p>
 </span></span><span style="display:flex;"><span>\Rightarrow\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$
 </span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
 </span></span></code></pre></div>
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p><strong>Beware !</strong> is a text</p>
   </div>
 
 </div>
 
+
 <div class="alert-block">
 
-  <div class="success-title"><i class="fa fa-check"></i></div>
+  <div class="success-title"><i class="fa fa-check pr2"></i></div>
   <div class="success-msg db overflow-x-scroll ov-for-img">
     <strong>Beware !</strong> is a text
   </div>
 
 </div>
 
+
 <div class="alert-block">
 
-  <div class="warning-title"><i class="fa fa-exclamation-triangle"></i></div>
+  <div class="warning-title"><i class="fa fa-exclamation-triangle pr2"></i></div>
   <div class="warning-msg db overflow-x-scroll ov-for-img">
     <strong>Beware !</strong> is a text
   </div>
 
 </div>
 
+
 <div class="alert-block">
 
-  <div class="danger-title"><i class="fa fa-times-circle"></i></div>
+  <div class="danger-title"><i class="fa fa-times-circle pr2"></i></div>
   <div class="alert danger-msg db overflow-x-scroll ov-for-img">
     <strong>Beware !</strong> is a text
   </div>
 
 </div>
 
+
 <div class="alert-block">
 
-  <div class="info-title"><i class="fa fa-info-circle"></i></div>
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i></div>
   <div class="info-msg db overflow-x-scroll ov-for-img">
     <p>過長會有捲軸<br>
 Lemma 2:<br>
 $g^x\equiv1(\text{mod }N), 2\mid x, g^{\frac{x}{2}}\not\equiv1(\text{mod }N)\Rightarrow(g^{\frac{x}{2}})^2\equiv1(\text{mod }N), g^{\frac{x}{2}}\not\equiv 1(\text{mod }N) \text{, and }g^{\frac{x}{2}}\not\equiv N-1(\text{mod }N)<br>
 \Rightarrow\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$</p>
+  </div>
+
+</div>
+<h2 id="標題參數" class="article-heading">標題參數 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e6%a8%99%e9%a1%8c%e5%8f%83%e6%95%b8">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h2><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">info</span> &#34;<span style="color:#b8bb26;font-weight:bold">info</span> 標題&#34; &gt;}}
+</span></span><span style="display:flex;"><span>**Beware !** is a text
+</span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">success</span> &#34;<span style="color:#b8bb26;font-weight:bold">success</span> 標題&#34; &gt;}}
+</span></span><span style="display:flex;"><span>**Beware !** is a text
+</span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
+</span></span></code></pre></div>
+
+<div class="alert-block">
+
+  <div class="info-title"><i class="fa fa-info-circle pr2"></i><span>info 標題</span></div>
+  <div class="info-msg db overflow-x-scroll ov-for-img">
+    <p><strong>Beware !</strong> is a text</p>
+  </div>
+
+</div>
+
+
+<div class="alert-block">
+
+  <div class="success-title"><i class="fa fa-check pr2"></i><span>success 標題</span></div>
+  <div class="success-msg db overflow-x-scroll ov-for-img">
+    <strong>Beware !</strong> is a text
   </div>
 
 </div>
