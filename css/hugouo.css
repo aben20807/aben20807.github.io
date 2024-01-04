@@ -4,19 +4,26 @@
   --deep-orange: #ff7a6e;
   --light-orange: #DEA584;
   --white: #f5f5f5;
-  --dim-white: #b8c7d7;
+  --dim-white: #c5cfdb;
   --dim-black: #2c333a;
-  --gray: #acb8c6;
-  --black: ;
+  --light-gray: #d5dde3;
+  --deep-gray: #444444;
 
   --link-color: #61AFF0;
   --active-color: #61AFF0;
   --text-dark: #333333;
 }
 @font-face{
-  font-family:cascadia code;
+  font-family:"Cascadia Code";
   font-style:normal;
-  font-weight:400;
+  font-weight:normal;
+  src: local('Cascadia Code'), url('/assets/fonts/Cascadia.woff'),url(https://fonts.cdnfonts.com/s/29131/Cascadia.woff) format('woff')
+}
+/* no bold for Cascadia Code */
+@font-face{
+  font-family:"Cascadia Code";
+  font-style:normal;
+  font-weight:bold;
   src: local('Cascadia Code'), url('/assets/fonts/Cascadia.woff'),url(https://fonts.cdnfonts.com/s/29131/Cascadia.woff) format('woff')
 }
 @font-face{
@@ -142,7 +149,7 @@ li > code,
 a > code,
 td > code {
   font-size: 95%;
-  background: var(--gray);
+  background: var(--light-gray);
   margin: 0;
   border-radius: 3px;
   padding: 0.15em 0.25em;
@@ -332,7 +339,7 @@ a:hover,
   font-weight: 400;
   line-height: 1.35em;
   padding: 0 5px;
-  color: #444444;
+  color: var(--deep-gray);
   -webkit-border-radius: 0;
   border-radius: 0;
   text-decoration: none;
@@ -409,13 +416,12 @@ blockquote > p {
 blockquote {
   margin: 1em auto;
   font-style: unset;
-  /* color: #666666; */
   padding: 1em .5em 1em 1em;
-  border: .05em solid var(--deep-blue);
-  border-left: .5em solid var(--deep-blue);
+  border: 1px solid var(--deep-blue);
+  border-left: 7px solid var(--deep-blue);
   line-height: 1.2;
   position: relative;
-  background: #f4f4f4;
+  background: var(--white);
 }
 
 blockquote > p:first-child:before {
@@ -557,6 +563,7 @@ body::-webkit-scrollbar:horizontal { /* only hide the outter scrollbar */
 #toc-scroll {
   max-height: 50vh;
   overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
 }
 .hide-scrollbar::-webkit-scrollbar-thumb {
   background: transparent;
@@ -687,7 +694,7 @@ body.dark-mode mjx-texatom *{
 }
 body.dark-mode pre,
 body.dark-mode code {
-  background: #555;
+  background: var(--deep-gray);
 }
 body.dark-mode > div.CtxtMenu_MenuFrame > div.CtxtMenu_Info.CtxtMenu_MousePost > div > pre {
   background: var(--dim-white);
@@ -731,9 +738,10 @@ body.dark-mode h5.article-heading:before,
 body.dark-mode h6.article-heading:before,
 body.dark-mode blockquote::before,
 body.dark-mode blockquote > p:first-child:before {
-  color: var(--light-orange);
+  color: var(--deep-orange);
 }
 body.dark-mode label.code-label {
+  color: var(--text-dark);
   background-color: var(--deep-orange);
 }
 body.dark-mode .toc-nav a.toc-link.active,
@@ -758,8 +766,9 @@ body.dark-mode .tags-md a:active {
   box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.16), 0 2px 10px 0 rgba(255, 255, 255, 0.12);
 }
 body.dark-mode blockquote {
-  border: .05em solid var(--light-orange);
-  border-left: .5em solid var(--light-orange);
+  border: 1px solid var(--deep-orange);
+  border-left: 7px solid var(--deep-orange);
+  box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.16), 0 2px 10px 0 rgba(255, 255, 255, 0.12);
 }
 body.dark-mode li.page-item.active a { /* active current page */
   color: var(--dim-white);
@@ -770,9 +779,9 @@ body.dark-mode li.page-item.active a { /* active current page */
 
 #gotop_btn {
   display: none;
-  right: 1%;
+  left: 95vw;
   bottom: 5%;
-  float: right;
+  float: left;
   width: 40px;
   height: 40px;
   position: sticky!important;

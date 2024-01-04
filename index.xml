@@ -17354,7 +17354,7 @@ e.g., <code>MAX_ROW_SIZE</code></p>
 <li><a href="https://github.com/ikatyang/emoji-cheat-sheet" title="ref" aria-label="ref" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> ref</a></li>
 <li><a href="https://stackoverflow.com/a/50662126" title="&lt;code&gt;&amp;lt;zero-width space&amp;gt;&lt;/code&gt;" aria-label="&lt;code&gt;&amp;lt;zero-width space&amp;gt;&lt;/code&gt;" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> <code>&lt;zero-width space&gt;</code></a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown">:<zero-width space>smile:
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown">:<zero-width space>smile:
 :<zero-width space>thinking:
 :<zero-width space>flushed:
 </code></pre></div>
@@ -17786,13 +17786,6 @@ $$</p>
 </span></span><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">danger</span> &gt;}}
 </span></span><span style="display:flex;"><span>**Beware !** is a text
 </span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{{&lt; <span style="color:#fb4934">alert</span> <span style="color:#b8bb26;font-weight:bold">info</span> &gt;}}
-</span></span><span style="display:flex;"><span>過長會有捲軸
-</span></span><span style="display:flex;"><span>Lemma 2:  
-</span></span><span style="display:flex;"><span>$g^x\equiv1(\text{mod }N), 2\mid x, g^{\frac{x}{2}}\not\equiv1(\text{mod }N)\Rightarrow(g^{\frac{x}{2}})^2\equiv1(\text{mod }N), g^{\frac{x}{2}}\not\equiv 1(\text{mod }N) \text{, and }g^{\frac{x}{2}}\not\equiv N-1(\text{mod }N)
-</span></span><span style="display:flex;"><span>\Rightarrow\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$
-</span></span><span style="display:flex;"><span>{{&lt; /<span style="color:#fb4934">alert</span> &gt;}}
 </span></span></code></pre></div>
 
 <div class="alert-block">
@@ -17830,19 +17823,6 @@ $$</p>
   <div class="alert-title danger-title"><i class="fa fa-times-circle pr2"></i></div>
   <div class="alert-msg danger-msg db overflow-x-scroll ov-for-img">
     <strong>Beware !</strong> is a text
-  </div>
-
-</div>
-
-
-<div class="alert-block">
-
-  <div class="alert-title info-title"><i class="fa fa-info-circle pr2"></i></div>
-  <div class="alert-msg info-msg db overflow-x-scroll ov-for-img">
-    <p>過長會有捲軸<br>
-Lemma 2:<br>
-$g^x\equiv1(\text{mod }N), 2\mid x, g^{\frac{x}{2}}\not\equiv1(\text{mod }N)\Rightarrow(g^{\frac{x}{2}})^2\equiv1(\text{mod }N), g^{\frac{x}{2}}\not\equiv 1(\text{mod }N) \text{, and }g^{\frac{x}{2}}\not\equiv N-1(\text{mod }N)<br>
-\Rightarrow\gcd(N, g^{\frac{x}{2}}-1)\mid N \text{ or }\gcd(N, g^{\frac{x}{2}}+1)\mid N$</p>
   </div>
 
 </div>
