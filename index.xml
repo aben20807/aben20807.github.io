@@ -11913,29 +11913,26 @@ $$</p>
 
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1mAkM2A3wIWkYRohObmORdWOlndKOAYn-" alt='Parts of a Figure' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1mAkM2A3wIWkYRohObmORdWOlndKOAYn-" alt='Parts of a Figure4' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">Parts of a Figure</center>
+      <center class="caption-text">Parts of a Figure4</center>
     </figcaption>
   </figure>
-  </p>
+</p>
 <p>
  
   <figure class="gphoto-media rss">
-    <img src="https://lh3.googleusercontent.com/d/1qQX4_vd-oiaXiJ4IMeuGZ9pl9B3g092R" alt='components of a Matplotlib figure' style="max-width: 100%;"/>
+    <img src="https://lh3.googleusercontent.com/d/1qQX4_vd-oiaXiJ4IMeuGZ9pl9B3g092R" alt='components of a Matplotlib figure5' style="max-width: 100%;"/>
     <figcaption>
-      <center class="caption-text">components of a Matplotlib figure</center>
+      <center class="caption-text">components of a Matplotlib figure5</center>
     </figcaption>
   </figure>
-  </p>
+</p>
 <h1 id="實際範例" class="article-heading">實際範例 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%af%a6%e9%9a%9b%e7%af%84%e4%be%8b">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h1><ul>
-<li><code>data.csv</code>:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>n,A,B,C,D
+</h1><div class="highlight" name="data.csv"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>n,A,B,C,D
 </span></span><span style="display:flex;"><span>10,1,2,1,6
 </span></span><span style="display:flex;"><span>100,3,3,6,6
 </span></span><span style="display:flex;"><span>1000,2,9,1,6
@@ -12032,8 +12029,92 @@ $$</p>
 </li>
 </ul>
 <p>[2021.08.13] 修正 linestyle</p>
-<h1 id="其他" class="article-heading">其他 
-    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%85%b6%e4%bb%96">
+<h1 id="右軸-twinx-範例" class="article-heading">右軸 (twinx) 範例 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%8f%b3%e8%bb%b8-twinx-%e7%af%84%e4%be%8b">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>[2024.02.26] 新增 (Windows 11, Python 3.12.2, matplotlib 3.8.3, numpy 1.26.4, SciencePlots 2.1.1, pillow 10.2.0)</p>
+<div class="highlight" name="data.csv"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>A, B, C, D, E
+</span></span><span style="display:flex;"><span>7, 13, 5, 17, 10
+</span></span><span style="display:flex;"><span>50, 40, 30, 20, 10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fe8019">import</span> matplotlib.pyplot <span style="color:#fe8019">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">import</span> numpy <span style="color:#fe8019">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">import</span> scienceplots
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># File input/output</span>
+</span></span><span style="display:flex;"><span>fin <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;data.csv&#34;</span>
+</span></span><span style="display:flex;"><span>fout <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;result.pdf&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Read data from file</span>
+</span></span><span style="display:flex;"><span>table <span style="color:#fe8019">=</span> np<span style="color:#fe8019">.</span>genfromtxt(fin, delimiter<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;,&#34;</span>, names<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fabd2f">print</span>(<span style="color:#b8bb26">f</span><span style="color:#b8bb26">&#34;</span><span style="color:#b8bb26">{</span>table <span style="color:#b8bb26">= }</span><span style="color:#b8bb26">&#34;</span>)
+</span></span><span style="display:flex;"><span>categories <span style="color:#fe8019">=</span> <span style="color:#fabd2f">list</span>(table<span style="color:#fe8019">.</span>dtype<span style="color:#fe8019">.</span>names)
+</span></span><span style="display:flex;"><span>primary_values <span style="color:#fe8019">=</span> <span style="color:#fabd2f">list</span>(table[<span style="color:#d3869b">0</span>])
+</span></span><span style="display:flex;"><span>secondary_values <span style="color:#fe8019">=</span> <span style="color:#fabd2f">list</span>(table[<span style="color:#d3869b">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Data hardcode (optional)</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># categories = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># primary_values = [7, 13, 5, 17, 10]</span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># secondary_values = [50, 40, 30, 20, 10]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Plot the figure</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>style<span style="color:#fe8019">.</span>use([<span style="color:#b8bb26">&#34;science&#34;</span>, <span style="color:#b8bb26">&#34;ieee&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>rcParams<span style="color:#fe8019">.</span>update(
+</span></span><span style="display:flex;"><span>    {<span style="color:#b8bb26">&#34;text.usetex&#34;</span>: <span style="color:#fe8019">True</span>, <span style="color:#b8bb26">&#34;font.family&#34;</span>: <span style="color:#b8bb26">&#34;serif&#34;</span>, <span style="color:#b8bb26">&#34;font.serif&#34;</span>: [<span style="color:#b8bb26">&#34;Lin Libertine&#34;</span>]}
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Create figure and axes</span>
+</span></span><span style="display:flex;"><span>fig, ax_l <span style="color:#fe8019">=</span> plt<span style="color:#fe8019">.</span>subplots()
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Create a second y-axis sharing the same x-axis</span>
+</span></span><span style="display:flex;"><span>ax_r <span style="color:#fe8019">=</span> ax_l<span style="color:#fe8019">.</span>twinx()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Create bar graph for the primary data</span>
+</span></span><span style="display:flex;"><span>bars1 <span style="color:#fe8019">=</span> ax_l<span style="color:#fe8019">.</span>bar(categories, primary_values, label<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;Primary&#34;</span>, color<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;C2&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Create a line plot for the secondary data</span>
+</span></span><span style="display:flex;"><span>ax_r<span style="color:#fe8019">.</span>plot(categories, secondary_values, <span style="color:#b8bb26">&#34;C1.-&#34;</span>, label<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;Secondary&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Show legend</span>
+</span></span><span style="display:flex;"><span>ax_l<span style="color:#fe8019">.</span>legend(loc<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;upper left&#34;</span>)
+</span></span><span style="display:flex;"><span>ax_r<span style="color:#fe8019">.</span>legend(loc<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;upper right&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Rotate the text on the X axis</span>
+</span></span><span style="display:flex;"><span>ax_l<span style="color:#fe8019">.</span>tick_params(axis<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#39;x&#39;</span>, labelrotation<span style="color:#fe8019">=</span><span style="color:#d3869b">60</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Add labels and title</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>xlabel(<span style="color:#b8bb26">&#34;Categories&#34;</span>)
+</span></span><span style="display:flex;"><span>ax_l<span style="color:#fe8019">.</span>set_ylabel(<span style="color:#b8bb26">&#34;Primary values (</span><span style="color:#b8bb26">\\</span><span style="color:#b8bb26">%)&#34;</span>)
+</span></span><span style="display:flex;"><span>ax_r<span style="color:#fe8019">.</span>set_ylabel(<span style="color:#b8bb26">&#34;Secondary values (s)&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>title(<span style="color:#b8bb26">&#34;Graph Title&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># Adjust ylim to add a gap between the highest bar and the top rule of the figure</span>
+</span></span><span style="display:flex;"><span>ax_l<span style="color:#fe8019">.</span>set_ylim(<span style="color:#d3869b">0</span>, <span style="color:#fabd2f">max</span>(primary_values) <span style="color:#fe8019">*</span> <span style="color:#d3869b">1.2</span>)
+</span></span><span style="display:flex;"><span>ax_r<span style="color:#fe8019">.</span>set_ylim(<span style="color:#d3869b">0</span>, <span style="color:#fabd2f">max</span>(secondary_values) <span style="color:#fe8019">*</span> <span style="color:#d3869b">1.2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>tight_layout()
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># plt.show()</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#fe8019">.</span>savefig(fout, bbox_inches<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;tight&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fabd2f">print</span>(<span style="color:#b8bb26">&#34;plot finished&#34;</span>)
+</span></span></code></pre></div><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/1Yehd_ZeM4p0c6cGPAsOtHbc6KizYnQDY" alt='twinx' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">twinx</center>
+    </figcaption>
+  </figure>
+</p>
+<h1 id="其他參考" class="article-heading">其他參考 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e5%85%b6%e4%bb%96%e5%8f%83%e8%80%83">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://www.geeksforgeeks.org/plotting-multiple-bar-charts-using-matplotlib-in-python/" title="Plotting multiple bar charts using Matplotlib in Python" aria-label="Plotting multiple bar charts using Matplotlib in Python" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Plotting multiple bar charts using Matplotlib in Python</a></li>
+<li><a href="https://matplotlib.org/stable/gallery/shapes_and_collections/hatch_style_reference.html" title="Hatch style reference" aria-label="Hatch style reference" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Hatch style reference</a></li>
+</ul>
+<h1 id="離題" class="article-heading">離題 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#%e9%9b%a2%e9%a1%8c">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>用 Matplotlib 在一個 Figure 中塞入多個 Axes 是可以的，不過我目前遇到的都是用 Latex 的 minipage 來完成，這樣就可以有各自的 label 可以分開 ref。如下，不過這就有點離題了。</p>
