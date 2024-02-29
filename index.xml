@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>繁體中文.tex</title><link>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</link><pubDate>Wed, 08 Nov 2023 13:31:32 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Vscode Remote Got Bad Reoult From Install Script</title><link>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</link><pubDate>Thu, 29 Feb 2024 09:21:34 +0400</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</guid><description><![CDATA[
+          <p>May be caused by conda installation in your client environment.</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/"><img src="https://lh3.googleusercontent.com/d/101s6uwsVtjuzm7KHXqLhBYFEdy-02WM_" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>May be caused by conda installation in your client environment.</p>
+<h1 id="issue-and-solution" class="article-heading">Issue and solution 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#issue-and-solution">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>
+ 
+  <figure class="gphoto-media rss">
+    <img src="https://lh3.googleusercontent.com/d/101s6uwsVtjuzm7KHXqLhBYFEdy-02WM_" alt='error message' style="max-width: 100%;"/>
+    <figcaption>
+      <center class="caption-text">error message</center>
+    </figcaption>
+  </figure>
+</p>
+<p>Solved by running following commands in your powershell</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>C:\Windows\System32\reg.exe DELETE <span style="color:#b8bb26">&#34;HKCU\Software\Microsoft\Command Processor&#34;</span> /v AutoRun /f
+</span></span></code></pre></div><h1 id="references" class="article-heading">References 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ul>
+<li><a href="https://stackoverflow.com/a/75144190" title="Visual Studio Code Unable to ssh using the remote extension anymore error code 255" aria-label="Visual Studio Code Unable to ssh using the remote extension anymore error code 255" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Visual Studio Code Unable to ssh using the remote extension anymore error code 255</a></li>
+<li><a href="https://stackoverflow.com/a/66836989" title="Cmd crashes with exit code 1 after uninstalling anaconda" aria-label="Cmd crashes with exit code 1 after uninstalling anaconda" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> Cmd crashes with exit code 1 after uninstalling anaconda</a></li>
+</ul>
+        ]]></description></item><item><title>繁體中文.tex</title><link>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</link><pubDate>Wed, 08 Nov 2023 13:31:32 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20231107-traditional-chinese-latex/</guid><description><![CDATA[
           <p>以我目前經驗，在資訊界還是有用中文寫報告的機會，例如一些計畫的期中期末報告，通常會有給 word 檔案來遵守現有的格式。但如果什麼都沒有，又不想用 word，那 latex 可能是協作下又保有好看格式的好幫手。</p><br/><p>此篇文章提供一個簡易的繁體中文設定，並改良之前 <a href="/posts/20221227-latex-examples/">Latex Examples</a> 提供的程式碼設定。</p>
           
             <p><a href="https://aben20807.github.io/posts/20231107-traditional-chinese-latex/"><img src="https://lh3.googleusercontent.com/d/124NnDqqF9FZODw9ki_DSU75d8qC_6Rj1" style="max-width: 100%;"/></a></p>
