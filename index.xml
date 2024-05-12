@@ -437,6 +437,7 @@
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h3><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev <span style="color:#928374;font-style:italic"># https://github.com/pyenv/pyenv/wiki#suggested-build-environment</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install unzip <span style="color:#928374;font-style:italic"># lsp clangd</span>
 </span></span><span style="display:flex;"><span>$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 </span></span><span style="display:flex;"><span>$ <span style="color:#fabd2f">echo</span> <span style="color:#b8bb26">&#39;export PATH=&#34;/home/&#39;</span><span style="color:#b8bb26">`</span>whoami<span style="color:#b8bb26">`</span><span style="color:#b8bb26">&#39;/.pyenv/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc
 </span></span><span style="display:flex;"><span>$ <span style="color:#fabd2f">echo</span> <span style="color:#b8bb26">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.bashrc
