@@ -389,6 +389,7 @@
 </h1><ul>
 <li>Ubuntu 20.04</li>
 <li>WSL2 with Ubuntu 20.04</li>
+<li>Rust: <a href="https://www.rust-lang.org/tools/install" title="website" aria-label="website" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> website</a></li>
 </ul>
 <h2 id="recommended-font" class="article-heading">Recommended font 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#recommended-font">
@@ -406,6 +407,7 @@
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h2><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install lldb <span style="color:#928374;font-style:italic"># lldb tool for rustaceanvim</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install build-essential cmake <span style="color:#928374;font-style:italic"># for compiling rust package</span>
 </span></span><span style="display:flex;"><span>$ curl -L https://deb.nodesource.com/nsolid_setup_deb.sh | sudo bash -s -- <span style="color:#d3869b">20</span> <span style="color:#fe8019">&amp;&amp;</span> sudo apt install -y nodejs <span style="color:#928374;font-style:italic"># nodejs for mason-lspconfig.nvim</span>
 </span></span><span style="display:flex;"><span>$ cargo install stylua <span style="color:#928374;font-style:italic"># to format lua code</span>
 </span></span><span style="display:flex;"><span>$ cargo install tree-sitter-cli <span style="color:#928374;font-style:italic"># for nvim-treesitter/nvim-treesitter</span>
@@ -434,7 +436,7 @@
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#install-pyenv-and-target-python-version">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
-</h3><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install libffi-dev <span style="color:#928374;font-style:italic"># for ImportError: No module named &#39;_ctypes&#39;</span>
+</h3><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev <span style="color:#928374;font-style:italic"># https://github.com/pyenv/pyenv/wiki#suggested-build-environment</span>
 </span></span><span style="display:flex;"><span>$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 </span></span><span style="display:flex;"><span>$ <span style="color:#fabd2f">echo</span> <span style="color:#b8bb26">&#39;export PATH=&#34;/home/&#39;</span><span style="color:#b8bb26">`</span>whoami<span style="color:#b8bb26">`</span><span style="color:#b8bb26">&#39;/.pyenv/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc
 </span></span><span style="display:flex;"><span>$ <span style="color:#fabd2f">echo</span> <span style="color:#b8bb26">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.bashrc
@@ -582,7 +584,7 @@
 <li><code>folke/neodev.nvim</code>: neovim</li>
 <li><code>rhysd/committia.vim</code>: git commit message editor</li>
 <li><code>lewis6991/gitsigns.nvim</code>: git inline status</li>
-<li><code>RRethy/vim-illuminate</code>: automatically highlighting other uses of the word un`der the cursor</li>
+<li><code>RRethy/vim-illuminate</code>: automatically highlighting other uses of the word under the cursor</li>
 <li><code>karb94/neoscroll.nvim</code>: smooth scrolling</li>
 <li><code>alpertuna/vim-header</code>: header of the file</li>
 <li><code>lukas-reineke/indent-blankline.nvim</code>: improved Yggdroot/indentLine</li>
@@ -1260,12 +1262,15 @@
 </span></span><span style="display:flex;"><span>vim.g.loaded_ruby_provider <span style="color:#fe8019">=</span> <span style="color:#d3869b">0</span>
 </span></span></code></pre></div>
 </details>
+<ul>
+<li><code>:Codeium Auth</code>: add token from the given url</li>
+</ul>
 <h1 id="epilogue" class="article-heading">Epilogue 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#epilogue">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
     </a>
 </h1><p>Finally, all configurations are in place. However, these settings might undergo frequent modifications as I use this version. The journey to transition to Lua support has been lengthy but rewarding. Let&rsquo;s continue to explore and refine.</p>
-<p><em>Chat-GPT has fine-tuned some grammar and words of this post.</em></p>
+<p><em>Chat-GPT has fine-tuned some grammar and words in this post.</em></p>
 <h1 id="references" class="article-heading">References 
     <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#references">
         <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
