@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Vscode Remote Got Bad Reoult From Install Script</title><link>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</link><pubDate>Thu, 29 Feb 2024 09:21:34 +0400</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</managingEditor><webMaster>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Mysterious Conda</title><link>https://aben20807.github.io/posts/20241015-mysterious-conda/</link><pubDate>Tue, 15 Oct 2024 10:26:28 +0800</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20241015-mysterious-conda/</guid><description><![CDATA[
+          <p>Note some frustrations with using Conda.</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20241015-mysterious-conda/"><img src="https://lh3.googleusercontent.com/d/1zNIM_8p2N6CjaMmXDZctEzmMJfMjdyoa" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20241015-mysterious-conda/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>Note some frustrations with using Conda.</p>
+<h1 id="install" class="article-heading">Install 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#install">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><ol>
+<li>ref: <a href="https://docs.anaconda.com/miniconda/" title="https://docs.anaconda.com/miniconda/" aria-label="https://docs.anaconda.com/miniconda/" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://docs.anaconda.com/miniconda/</a></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/miniconda3
+</span></span><span style="display:flex;"><span>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+</span></span><span style="display:flex;"><span>bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+</span></span><span style="display:flex;"><span>rm ~/miniconda3/miniconda.sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#fabd2f">cd</span> ~/miniconda3/bin
+</span></span><span style="display:flex;"><span>./conda init bash
+</span></span></code></pre></div><ol start="2">
+<li>reopen terminal or relogin or <code>source ~/.bashrc</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which python3
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># should be ~/miniconda3/bin/python3 not /usr/bin/python3</span>
+</span></span></code></pre></div><h1 id="create" class="article-heading">Create 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="font-size: 0.75em; color: black; padding-left: 0.25em" href="#create">
+        <span class="iconify" data-icon="octicon-link" data-inline="false"></span>
+    </a>
+</h1><p>Bad: the environment (python, pip) is reused from the [base]</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n xxx
+</span></span></code></pre></div><p>Good: a new, clean environment is created</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda create -n xxx python<span style="color:#fe8019">=</span>3.12
+</span></span></code></pre></div>
+        ]]></description></item><item><title>Vscode Remote Got Bad Reoult From Install Script</title><link>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</link><pubDate>Thu, 29 Feb 2024 09:21:34 +0400</pubDate><author>aben20807@gmail.com (Huang, Po-Hsuan 黃柏瑄)</author><guid>https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/</guid><description><![CDATA[
           <p>May be caused by conda installation in your client environment.</p>
           
             <p><a href="https://aben20807.github.io/posts/20240229-vscode-remote-got-bad-reoult-from-install-script/"><img src="https://lh3.googleusercontent.com/d/101s6uwsVtjuzm7KHXqLhBYFEdy-02WM_" style="max-width: 100%;"/></a></p>
