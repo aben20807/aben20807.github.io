@@ -19,10 +19,10 @@
  &lt;img src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable" alt=' ' data-action="zoom"
  title=' '>
  &lt;/noscript>
- &lt;img data-src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable lazyload" alt=' '
- width="500" data-action="zoom" title=' '>
+ &lt;img data-src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable lazyload" alt=' ' style="display: block;"
+ width="500" data-action="zoom" title=' ' />
  &lt;/div>
- &lt;figcaption>
+ &lt;figcaption class="center" style="max-width:500px;">
  &lt;center class="caption-text" style="margin: 0 .3rem 0;">
  
  &lt;p style="margin: .5rem 0 0;"> &lt;/p></description></item></channel></rss>

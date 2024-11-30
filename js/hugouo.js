@@ -92,7 +92,7 @@ $(window).bind("scroll", function () {
   var elems = $(".scrollspy");
   elems.each(function (index) {
     var elemTop = $(this).offset().top - 20;
-    var elemBottom = elemTop + $(this).height();
+    var elemBottom = elemTop + $(this).height() + 20;
     if (currentTop >= elemTop && currentTop <= elemBottom) {
       // handle chinese heading
       var href = $(this).attr("href").toLowerCase();

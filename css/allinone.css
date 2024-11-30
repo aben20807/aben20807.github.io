@@ -209,7 +209,7 @@ a:hover.post-meta, a:active.post-meta {
 
 .div-x .middot,
 .li-x .middot {
-    font-size: 6px;
+    /* font-size: 6px; */
     margin: 0;
     padding: 0;
     display: inline;
