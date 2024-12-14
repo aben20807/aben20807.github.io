@@ -1,4 +1,207 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>Huang, Po-Hsuan 黃柏瑄 (aben20807)</managingEditor><webMaster>Huang, Po-Hsuan 黃柏瑄 (aben20807)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>走向成功之路</title><link>https://aben20807.github.io/posts/20241116-on-the-path-to-success/</link><pubDate>Sat, 30 Nov 2024 15:40:24 +0800</pubDate><author>Huang, Po-Hsuan 黃柏瑄 (aben20807)</author><guid>https://aben20807.github.io/posts/20241116-on-the-path-to-success/</guid><description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>記錄用</title><link>https://aben20807.github.io/</link><description>Recent content on 記錄用</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>Huang, Po-Hsuan 黃柏瑄 (aben20807)</managingEditor><webMaster>Huang, Po-Hsuan 黃柏瑄 (aben20807)</webMaster><atom:link href="https://aben20807.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Yet Another BibTeX Online Converter</title><link>https://aben20807.github.io/posts/20241126-yet-another-bibtex-online-converter/</link><pubDate>Sat, 14 Dec 2024 23:57:26 +0800</pubDate><author>Huang, Po-Hsuan 黃柏瑄 (aben20807)</author><guid>https://aben20807.github.io/posts/20241126-yet-another-bibtex-online-converter/</guid><description><![CDATA[
+          <p>終於有個可以自訂格式的 bibtex 線上工具。</p>
+          
+            <p><a href="https://aben20807.github.io/posts/20241126-yet-another-bibtex-online-converter/"><img src="https://lh3.googleusercontent.com/d/1pbp7TdRL5-31GlBMNgZME2oN7E1ykRpa" style="max-width: 100%;"/></a></p>
+          
+          <p><a href="https://aben20807.github.io/posts/20241126-yet-another-bibtex-online-converter/">Visit website to read the full article</a></p>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <p>終於有個可以自訂格式的 bibtex 線上工具。</p>
+<h1 id="the-converter" class="article-heading">The converter 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="color: black;" href="#the-converter">
+        <i class="fas fa-hashtag fa-xs"></i>
+    </a>
+</h1><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.min.js"></script>
+<textarea id="bibtex_input" style="width: 100%; height: 200px; font-size: 90%; resize: vertical;">
+@article{QuEST,
+  author  = {Jones, Tyson
+             and Brown, Anna
+             and Bush, Ian
+             and Benjamin, Simon C.},
+  title   = {QuEST and High Performance Simulation of Quantum Computers},
+  journal = {Scientific Reports},
+  year    = {2019},
+  month   = {Jul},
+  day     = {24},
+  volume  = {9},
+  number  = {1},
+  pages   = {10736},
+  issn    = {2045-2322},
+  doi     = {10.1038/s41598-019-47174-9}
+}
+
+@book{Pragmatic,
+  author    = {Evans, David and Kolesnikov, Vladimir and Rosulek, Mike},
+  title     = {A Pragmatic Introduction to Secure Multi-Party Computation},
+  year      = {2018},
+  isbn      = {1680835084},
+  publisher = {Now Publishers Inc}
+}
+
+@inproceedings{cryptflow,
+  title                = {Cryptflow: Secure tensorflow inference},
+  author               = {Kumar, Nishant and Rathee, Mayank and Chandran, Nishanth and Gupta, Divya and Rastogi, Aseem and Sharma, Rahul},
+  booktitle            = {2020 IEEE Symposium on Security and Privacy (SP)},
+  pages                = {336--353},
+  year                 = {2020},
+  comment-organization = {IEEE},
+  url                  = {https://doi.org/10.1109/SP40000.2020.00092},
+  doi                  = {10.1109/SP40000.2020.00092},
+}
+
+@manual{CitekeyManual,
+  title        = {{R}: A Language and Environment for Statistical Computing},
+  author       = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address      = {Vienna, Austria},
+  year         = 2018
+}
+
+@techreport{CitekeyTechreport,
+  title       = {{W}asatch {S}olar {P}roject Final Report},
+  author      = {Bennett, Vicki and Bowman, Kate and Wright, Sarah},
+  institution = {Salt Lake City Corporation},
+  address     = {Salt Lake City, UT},
+  number      = {DOE-SLC-6903-1},
+  year        = 2018,
+  month       = sep
+}
+
+@phdthesis{gentry2009fully,
+  author = {Gentry, Craig},
+  school = {Stanford University},
+  title  = {A fully homomorphic encryption scheme},
+  year   = {2009}
+}
+
+@mastersthesis{CitekeyMastersthesis,
+  author  = {Jian Tang},
+  title   = {Spin structure of the nucleon in the asymptotic limit},
+  school  = {Massachusetts Institute of Technology},
+  year    = 1996,
+  address = {Cambridge, MA},
+  month   = sep
+}
+
+@misc{QAOA,
+  title         = {A Quantum Approximate Optimization Algorithm},
+  author        = {Edward Farhi and Jeffrey Goldstone and Sam Gutmann},
+  year          = {2014},
+  eprint        = {1411.4028},
+  archiveprefix = {arXiv},
+  primaryclass  = {quant-ph},
+  url           = {https://arxiv.org/abs/1411.4028}
+}
+</textarea>
+<div id="container" style="margin: 5px 0;"></div>
+<div style="margin: 5px 0;"><button style="cursor:pointer;" onclick=" bibtex_js_draw(); document.getElementById('bibtex_display').innerHTML = '';">Convert!</button></div>
+<script>
+function toggleCheckbox(e, field, inner) {
+    const {checked} = e.target;
+    if (checked) {
+        document.getElementById(field).innerHTML = inner;
+    } else {
+        document.getElementById(field).innerHTML = '';
+    }
+}
+
+function bindButtons() {
+    let container = document.getElementById("container");
+    const fields = {
+        "volume": `, vol. <span class="volume"></span>`,
+        "number": `, no. <span class="number"></span>`,
+        "pages":`, pp. <span class="pages"></span>`,
+        "url":`Available: <a class="url" target="_blank" rel="noreferrer noopener"><span class="url"></span></a>.`,
+        "doi":`DOI: <a class="bibtexVar" href="http://doi.org/+DOI+" target="_blank" rel="noreferrer noopener" extra="doi"><span class="doi"></span></a>.`,
+        "note":`<span class="note" style="font-weight: bold;"></span>.`,
+    };
+    for (const [key, value] of Object.entries(fields)) {
+    // console.log(key, value);
+    const elementString = `<input type="checkbox" onchange='toggleCheckbox(event, "`+key+`", \``+value+`\`)' checked /><label style="padding: 0 1.2em 0 0.4em;">`+key+`</label></div>`;
+    // console.log(elementString);
+    container.insertAdjacentHTML('beforeend', elementString);
+    }
+}
+
+function callback() {
+    document.querySelectorAll('.PHDTHESIS').forEach(function(e) {
+        e.textContent = "PhD Dissertation. ";
+    });
+    document.querySelectorAll('.MASTERSTHESIS').forEach(function(e) {
+        e.textContent = "Master Thesis. ";
+    });
+    document.querySelectorAll('.TECHREPORT').forEach(function(e) {
+        e.textContent = "Technical Report. ";
+    });
+    let counter = 0;
+    document.querySelectorAll('.bibtexentry').forEach(function(e) {
+        e.children[0].prepend("[" + ++counter + "] ");
+        console.log(e.children[0]);
+    });
+}
+bindButtons();
+</script>
+<style>
+    /* because pseudo content cannot be selected by the mouse */
+    /* #bibtex_display {counter-reset: bibcnt;}
+    #bibtex_display>.bibtexentry>div:before {
+        counter-increment: bibcnt;
+        content: "[" counter(bibcnt) "] ";
+    } */
+</style>
+<div class="bibtex_template">
+    <div class="if author" style="padding-left: 3em; text-indent:-1.5em; margin-bottom: 0.2em;">
+        <span class="author"></span>.
+        "<span class="title"></span>,"
+        <span class="if journal">
+            <span class="journal" style="font-style: italic;"></span>
+            <span id="volume" class="if volume">, vol. <span class="volume"></span></span>
+            <span id="number" class="if number">, no.
+                <span class="number"></span></span></span><span class="if booktitle">In: <span class="booktitle"
+                style="font-style: italic;"></span></span><span id="pages" class="if pages">, pp. <span
+                class="pages"></span></span><span class="bibtexVar +BIBTEXTYPEKEY+" extra="BIBTEXTYPEKEY"></span><span
+            class="if !journal"><span class="if !booktitle"><span class="if publisher"><span
+                        class="publisher"></span></span></span></span><span class="if school"><span
+                class="school"></span></span><span class="if institution"><span class="institution"></span></span><span class="if journal || booktitle || publisher || school || institution">.</span>
+        <span id="year" class="if year"><span class="year"></span>.</span>
+        <span id="doi" class="if doi">
+            DOI: <a class="bibtexVar" href="http://doi.org/+DOI+" target="_blank" rel="noreferrer noopener"
+                extra="doi"><span class="doi"></span></a>.
+        </span>
+        <span class="if !doi">
+            <span id="url" class="if url">
+                Available: <a class="url" target="_blank" rel="noreferrer noopener"><span class="url"></span></a>.
+            </span>
+        </span>
+        <span id="note" class="if note">
+            <span class="note" style="font-weight: bold;"></span>.
+        </span>
+    </div>
+</div>
+<div id="bibtex_display" callback="callback()"></div>
+<h1 id="說明" class="article-heading">說明 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="color: black;" href="#%e8%aa%aa%e6%98%8e">
+        <i class="fas fa-hashtag fa-xs"></i>
+    </a>
+</h1><p>雖然一般要寫論文的話會直接使用 latex 以及相關工具去產生引用或參考資料的條目，不過在某些時候也會需要產生引用資料時就會有點麻煩 (例如從 pdf 複製會有一堆換行)。之前比較方便的做法是直接開啟線上轉換工具，例如 <a href="https://bibtex.online/" title="BibTeX Online Converter" aria-label="BibTeX Online Converter" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> BibTeX Online Converter</a>，不過仍有一些缺點，像是轉換出來的格式不喜歡，且一次只能轉換一個項目。趁著想把 <a href="http://localhost:1313/about/#publication-list" title="About me 的著作列表" aria-label="About me 的著作列表" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> About me 的著作列表</a>改成從 bibtex 生成，就去研究了怎麼在靜態網頁上達成這個目的。</p>
+<p>首先我找了 hugo 有沒有相關工具，但大家似乎都要本地端另外跑一個 python 程式，有點麻煩。所以我就改找 javascript 工具，其實蠻多的，但大部份看起來缺乏維護，連我選的這個 bibtex-js 也是在四年前就沒更新。不過我看用法還算可以就拿來使用。原本應該改好自己的著作列表後就好，但靈機一動好像可以把它變成一個跟之前計算畢業點數的線上工具，於是就有下方的線上轉換器了。</p>
+<p>中間其實也遇到頗多困難，例如原本的編號我是用 CSS counter 自動生成，但不知道為何按下生成時會再加一次，透過整個內容重新設定解決，但又遇到不能被選取複製，所以改用 callback 去用 javascript 加上編號。另外像是這個套件提供的 bibtex type (BIBTEXTYPE) 對應的文字有限，像是 phdthesis 就沒有對應的 BIBTEXTYPE ，最後發現其實還是有被加上 class，所以一樣在 callback 去用 javascript 動態補上，<del>又髒又快</del>。</p>
+<h1 id="reference" class="article-heading">Reference 
+    <a class="headline-hash smoothScroll hover-show scrollspy" style="color: black;" href="#reference">
+        <i class="fas fa-hashtag fa-xs"></i>
+    </a>
+</h1><ul>
+<li><a href="https://github.com/pcooksey/bibtex-js" title="https://github.com/pcooksey/bibtex-js" aria-label="https://github.com/pcooksey/bibtex-js" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://github.com/pcooksey/bibtex-js</a></li>
+</ul>
+ 
+        ]]></description></item><item><title>走向成功之路</title><link>https://aben20807.github.io/posts/20241116-on-the-path-to-success/</link><pubDate>Sat, 30 Nov 2024 15:40:24 +0800</pubDate><author>Huang, Po-Hsuan 黃柏瑄 (aben20807)</author><guid>https://aben20807.github.io/posts/20241116-on-the-path-to-success/</guid><description><![CDATA[
           <p>從成功大學到成功嶺大概花了我九年左右的時間，到底怎樣算是成功的人?</p>
           
             <p><a href="https://aben20807.github.io/posts/20241116-on-the-path-to-success/"><img src="https://lh3.googleusercontent.com/d/1B2ap7s6VoE-rszDgvswll0C5UzL7zPxb" style="max-width: 100%;"/></a></p>
