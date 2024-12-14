@@ -223,6 +223,11 @@ a:hover.post-meta, a:active.post-meta {
   display: inline-block;
 }
 
+.li-y li {
+  padding: 0 4px;
+  display: block;
+}
+
 .div-x div {
   display: inline-block;
 }
