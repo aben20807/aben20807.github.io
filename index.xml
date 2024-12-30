@@ -9376,7 +9376,7 @@ $$</p>
 </h1><p>本篇利用從 DFT 的原理介紹到實際用小規模的範例完整示範 QFT 的原理及實作過程，應該可以稱得上是目前最完整的文章 (除非是一些學校超長的課程)，若有其他更完整資料再請提供給我參考。接下來 &ldquo;有空的話&rdquo; 會拓展到一般化的形式，到時候會有更多公式。另外，本文章也沒實作 IQFT，雖然是正負號換一下就好，不過因為篇幅已經過長所以就保留到下次。</p>
  
         ]]></description></item><item><title>Must-Do Setup for Programmer's New Windows PC</title><link>https://aben20807.github.io/posts/20220505-must-do-setup-for-new-win-pc/</link><pubDate>Thu, 05 May 2022 09:50:52 +0800</pubDate><author>Huang, Po-Hsuan 黃柏瑄 (aben20807)</author><guid>https://aben20807.github.io/posts/20220505-must-do-setup-for-new-win-pc/</guid><description><![CDATA[
-          <p>實驗室新設備 OuO<br><br/>記錄一些設定環境 (windows) 的過程<br><br/>未來會以雙系統安裝 Ubuntu 20.04</p>
+          <p>實驗室新設備 OuO<br><br/>記錄一些設定環境 (windows) 的過程<br><br/>未來會以雙系統安裝 Ubuntu 20.04</p><br/><p>略過 windows 登入畫面直接打密碼，不用多按一次空白鍵超方便</p>
           
             <p><a href="https://aben20807.github.io/posts/20220505-must-do-setup-for-new-win-pc/"><img src="https://lh3.googleusercontent.com/d/1VYJRXLP0Gh8KM9fe18jmcqSzENFIu5Sv" style="max-width: 100%;"/></a></p>
           
@@ -9393,6 +9393,7 @@ $$</p>
           <p>實驗室新設備 OuO<br>
 記錄一些設定環境 (windows) 的過程<br>
 未來會以雙系統安裝 Ubuntu 20.04</p>
+<p>略過 windows 登入畫面直接打密碼，不用多按一次空白鍵超方便</p>
 <p>
 
   <figure class="gphoto-media rss">
@@ -14281,7 +14282,8 @@ $$</p>
     <a class="headline-hash smoothScroll hover-show scrollspy" style="color: black;" href="#tldr">
         <i class="fas fa-hashtag fa-xs"></i>
     </a>
-</h1><div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#fabd2f">cd</span> /tmp
+</h1><p>到 <a href="https://github.com/gohugoio/hugo/releases" title="https://github.com/gohugoio/hugo/releases" aria-label="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noreferrer noopener"><i class="fas fa-external-link-square-alt"></i> https://github.com/gohugoio/hugo/releases</a> 找到 Linux-64bit.tar.gz 結尾的檔案右鍵複製連結網址，並用 wget 下載如下方指令</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#fabd2f">cd</span> /tmp
 </span></span><span style="display:flex;"><span>$ wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.tar.gz
 </span></span><span style="display:flex;"><span>$ tar xvf hugo_extended_0.80.0_Linux-64bit.tar.gz
 </span></span><span style="display:flex;"><span>$ sudo mv hugo /usr/local/bin
