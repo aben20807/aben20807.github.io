@@ -172,7 +172,7 @@ function putLanguageLabels() {
     block.id = "code-" + random_id();
     let language = code[0].getAttribute('data-lang');
     let alias = block.getAttribute('name');
-    
+
     if (alias != null) {
       language = alias;
     }
@@ -183,11 +183,11 @@ function putLanguageLabels() {
     let color_overwrite = ""
     let bg = block.getAttribute('bg');
     if (bg != null) {
-      color_overwrite += "background-color:"+ bg +";";
+      color_overwrite += "background-color:" + bg + ";";
     }
     let fg = block.getAttribute('fg');
     if (fg != null) {
-      color_overwrite += "color:"+ fg +";";
+      color_overwrite += "color:" + fg + ";";
     }
     if (color_overwrite != "") {
       color_overwrite = "style='" + color_overwrite + "'";
@@ -248,3 +248,84 @@ $(document).ready(function () {
 /**
  * footnote tooltip popup bubble end
  */
+
+/* encrypt and decrypt */
+/* ref: themes\hugOuO\layouts\shortcodes\encrypt.html */
+function hexToBytes(hex) {// https://stackoverflow.com/a/57391629
+  const bytes = new Uint8Array(hex.length / 2);
+  for (let i = 0; i !== bytes.length; i++) {
+    bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+  }
+  return bytes;
+}
+function rhexToBytes(hex) {
+  const bytes = new Uint8Array(hex.length / 2);
+  for (let i = 0; i !== bytes.length; i++) {
+    bytes[i] = parseInt(hex.substring((bytes.length - i) * 2, (bytes.length - i) * 2 - 2).split("").reverse().join(""), 16);
+  }
+  return bytes;
+}
+function byteArrayToInt(byteArray) {
+  let value = 0;
+  for (var i = 0; i < byteArray.length; i++) {
+    value = (value * 256) + byteArray[i];
+  }
+
+  return value;
+}
+function intToBytes(input, length) {
+  // https://stackoverflow.com/a/62441743
+  const bytes = new Uint8Array(length);
+  for (let i = length - 1; i >= 0; i--) {
+    let byte = input & 0xff;
+    bytes[i] = byte;
+    input = (input - byte) / 256;
+  }
+  return bytes;
+}
+function removeLeadingZeroes(bytes) {
+  let i = 0;
+  while (i < bytes.length && bytes[i] === 0) {
+    i++;
+  }
+  return bytes.slice(i);
+}
+function decrypt(id) {
+  let success = true;
+  const password_str = document.querySelector("#password-" + id).value
+  if (password_str.trim() === "") {
+    success = false;
+  }
+
+  let password = parseInt(password_str);
+  const encodedString = document.querySelector("#encrypt-wrapper-" + id).innerText;
+  const list = encodedString.split('-');
+  const step = Math.floor(281474976710656 / (list.length - 1));
+  let decryptResult = [];
+
+  for (let i = 0; i < list.length; i++) {
+    xb = rhexToBytes(Base64.decode(list[i]));
+    x = byteArrayToInt(xb) - password;
+    password = (password + step) % 281474976710656;
+    dxb = intToBytes(x, xb.length);
+    try {
+      decryptResult.push(new TextDecoder("utf8", { fatal: true }).decode(removeLeadingZeroes(dxb)));
+    } catch (e) {
+      success = false;
+      if (e instanceof TypeError) {
+      } else {
+        console.error(e);
+      }
+    }
+  }
+  if (success) {
+    document.querySelector("#decrypt-result-" + id).innerHTML = '<p>' + decryptResult.join('') + '</p>';
+  } else {
+    document.querySelector("#decrypt-result-" + id).innerHTML = '<p>Wrong password!</p>';
+  }
+}
+function cleanDecrypt(id) {
+  document.querySelector("#decrypt-result-" + id).innerHTML = '<p>Some things are hidden...</p>';
+  document.querySelector("#password-" + id).value = '';
+}
+/* encrypt and decrypt */
