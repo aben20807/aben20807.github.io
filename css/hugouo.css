@@ -448,6 +448,14 @@ img {
 }
 
 @media screen and (max-width: 600px) {
+  .post-main-wrapper {
+    margin: 3rem 1rem 5rem !important;
+  }
+
+  .post-item .meta {
+    margin-left: 0 !important;
+  }
+
   .col-2 {
     display: none;
   }
@@ -711,6 +719,7 @@ a:active.post-meta {
   min-width: 4rem;
   text-align: right;
   margin-left: 2rem;
+  margin-right: .2rem;
 }
 
 /*
@@ -1201,8 +1210,9 @@ p.footer-summary {
 */
 body.dark-mode,
 body.dark-mode .bg-main,
-body.dark-mode main *:not(pre, pre *, code, a, label.code-label, div.highlight *, table, table *, .alert-title, .alert-title *,
-  .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *, .gsc-control-cse, .gsc-control-cse *) {
+body.dark-mode .post-meta *,
+body.dark-mode main *:not(pre, pre *, code, a, a *, label.code-label, div.highlight *, table, table *, .alert-title, .alert-title *,
+  .page-link span, .bg-black *, li.nested-links *, .post-meta *, .post-item *, .gsc-control-cse, .gsc-control-cse *, #gotop_btn, #gotop_btn *) {
   background: var(--dim-black);
   color: var(--dim-white);
 }
@@ -1255,7 +1265,8 @@ body.dark-mode a i.fa-caret-square-up,
 body.dark-mode a i.fa-chevron-circle-right,
 body.dark-mode a i.fa-external-link-square-alt,
 body.dark-mode a i.fa-sign-out-alt,
-body.dark-mode a i.fa-seedling {
+body.dark-mode a i.fa-seedling,
+body.dark-mode a i.fa-chevron-circle-right {
   color: var(--deep-orange);
   transition: color 0.15s ease-in !important;
 }
@@ -1352,6 +1363,14 @@ body.dark-mode li.page-item.active a {
   border-radius: 8px;
   z-index: 1;
   margin: auto;
+  text-align: center;
+}
+/* https://stackoverflow.com/a/29399580 */
+#gotop_btn:after {
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  height: 100%;
 }
 
 /**
