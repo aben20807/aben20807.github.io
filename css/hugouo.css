@@ -1,6 +1,6 @@
 :root {
-  --deep-blue: #2060a8;
-  --light-blue: #61AFF0;
+  --deep-blue: #1c579a;
+  --light-blue: #2c95ea;
   --deep-orange: #ff7a6e;
   --light-orange: #DEA584;
   --white: #f5f5f5;
@@ -9,8 +9,6 @@
   --light-gray: #d5dde3;
   --deep-gray: #444444;
 
-  --link-color: #61AFF0;
-  --active-color: #428bca;
   --text-dark: #333333;
   --text-grey: #4e4e4e;
 }
@@ -37,6 +35,8 @@
   src: local('Alice'), url('/assets/fonts/Alice-Regular.woff2'), url(https://github.com/cyrealtype/Alice/blob/master/fonts/webfonts/Alice-Regular.woff2?raw=true) format('woff2')
 }
 
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 body {
   /* ref: https://stackoverflow.com/a/44000322/6734174 */
   width: 100vw;
@@ -48,6 +48,17 @@ body {
 
 .bg-main {
   background-color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0em;
+  padding: 0.6em 0em 0.3em;
+  font-weight: 500;
 }
 
 h1 {
@@ -131,37 +142,20 @@ h6.article-heading:before {
     counter(h4_cnt) "." counter(h5_cnt) "." counter(h6_cnt);
 }
 
-body,
-p,
-ul,
-li,
-summary,
-details,
-body article,
-.link-reverse,
-.sans-serif {
-  font-family: "Noto Sans TC", -apple-system,
+body {
+  font-family: -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, noto, "segoe ui", arial, sans-serif;
   font-display: swap;
   word-break: break-word;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 .serif {
-  font-family: "Alice", "Noto Sans TC", -apple-system,
+  font-family: -apple-system,
     BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
     ubuntu, noto, "segoe ui", arial, sans-serif;
   font-display: swap;
   word-break: break-word;
-  margin: 0em;
-  padding: 0.6em 0em 0.3em;
-  font-weight: 500;
 }
 
 h1>code,
@@ -223,7 +217,7 @@ table pre {
 label.code-label {
   font-size: 85%;
   color: #f6f6f6;
-  background-color: var(--active-color);
+  background-color: var(--deep-blue);
   padding: 1px 5px;
   border-radius: 3px 3px 0 0;
   display: table-cell;
@@ -325,6 +319,10 @@ p,
 summary,
 table {
   margin: 0 0 1em;
+}
+
+.post-main-wrapper p {
+  margin: 0;
 }
 
 div.highlight {
@@ -502,14 +500,14 @@ a {
 
 a:hover,
 a:active {
-  color: var(--light-blue) !important;
+  color: var(--light-blue);
   transition: color .15s ease-in;
 }
 
 a.no-color,
 a.no-color:hover,
 a.no-color:active {
-  color: var(--text-dark) !important;
+  color: var(--text-dark);
 }
 
 a,
@@ -612,14 +610,14 @@ a:hover,
 
 .post-meta a:hover,
 .post-meta a:active {
-  color: var(--active-color);
+  color: var(--light-blue);
 }
 
 a:hover .post-meta,
 a:active .post-meta,
 a:hover.post-meta,
 a:active.post-meta {
-  color: var(--active-color);
+  color: var(--light-blue);
 }
 
 .post-header .post-meta {
@@ -669,8 +667,8 @@ a:active.post-meta {
   padding: .2rem 0.5rem;
   font-size: .75rem;
 
-  -webkit-border-radius: 999em;
-  border-radius: 999em;
+  -webkit-border-radius: .6rem;
+  border-radius: .6rem;
   vertical-align: middle;
 }
 
@@ -683,8 +681,8 @@ a:active.post-meta {
 .tags-sm a:active,
 .tags-md a:hover,
 .tags-md a:active {
-  color: var(--active-color);
-  border: 1px solid var(--active-color);
+  color: var(--deep-blue);
+  border: 1px solid var(--deep-blue);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 }
 
@@ -837,7 +835,7 @@ summary,
 
 summary:hover,
 .goto:hover {
-  color: var(--active-color);
+  color: var(--deep-blue);
 }
 
 .hover-show {
@@ -1075,11 +1073,6 @@ body::-webkit-scrollbar:horizontal {
   padding: 10px;
   border-radius: 0px 0px 3px 3px;
   font-size: 1rem !important;
-  font-family: "Noto Sans TC", -apple-system,
-    BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica,
-    ubuntu, noto, "segoe ui", arial, sans-serif;
-  font-display: swap;
-  word-break: break-word;
 }
 
 .alert-title {
@@ -1365,6 +1358,7 @@ body.dark-mode li.page-item.active a {
   margin: auto;
   text-align: center;
 }
+
 /* https://stackoverflow.com/a/29399580 */
 #gotop_btn:after {
   display: inline-block;
@@ -1492,7 +1486,7 @@ body.dark-mode .fn-content {
 */
 .subnav-content {
   position: absolute;
-  background-color: #6e6e6e78;
+  background-color: #6e6e6eb4;
   width: max-content;
   box-shadow: 0px 8px 16px 2px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -1500,6 +1494,7 @@ body.dark-mode .fn-content {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.25s ease-in;
+  border-radius: .6rem;
 }
 
 .subnav {
