@@ -111,6 +111,14 @@ pre, code {
   font-display: swap;
 }
 
+h1>code, h2>code, h3>code, h4>code, h5>code, h6>code, p>code, li>code, a>code, td>code {
+  font-size: 95%;
+  background: var(--light-gray);
+  margin: 0;
+  border-radius: 3px;
+  padding: 0.15em 0.25em;
+}
+
 /* story.css */
 pre {
   border-style: hidden;
