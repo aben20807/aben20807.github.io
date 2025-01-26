@@ -8,28 +8,30 @@ if (
 }
 
 /* Document ready */
-jQuery(document).ready(function ($) {
-  if (isMobile) return;
+$(document).ready(function ($) {
+  console.log(isMobile);
+  if (!isMobile) {
 
-  /* Detect element overflow */
-  $.fn.overflown = function () {
-    var e = this[0];
-    return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth;
-  };
+    /* Detect element overflow */
+    $.fn.overflown = function () {
+      var e = this[0];
+      return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth;
+    };
 
-  /* Prevent scroll main window */
-  var b = $("body");
-  $("#toc-scroll")
-    .mouseenter(function () {
-      if ($(this).overflown()) {
-        b.css("overflow", "hidden");
-      }
-      $(this).removeClass("hide-scrollbar");
-    })
-    .mouseleave(function () {
-      b.css("overflow", "");
-      $(this).addClass("hide-scrollbar");
-    });
+    /* Prevent scroll main window */
+    var b = $("body");
+    $("#toc-scroll")
+      .mouseenter(function () {
+        if ($(this).overflown()) {
+          b.css("overflow", "hidden");
+        }
+        $(this).removeClass("hide-scrollbar");
+      })
+      .mouseleave(function () {
+        b.css("overflow", "");
+        $(this).addClass("hide-scrollbar");
+      });
+  }
 
   /* Smooth scroll */
   var url = "https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.2.0/jquery.smooth-scroll.min.js";
