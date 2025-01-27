@@ -9,7 +9,6 @@ if (
 
 /* Document ready */
 $(document).ready(function ($) {
-  console.log(isMobile);
   if (!isMobile) {
 
     /* Detect element overflow */
