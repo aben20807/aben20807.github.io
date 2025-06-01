@@ -19,16 +19,10 @@
  &lt;img src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable" alt=' ' data-action="zoom"
  title=' '>
  &lt;/noscript>
- &lt;img data-src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable lazyload" alt=' ' style="display: block;"
+ &lt;img data-sizes="auto"
+ src="https://dummyimage.com/600x400/666/fff&amp;text=wait" data-src="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" oncontextmenu="return false;" class="center img-zoomable lazyload" alt=' ' style="display: block;"
  width="500" data-action="zoom" title=' ' />
  &lt;/div>
  &lt;figcaption class="center" style="max-width:500px;">
  &lt;center class="caption-text" style="margin: 0 .3rem 0;">
- &lt;p style="margin: .5rem 0 0;"> &lt;/p>
- &lt;font class="douyin hover-show">
- &lt;a href="https://lh3.googleusercontent.com/d/1k3eHbDmhZksv2U7yklnPY2DUM56fqFpT" target="_blank" rel="noreferrer noopener"
- style="opacity: 1.0; text-decoration: none;">OuO&lt;/a>
- &lt;/font>
- &lt;/center>
- &lt;/figcaption>
-&lt;/figure>&lt;/p></description></item></channel></rss>
+ &lt;p style="margin: .5rem 0 0;"> &lt;/p></description></item></channel></rss>
