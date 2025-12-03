@@ -129,7 +129,8 @@ body:not(.feature-tablefig) table {
   border-collapse: collapse;
   display: block;
   width: 100%;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
   font-size: 85%;
   /* font-family: 'Quattrocento Sans', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif; */
 }

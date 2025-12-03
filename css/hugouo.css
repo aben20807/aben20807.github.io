@@ -171,7 +171,8 @@ body:not(.feature-tablefig) table {
   border-collapse: collapse;
   display: block;
   width: 100%;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   font-size: 85%;
 }
 
